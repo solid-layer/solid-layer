@@ -1,0 +1,13 @@
+#!/usr/bin/env php
+<?php
+
+define('APP_ROOT', __DIR__);
+require_once APP_ROOT . '/bootstrap/start.php';
+
+$command = "php -S ".getenv('SERVE_HOST').":".getenv('SERVE_PORT')." -t ".APP_ROOT."/public ".APP_ROOT."/.htrouter.php";
+
+echo 'Server is now running on: '.getenv('SERVE_HOST').':'.getenv('SERVE_PORT')."\n";
+
+shell_exec($command);
+
+exit;

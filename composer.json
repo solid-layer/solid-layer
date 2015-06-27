@@ -1,0 +1,22 @@
+{
+    "name": "phalcon/slayer",
+    "description": "Bootstrapping Phalcon Framework",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daison Carino",
+            "email": "daison12006013@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^2.0",
+        "maximebf/debugbar": "1.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bootstrap\\Facades\\": "bootstrap/facades/",
+            "Bootstrap\\Services\\": "bootstrap/services/",
+            "Bootstrap\\Exceptions\\": "bootstrap/exceptions/"
+        }
+    }
+}

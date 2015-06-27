@@ -1,0 +1,86 @@
+<?php
+
+
+/*
+|-------------------------------------------------------------
+| Dependency Injection
+|-------------------------------------------------------------
+| return the DI instanced in the phalcon factory
+*/
+if (! function_exists('di')) {
+  function di() {
+    global $__app;
+
+    return $__app->getDi();
+  }
+}
+
+
+/*
+|-------------------------------------------------------------
+| Route from DI
+|-------------------------------------------------------------
+| Returning the injected 'router' in the DI
+*/
+if (! function_exists('route')) {
+  function route() {
+    return di()->get('router');
+  }
+}
+
+
+/*
+|-------------------------------------------------------------
+| Response from DI
+|-------------------------------------------------------------
+| Returning the injected 'response' in the DI
+*/
+if (! function_exists('response')) {
+  function response() {
+    return di()->get('response');
+  }
+}
+
+
+/*
+|-------------------------------------------------------------
+| View from DI
+|-------------------------------------------------------------
+| Returning the injected 'view' in the DI
+*/
+if (! function_exists('view')) {
+  function view() {
+    return di()->get('view');
+  }
+}
+
+
+/*
+|-------------------------------------------------------------
+| Die and Dump
+|-------------------------------------------------------------
+| Was based in laravel framework, this helper helps users to
+| debug arrays or outputs
+*/
+if (! function_exists('dd')) {
+  function dd($var) {
+    var_dump($var);
+    exit;
+  }
+}
+
+
+/*
+|-------------------------------------------------------------
+| Echo Pre and Exit
+|-------------------------------------------------------------
+| Sometimes we need more prettier than var_dump, so this is
+| the solution    
+*/
+if (! function_exists('echo_pre')) {
+  function echo_pre($var) {
+    echo '<pre>';
+    print_r($var);
+    exit;
+  }
+}
