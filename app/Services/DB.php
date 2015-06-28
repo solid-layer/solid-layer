@@ -3,16 +3,16 @@
 namespace App\Services;
 
 use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
-use Bootstrap\Services\Services;
+use Bootstrap\Services\ServiceContainer;
 
-class DB extends Services
+class DB extends ServiceContainer
 {
   public $_alias = 'db';
 
   public $_shared = false;
 
-  public function dispatcher()
+  public function boot()
   {
-    return new DbAdapter($this->config->database->toArray());
+    return new DbAdapter($this->getConfig()->database->toArray());
   }
 }

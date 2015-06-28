@@ -6,4 +6,5 @@ return [
     'migrationsDir'  => APP_ROOT . '/app/Migrations/',
     'viewsDir'       => APP_ROOT . '/resources/views/',
     'storageViewDir' => APP_ROOT . '/storage/views/',
+    'baseUri'        => APP_ROOT,
 ];

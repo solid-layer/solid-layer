@@ -2,16 +2,16 @@
 
 namespace App\Services;
 
+use Bootstrap\Services\ServiceContainer;
 use Phalcon\Mvc\Model\Metadata\Memory;
-use Bootstrap\Services\Services;
 
-class MetadataAdapter extends Services
+class MetadataAdapter extends ServiceContainer
 {
   public $_alias = 'modelsMetadata';
 
   public $_shared = false;
 
-  public function dispatcher()
+  public function boot()
   {
     return new Memory();
   }

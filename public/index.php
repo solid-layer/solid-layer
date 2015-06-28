@@ -1,18 +1,26 @@
 <?php
 
-ini_set("display_errors", "1");
-error_reporting(E_ALL);
-
+# Even whoops won't work
+if (getenv('APP_DEBUG') == 'true') {
+    ini_set("display_errors", "1");
+    error_reporting(E_ALL);
+}
 define('APP_ROOT', dirname(__DIR__));
 
 try {
+    
+    $di = new Phalcon\Di\FactoryDefault();
+
+    require_once APP_ROOT . '/vendor/autoload.php';
 
     /*
     |-------------------------------------------------------------
-    | Bootstrapper
+    | Whoops Debugger
     |-------------------------------------------------------------
     */
-    require_once APP_ROOT . '/bootstrap/start.php';
+    if (getenv('APP_DEBUG') == 'true') {
+        new Whoops\Provider\Phalcon\WhoopsServiceProvider($di);
+    }
 
 
     /*
@@ -27,20 +35,10 @@ try {
 
     /*
     |-------------------------------------------------------------
-    | Now use the facade created by Taylor Otwell
-    |-------------------------------------------------------------
-    | We should inject the phalcon $__app so that facade class
-    | will be able to get all injected shared dependencies.
-    */
-    Bootstrap\Facades\Facade::setFacadeApplication($__app);
-
-
-    /*
-    |-------------------------------------------------------------
-    | Now include the routes
+    | Bootstrapper
     |-------------------------------------------------------------
     */
-    require_once APP_ROOT . '/app/routes.php';
+    require_once APP_ROOT . '/bootstrap/autoload.php';
 
 
     /*
@@ -48,9 +46,9 @@ try {
     | Now show the app content based on the uri requests
     |-------------------------------------------------------------
     */
+    // $__app->useImplicitView(false);
     echo $__app->handle()->getContent();
 
-
-} catch (Exception $e) {
-    echo $e->getMessage();
+} catch (\Exception $e) {
+    throw $e;
 }

@@ -20,6 +20,7 @@ Route::add('/', [
   'namespace' => 'App\Controllers',
   'controller' => 'Welcome',
   'action' => 'showSignature',
+  'params' => 1
 ]);
 
 

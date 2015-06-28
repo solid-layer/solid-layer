@@ -10,13 +10,7 @@
     ],
     "require": {
         "vlucas/phpdotenv": "^2.0",
-        "maximebf/debugbar": "1.*"
-    },
-    "autoload": {
-        "psr-4": {
-            "Bootstrap\\Facades\\": "bootstrap/facades/",
-            "Bootstrap\\Services\\": "bootstrap/services/",
-            "Bootstrap\\Exceptions\\": "bootstrap/exceptions/"
-        }
+        "filp/whoops": "^1.1"
     }
+        
 }
