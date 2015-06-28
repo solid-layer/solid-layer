@@ -10,10 +10,15 @@ if (! defined('APP_ROOT')) {
     $dotenv->load();
 }
 
-$config = new \Phalcon\Config([
-    'database' => require_once APP_ROOT . '/config/databases.php',
-    'application' => require_once APP_ROOT . '/config/paths.php',
+$__config = new \Phalcon\Config([
+    # Phalcon Provided
+    'database'        => require_once APP_ROOT . '/config/databases.php',
+    'application'     => require_once APP_ROOT . '/config/paths.php',
+
+    # Custom Commands
+    'slayer_acl'      => require_once APP_ROOT . '/config/acl.php',
+    'slayer_consoles' => require_once APP_ROOT . '/config/consoles.php',
     'slayer_services' => require_once APP_ROOT . '/config/services.php',
 ]);
 
-return $config;
+return $__config;

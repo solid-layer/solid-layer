@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'consoleDir'     => APP_ROOT . '/app/Console',
     'controllersDir' => APP_ROOT . '/app/Controllers/',
     'modelsDir'      => APP_ROOT . '/app/Models/',
     'migrationsDir'  => APP_ROOT . '/app/Migrations/',

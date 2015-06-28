@@ -15,18 +15,18 @@ class AuthRoutes extends RouterGroup
     $this->setPrefix('/auth');
 
     # Add a route to the group
+    $this->add('/show', [
+      'action' => 'show'
+    ]);
+
+    # Add a route to the group
     $this->add('/new', [
       'action' => 'new'
     ]);
 
     # Add a route to the group
-    $this->add('/store', [
+    $this->addPost('/store', [
       'action' => 'store'
-    ]);
-
-    # Add another route to the group
-    $this->add('/view/{id}', [
-      'action' => 'view'
     ]);
   }
 }

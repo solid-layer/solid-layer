@@ -4,5 +4,5 @@ namespace Bootstrap\Facades;
 
 class Whoops extends Facade
 {
-  protected static function getFacadeAccessor() { return 'whoops'; }
+    protected static function getFacadeAccessor() { return 'whoops'; }
 }

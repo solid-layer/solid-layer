@@ -1,6 +1,14 @@
 <?php
 
 
+if (! function_exists('slayer_config')) {
+  function slayer_config() {
+    global $__config;
+
+    return $__config;
+  }
+}
+
 /*
 |-------------------------------------------------------------
 | Dependency Injection

@@ -10,20 +10,13 @@ use Bootstrap\Facades\View;
 
 class WelcomeController extends Controller
 {
-  public function showSignatureAction()
-  {
-    # throw new ExampleException('wew');
-    // dd(Route::getControllerName());
+    public function initialize()
+    {
+        $this->acl('default');
+    }
 
-    # the results below should be the same
-    $email = Filter::sanitize(Request::get('email'), 'int');
-    $r_email = Request::get('email', 'int');
-
-    # 
- 
-    # disable the view
-    // View::disable();
-
-    return View::make('welcome.showSignature');
-  }
+    public function showSignatureAction()
+    {
+        return View::make('welcome.showSignature');
+    }
 }

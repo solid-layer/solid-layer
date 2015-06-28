@@ -4,5 +4,5 @@ namespace Bootstrap\Facades;
 
 class Request extends Facade
 {
-  protected static function getFacadeAccessor() { return 'httpRequest'; }
+    protected static function getFacadeAccessor() { return 'httpRequest'; }
 }

@@ -9,6 +9,7 @@ return [
     App\Services\Response::class,
     App\Services\HttpRequest::class,
     App\Services\HttpFilter::class,
+    App\Services\ACL::class,
     App\Services\View::class,
     App\Services\Dispatcher::class,
 ];

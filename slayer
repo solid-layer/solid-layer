@@ -1,0 +1,14 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__ . '/bootstrap/autoload.php';
+
+use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
+
+$application = new Application();
+foreach (slayer_config()->slayer_consoles as $console) {
+    $application->add(new $console);
+}
+$application->run();

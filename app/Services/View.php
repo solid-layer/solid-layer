@@ -33,4 +33,10 @@ class View extends ServiceContainer
 
     return $view;
   }
+
+  // public function beforeBoot()
+  // {
+  //     $this->getApp()->handle();
+  // }
+
 }
