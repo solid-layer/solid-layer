@@ -10,6 +10,7 @@ return [
     * ---------------------------------------------------------
     * Pre-registed commands
     */
+    Bootstrap\Console\MakeRouteCommand::class,
     Bootstrap\Console\MakeConsoleCommand::class,
     Bootstrap\Console\MakeControllerCommand::class,
     Bootstrap\Console\ServeCommand::class,
