@@ -1,6 +1,12 @@
 <?php
 
 
+/*
+|-------------------------------------------------------------
+| Global config provided in the phalcon
+|-------------------------------------------------------------
+| returns the global configuration
+*/
 if (! function_exists('slayer_config')) {
   function slayer_config() {
     global $__config;
@@ -13,16 +19,27 @@ if (! function_exists('slayer_config')) {
 |-------------------------------------------------------------
 | Dependency Injection
 |-------------------------------------------------------------
-| return the DI instanced in the phalcon factory
+| returns the APP instanced
 */
-if (! function_exists('di')) {
-  function di() {
+if (! function_exists('app')) {
+  function app() {
     global $__app;
 
-    return $__app->getDi();
+    return $__app;
   }
 }
 
+/*
+|-------------------------------------------------------------
+| Phalcon Mvc Application
+|-------------------------------------------------------------
+| returns the DI instanced in the phalcon factory
+*/
+if (! function_exists('di')) {
+  function di() {
+    return app()->getDi();
+  }
+}
 
 /*
 |-------------------------------------------------------------

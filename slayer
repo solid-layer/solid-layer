@@ -7,8 +7,9 @@ use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-$application = new Application();
-foreach (slayer_config()->slayer_consoles as $console) {
+$version = 'v0.0.1';
+$application = new Application('PhalconSlayer by Daison Carino', $version);
+foreach (slayer_config()->consoles as $console) {
     $application->add(new $console);
 }
 $application->run();

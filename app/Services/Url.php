@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use Bootstrap\Services\ServiceContainer;
+use Bootstrap\Services\Service\ServiceContainer;
 use Phalcon\Mvc\Url as UrlResolver;
 
 class Url extends ServiceContainer
@@ -14,7 +14,7 @@ class Url extends ServiceContainer
   public function boot()
   {
     $url = new UrlResolver();
-    $url->setBaseUri($this->getConfig()->application->baseUri);
+    $url->setBaseUri($this->getConfig()->path->baseUri);
 
     return $url;
   }

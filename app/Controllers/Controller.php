@@ -2,6 +2,6 @@
 
 namespace App\Controllers;
 
-class Controller extends \Bootstrap\Phalcon\Mvc\Controller
-{
-}
+use Bootstrap\Phalcon\Mvc\Controller as Bootstrap_Phalcon_Mvc_Controller;
+
+class Controller extends Bootstrap_Phalcon_Mvc_Controller {}

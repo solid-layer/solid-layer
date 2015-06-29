@@ -1,20 +1,14 @@
 <?php
 
-namespace Bootstrap\Services;
+namespace Bootstrap\Services\Service;
 
 /**
 * @author Daison Carino <daison12006013 [at] gmail [dot] com>
 */
 class ServiceContainer
 {
-    private $array_config;
     protected $_alias = null;
     protected $_shared = false;
-
-    public function __construct($array_config)
-    {
-        $this->array_config = $array_config;
-    }
 
     public function hasAlias()
     {
@@ -42,17 +36,17 @@ class ServiceContainer
 
     public function getConfig()
     {
-        return $this->array_config['config'];
+        return slayer_config();
     }
 
     public function getDI()
     {
-        return $this->array_config['di'];
+        return di();
     }
 
     public function getApp()
     {
-        return $this->array_config['app'];
+        return app();
     }
 
     public function afterBoot() {}

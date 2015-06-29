@@ -34,7 +34,7 @@ $dotenv->load();
 |-------------------------------------------------------------
 | This must be called, to re-initialize the process of DI
 */
-$config = require_once APP_ROOT . '/bootstrap/src/config.php';
+$__config = require_once APP_ROOT . '/bootstrap/src/config.php';
 require_once APP_ROOT . '/bootstrap/src/loader.php';
 
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Bootstrap\Services;
+namespace Bootstrap\Services\Service;
 
 use Bootstrap\Exceptions\ServiceAliasNotFoundException;
 
@@ -9,17 +9,8 @@ use Bootstrap\Exceptions\ServiceAliasNotFoundException;
 */
 class ServiceProvider
 {
-    protected $array_config;
-
-    public function __construct($array_config)
+    public function dispatch(ServiceContainer $obj)
     {
-        $this->array_config = $array_config;
-    }
-
-    public function dispatch($service)
-    {
-        $obj = new $service($this->array_config);
-
         if (! $obj->hasAlias()) {
             throw new ServiceAliasNotFoundException(
                 'protected $_alias not found on service "' . $service . '"'
@@ -28,7 +19,7 @@ class ServiceProvider
 
         $obj->afterBoot();
 
-        $this->array_config['di']
+        di()
         ->set(
             $obj->getAlias(), 
             $obj->getBoot(), 

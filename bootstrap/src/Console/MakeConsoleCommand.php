@@ -11,7 +11,7 @@ class MakeConsoleCommand extends SlayerCommand
 
     protected $description = 'Generate a new console';
 
-    public function fire()
+    public function slash()
     {
         $arg_name = ucfirst($this->input->getArgument('name'));
 
@@ -19,7 +19,7 @@ class MakeConsoleCommand extends SlayerCommand
         $stub = str_replace('{consoleName}', $arg_name, $stub);
 
         $file_name = $arg_name . 'ConsoleCommand.php';
-        chdir(slayer_config()->application->consoleDir);
+        chdir(slayer_config()->path->consoleDir);
         $this->comment('Creating Console...');
 
         if (file_exists($file_name)) {

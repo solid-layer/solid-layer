@@ -20,7 +20,7 @@ class SlayerCommand extends Command
         $this->input = $input;
         $this->output = $output;
 
-        $this->fire();
+        $this->slash();
     }
 
     protected function configure()

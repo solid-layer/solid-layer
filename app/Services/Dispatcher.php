@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use Bootstrap\Exceptions\ControllerNotFoundException;
-use Bootstrap\Services\ServiceContainer;
+use Bootstrap\Services\Service\ServiceContainer;
 use Phalcon\Mvc\Dispatcher as MvcDispatcher;
 use Phalcon\Events\Manager as EventsManager;
 

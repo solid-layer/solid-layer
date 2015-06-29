@@ -11,9 +11,9 @@ class ServeCommand extends SlayerCommand
 
     protected $description = "Serve the application on the PHP development server";
 
-    public function fire()
+    public function slash()
     {
-        $base = slayer_config()->application->baseUri;
+        $base = slayer_config()->path->baseUri;
         chdir($base . '/public');
 
         $host = $this->input->getOption('host');

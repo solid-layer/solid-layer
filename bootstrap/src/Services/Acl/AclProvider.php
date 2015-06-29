@@ -1,9 +1,12 @@
 <?php
 
-namespace Bootstrap\Services;
+namespace Bootstrap\Services\Acl;
 
 use Phalcon\Acl\Resource;
 
+/**
+* @author Daison Carino <daison12006013 [at] gmail [dot] com>
+*/
 class AclProvider
 {
     private $acl;
@@ -13,10 +16,8 @@ class AclProvider
         $this->acl = $acl;
     }
 
-    public function dispatch($cls)
+    public function dispatch(AclContainer $obj)
     {
-        $obj = new $cls;
-
         foreach ($obj->getHandlers() as $controller => $actions) {
             $this->acl->addResource(new Resource($controller), $actions);
             foreach ($actions as $action) {

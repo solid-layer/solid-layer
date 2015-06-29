@@ -11,7 +11,7 @@ class MakeControllerCommand extends SlayerCommand
 
     protected $description = 'Generate a new controller';
 
-    public function fire()
+    public function slash()
     {
         $arg_name = ucfirst($this->input->getArgument('name'));
 
@@ -26,7 +26,7 @@ class MakeControllerCommand extends SlayerCommand
         }
 
         $file_name = $arg_name . 'Controller.php';
-        chdir(slayer_config()->application->controllersDir);
+        chdir(slayer_config()->path->controllersDir);
         $this->comment('Creating Controller...');
 
         if ( file_exists($file_name) ) {

@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use Bootstrap\Console\SlayerCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
@@ -9,12 +10,12 @@ class {consoleName}ConsoleCommand extends SlayerCommand
 {
     protected $name = 'my:command';
 
-    protected $description = 'My Description';
+    protected $description = 'My Command Description';
 
     /**
      * Add your code below
      */
-    public function fire()
+    public function slash()
     {
         // your code here ...
     }

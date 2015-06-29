@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use Bootstrap\Services\ServiceContainer;
+use Bootstrap\Services\Service\ServiceContainer;
 use Bootstrap\Phalcon\Mvc\View as PhalconView;
 use Phalcon\Mvc\View\Engine\Volt as PhalconVoltEngine;
 
@@ -15,14 +15,14 @@ class View extends ServiceContainer
   public function boot()
   {
     $view = new PhalconView();
-    $view->setViewsDir($this->getConfig()->application->viewsDir);
+    $view->setViewsDir($this->getConfig()->path->viewsDir);
 
     $view->registerEngines(array(
         '.volt' => function ($view, $di) {
             $volt = new PhalconVoltEngine($view, $di);
 
             $volt->setOptions(array(
-                'compiledPath' => $this->getConfig()->application->storageViewDir,
+                'compiledPath' => $this->getConfig()->path->storageViewDir,
                 'compiledSeparator' => '_'
             ));
 

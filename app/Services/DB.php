@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use Bootstrap\Services\ServiceContainer;
+use Bootstrap\Services\Service\ServiceContainer;
 use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
 class DB extends ServiceContainer

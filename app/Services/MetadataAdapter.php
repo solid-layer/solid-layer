@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use Bootstrap\Services\ServiceContainer;
+use Bootstrap\Services\Service\ServiceContainer;
 use Phalcon\Mvc\Model\Metadata\Memory;
 
 class MetadataAdapter extends ServiceContainer

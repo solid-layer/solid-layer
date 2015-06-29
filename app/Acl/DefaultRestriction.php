@@ -2,7 +2,7 @@
 
 namespace App\Acl;
 
-use Bootstrap\Services\AclContainer;
+use Bootstrap\Services\Acl\AclContainer;
 use Bootstrap\Facades\Route;
 use Bootstrap\Facades\ACL;
 use Bootstrap\Exceptions\AccessNotAllowedException;
