@@ -9,9 +9,7 @@
 */
 if (! function_exists('slayer_config')) {
   function slayer_config() {
-    global $__config;
-
-    return $__config;
+    return $GLOBALS['__config'];
   }
 }
 
@@ -23,9 +21,7 @@ if (! function_exists('slayer_config')) {
 */
 if (! function_exists('app')) {
   function app() {
-    global $__app;
-
-    return $__app;
+    return $GLOBALS['__app'];
   }
 }
 

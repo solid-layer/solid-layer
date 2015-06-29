@@ -2,7 +2,7 @@
 
 $loader = new \Phalcon\Loader();
 
-$config_loader = slayer_config()->loader;
+$config_loader = $__config->loader;
 
 $loader
   ->registerDirs($config_loader->dirs->toArray())
