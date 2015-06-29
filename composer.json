@@ -1,6 +1,6 @@
 {
     "name": "phalcon/slayer",
-    "description": "Bootstrapping Phalcon Framework",
+    "description": "Bootstrapped Phalcon Framework",
     "license": "MIT",
     "authors": [
         {
