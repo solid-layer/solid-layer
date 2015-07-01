@@ -2,12 +2,6 @@
     "name": "phalcon/slayer",
     "description": "Bootstrapped Phalcon Framework",
     "license": "MIT",
-    "authors": [
-        {
-            "name": "Daison Carino",
-            "email": "daison12006013@gmail.com"
-        }
-    ],
     "require": {
         "vlucas/phpdotenv": "^2.0",
         "filp/whoops": "^1.1",
