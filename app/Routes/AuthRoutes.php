@@ -17,7 +17,7 @@ class AuthRoutes extends RouterGroup
     # Add a route to the group
     $this->add('/show', [
       'action' => 'show'
-    ]);
+    ])->setName('show_auth');
 
     # Add a route to the group
     $this->add('/new', [
@@ -25,8 +25,13 @@ class AuthRoutes extends RouterGroup
     ]);
 
     # Add a route to the group
-    $this->addPost('/store', [
-      'action' => 'store'
-    ]);
+    $this->add('/attempt', [
+      'action' => 'attempt'
+    ])->setName('auth_attempt');
+
+    # Add a route to the group
+    $this->add('/logout', [
+      'action' => 'logout'
+    ])->setName('logout');
   }
 }

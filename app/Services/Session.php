@@ -7,15 +7,15 @@ use Phalcon\Session\Adapter\Files as SessionAdapter;
 
 class Session extends ServiceContainer
 {
-  public $_alias = 'session';
+    protected $_alias = 'session';
 
-  public $_shared = true;
+    protected $_shared = true;
 
-  public function boot()
-  {
-    $session = new SessionAdapter;
-    $session->start();
+    public function boot()
+    {
+        $session = new SessionAdapter;
+        $session->start();
 
-    return $session;
-  }
+        return $session;
+    }
 }

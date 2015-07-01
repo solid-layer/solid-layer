@@ -7,10 +7,8 @@ namespace Bootstrap\Services\Acl;
 */
 class AclContainer
 {
-    public function getHandlers()
-    {
-        return $this->_handlers;
-    }
+    protected $_allowed_roles = [];
+    protected $_denied_roles = [];
 
     public function getAllowedRoles()
     {

@@ -13,7 +13,7 @@ class ServiceProvider
     {
         if (! $obj->hasAlias()) {
             throw new ServiceAliasNotFoundException(
-                'protected $_alias not found on service "' . $service . '"'
+                'protected $_alias not found on service "' . get_class($obj) . '"'
             );
         }
 

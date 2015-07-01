@@ -6,12 +6,12 @@ use Bootstrap\Services\Service\ServiceContainer;
 
 class Response extends ServiceContainer
 {
-  public $_alias = 'response';
+    protected $_alias = 'response';
 
-  public $_shared = true;
+    protected $_shared = false;
 
-  public function boot()
-  {
-    return new \Phalcon\Http\Response;
-  }
+    public function boot()
+    {
+        return new \Phalcon\Http\Response;
+    }
 }

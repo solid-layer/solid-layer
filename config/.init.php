@@ -13,6 +13,7 @@ return [
     * Do not edit below, if you don't know what you're
     * doing, instead add your own dependecies
     */
+    'app'      => require_once APP_ROOT . '/config/app.php',
     'acl'      => require_once APP_ROOT . '/config/acl.php',
     'consoles' => require_once APP_ROOT . '/config/consoles.php',
     'database' => require_once APP_ROOT . '/config/database.php',

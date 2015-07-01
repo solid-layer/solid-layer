@@ -1,8 +1,8 @@
 <?php
 
-namespace Bootstrap\Console\Phinx;
+namespace Bootstrap\Adapters\Phinx;
 
-class Create extends \Phinx\Console\Command\Create
+class CreateAdapter extends \Phinx\Console\Command\Create
 {
     protected function configure()
     {

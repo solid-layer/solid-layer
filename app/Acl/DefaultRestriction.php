@@ -10,22 +10,17 @@ use Bootstrap\Exceptions\AccessNotAllowedException;
 class DefaultRestriction extends AclContainer
 {
     protected $_allowed_roles = [
-        'guests',
+        'administrator',
     ];
 
     protected $_denied_roles = [
-        'users',
-    ];
-
-    protected $_handlers = [
-        'Welcome' => [
-            'showSignature',
-        ],
+        'user',
     ];
 
     public function load()
     {
-        if (ACL::isAllowed('guests', Route::getControllerName(), Route::getActionName()) == false) {
+        # change 'guests' to your user roles
+        if (ACL::isAllowed('user', Route::getControllerName(), Route::getActionName()) == false) {
             throw new AccessNotAllowedException("You are not allowed to access this page");
         }
     }

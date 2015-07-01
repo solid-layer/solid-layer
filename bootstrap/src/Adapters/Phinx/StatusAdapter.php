@@ -1,8 +1,8 @@
 <?php
 
-namespace Bootstrap\Console\Phinx;
+namespace Bootstrap\Adapters\Phinx;
 
-class Status extends \Phinx\Console\Command\Status
+class StatusAdapter extends \Phinx\Console\Command\Status
 {
     protected function configure()
     {

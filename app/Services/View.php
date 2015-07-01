@@ -3,40 +3,40 @@
 namespace App\Services;
 
 use Bootstrap\Services\Service\ServiceContainer;
-use Bootstrap\Phalcon\Mvc\View as PhalconView;
+use Bootstrap\Adapters\Phalcon\Mvc\View as PhalconView;
+use Bootstrap\Laravel\Blade\BladeAdapter;
 use Phalcon\Mvc\View\Engine\Volt as PhalconVoltEngine;
 
 class View extends ServiceContainer
 {
-  protected $_alias = 'view';
+    protected $_alias = 'view';
 
-  protected $_shared = true;
+    protected $_shared = false;
 
-  public function boot()
-  {
-    $view = new PhalconView();
-    $view->setViewsDir($this->getConfig()->path->viewsDir);
+    public function boot()
+    {
+      $view = new PhalconView();
+      $view->setViewsDir($this->getConfig()->path->viewsDir);
 
-    $view->registerEngines(array(
-        '.volt' => function ($view, $di) {
-            $volt = new PhalconVoltEngine($view, $di);
+      $view->registerEngines([
 
-            $volt->setOptions(array(
-                'compiledPath' => $this->getConfig()->path->storageViewDir,
-                'compiledSeparator' => '_'
-            ));
+            '.volt' => 
+                function ($view, $di) {
+                    $volt = new PhalconVoltEngine($view, $di);
 
-            return $volt;
-        },
-        '.phtml' => 'Phalcon\Mvc\View\Engine\Php'
-    ));
+                    $volt->setOptions(array(
+                        'compiledPath' => $this->getConfig()->path->storageViewDir,
+                        'compiledSeparator' => '_',
+                    ));
 
-    return $view;
-  }
+                    return $volt;
+                },
 
-  // public function beforeBoot()
-  // {
-  //     $this->getApp()->handle();
-  // }
+            '.phtml' => 
+                'Phalcon\Mvc\View\Engine\Php',
+        ]);
+
+      return $view;
+    }
 
 }

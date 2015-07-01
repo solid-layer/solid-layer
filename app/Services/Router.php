@@ -6,12 +6,12 @@ use Bootstrap\Services\Service\ServiceContainer;
 
 class Router extends ServiceContainer
 {
-  public $_alias = 'router';
+    protected $_alias = 'router';
 
-  public $_shared = true;
+    protected $_shared = false;
 
-  public function boot()
-  {
-    return new \Phalcon\Mvc\Router;
-  }
+    public function boot()
+    {
+        return new \Phalcon\Mvc\Router(false);
+    }
 }

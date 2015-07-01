@@ -9,8 +9,8 @@ return [
     * By default we're using 'users' and 'guests'
     */
     'roles' => [
-        'users',
-        'guests',
+        'administrator',
+        'user',
     ],
 
 
@@ -22,5 +22,7 @@ return [
     */
     'classes' => [
         'default' => App\Acl\DefaultRestriction::class,
+        'csrf'    => App\Acl\CsrfRestriction::class,
+        'auth'    => App\Acl\AuthRestriction::class,
     ],
 ];

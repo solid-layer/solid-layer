@@ -5,17 +5,17 @@ namespace App\Services;
 use Bootstrap\Services\Service\ServiceContainer;
 use Phalcon\Mvc\Url as UrlResolver;
 
-class Url extends ServiceContainer
+class URL extends ServiceContainer
 {
-  public $_alias = 'url';
+    protected $_alias = 'url';
 
-  public $_shared = true;
+    protected $_shared = false;
 
-  public function boot()
-  {
-    $url = new UrlResolver();
-    $url->setBaseUri($this->getConfig()->path->baseUri);
+    public function boot()
+    {
+        $url = new UrlResolver();
+        $url->setBaseUri('/');
 
-    return $url;
-  }
+        return $url;
+    }
 }

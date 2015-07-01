@@ -19,7 +19,7 @@ class ServeCommand extends SlayerCommand
         $host = $this->input->getOption('host');
         $port = $this->input->getOption('port');
 
-        $this->info("PhalconSlayer development server started on http://{$host}:{$port}/");
+        $this->info("Phalcon Slayer development server started on http://{$host}:{$port}/");
 
         passthru('"'.PHP_BINARY.'"'." -S {$host}:{$port} \"{$base}\"/.htrouter.php");
     }

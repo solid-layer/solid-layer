@@ -33,3 +33,6 @@ Route::add('/', [
 */
 include __DIR__ . '/Routes/AuthRoutes.php';
 route()->mount(new AuthRoutes);
+
+include __DIR__ . '/Routes/NewsfeedRoutes.php';
+route()->mount(new NewsfeedRoutes);

@@ -7,14 +7,10 @@ use Bootstrap\Facades\Request;
 use Bootstrap\Facades\Filter;
 use Bootstrap\Facades\Route;
 use Bootstrap\Facades\View;
+use Bootstrap\Facades\ACL;
 
 class WelcomeController extends Controller
 {
-    public function initialize()
-    {
-        $this->acl('default');
-    }
-
     public function showSignatureAction()
     {
         return View::make('welcome.showSignature');

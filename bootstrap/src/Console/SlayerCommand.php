@@ -8,12 +8,14 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class SlayerCommand extends Command
+abstract class SlayerCommand extends Command
 {
     protected $_arguments;
     protected $_options;
     protected $input;
     protected $output;
+
+    abstract public function slash();
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {

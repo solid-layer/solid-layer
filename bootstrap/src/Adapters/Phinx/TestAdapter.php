@@ -1,8 +1,8 @@
 <?php
 
-namespace Bootstrap\Console\Phinx;
+namespace Bootstrap\Adapters\Phinx;
 
-class Test extends \Phinx\Console\Command\Test
+class TestAdapter extends \Phinx\Console\Command\Test
 {
     protected function configure()
     {
