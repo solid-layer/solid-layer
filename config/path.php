@@ -11,6 +11,7 @@ return [
     * You can access this paths using this function
     */
     'consoleDir'     => APP_ROOT . '/app/Console/',             //slayer_config()->path->consoleDir
+    'collectionsDir' => APP_ROOT . '/app/Collections/',         //slayer_config()->path->collectionsDir
     'controllersDir' => APP_ROOT . '/app/Controllers/',         //slayer_config()->path->controllersDir
     'modelsDir'      => APP_ROOT . '/app/Models/',              //slayer_config()->path->modelsDir
     'migrationsDir'  => APP_ROOT . '/database/migrations/',     //slayer_config()->path->migrationsDir

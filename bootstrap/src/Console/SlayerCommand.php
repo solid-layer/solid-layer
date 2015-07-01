@@ -31,6 +31,7 @@ abstract class SlayerCommand extends Command
             ->setName($this->name)
             ->setDescription($this->description);
 
+
         if (count($this->arguments())) {
             foreach ($this->arguments() as $arg) {
                 $this->addArgument(@$arg[0], @$arg[1], @$arg[2], @$arg[3]);

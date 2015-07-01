@@ -1,8 +1,8 @@
 <?php
 
-namespace Bootstrap\Adapters\Phinx;
+namespace Bootstrap\Support\Phinx;
 
-class InitAdapter extends \Phinx\Console\Command\Init
+class Init extends \Phinx\Console\Command\Init
 {
     protected function configure()
     {

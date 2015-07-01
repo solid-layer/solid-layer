@@ -1,0 +1,13 @@
+<?php
+
+namespace App\Collections;
+
+use Phalcon\Mvc\Collection;
+
+class {collectionName} extends Collection
+{
+    public function getSource()
+    {
+        return '{collection}';
+    }
+}

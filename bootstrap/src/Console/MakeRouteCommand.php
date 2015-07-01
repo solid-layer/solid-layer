@@ -20,7 +20,7 @@ class MakeRouteCommand extends SlayerCommand
 
         $file_name = $arg_name . 'Routes.php';
         chdir(slayer_config()->path->routesDir);
-        $this->comment('Creating Route Group...');
+        $this->comment('Crafting Route Group...');
 
         if ( file_exists($file_name) ) {
             $this->error('   Route already exists!');

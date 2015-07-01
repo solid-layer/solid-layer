@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use Bootstrap\Services\Service\ServiceContainer;
-use Bootstrap\Adapters\Phalcon\Mvc\View as PhalconView;
+use Bootstrap\Support\Phalcon\Mvc\View as PhalconView;
 use Bootstrap\Laravel\Blade\BladeAdapter;
 use Phalcon\Mvc\View\Engine\Volt as PhalconVoltEngine;
 

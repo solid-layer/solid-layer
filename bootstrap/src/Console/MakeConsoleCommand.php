@@ -20,7 +20,7 @@ class MakeConsoleCommand extends SlayerCommand
 
         $file_name = $arg_name . 'ConsoleCommand.php';
         chdir(slayer_config()->path->consoleDir);
-        $this->comment('Creating Console...');
+        $this->comment('Crafting Console...');
 
         if (file_exists($file_name)) {
             $this->error('   Console already exists!');

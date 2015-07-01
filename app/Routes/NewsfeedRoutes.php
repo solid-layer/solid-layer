@@ -8,7 +8,7 @@ class NewsfeedRoutes extends RouterGroup
   {
     $this->setPaths([
       'namespace' => 'App\Controllers',
-      'controller' => 'newsfeed',
+      'controller' => 'Newsfeed',
     ]);
 
 

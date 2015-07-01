@@ -1,8 +1,8 @@
 <?php
 
-namespace Bootstrap\Adapters\Phinx;
+namespace Bootstrap\Support\Phinx;
 
-class MigrateAdapter extends \Phinx\Console\Command\Migrate
+class Migrate extends \Phinx\Console\Command\Migrate
 {
     protected function configure()
     {

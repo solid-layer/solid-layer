@@ -1,6 +1,6 @@
 <?php
 
-namespace Bootstrap\Adapters\Phalcon\Mvc;
+namespace Bootstrap\Support\Phalcon\Mvc;
 
 use Phalcon\Mvc\View as PhalconView;
 use Bootstrap\Exceptions\ViewFileNotFoundException;

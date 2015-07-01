@@ -1,8 +1,8 @@
 <?php
 
-namespace Bootstrap\Adapters\Phinx;
+namespace Bootstrap\Support\Phinx;
 
-class RollbackAdapter extends \Phinx\Console\Command\Rollback
+class Rollback extends \Phinx\Console\Command\Rollback
 {
     protected function configure()
     {
