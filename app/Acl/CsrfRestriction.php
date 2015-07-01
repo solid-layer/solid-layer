@@ -9,14 +9,6 @@ use Bootstrap\Exceptions\AccessNotAllowedException;
 
 class CsrfRestriction extends AclContainer
 {
-    protected $_allowed_roles = [
-        'administrator',
-        'user',
-    ];
-
-    protected $_denied_roles = [
-    ];
-
     public function load()
     {
         if (Request::isPost()) {
