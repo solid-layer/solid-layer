@@ -1,5 +1,5 @@
 {
-    "name": "phalcon/slayer",
+    "name": "phalconslayer/slayer",
     "description": "Bootstrapped Phalcon Framework",
     "license": "MIT",
     "require": {
