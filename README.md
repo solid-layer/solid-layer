@@ -1,3 +1,7 @@
+<img src="http://phalconist.com/phalconslayer/slayer/default.svg">
+
+<hr>
+
 ### Slayer - Structured Phalcon Framework
 
 
