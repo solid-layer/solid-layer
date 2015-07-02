@@ -30,5 +30,6 @@ return [
         'Bootstrap\Facades'              => APP_ROOT . '/bootstrap/src/Facades/',
         'Bootstrap\Services'             => APP_ROOT . '/bootstrap/src/Services/',
         'Bootstrap\Exceptions'           => APP_ROOT . '/bootstrap/src/Exceptions/',
+        'Bootstrap\Support\Mail'           => APP_ROOT . '/bootstrap/src/Support/Mail/',
     ]
 ];

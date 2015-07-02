@@ -26,17 +26,32 @@ class AuthController extends Controller
         ]);
     }
 
-    public function showAction()
+    public function showRegistrationFormAction()
     {
+        Flash::warning('
+            <h4>Great!</h4>
+            <p>Now, let\'s try this registration form.</p>
+        ');
+    }
+
+    public function showLoginFormAction()
+    {
+        // $mail = new \Bootstrap\Support\Mail\Mail;
+        // $mail->send('emails.sample', [], function($mail) {
+        //     $mail->subject('Testing App');
+        //     $mail->from('admin@enlightenro.com');
+        //     $mail->to(['daison12006013@gmail.com']);
+        // });
+
         Flash::notice('
             <h4>Nice!</h4>
             <p>Let\'s try this simple login form.</p>
         ');
 
-        return View::make('auth.show');
+        return View::make('auth.showLoginForm');
     }
 
-    public function attemptAction()
+    public function attemptToLoginAction()
     {
         if ( Auth::attempt(Request::get()) ) {
             return Auth::redirectIntended();

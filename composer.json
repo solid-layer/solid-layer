@@ -8,6 +8,7 @@
         "symfony/console": "^2.7",
         "robmorgan/phinx": "^0.4.4",
         "phpunit/php-text-template": "~1.2",
-        "mustache/mustache": "~2.5"
+        "mustache/mustache": "~2.5",
+        "swiftmailer/swiftmailer": "@stable"
     }
 }

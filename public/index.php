@@ -46,7 +46,6 @@ try {
     | Now show the app content based on the uri requests
     |-------------------------------------------------------------
     */
-    // $__app->useImplicitView(false);
     echo $__app->handle()->getContent();
 
 } catch (\Exception $e) {

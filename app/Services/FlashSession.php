@@ -13,14 +13,14 @@ class FlashSession extends ServiceContainer
 
   public function boot()
   {
-    $flash_session = new PFlashSession(array(
-        'error'   => 'alert alert-danger',
-        'success' => 'alert alert-success',
-        'notice'  => 'alert alert-info',
-        'warning' => 'alert alert-warning'
-    ));
+      $flash_session = new PFlashSession(array(
+          'error'   => 'alert alert-danger',
+          'success' => 'alert alert-success',
+          'notice'  => 'alert alert-info',
+          'warning' => 'alert alert-warning'
+      ));
 
-    return $flash_session;
+      return $flash_session;
   }
 
 }

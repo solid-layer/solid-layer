@@ -15,19 +15,19 @@ class AuthRoutes extends RouterGroup
     $this->setPrefix('/auth');
 
     # Add a route to the group
-    $this->add('/show', [
-      'action' => 'show'
-    ])->setName('show_auth');
+    $this->add('/login', [
+      'action' => 'showLoginForm'
+    ])->setName('showLoginForm');
 
     # Add a route to the group
-    $this->add('/new', [
-      'action' => 'new'
-    ]);
+    $this->add('/register', [
+      'action' => 'showRegistrationForm'
+    ])->setName('showRegistrationForm');
 
     # Add a route to the group
     $this->add('/attempt', [
-      'action' => 'attempt'
-    ])->setName('auth_attempt');
+      'action' => 'attemptToLogin'
+    ])->setName('attemptToLogin');
 
     # Add a route to the group
     $this->add('/logout', [

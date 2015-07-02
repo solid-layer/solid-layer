@@ -11,6 +11,12 @@ use Bootstrap\Exceptions\BadMethodCallException;
  */
 class View extends PhalconView
 {
+    const LEVEL_NO_RENDER = 0;
+    const LEVEL_ACTION_VIEW = 1;
+    const LEVEL_BEFORE_TEMPLATE = 2;
+    const LEVEL_LAYOUT = 3;
+    const LEVEL_AFTER_TEMPLATE = 4;
+    const LEVEL_MAIN_LAYOUT = 5;
 
     /**
      * Magic methods that uses 'withVarName'
@@ -90,6 +96,25 @@ class View extends PhalconView
      */
     public function batch($array)
     {
-     return $this->setVars($array);
+        return $this->setVars($array);
     }
+
+
+    /**
+     * Get the content
+     *
+     * @return string
+     */
+    public function take($view, $params = null)
+    {
+        $this->start();
+
+        $view = $this->_changeDotToSlash($view);
+        $this->render(null, $view, $params);
+
+        $this->finish();
+
+        return $this->getContent();
+    }
+
 }
