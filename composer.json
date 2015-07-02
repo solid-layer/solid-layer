@@ -9,6 +9,7 @@
         "robmorgan/phinx": "^0.4.4",
         "phpunit/php-text-template": "~1.2",
         "mustache/mustache": "~2.5",
-        "swiftmailer/swiftmailer": "@stable"
+        "swiftmailer/swiftmailer": "@stable",
+        "mailgun/mailgun-php": "~1.7.2"
     }
 }

@@ -4,6 +4,7 @@ namespace Bootstrap\Support\Mail;
 
 interface MailInterface
 {
+    public function encryption($encryption);
     public function host($host);
     public function port($port);
 

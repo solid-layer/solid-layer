@@ -20,5 +20,5 @@ return [
     'path'     => require_once APP_ROOT . '/config/path.php',
     'services' => require_once APP_ROOT . '/config/services.php',
     'loader'   => require_once APP_ROOT . '/config/loader.php',
-    'mailers'  => require_once APP_ROOT . '/config/mailers.php',
+    'mailer'   => require_once APP_ROOT . '/config/mailer.php',
 ];

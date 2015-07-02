@@ -35,14 +35,18 @@ class AuthController extends Controller
         ');
     }
 
-    public function showLoginFormAction()
+    public function storeRegistrationFormAction()
     {
         Mail::send('emails.sample', [], function($mail) {
             $mail->subject('Testing App');
-            $mail->from('admin@enlightenro.com');
+            $mail->from('postmaster@sandboxa6c86c16840d4756826185daa128e64d.mailgun.org');
             $mail->to(['daison12006013@gmail.com']);
         });
 
+    }
+
+    public function showLoginFormAction()
+    {
         Flash::notice('
             <h4>Nice!</h4>
             <p>Let\'s try this simple login form.</p>

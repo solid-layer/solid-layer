@@ -14,7 +14,7 @@ class Mail extends ServiceContainer
   public function boot()
   {
     $settings = slayer_config()->app->mailer;
-    $adapter_class = @slayer_config()->mailers->toArray()[$settings->adapter];
+    $adapter_class = @slayer_config()->app->mailer->classes->toArray()[$settings->adapter];
     if (! $adapter_class) {
         throw new \Exception('Adapter not found.');
     }
