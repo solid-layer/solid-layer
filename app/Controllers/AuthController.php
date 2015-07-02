@@ -8,6 +8,7 @@ use Bootstrap\Facades\View;
 use Bootstrap\Facades\Request;
 use Bootstrap\Facades\Redirect;
 use Bootstrap\Facades\Flash;
+use Bootstrap\Facades\Mail;
 use Bootstrap\Exceptions\AccessNotAllowedException;
 
 class AuthController extends Controller
@@ -36,12 +37,11 @@ class AuthController extends Controller
 
     public function showLoginFormAction()
     {
-        // $mail = new \Bootstrap\Support\Mail\Mail;
-        // $mail->send('emails.sample', [], function($mail) {
-        //     $mail->subject('Testing App');
-        //     $mail->from('admin@enlightenro.com');
-        //     $mail->to(['daison12006013@gmail.com']);
-        // });
+        Mail::send('emails.sample', [], function($mail) {
+            $mail->subject('Testing App');
+            $mail->from('admin@enlightenro.com');
+            $mail->to(['daison12006013@gmail.com']);
+        });
 
         Flash::notice('
             <h4>Nice!</h4>
