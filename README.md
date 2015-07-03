@@ -4,15 +4,16 @@
 
 ## Slayer - Structured Phalcon Framework
 
-Boostrapped Phalcon Framework, pre-build with symfony commands, Model-Controller-View generators. While Slayer uses a different migration tool (Phinx).
+Boostrapped Phalcon Framework, pre-built with symfony commands, Model-Controller-View generators. While Slayer uses a different migration tool (Phinx) to make everything easy.
 
 ####Project Scope:
 <ul>
     <li>&#10003; Composer enabled</li>
     <li>&#10003; PHPUnit</li>
     <li>&#10003; M-V-C</li>
+    <li>&#10003; Service Containers</li>
     <li>&#10003; Access Control Lists</li>
-    <li>&#10003; Console Command using slayer</li>
+    <li>&#10003; Console Command</li>
     <li>&#10003; Exceptions/Errors using Whoops</li>
     <li>&#10003; Migrations using Phinx</li>
     <li>&#10003; Mailing using Swift/Mailgun and others</li>
