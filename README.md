@@ -2,10 +2,11 @@
 
 <hr>
 
-### Slayer - Structured Phalcon Framework
+## Slayer - Structured Phalcon Framework
 
+Boostrapped Phalcon Framework, pre-build with symfony commands, Model-Controller-View generators. While Slayer uses a different migration tool (Phinx).
 
-Project Scope:
+####Project Scope:
 <ul>
     <li>&#10003; Composer enabled</li>
     <li>&#10003; PHPUnit</li>
@@ -17,13 +18,23 @@ Project Scope:
     <li>&#10003; Mailing using Swift/Mailgun and others</li>
     <li>&#10006; Pre-Inserted Migrations</li>
     <li>&#10006; Pre-Inserted Auth MVC</li>
+    <li>others will added soon...</li>
 </ul>
 
-
-Thanks to:<br>
+####Dependecies:<br>
 <ul>
   <li><a target="_blank" href="https://github.com/robmorgan/phinx">Phinx - Simple Database Migration</a></li>
   <li><a target="_blank" href="https://github.com/vlucas/phpdotenv">Php Dotenv</a></li>
   <li><a target="_blank" href="https://github.com/filp/whoops">Whoops Debugger</a></li>
   <li><a target="_blank" href="https://phalconphp.com/">Phalcon Framework</a></li>
 </ul>
+
+## Phalcon Framework
+
+Phalcon is an open source, full stack framework for PHP written as a C-extension, optimized for high performance. You don’t need to learn or use the C language, since the functionality is exposed as PHP classes ready for you to use. Phalcon also is loosely coupled, allowing you to use its objects as glue components based on the needs of your application.
+
+Phalcon is not only about performance, our goal is to make it robust, rich in features and easy to use!
+
+## License
+
+Slayer is an open-source and licensed under [MIT License](http://opensource.org/licenses/MIT).
