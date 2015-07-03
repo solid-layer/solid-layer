@@ -27,10 +27,11 @@ return [
         'Bootstrap\Support\Redirect'    => APP_ROOT . '/bootstrap/src/Support/Redirect/',
         'Bootstrap\Support\Phinx'       => APP_ROOT . '/bootstrap/src/Support/Phinx/',
         'Bootstrap\Support\Phalcon\Mvc' => APP_ROOT . '/bootstrap/src/Support/Phalcon/Mvc/',
+        'Bootstrap\Support\Mail'        => APP_ROOT . '/bootstrap/src/Support/Mail/',
+        'Bootstrap\Support\Lang'        => APP_ROOT . '/bootstrap/src/Support/Lang/',
         'Bootstrap\Console'             => APP_ROOT . '/bootstrap/src/Console/',
         'Bootstrap\Facades'             => APP_ROOT . '/bootstrap/src/Facades/',
         'Bootstrap\Services'            => APP_ROOT . '/bootstrap/src/Services/',
         'Bootstrap\Exceptions'          => APP_ROOT . '/bootstrap/src/Exceptions/',
-        'Bootstrap\Support\Mail'        => APP_ROOT . '/bootstrap/src/Support/Mail/',
     ]
 ];

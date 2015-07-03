@@ -29,28 +29,20 @@ class AuthController extends Controller
 
     public function showRegistrationFormAction()
     {
-        Flash::warning('
-            <h4>Great!</h4>
-            <p>Now, let\'s try this registration form.</p>
-        ');
+        Flash::warning($this->lang->get('responses/register.pre_flash_message'));
     }
 
     public function storeRegistrationFormAction()
     {
         Mail::send('emails.sample', [], function($mail) {
             $mail->subject('Testing App');
-            $mail->from('postmaster@sandboxa6c86c16840d4756826185daa128e64d.mailgun.org');
             $mail->to(['daison12006013@gmail.com']);
         });
-
     }
 
     public function showLoginFormAction()
     {
-        Flash::notice('
-            <h4>Nice!</h4>
-            <p>Let\'s try this simple login form.</p>
-        ');
+        Flash::notice($this->lang->get('responses/login.pre_flash_message'));
 
         return View::make('auth.showLoginForm');
     }
@@ -61,7 +53,7 @@ class AuthController extends Controller
             return Auth::redirectIntended();
         }
 
-        Flash::error('Username or password not found!');
+        Flash::error($this->lang->get('responses/login.no_user'));
 
         return Redirect::previous();
     }

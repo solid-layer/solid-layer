@@ -39,8 +39,9 @@ class Mail
             $this->adapter_obj->{$map}($this->config->{$map});
         }
 
-        # pre-fill the body
-        $this->adapter_obj->body($body);
+        $this->adapter_obj
+            ->from(slayer_config()->app->mailer->from)
+            ->body($body);
 
         return $this->adapter_obj;
     }

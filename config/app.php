@@ -2,6 +2,8 @@
 
 return [
 
+    'lang' => 'en',
+
     /*
     * --------------------------------------------------------
     * Mailer Settings
@@ -14,6 +16,7 @@ return [
         'username'   => getenv('MAILER_USERNAME'),
         'password'   => getenv('MAILER_PASSWORD'),
         'encryption' => getenv('MAILER_ENCRYPTION'),
+        'from'       => getenv('MAILER_MAIL_FROM'),
 
         'classes' => [
             'swift'   => Bootstrap\Support\Mail\SwiftMailerAdapter::class,

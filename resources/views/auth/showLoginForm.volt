@@ -18,18 +18,18 @@
             <form class="form-vertical" method="POST" action="<?php echo $this->url->get(['for' => 'attemptToLogin']) ?>">
                 <input type="hidden" name="{{ security.getTokenKey() }}" value="{{ security.getToken() }}"/>
                 <div class="form-group">
-                    <label>Username</label>
+                    <label>{{ lang.get('auth.login.username_label') }}</label>
                     <input type="text" name="username" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>Password</label>
+                    <label>{{ lang.get('auth.login.password_label') }}</label>
                     <input type="password" name="password" class="form-control">
                 </div>
                 <div class="pull-left">
-                    <a href="<?php echo $this->url->get(['for' => 'showRegistrationForm']) ?>" class="btn btn-xs btn-info">Register</a> <a href="" class="btn btn-xs btn-danger">Forgot your password?</a>
+                    <a href="<?php echo $this->url->get(['for' => 'showRegistrationForm']) ?>" class="btn btn-xs btn-info">{{ lang.get('auth.button.register_button') }}</a> <a href="" class="btn btn-xs btn-danger">{{ lang.get('auth.button.forgot_button') }}</a>
                 </div>
                 <div class="pull-right">
-                    <input type="submit" value="Login" class="btn btn-primary">
+                    <input type="submit" value="{{ lang.get('auth.button.login_button') }}" class="btn btn-primary">
                 </div>
             </form>
     </div>

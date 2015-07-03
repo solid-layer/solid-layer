@@ -1,6 +1,7 @@
 <?php
 
 return [
+    App\Services\Lang::class,
     App\Services\Mail::class,
     App\Services\Flash::class,
     App\Services\FlashSession::class,

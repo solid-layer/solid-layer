@@ -8,6 +8,7 @@
         "symfony/console": "^2.7",
         "robmorgan/phinx": "^0.4.4",
         "swiftmailer/swiftmailer": "@stable",
-        "mailgun/mailgun-php": "~1.7.2"
+        "mailgun/mailgun-php": "~1.7.2",
+        "rappasoft/laravel-helpers": "dev-master"
     }
 }
