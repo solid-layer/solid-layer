@@ -84,7 +84,8 @@ class SwiftMailerAdapter implements MailInterface
 
     public function body($body)
     {
-        $this->message->setBody($body);
+        // $this->message->setBody($body);
+        $this->message->addPart($body, 'text/html');
 
         return $this;
     }
