@@ -4,12 +4,10 @@ namespace App\Models;
 
 use Phalcon\Mvc\Model;
 
-class {modelName} extends Model
+class PasswordHistory extends Model
 {
-    use TimestampableTrait;
-
     public function getSource()
     {
-        return '{table}';
+        return 'password_history';
     }
 }

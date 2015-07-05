@@ -107,14 +107,9 @@ class View extends PhalconView
      */
     public function take($view, $params = null)
     {
-        $this->start();
-
         $view = $this->_changeDotToSlash($view);
-        $this->render(null, $view, $params);
 
-        $this->finish();
-
-        return $this->getContent();
+        return $this->getRender(null, $view, $params);
     }
 
 }

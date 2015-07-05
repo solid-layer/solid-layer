@@ -25,6 +25,15 @@ class AuthRoutes extends RouterGroup
     ])->setName('showRegistrationForm');
 
     # Add a route to the group
+    $this->add('/register/store', [
+      'action' => 'storeRegistrationForm'
+    ])->setName('storeRegistrationForm');
+
+    $this->add('/activation/{token}', [
+      'action' => 'activateUser',
+    ])->setName('activateUser');
+
+    # Add a route to the group
     $this->add('/attempt', [
       'action' => 'attemptToLogin'
     ])->setName('attemptToLogin');

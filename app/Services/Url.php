@@ -14,7 +14,7 @@ class URL extends ServiceContainer
     public function boot()
     {
         $url = new UrlResolver();
-        $url->setBaseUri('/');
+        $url->setBaseUri(getenv('BASE_URI'));
 
         return $url;
     }
