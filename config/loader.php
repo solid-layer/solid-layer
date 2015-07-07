@@ -1,16 +1,14 @@
 <?php
 
 /*
-* --------------------------------------------------------
-* PhalconSlayer Autoloader
-* ---------------------------------------------------------
-* This config is based on the Phalcon\Loader class
-*  visit: https://docs.phalconphp.com/en/latest/api/Phalcon_Loader.html
+|--------------------------------------------------------
+| PhalconSlayer Autoloader
+|---------------------------------------------------------
+| This config is based on the Phalcon\Loader class
+|   visit: https://docs.phalconphp.com/en/latest/api/Phalcon_Loader.html
 */
 return [
-    'dirs' => [
-
-    ],
+    'dirs' => [],
     
     'namespaces' => [
         // Do not edit below if you don't know what you're doing.
@@ -34,23 +32,5 @@ return [
         'Bootstrap\Exceptions'          => APP_ROOT . '/bootstrap/src/Exceptions/',
     ],
 
-    'prefixes' => [
-        // 'ACL'          => APP_ROOT . '/bootstrap/src/Facades/ACL',
-        // 'Auth'         => APP_ROOT . '/bootstrap/src/Facades/Auth',
-        // 'Filter'       => APP_ROOT . '/bootstrap/src/Facades/Filter',
-        // 'Flash'        => APP_ROOT . '/bootstrap/src/Facades/Flash',
-        // 'FlashSession' => APP_ROOT . '/bootstrap/src/Facades/FlashSession',
-        // 'Lang'         => APP_ROOT . '/bootstrap/src/Facades/Lang',
-        // 'Mail'         => APP_ROOT . '/bootstrap/src/Facades/Mail',
-        // 'Redirect'     => APP_ROOT . '/bootstrap/src/Facades/Redirect',
-        // 'Request'      => APP_ROOT . '/bootstrap/src/Facades/Request',
-        // 'Response'     => APP_ROOT . '/bootstrap/src/Facades/Response',
-        // 'Route'        => APP_ROOT . '/bootstrap/src/Facades/Route',
-        // 'Security'     => APP_ROOT . '/bootstrap/src/Facades/Security',
-        // 'Session'      => APP_ROOT . '/bootstrap/src/Facades/Session',
-        // 'Tag'          => APP_ROOT . '/bootstrap/src/Facades/Tag',
-        // 'URL'          => APP_ROOT . '/bootstrap/src/Facades/URL',
-        // 'View'         => APP_ROOT . '/bootstrap/src/Facades/View',
-        // 'Whoops'       => APP_ROOT . '/bootstrap/src/Facades/Whoops',
-    ],
+    'prefixes' => [],
 ];

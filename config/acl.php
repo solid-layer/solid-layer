@@ -3,10 +3,10 @@
 return [
     
     /*
-    * --------------------------------------------------------
-    * Register all the roles you have
-    * ---------------------------------------------------------
-    * By default we're using 'administrator' and 'user'
+    |--------------------------------------------------------
+    | Register all the roles you have
+    |---------------------------------------------------------
+    | By default we're using 'administrator' and 'user'
     */
     'roles' => [
         'administrator',
@@ -15,10 +15,10 @@ return [
 
 
     /*
-    * --------------------------------------------------------
-    * Acl Classes
-    * ---------------------------------------------------------
-    * Register your class to load
+    |--------------------------------------------------------
+    | Acl Classes
+    |---------------------------------------------------------
+    | Register your class to load
     */
     'classes' => [
         'default' => App\Acl\Access::class,

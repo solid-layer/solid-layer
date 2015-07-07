@@ -5,10 +5,10 @@ return [
     // add your console commands here ...
 
     /*
-    * --------------------------------------------------------
-    * PhalconSlayer Registered Commands
-    * ---------------------------------------------------------
-    * Pre-registed commands
+    |--------------------------------------------------------
+    | PhalconSlayer Registered Commands
+    |---------------------------------------------------------
+    | Pre-registed commands
     */
     Bootstrap\Console\ClearCacheCommand::class,
     Bootstrap\Console\ClearLogsCommand::class,

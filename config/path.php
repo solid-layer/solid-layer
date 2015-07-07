@@ -5,10 +5,10 @@ return [
     // add your path here ...
 
     /*
-    * --------------------------------------------------------
-    * PhalconSlayer Registered Path
-    * ---------------------------------------------------------
-    * You can access this path using this function
+    |--------------------------------------------------------
+    | PhalconSlayer Registered Path
+    |---------------------------------------------------------
+    | You can access this path using this function
     */
 
     # -- app
