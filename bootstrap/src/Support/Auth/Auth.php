@@ -8,28 +8,42 @@ use Bootstrap\Facades\Response;
 
 class Auth
 {
-    public function attempt($record, $remember = false)
+    public function attempt($records, $remember = false)
     {
         $password_field = slayer_config()->app->auth->password_field;
-        if (isset($record[$password_field]) == false) {
+        if (isset($records[$password_field]) == false) {
             throw new Exception('Password field not found!');
         }
 
         # get the password information
-        $password = $record[$password_field];
-        unset($record[$password_field]);
+        $password = $records[$password_field];
+        unset($records[$password_field]);
 
-        # find the informations provided in the $record
+        # build the conditions
+        $conditions = [];
+        foreach ($records as $key => $record) {
+            $conditions[] = "{$key} = :{$key}:";
+        }
+
+        # find the informations provided in the $records
         $auth_model = slayer_config()->app->auth->model;
-        $record = $auth_model::find($record)->getFirst();
+        $records = $auth_model::find(
+                [
+                    $conditions,
+                    'bind' => $records
+                ]
+            )
+            ->getFirst();
 
-        if ( ! $record) {
+
+        if ( ! $records) {
             return false;
         }
 
-        if (Security::checkHash($password, $record->{$password_field})) {
+
+        if (Security::checkHash($password, $records->{$password_field})) {
             Session::set('is_authenticated', true);
-            Session::set('user', $record);
+            Session::set('user', $records);
 
             return true;
         }

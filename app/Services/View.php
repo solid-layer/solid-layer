@@ -24,10 +24,13 @@ class View extends ServiceContainer
                 function ($view, $di) {
                     $volt = new PhalconVoltEngine($view, $di);
 
-                    $volt->setOptions(array(
-                        'compiledPath' => $this->getConfig()->path->storageViewDir,
-                        'compiledSeparator' => '_',
-                    ));
+                    # 
+                    // if ($this->getConfig()->app->cache) {
+                        $volt->setOptions([
+                            'compiledPath' => $this->getConfig()->path->storageViewDir,
+                            'compiledSeparator' => '_',
+                        ]);
+                    // }
 
                     return $volt;
                 },

@@ -10,6 +10,10 @@ return [
     * ---------------------------------------------------------
     * Pre-registed commands
     */
+    Bootstrap\Console\ClearCacheCommand::class,
+    Bootstrap\Console\ClearLogsCommand::class,
+    Bootstrap\Console\ClearSessionCommand::class,
+    Bootstrap\Console\ClearViewsCommand::class,
     Bootstrap\Console\MakeRouteCommand::class,
     Bootstrap\Console\MakeConsoleCommand::class,
     Bootstrap\Console\MakeControllerCommand::class,

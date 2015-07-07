@@ -42,8 +42,7 @@ require_once APP_ROOT . '/bootstrap/src/loader.php';
 |-------------------------------------------------------------
 | Now use the facade created by Taylor Otwell
 |-------------------------------------------------------------
-| We should inject the phalcon $GLOBALS['__app'] so that facade class
-| will be able to get all injected shared dependencies.
+| We should inject the phalcon $GLOBALS['__app']
 */
 Bootstrap\Facades\Facade::setFacadeApplication($GLOBALS['__app']);
 

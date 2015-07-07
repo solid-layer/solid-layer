@@ -1,6 +1,6 @@
 {% extends 'layouts/main.volt' %}
 
-{% block title %}Sample Login Form{% endblock %}
+{% block title %}Slayer - Sample Login Form{% endblock %}
 
 {% block header %}
 <style type="text/css">

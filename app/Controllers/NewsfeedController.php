@@ -7,5 +7,13 @@ use Bootstrap\Facades\View;
 
 class NewsfeedController extends Controller
 {
+    public function initialize()
+    {
+        $this->acl('auth');
+    }
 
+    public function indexAction()
+    {
+
+    }
 }

@@ -6,6 +6,8 @@ use Bootstrap\Exceptions\ControllerNotFoundException;
 use Bootstrap\Services\Service\ServiceContainer;
 use Phalcon\Mvc\Dispatcher as MvcDispatcher;
 use Phalcon\Events\Manager as EventsManager;
+use Phalcon\Mvc\Dispatcher\Exception as DispatchException;
+use Phalcon\Logger\Adapter\File as FileAdapter;
 
 class Dispatcher extends ServiceContainer
 {
@@ -15,21 +17,22 @@ class Dispatcher extends ServiceContainer
 
   public function boot()
   {
-    $eventManager = new EventsManager;
-    $eventManager->attach("dispatch:beforeException",
-      function($event, $dispatcher, $exception)
-      {
-        switch ($exception->getCode()) {
-          case MvcDispatcher::EXCEPTION_HANDLER_NOT_FOUND:
-          case MvcDispatcher::EXCEPTION_ACTION_NOT_FOUND:
-            if (getenv('APP_DEBUG') != 'true') {
-              $dispatcher->forward([
-                'namespace'  => 'App\Controllers',
-                'controller' => 'Error',
-                'action'     => 'show404',
-              ]);
+    $event_manager = new EventsManager;
+    $event_manager->attach("dispatch:beforeException",
+      function($event, $dispatcher, $exception) {
 
-              return false;
+        $logger = new FileAdapter($this->getConfig()->path->logsDir . 'error.log');
+        $logger->error($exception->getMessage());
+
+        if ($exception instanceof DispatchException) {
+            if ($this->getConfig()->app->debug != 'true') {
+              echo $dispatcher->getDI()->get('view')->take('error.whoops');
+              exit;
+
+              // $dispatcher->forward(array(
+              //     'controller' => 'pages',
+              //     'action'     => 'show404'
+              // ));
             }
 
             throw new ControllerNotFoundException('Handler or Action not found.');
@@ -40,7 +43,7 @@ class Dispatcher extends ServiceContainer
     );
 
     $dispatcher = new MvcDispatcher();
-    $dispatcher->setEventsManager($eventManager);
+    $dispatcher->setEventsManager($event_manager);
 
     return $dispatcher;
   }

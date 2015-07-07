@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use Bootstrap\Services\Service\ServiceContainer;
-use Phalcon\Mvc\Url as UrlResolver;
+use Bootstrap\Support\Phalcon\Mvc\URL as UrlResolver;
 
 class URL extends ServiceContainer
 {

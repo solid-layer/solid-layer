@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Phalcon\Mvc\Model;
-use Phalcon\Mvc\Model\Behavior\Timestampable;
 
 class User extends Model
 {
@@ -54,7 +53,7 @@ class User extends Model
 
     public function setIsActivated($bool)
     {
-        $this->is_activated = $bool;
+        $this->is_activated = $bool ? 1 : 0;
 
         return $this;
     }

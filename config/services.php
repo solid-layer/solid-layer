@@ -1,6 +1,8 @@
 <?php
 
 return [
+    App\Services\Log::class,
+    App\Services\Cache::class,
     App\Services\Lang::class,
     App\Services\Mail::class,
     App\Services\Flash::class,

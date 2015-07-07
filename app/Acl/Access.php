@@ -7,7 +7,7 @@ use Bootstrap\Facades\Route;
 use Bootstrap\Facades\ACL;
 use Bootstrap\Exceptions\AccessNotAllowedException;
 
-class DefaultRestriction extends AclContainer
+class Access extends AclContainer
 {
     protected $_allowed_roles = [
         'administrator',

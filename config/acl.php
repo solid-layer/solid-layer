@@ -6,7 +6,7 @@ return [
     * --------------------------------------------------------
     * Register all the roles you have
     * ---------------------------------------------------------
-    * By default we're using 'users' and 'guests'
+    * By default we're using 'administrator' and 'user'
     */
     'roles' => [
         'administrator',
@@ -18,11 +18,11 @@ return [
     * --------------------------------------------------------
     * Acl Classes
     * ---------------------------------------------------------
-    * Register your class to limit an access
+    * Register your class to load
     */
     'classes' => [
-        'default' => App\Acl\DefaultRestriction::class,
-        'csrf'    => App\Acl\CsrfRestriction::class,
-        'auth'    => App\Acl\AuthRestriction::class,
+        'default' => App\Acl\Access::class,
+        'csrf'    => App\Acl\CSRF::class,
+        'auth'    => App\Acl\Auth::class,
     ],
 ];

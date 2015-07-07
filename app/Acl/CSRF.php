@@ -7,7 +7,7 @@ use Bootstrap\Facades\Request;
 use Bootstrap\Facades\Security;
 use Bootstrap\Exceptions\AccessNotAllowedException;
 
-class CsrfRestriction extends AclContainer
+class CSRF extends AclContainer
 {
     public function load()
     {

@@ -6,7 +6,17 @@ use Phalcon\Mvc\Model;
 
 class {modelName} extends Model
 {
-    use TimestampableTrait;
+    public function initialize()
+    {
+        $this->skipAttributesOnCreate([
+            'created_at',
+            'updated_at',
+        ]);
+
+        $this->skipAttributesOnUpdate([
+            'updated_at',
+        ]);
+    }
 
     public function getSource()
     {

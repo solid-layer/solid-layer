@@ -105,3 +105,16 @@ if (! function_exists('echo_pre')) {
     exit;
   }
 }
+
+
+if (! function_exists('env')) {
+  function env($const, $default = '')
+  {
+    $val = getenv($const);
+    if (empty($val)) {
+      $val = $default;
+    }
+
+    return $val;
+  }
+}
