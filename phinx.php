@@ -4,7 +4,7 @@ require_once APP_ROOT . '/vendor/autoload.php';
 $dotenv = new Dotenv\Dotenv(APP_ROOT);
 $dotenv->load();
 
-$env = getenv('APP_ENV');
+$env = env('APP_ENV');
 
 return [
     'paths' => [
@@ -14,13 +14,13 @@ return [
         'default_migration_table' => 'slayer_phinx_log',
         'default_database' => $env,
         $env => [
-            'adapter' => getenv('DB_ADAPTER'),
-            'host'    => getenv('DB_HOST'),
-            'name'    => getenv('DB_DATABASE'),
-            'user'    => getenv('DB_USERNAME'),
-            'pass'    => getenv('DB_PASSWORD'),
-            'port'    => getenv('DB_PORT'),
-            'charset' => getenv('DB_CHARSET'),
+            'adapter' => env('DB_ADAPTER', 'mysql'),
+            'host'    => env('DB_HOST', 'localhost'),
+            'name'    => env('DB_DATABASE'),
+            'user'    => env('DB_USERNAME'),
+            'pass'    => env('DB_PASSWORD'),
+            'port'    => env('DB_PORT'),
+            'charset' => env('DB_CHARSET'),
         ]
     ],
 ];

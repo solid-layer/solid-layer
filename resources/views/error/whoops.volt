@@ -1,22 +1,27 @@
-{% extends 'layouts/main.volt' %}
+<html>
+    <head>
+        <title>Whoops error found</title>
 
-{% block title %}Whoops error found{% endblock %}
+        <link rel="stylesheet" type="text/css" href="{{static_url('bootflat.github.io/css/bootstrap.min.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{static_url('bootflat.github.io/css/site.min.css')}}">
+        <style type="text/css">
+            body {
+              background-color: #fefbf9 !important;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row" style="margin-top:20px;">
+                <div class="col-sm-12 text-center">
+                    <div class="well">
+                        <h4>Whoops error found!</h4>
+                        <p>Please tail slayer's log to view the error, or try to debug your system.</p>
+                    </div>
 
-{% block header %}
-{% endblock %}
-
-{% block content %}
-<div class="row" style="margin-top:20px;">
-    <div class="col-sm-12 text-center">
-        <div class="well">
-            <h4>Whoops error found!</h4>
-            <p>Please tail slayer's log to view the error, or try to debug your system.</p>
+                    <a target="_blank" href="http://www.github.com/phalconslayer/slayer"><code>Powered By: Slayer - Bootstrapped Phalcon Framework</code></a>
+                </div>
+            </div>
         </div>
-
-        <a href="http://www.github.com/phalconslayer/slayer"><code>Powered By: Slayer - Bootstrapped Phalcon Framework</code></a>
-    </div>
-</div>
-{% endblock %}
-
-{% block footer %}
-{% endblock %}
+    </body>
+</html>
