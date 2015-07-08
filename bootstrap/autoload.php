@@ -46,6 +46,28 @@ require_once APP_ROOT . '/bootstrap/src/loader.php';
 */
 Bootstrap\Facades\Facade::setFacadeApplication($GLOBALS['__app']);
 
+
+/*
+|-------------------------------------------------------------
+| Get all the routes
+|-------------------------------------------------------------
+*/
 require_once APP_ROOT . '/app/routes.php';
 
+
+/*
+|-------------------------------------------------------------
+| Load all service providers
+|-------------------------------------------------------------
+*/
 require_once APP_ROOT . '/bootstrap/src/services.php';
+
+
+/*
+|-------------------------------------------------------------
+| Enabling Modular framework
+|-------------------------------------------------------------
+| We want to import some packages, to work with
+| views, translations we must create a module for them.
+*/
+$GLOBALS['__app']->registerModules(config()->modules->toArray());

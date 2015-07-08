@@ -44,6 +44,7 @@ class Dispatcher extends ServiceProvider
 
     $dispatcher = new MvcDispatcher();
     $dispatcher->setEventsManager($event_manager);
+    $dispatcher->setDefaultNamespace('App\Controllers');
 
     return $dispatcher;
   }

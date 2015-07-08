@@ -1,5 +1,5 @@
 <?php
 
-namepsace Bootstrap\Exceptions;
+namespace Bootstrap\Exceptions;
 
 class BadMethodCallException extends SlayerException {}

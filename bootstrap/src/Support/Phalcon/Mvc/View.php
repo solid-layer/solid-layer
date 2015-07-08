@@ -52,8 +52,7 @@ class View extends PhalconView
      */
     public function checkViewPath($path)
     {
-        $views_dir = config()->path->viewsDir;
-        $full_path = $views_dir . $path;
+        $full_path = di()->get('view')->getViewsDir() . $path;
 
         $result = glob($full_path . '.*');
         if ( ! $result ) {

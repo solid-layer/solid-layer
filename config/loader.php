@@ -14,6 +14,7 @@ return [
         // Do not edit below if you don't know what you're doing.
         'App'       => APP_ROOT . '/app/',
         'Bootstrap' => APP_ROOT . '/bootstrap/src/',
+        'Sandbox'   => APP_ROOT . '/sandbox/',
     ],
 
     'prefixes' => [],

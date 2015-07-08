@@ -78,13 +78,6 @@ return [
     | 
     */
     'services' => [
-
-        // Register your own provider here.
-
-        /**
-         * Please do not edit below if you don't know what
-         * you are doing.
-         */
         App\Providers\Console::class,
         App\Providers\Log::class,
         App\Providers\Cache::class,
@@ -105,5 +98,8 @@ return [
         App\Providers\ACL::class,
         App\Providers\View::class,
         App\Providers\Dispatcher::class,
+
+        // Register your own provider here.
+        Sandbox\MySandBoxServiceProvider::class,
     ],
 ];

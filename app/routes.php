@@ -17,9 +17,9 @@ use Bootstrap\Facades\Route;
 |  ]);
 */
 Route::add('/', [
-  'namespace' => 'App\Controllers',
-  'controller' => 'Welcome',
-  'action' => 'showSignature',
+    // 'namespace' => 'App\Controllers',
+    'controller' => 'Welcome',
+    'action' => 'showSignature',
 ]);
 
 

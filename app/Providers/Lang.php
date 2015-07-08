@@ -13,9 +13,13 @@ class Lang extends ServiceProvider
 
     public function register()
     {
-        $lang = config()->app->lang;
-        $dir = config()->path->langDir . $lang;
+        $language = config()->app->lang;
 
-        return new SupportLang($dir);
+        $translation = new SupportLang($dir);
+        $translation
+            ->setLanguage($language)
+            ->setLangDir(config()->path->langDir);
+
+        return $translation;
     }
 }

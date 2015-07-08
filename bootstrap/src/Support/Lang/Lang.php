@@ -6,11 +6,21 @@ use Bootstrap\Exceptions\LangFileNotFoundException;
 
 class Lang
 {
-    private $path;
+    private $language;
+    private $dir;
 
-    public function __construct($path)
+    public function setLanguage($language)
     {
-        $this->path = $path;
+        $this->language = $language;
+
+        return $this;
+    }
+
+    public function setLangDir($dir)
+    {
+        $this->dir = $dir;
+
+        return $this;
     }
 
     protected function _getAttribute($path)
@@ -18,7 +28,7 @@ class Lang
         $exploded = explode('.', $path);
 
         return [
-            'file' => $this->path . '/' . $exploded[0] . '.php',
+            'file' => $this->dir . $this->language . '/' . $exploded[0] . '.php',
             'exploded' => $exploded,
         ];
     }

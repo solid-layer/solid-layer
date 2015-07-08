@@ -7,7 +7,7 @@ class AuthRoutes extends RouterGroup
   public function initialize()
   {
     $this->setPaths([
-      'namespace' => 'App\Controllers',
+      // 'namespace' => 'App\Controllers',
       'controller' => 'Auth',
     ]);
 

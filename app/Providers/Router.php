@@ -12,7 +12,7 @@ class Router extends ServiceProvider
 
     public function register()
     {
-        $router = new \Phalcon\Mvc\Router(false); 
+        $router = new \Phalcon\Mvc\Router(false);
         $router->removeExtraSlashes(true);
 
         return $router;
