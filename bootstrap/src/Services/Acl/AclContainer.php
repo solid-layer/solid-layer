@@ -2,11 +2,12 @@
 
 namespace Bootstrap\Services\Acl;
 
-/**
-* @author Daison Carino <daison12006013 [at] gmail [dot] com>
-*/
+use Bootstrap\Services\ServiceMagicMethods;
+
 class AclContainer
 {
+    use ServiceMagicMethods;
+
     protected $_allowed_roles = [];
     protected $_denied_roles = [];
 

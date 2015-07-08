@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Services;
+namespace App\Providers;
 
-use Bootstrap\Services\Service\ServiceContainer;
+use Bootstrap\Services\Service\ServiceProvider;
 use Phalcon\Logger\Adapter\File as FileAdapter;
 
-class Log extends ServiceContainer
+class Log extends ServiceProvider
 {
     protected $_alias = 'log';
 
     protected $_shared = false;
 
-    public function boot()
+    public function register()
     {
         $logger = new FileAdapter($this->getConfig()->path->logsDir . 'error.log');
 

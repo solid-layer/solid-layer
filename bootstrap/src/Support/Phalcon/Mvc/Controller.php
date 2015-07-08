@@ -38,7 +38,7 @@ class Controller extends \Phalcon\Mvc\Controller
         $this->except_actions = $this->_getExceptActions();
 
         # now load the class
-        $class = slayer_config()->acl->classes[$alias];
+        $class = config()->acl->classes[$alias];
         $this->_loader(new $class);
     }
 

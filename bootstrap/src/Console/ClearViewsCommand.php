@@ -15,6 +15,6 @@ class ClearViewsCommand extends SlayerCommand
     
     public function slash()
     {
-        $this->clear(slayer_config()->path->storageViewDir);
+        $this->clear(config()->path->storageViewDir);
     }
 }

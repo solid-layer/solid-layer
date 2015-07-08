@@ -93,12 +93,12 @@ class MailgunAdapter implements MailInterface
 
     public function getKey()
     {
-        return slayer_config()->mailer->mailgun->secret;
+        return config()->mailer->mailgun->secret;
     }
 
     public function getDomain()
     {
-        return slayer_config()->mailer->mailgun->domain;
+        return config()->mailer->mailgun->domain;
     }
 
 }

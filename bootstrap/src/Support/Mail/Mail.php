@@ -40,7 +40,7 @@ class Mail
         }
 
         $this->adapter_obj
-            ->from(slayer_config()->app->mailer->from)
+            ->from(config()->app->mailer->from)
             ->body($body);
 
         return $this->adapter_obj;

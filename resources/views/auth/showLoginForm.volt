@@ -16,7 +16,8 @@
             {{ flashSession.output() }}
             <hr>
             <form class="form-vertical" method="POST" action="<?php echo $this->url->get(['for' => 'attemptToLogin']) ?>">
-                <input type="hidden" name="{{ security.getTokenKey() }}" value="{{ security.getToken() }}"/>
+                {{ csrf_field() }}
+
                 <div class="form-group">
                     <label>{{ lang.get('auth.login.username_label') }}</label>
                     <input type="text" name="username" class="form-control">

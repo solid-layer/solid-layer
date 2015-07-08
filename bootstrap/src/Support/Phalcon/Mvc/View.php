@@ -52,7 +52,7 @@ class View extends PhalconView
      */
     public function checkViewPath($path)
     {
-        $views_dir = slayer_config()->path->viewsDir;
+        $views_dir = config()->path->viewsDir;
         $full_path = $views_dir . $path;
 
         $result = glob($full_path . '.*');

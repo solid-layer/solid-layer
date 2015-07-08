@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Services;
+namespace App\Providers;
 
-use Bootstrap\Services\Service\ServiceContainer;
+use Bootstrap\Services\Service\ServiceProvider;
 use Phalcon\Filter as HttpFilter;
 
-class Filter extends ServiceContainer
+class Filter extends ServiceProvider
 {
   protected $_alias = 'filter';
 
   protected $_shared = false;
 
-  public function boot()
+  public function register()
   {
     return new HttpFilter;
   }

@@ -4,5 +4,5 @@ namespace Bootstrap\Facades;
 
 class Auth extends Facade
 {
-    protected static function getFacadeAccessor() { return 'slayer_auth'; }
+    protected static function getFacadeAccessor() { return 'auth'; }
 }

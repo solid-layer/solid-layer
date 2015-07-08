@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Services;
+namespace App\Providers;
 
-use Bootstrap\Services\Service\ServiceContainer;
+use Bootstrap\Services\Service\ServiceProvider;
 use Phalcon\Events\Manager as Events_Manager;
 use Phalcon\Logger\Adapter\File as FileLogger;
 use Phalcon\Db\Adapter\Pdo\Mysql;
@@ -12,13 +12,13 @@ use Phalcon\Db\Adapter\Pdo\Oracle;
 use Phalcon\Logger;
 use Exception;
 
-class DB extends ServiceContainer
+class DB extends ServiceProvider
 {
   public $_alias = 'db';
 
   public $_shared = false;
 
-  public function boot()
+  public function register()
   {
     $db_config = $this->getConfig()->database->toArray();
 

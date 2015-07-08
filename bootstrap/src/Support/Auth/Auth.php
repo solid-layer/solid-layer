@@ -10,7 +10,7 @@ class Auth
 {
     public function attempt($records, $remember = false)
     {
-        $password_field = slayer_config()->app->auth->password_field;
+        $password_field = config()->app->auth->password_field;
         if (isset($records[$password_field]) == false) {
             throw new Exception('Password field not found!');
         }
@@ -26,7 +26,7 @@ class Auth
         }
 
         # find the informations provided in the $records
-        $auth_model = slayer_config()->app->auth->model;
+        $auth_model = config()->app->auth->model;
         $records = $auth_model::find(
                 [
                     $conditions,
@@ -55,7 +55,7 @@ class Auth
 
     public function redirectIntended()
     {
-        $redirect_to = slayer_config()->app->auth->auth_redirect;
+        $redirect_to = config()->app->auth->auth_redirect;
 
         return Response::redirect($redirect_to);
     }

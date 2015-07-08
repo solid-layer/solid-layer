@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Services;
+namespace App\Providers;
 
-use Bootstrap\Services\Service\ServiceContainer;
+use Bootstrap\Services\Service\ServiceProvider;
 
-class Response extends ServiceContainer
+class Response extends ServiceProvider
 {
     protected $_alias = 'response';
 
     protected $_shared = false;
 
-    public function boot()
+    public function register()
     {
         return new \Phalcon\Http\Response;
     }

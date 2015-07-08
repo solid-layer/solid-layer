@@ -69,4 +69,41 @@ return [
         // When calling $this->auth->redirectIntended()
         'auth_redirect'  => '/newsfeed',
     ],
+
+
+    /*
+    |--------------------------------------------------------
+    | Service Providers
+    |---------------------------------------------------------
+    | 
+    */
+    'services' => [
+
+        // Register your own provider here.
+
+        /**
+         * Please do not edit below if you don't know what
+         * you are doing.
+         */
+        App\Providers\Console::class,
+        App\Providers\Log::class,
+        App\Providers\Cache::class,
+        App\Providers\Lang::class,
+        App\Providers\Mail::class,
+        App\Providers\Flash::class,
+        App\Providers\FlashSession::class,
+        App\Providers\Redirect::class,
+        App\Providers\Auth::class,
+        App\Providers\URL::class,
+        App\Providers\DB::class,
+        App\Providers\MetadataAdapter::class,
+        App\Providers\Session::class,
+        App\Providers\Router::class,
+        App\Providers\Response::class,
+        App\Providers\Request::class,
+        App\Providers\Filter::class,
+        App\Providers\ACL::class,
+        App\Providers\View::class,
+        App\Providers\Dispatcher::class,
+    ],
 ];

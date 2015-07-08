@@ -15,6 +15,6 @@ class ClearCacheCommand extends SlayerCommand
     
     public function slash()
     {
-        $this->clear(slayer_config()->path->cacheDir);
+        $this->clear(config()->path->cacheDir);
     }
 }

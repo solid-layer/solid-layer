@@ -19,7 +19,7 @@ class MakeRouteCommand extends SlayerCommand
         $stub = str_replace('{routeName}', $arg_name, $stub);
 
         $file_name = $arg_name . 'Routes.php';
-        chdir(slayer_config()->path->routesDir);
+        chdir(config()->path->routesDir);
         $this->comment('Crafting Route Group...');
 
         if ( file_exists($file_name) ) {

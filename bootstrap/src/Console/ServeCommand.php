@@ -13,7 +13,7 @@ class ServeCommand extends SlayerCommand
 
     public function slash()
     {
-        $base = slayer_config()->path->baseUri;
+        $base = config()->path->baseUri;
         chdir($base . '/public');
 
         $host = $this->input->getOption('host');

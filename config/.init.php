@@ -4,7 +4,7 @@ return [
 
     // add your config below
     // to access your config, you may call 
-    // slayer_config()->{key}->{file_array}
+    // config()->{key}->{file_array}
 
     /*
     |--------------------------------------------------------
@@ -18,7 +18,6 @@ return [
     'consoles' => require_once __DIR__ . '/consoles.php',
     'database' => require_once __DIR__ . '/database.php',
     'path'     => require_once __DIR__ . '/path.php',
-    'services' => require_once __DIR__ . '/services.php',
     'loader'   => require_once __DIR__ . '/loader.php',
     'mailer'   => require_once __DIR__ . '/mailer.php',
 ];

@@ -21,7 +21,7 @@ class MakeCollectionCommand extends SlayerCommand
         $stub = str_replace('{collection}', $source_name, $stub);
 
         $file_name = $name . '.php';
-        chdir(slayer_config()->path->collectionsDir);
+        chdir(config()->path->collectionsDir);
         $this->comment('Crafting Collection...');
 
         if ( file_exists($file_name) ) {

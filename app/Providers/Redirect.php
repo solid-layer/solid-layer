@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Services;
+namespace App\Providers;
 
-use Bootstrap\Services\Service\ServiceContainer;
+use Bootstrap\Services\Service\ServiceProvider;
 use Bootstrap\Support\Redirect\Redirect as SupportRedirect;
 
-class Redirect extends ServiceContainer
+class Redirect extends ServiceProvider
 {
     protected $_alias = 'redirect';
 
     protected $_shared = false;
 
-    public function boot()
+    public function register()
     {
         return new SupportRedirect;
     }

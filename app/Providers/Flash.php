@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace App\Providers;
 
 /**
  * We will be over-riding the 'flash' as we will be mapping on

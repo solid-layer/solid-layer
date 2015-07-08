@@ -26,7 +26,7 @@ class MakeControllerCommand extends SlayerCommand
         }
 
         $file_name = $arg_name . 'Controller.php';
-        chdir(slayer_config()->path->controllersDir);
+        chdir(config()->path->controllersDir);
         $this->comment('Crafting Controller...');
 
         if ( file_exists($file_name) ) {

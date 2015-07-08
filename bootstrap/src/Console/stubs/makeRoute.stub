@@ -15,7 +15,7 @@ class {routeName}Routes extends RouterGroup
     $this->setPrefix('/{routeName}');
 
 
-    $this->add('/index}', [
+    $this->add('/index', [
       'action' => 'index'
     ]);
 

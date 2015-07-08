@@ -7,17 +7,17 @@ use Bootstrap\Exceptions\SlayerException;
 
 class ExampleException extends SlayerException
 {
-  public function handle()
-  {
-    $handler = new PrettyPageHandler();
+    public function handle()
+    {
+        $handler = new PrettyPageHandler();
 
-    $handler->addDataTable('Ice-cream I like', array(
-      'Chocolate' => 'yes',
-      'Coffee & chocolate' => 'a lot',
-      'Strawberry & chocolate' => 'it\'s alright',
-      'Vanilla' => 'ew',
-    ));
+        $handler->addDataTable('Ice-cream I like', array(
+            'Chocolate' => 'yes',
+            'Coffee & chocolate' => 'a lot',
+            'Strawberry & chocolate' => 'it\'s alright',
+            'Vanilla' => 'ew',
+        ));
 
-    return $handler;
-  }
+        return $handler;
+    }
 }

@@ -21,7 +21,7 @@ class MakeModelCommand extends SlayerCommand
         $stub = str_replace('{table}', $source_name, $stub);
 
         $file_name = $name . '.php';
-        chdir(slayer_config()->path->modelsDir);
+        chdir(config()->path->modelsDir);
         $this->comment('Crafting Model...');
 
         if ( file_exists($file_name) ) {

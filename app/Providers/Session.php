@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Services;
+namespace App\Providers;
 
-use Bootstrap\Services\Service\ServiceContainer;
+use Bootstrap\Services\Service\ServiceProvider;
 use Phalcon\Session\Adapter\Files as SessionAdapter;
 
-class Session extends ServiceContainer
+class Session extends ServiceProvider
 {
     protected $_alias = 'session';
 
     protected $_shared = true;
 
-    public function boot()
+    public function register()
     {
         $session = new SessionAdapter;
         $session->start();

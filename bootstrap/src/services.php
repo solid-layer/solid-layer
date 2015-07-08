@@ -4,7 +4,7 @@ if (! isset($di)) {
   $di = new Phalcon\Di\FactoryDefault();
 }
 
-$provider = new Bootstrap\Services\Service\ServiceProvider();
-foreach (slayer_config()->services as $service) {
-    $provider->dispatch(new $service);
+$container = new Bootstrap\Services\Service\ServiceContainer();
+foreach (config()->app->services as $provider) {
+    $container->addServiceProvider(new $provider);
 }

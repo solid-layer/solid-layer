@@ -15,6 +15,6 @@ class ClearSessionCommand extends SlayerCommand
     
     public function slash()
     {
-        $this->clear(slayer_config()->path->sessionDir);
+        $this->clear(config()->path->sessionDir);
     }
 }

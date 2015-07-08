@@ -29,7 +29,7 @@ $__config = new Config(require_once APP_ROOT . '/config/.init.php');
 
 $env_file_init = APP_ROOT . '/config/' . env('APP_ENV') . '/.init.php';
 if (file_exists($env_file_init)) {
-    $env_config = new Config(require_once APP_ROOT . '/config/' . env('APP_ENV') . '/.init.php');
+    $env_config = new Config(require_once $env_file_init);
 
     $__config->merge($env_config);
 }

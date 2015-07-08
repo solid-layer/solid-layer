@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Services;
+namespace App\Providers;
 
-use Bootstrap\Services\Service\ServiceContainer;
+use Bootstrap\Services\Service\ServiceProvider;
 use Phalcon\Cache\Backend\File as BackFile;
 use Phalcon\Cache\Frontend\Data as FrontData;
 
-class Cache extends ServiceContainer
+class Cache extends ServiceProvider
 {
     public $_alias = 'cache';
 
     public $_shared = false;
 
-    public function boot()
+    public function register()
     {
         # 2 days cache
         $front_cache = new FrontData(array(
