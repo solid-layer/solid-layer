@@ -28,7 +28,7 @@ class Lang
         $exploded = explode('.', $path);
 
         return [
-            'file' => $this->dir . $this->language . '/' . $exploded[0] . '.php',
+            'file' => $this->dir . '/' . $this->language . '/' . $exploded[0] . '.php',
             'exploded' => $exploded,
         ];
     }

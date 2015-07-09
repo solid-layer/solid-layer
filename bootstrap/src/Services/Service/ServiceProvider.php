@@ -21,6 +21,9 @@ class ServiceProvider
     protected $_shared = false;
 
 
+    protected $_publish = [];
+
+
     /**
      * Get the if the provider is a shared or not
      *
@@ -82,4 +85,27 @@ class ServiceProvider
 
     public function boot() { return false; }
     public function register() { return false; }
+
+
+    public function publish(Array $paths, $tag = null)
+    {
+        if ($tag) {
+            $this->_publish[$tag] = $paths;
+        } else {
+            $this->_publish[] = $paths;
+        }
+    }
+    
+    public function getToBePublished($tag = null)
+    {
+        if ($tag) {
+            if (! isset($this->_publish[$tag])) {
+                throw new Exception('Tag not found.');
+            }
+
+            return [$this->_publish[$tag]];
+        }
+
+        return $this->_publish;
+    }
 }

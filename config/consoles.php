@@ -10,6 +10,7 @@ return [
     |---------------------------------------------------------
     | Pre-registed commands
     */
+    Bootstrap\Console\VendorPublishCommand::class,
     Bootstrap\Console\ClearCacheCommand::class,
     Bootstrap\Console\ClearSessionCommand::class,
     Bootstrap\Console\ClearViewsCommand::class,
