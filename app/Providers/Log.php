@@ -13,7 +13,7 @@ class Log extends ServiceProvider
 
     public function register()
     {
-        $logger = new FileAdapter($this->getConfig()->path->logsDir . 'error.log');
+        $logger = new FileAdapter(config()->path->logsDir . 'error.log');
 
         # initialized error logging
         if ( di()->has('whoops') ) {

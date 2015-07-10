@@ -16,25 +16,12 @@ class Cache extends ServiceProvider
     {
         # 2 days cache
         $front_cache = new FrontData(array(
-            "lifetime" => 172800
+            'lifetime' => 172800
         ));
 
         $cache = new BackFile($front_cache, [
-            "cacheDir" => $this->getConfig()->path->cacheDir,
+            'cacheDir' => config()->path->cacheDir,
         ]);
-
-        # pre-cache the config file
-        $config_cache_key = 'slayer_config.cache';
-        if ($this->getConfig()->app->cache) {
-            if ( empty($cache->get($config_cache_key)) ) {
-                $cache->save($config_cache_key, $this->getConfig()->toArray()); 
-            }
-        } 
-
-        # if config cache is false
-        else {
-            $cache->delete($config_cache_key);
-        }
 
         return $cache;
     }

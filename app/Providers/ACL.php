@@ -18,7 +18,7 @@ class ACL extends ServiceProvider
         $acl = new Phalcon_Acl_Adapter_Memory;
         $acl->setDefaultAction(Phalcon_Acl::DENY);
 
-        foreach ($this->getConfig()->acl->roles as $role) {
+        foreach (config()->acl->roles as $role) {
             $acl->addRole(new Role($role));
         }
 

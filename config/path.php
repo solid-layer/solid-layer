@@ -12,25 +12,33 @@ return [
     */
 
     # -- app
-    'consoleDir'     => APP_ROOT . '/app/Console/',             //config()->path->consoleDir
-    'collectionsDir' => APP_ROOT . '/app/Collections/',         //config()->path->collectionsDir
-    'controllersDir' => APP_ROOT . '/app/Controllers/',         //config()->path->controllersDir
-    'modelsDir'      => APP_ROOT . '/app/Models/',              //config()->path->modelsDir
-    'routesDir'      => APP_ROOT . '/app/Routes/',              //config()->path->routesDir
+    'app'            => APP_ROOT . '/app/',
+    'consoleDir'     => APP_ROOT . '/app/Console/',
+    'collectionsDir' => APP_ROOT . '/app/Collections/',
+    'controllersDir' => APP_ROOT . '/app/Controllers/',
+    'modelsDir'      => APP_ROOT . '/app/Models/',
+    'routesDir'      => APP_ROOT . '/app/Routes/',
 
     # -- database
-    'migrationsDir'  => APP_ROOT . '/database/migrations/',     //config()->path->migrationsDir
+    'database'       => APP_ROOT . '/database/',
+    'migrationsDir'  => APP_ROOT . '/database/migrations/',
 
     # -- resources
-    'viewsDir'       => APP_ROOT . '/resources/views/',         //config()->path->viewsDir
-    'langDir'        => APP_ROOT . '/resources/lang/',          //config()->path->langDir
+    'resources'      => APP_ROOT . '/resources/',
+    'viewsDir'       => APP_ROOT . '/resources/views/',
+    'langDir'        => APP_ROOT . '/resources/lang/',
 
     # -- storage
-    'cacheDir'       => APP_ROOT . '/storage/cache/',           //config()->path->cacheDir
-    'logsDir'        => APP_ROOT . '/storage/logs/',            //config()->path->logsDir
-    'sessionDir'     => APP_ROOT . '/storage/session/',         //config()->path->sessionDir
-    'storageViewDir' => APP_ROOT . '/storage/views/',           //config()->path->storageViewDir
+    'storage'        => APP_ROOT . '/storage/',
+    'cacheDir'       => APP_ROOT . '/storage/cache/',
+    'logsDir'        => APP_ROOT . '/storage/logs/',
+    'sessionDir'     => APP_ROOT . '/storage/session/',
+    'storageViewDir' => APP_ROOT . '/storage/views/',
+
+    'sandbox'        => APP_ROOT . '/sandbox/',
+    'config'         => APP_ROOT . '/config/',
+    'public'         => APP_ROOT . '/public/',
 
     # -- system base path
-    'baseUri'        => APP_ROOT,                               //config()->path->baseUri
+    'baseUri'        => APP_ROOT,
 ];

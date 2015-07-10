@@ -21,11 +21,11 @@ class Dispatcher extends ServiceProvider
     $event_manager->attach("dispatch:beforeException",
       function($event, $dispatcher, $exception) {
 
-        $logger = new FileAdapter($this->getConfig()->path->logsDir . 'error.log');
+        $logger = new FileAdapter(config()->path->logsDir . 'error.log');
         $logger->error($exception->getMessage());
 
         if ($exception instanceof DispatchException) {
-            if ($this->getConfig()->app->debug != 'true') {
+            if (config()->app->debug != 'true') {
               echo $dispatcher->getDI()->get('view')->take('error.whoops');
               exit;
 

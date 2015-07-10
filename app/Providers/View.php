@@ -16,7 +16,7 @@ class View extends ServiceProvider
     public function register()
     {
         $view = new PhalconView();
-        $view->setViewsDir($this->getConfig()->path->viewsDir);
+        $view->setViewsDir(config()->path->viewsDir);
 
         $view->registerEngines([
 
@@ -25,7 +25,7 @@ class View extends ServiceProvider
                     $volt = new PhalconVoltEngine($view, $di);
 
                     $volt->setOptions([
-                        'compiledPath' => $this->getConfig()->path->storageViewDir,
+                        'compiledPath' => config()->path->storageViewDir,
                         'compiledSeparator' => '_',
                     ]);
 

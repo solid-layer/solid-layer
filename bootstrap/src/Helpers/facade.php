@@ -118,3 +118,21 @@ if (! function_exists('url')) {
         return  $url->get($href, $params);
     }
 }
+
+
+/*
+|-------------------------------------------------------------
+| Redirect from DI
+|-------------------------------------------------------------
+| Returning the injected 'redirect' in the DI
+*/
+if (! function_exists('redirect')) {
+    function redirect($to = null) 
+    {
+        $redirect = di()->get('redirect');
+        if ($to == null)
+            return $redirect;
+
+        return  $redirect->to($to);
+    }
+}

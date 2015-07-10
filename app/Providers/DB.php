@@ -20,7 +20,7 @@ class DB extends ServiceProvider
 
   public function register()
   {
-    $db_config = $this->getConfig()->database->toArray();
+    $db_config = config()->database->toArray();
 
     $db_adapters = [
         'mysql' => Mysql::class,
