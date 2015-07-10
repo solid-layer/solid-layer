@@ -4,70 +4,47 @@ if (! defined('APP_ROOT')) {
     define('APP_ROOT', dirname(__DIR__));
 
     $di = new Phalcon\Di\FactoryDefault();
-    $GLOBALS['__app'] = new \Phalcon\Mvc\Application($di);
+    $app = new \Phalcon\Mvc\Application($di);
 }
 
-/*
-|-------------------------------------------------------------
-| Load the helper functions
-|-------------------------------------------------------------
-*/
-require_once APP_ROOT . '/bootstrap/src/helpers.php';
-
-
-/*
-|-------------------------------------------------------------
-| Call Composer Autoload
-|-------------------------------------------------------------
-| We must load the composer for dependencies, 
-| pre-instantiated the DotEnv package to support .env files
-*/
+# Load all the dependencies via composer
 require_once APP_ROOT . '/vendor/autoload.php';
+
+# Pre-Load the dotenv, to access all .env files
 $dotenv = new Dotenv\Dotenv(APP_ROOT);
 $dotenv->load();
 
+# Injecting config
+$main_config     = APP_ROOT . '/config/.init.php';
+$env_config_file = APP_ROOT . '/config/' . getenv('APP_ENV') . '/.init.php';
 
-/*
-|-------------------------------------------------------------
-| Call Phalcon
-|-------------------------------------------------------------
-| This must be called, to re-initialize the process of DI
-*/
-$GLOBALS['__config'] = require_once APP_ROOT . '/bootstrap/src/config.php';
+$di->set('config', function() use ($main_config, $env_config_file) {
+    $config = new \Phalcon\Config( require_once $main_config );
 
+    if (file_exists($env_config_file)) {
+        $env_config = new \Phalcon\Config( require_once $env_config_file );
+
+        $config->merge( $env_config );
+    }
+
+    return $config;
+
+}, true);
+
+# Phalcon autoloader
 require_once APP_ROOT . '/bootstrap/src/loader.php';
 
+# Load the facade class
+Bootstrap\Facades\Facade::setFacadeApplication($app);
 
-/*
-|-------------------------------------------------------------
-| Now use the facade created by Taylor Otwell
-|-------------------------------------------------------------
-| We should inject the phalcon $GLOBALS['__app']
-*/
-Bootstrap\Facades\Facade::setFacadeApplication($GLOBALS['__app']);
+# Get all the helpers
+require_once APP_ROOT . '/bootstrap/src/helpers.php';
 
-
-/*
-|-------------------------------------------------------------
-| Get all the routes
-|-------------------------------------------------------------
-*/
-require_once APP_ROOT . '/app/routes.php';
-
-
-/*
-|-------------------------------------------------------------
-| Load all service providers
-|-------------------------------------------------------------
-*/
+# Load all the services
 require_once APP_ROOT . '/bootstrap/src/services.php';
 
+# Get all the routes
+require_once APP_ROOT . '/app/routes.php';
 
-/*
-|-------------------------------------------------------------
-| Enabling Modular framework
-|-------------------------------------------------------------
-| We want to import some packages, to work with
-| views, translations we must create a module for them.
-*/
-$GLOBALS['__app']->registerModules(config()->modules->toArray());
+# Register all the modules
+$app->registerModules(config()->modules->toArray());

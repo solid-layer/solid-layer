@@ -1,11 +1,17 @@
 <?php
 
-$loader = new \Phalcon\Loader();
-
-$config_loader = $GLOBALS['__config']->loader;
+$loader = new \Phalcon\Loader;
 
 $loader
-  ->registerDirs($config_loader->dirs->toArray())
-  ->registerNamespaces($config_loader->namespaces->toArray())
-  ->registerPrefixes($config_loader->prefixes->toArray())
-  ->register();
+    ->registerDirs([
+
+    ])
+    ->registerNamespaces([
+        'App'       => APP_ROOT . '/app/',
+        'Bootstrap' => APP_ROOT . '/bootstrap/src/',
+        'Sandbox'   => APP_ROOT . '/sandbox/',
+    ])
+    ->registerPrefixes([
+
+    ])
+    ->register();

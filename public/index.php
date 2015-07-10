@@ -1,10 +1,9 @@
 <?php
 
-# Even whoops won't work
-if (getenv('APP_DEBUG') == 'true') {
-    ini_set("display_errors", "1");
-    error_reporting(E_ALL);
-}
+use Exception;
+use Whoops\Provider\Phalcon\WhoopsServiceProvider;
+use Phalcon\Mvc\Application;
+
 define('APP_ROOT', dirname(__DIR__));
 
 try {
@@ -19,7 +18,7 @@ try {
     |-------------------------------------------------------------
     */
     if (getenv('APP_DEBUG') == 'true') {
-        new Whoops\Provider\Phalcon\WhoopsServiceProvider($di);
+        new WhoopsServiceProvider($di);
     }
 
 
@@ -30,7 +29,7 @@ try {
     | We must inject our dependencies inside the Phalcon
     | application layer, to make everything works.
     */
-    $__app = new \Phalcon\Mvc\Application($di);
+    $app = new Application($di);
 
 
     /*
@@ -46,8 +45,8 @@ try {
     | Now show the app content based on the uri requests
     |-------------------------------------------------------------
     */
-    echo $__app->handle()->getContent();
+    echo $app->handle()->getContent();
 
-} catch (\Exception $e) {
+} catch (Exception $e) {
     throw $e;
 }

@@ -60,12 +60,9 @@ if (! function_exists('env')) {
 if (! function_exists('csrf_field')) {
   function csrf_field()
   {
-    $security = di()->get('security');
-    $tag = di()->get('tag');
-
-    return $tag->hiddenField([
-      $security->getTokenKey(),
-      'value' => $security->getToken(),
+    return tag()->hiddenField([
+      security()->getTokenKey(),
+      'value' => security()->getToken(),
     ]);
   }
 }
