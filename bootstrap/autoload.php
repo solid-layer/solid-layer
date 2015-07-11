@@ -3,7 +3,7 @@
 if (! defined('APP_ROOT')) {
     define('APP_ROOT', dirname(__DIR__));
 
-    $di = new Phalcon\Di\FactoryDefault();
+    $di = new \Phalcon\Di\FactoryDefault();
     $app = new \Phalcon\Mvc\Application($di);
 }
 
