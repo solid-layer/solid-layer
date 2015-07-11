@@ -15,16 +15,24 @@ env:
   # - PHALCON_VERSION="phalcon-v2.0.0"
 
 before_script:
+  # install  phalcon/cphalcon
   - git clone -q --depth=1 https://github.com/phalcon/cphalcon.git -b ${PHALCON_VERSION}
   - cd cphalcon/ext; export CFLAGS="-g3 -O1 -fno-delete-null-pointer-checks -Wall"; phpize && ./configure --enable-phalcon && make -j4 && make install && phpenv config-add ../unit-tests/ci/phalcon.ini
   - php -r 'echo \Phalcon\Version::get()."\n";'
   - cd ../..
+
+  # copy .env.example as .env file
+  - chmod a+x .env.example
+  - chmod a+x .env
+  - cp .env.example .env
+
+  # run the composer update
   - travis_retry composer self-update
   - travis_retry composer require phpunit/phpunit --prefer-dist
   - travis_retry composer require mockery/mockery --prefer-dist
   - travis_retry composer update --prefer-source --no-interaction --prefer-stable
 
-script: 
+script:
   - chmod a+x ./vendor/bin/phpunit
   - chmod a+x ./bootstrap/phpunit.xml
   - ./vendor/bin/phpunit -c ./bootstrap/phpunit.xml
