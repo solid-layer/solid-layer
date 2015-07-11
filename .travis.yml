@@ -22,9 +22,7 @@ before_script:
   - cd ../..
 
   # copy .env.example as .env file
-  - chmod a+x .env.example
-  - chmod a+x .env
-  - cp .env.example .env
+  - cp ./.env.example ./.env
 
   # run the composer update
   - travis_retry composer self-update
