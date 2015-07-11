@@ -9,11 +9,11 @@ php:
 
 sudo: true
 
-before_install:
-  - chmod a+x bootstrap/tests/memcached.sh
+# before_install:
+#   - chmod a+x bootstrap/tests/memcached.sh
 
-install:
-  - bootstrap/tests/memcached.sh
+# install:
+#   - bootstrap/tests/memcached.sh
 
 env:
   - PHALCON_VERSION="2.0.x"
@@ -35,5 +35,5 @@ before_script:
 
 script: vendor/bin/phpunit -c ./bootstrap/phpunit.xml
 
-services:
-  - memcached
+# services:
+#   - memcached
