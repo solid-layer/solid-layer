@@ -11,4 +11,4 @@ before_script:
   - travis_retry composer self-update
   - travis_retry composer update --prefer-source --no-interaction --prefer-stable
 
-script: vendor/php/phpunit -c ./bootstrap/phpunit.xml
+script: vendor/bin/phpunit -c ./bootstrap/phpunit.xml
