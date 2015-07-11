@@ -3,7 +3,6 @@
 namespace Sandbox;
 
 use Bootstrap\Services\Service\ServiceProvider;
-use Sandbox\App\Console\MySandboxCommand;
 
 class MySandBoxServiceProvider extends ServiceProvider
 {
@@ -34,7 +33,7 @@ class MySandBoxServiceProvider extends ServiceProvider
     {
         require __DIR__ . '/app/routes.php';
 
-        $this->console->add(new MySandboxCommand);
+        $this->console->add(new \Sandbox\App\Console\MySandboxCommand);
 
         return $this;
     }
