@@ -20,6 +20,10 @@ class DB extends ServiceProvider
 
   public function register()
   {
+    if (env('APP_ENV') == 'travis') {
+        return $this;
+    }
+
     $db_config = config()->database->toArray();
 
     $db_adapters = [

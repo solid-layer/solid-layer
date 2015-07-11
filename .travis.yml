@@ -21,8 +21,8 @@ before_script:
   - php -r 'echo \Phalcon\Version::get()."\n";'
   - cd ../..
 
-  # copy .env.example as .env file
-  - cp ./.env.example ./.env
+  # copy .env.travis as .env file
+  - cp ./bootstrap/tests/.env.travis ./.env
 
   # run the composer update
   - travis_retry composer self-update

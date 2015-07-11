@@ -42,7 +42,7 @@ class HelperTest extends PHPUnit_Framework_TestCase
         );
 
         # by default the 'app.cache' is updated
-        $this->assertFalse(
+        $this->assertTrue(
             config('app.cache')
         );
     }
