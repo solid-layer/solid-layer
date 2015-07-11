@@ -7,6 +7,8 @@ php:
   - 7.0
   - hhvm
 
+sudo: true
+
 env:
   - PHALCON_VERSION="2.0.x"
   - PHALCON_VERSION="phalcon-v2.0.3"
