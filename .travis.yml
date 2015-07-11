@@ -4,7 +4,7 @@ php:
   - 5.4
   - 5.5
   - 5.6
-  - 7.0
+  # - 7.0
   # - hhvm
 
 sudo: true
@@ -32,8 +32,8 @@ before_script:
   - php -r 'echo \Phalcon\Version::get()."\n";'
   - cd ..
   - travis_retry composer self-update
-  - travis_retry composer require phpunit/phpunit --prefer-stable
-  - travis_retry composer require mockery/mockery --prefer-stable
+  - travis_retry composer require phpunit/phpunit --prefer-dist
+  - travis_retry composer require mockery/mockery --prefer-dist
   - travis_retry composer update --prefer-source --no-interaction --prefer-stable
 
 script: vendor/bin/phpunit -c ./bootstrap/phpunit.xml
