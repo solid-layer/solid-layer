@@ -1,4 +1,4 @@
-<img src="http://phalconist.com/phalconslayer/slayer/default.svg">
+<img src="http://phalconist.com/phalconslayer/slayer/default.svg"> [![Build Status](https://travis-ci.org/phalconslayer/slayer.svg?branch=master)](https://travis-ci.org/phalconslayer/slayer)
 
 <hr>
 
