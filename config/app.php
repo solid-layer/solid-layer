@@ -100,6 +100,6 @@ return [
         App\Providers\Dispatcher::class,
 
         // Register your own provider here.
-        Sandbox\MySandBoxServiceProvider::class,
+        // Sandbox\MySandBoxServiceProvider::class,
     ],
 ];
