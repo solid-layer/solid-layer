@@ -11,10 +11,10 @@ sudo: true
 
 env:
   - PHALCON_VERSION="2.0.x"
-  - PHALCON_VERSION="phalcon-v2.0.3"
-  - PHALCON_VERSION="phalcon-v2.0.2"
-  - PHALCON_VERSION="phalcon-v2.0.1"
-  - PHALCON_VERSION="phalcon-v2.0.0"
+  # - PHALCON_VERSION="phalcon-v2.0.3"
+  # - PHALCON_VERSION="phalcon-v2.0.2"
+  # - PHALCON_VERSION="phalcon-v2.0.1"
+  # - PHALCON_VERSION="phalcon-v2.0.0"
 
 before_script:
   - ./bootstrap/tests/install-php-extension.sh ${PHALCON_VERSION}
