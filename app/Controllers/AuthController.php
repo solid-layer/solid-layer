@@ -14,7 +14,6 @@ use Lang;       // use Bootstrap\Facades\Lang;
 use Session;    // use Bootstrap\Facades\Session;
 use Tag;        // use Bootstrap\Facades\Tag;
 use Security;   // use Bootstrap\Facades\Security;
-use Bootstrap\Exceptions\AccessNotAllowedException;
 use App\Validation\RegistrationValidator;
 use App\Models\User;
 
