@@ -26,8 +26,11 @@ before_script:
   - export HTTPS_PROXY_REQUEST_FULLURI=false
   - export HTTP_PROXY_REQUEST_FULLURI=true
   - chmod a+x ./bootstrap/tests/install-php-extension.sh
-  - sh ./bootstrap/tests/install-php-extension.sh ${PHALCON_VERSION}
+  # - /usr/bin/env bash ./bootstrap/tests/install-php-extension.sh ${PHALCON_VERSION}
+  - git clone -q --depth=1 https://github.com/phalcon/cphalcon.git -b ${PHALCON_VERSION}
+  - cd cphalcon/ext; export CFLAGS="-g3 -O1 -fno-delete-null-pointer-checks -Wall"; phpize && ./configure --enable-phalcon && make -j4 && make install && phpenv config-add ../unit-tests/ci/phalcon.ini
   - php -r 'echo \Phalcon\Version::get()."\n";'
+  - cd ..
   - travis_retry composer self-update
   - travis_retry composer require phpunit/phpunit --prefer-stable
   - travis_retry composer require mockery/mockery --prefer-stable
