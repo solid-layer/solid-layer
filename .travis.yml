@@ -7,8 +7,19 @@ php:
   - 7.0
   - hhvm
 
+env:
+  - PHALCON_VERSION="2.0.x"
+  - PHALCON_VERSION="phalcon-v2.0.3"
+  - PHALCON_VERSION="phalcon-v2.0.2"
+  - PHALCON_VERSION="phalcon-v2.0.1"
+  - PHALCON_VERSION="phalcon-v2.0.0"
+
 before_script:
+  - ./bootstrap/tests/install-php-extension.sh ${PHALCON_VERSION}
+  - php -r 'echo \Phalcon\Version::get()."\n";'
   - travis_retry composer self-update
+  - travis_retry composer require phpunit/phpunit --prefer-stable
+  - travis_retry composer require mockery/mockery --prefer-stable
   - travis_retry composer update --prefer-source --no-interaction --prefer-stable
 
 script: vendor/bin/phpunit -c ./bootstrap/phpunit.xml
