@@ -2,7 +2,8 @@
 
 namespace App\Controllers;
 
-use Bootstrap\Facades\View;
+# using alias
+use View; // use Bootstrap\Facades\View;
 
 class WelcomeController extends Controller
 {

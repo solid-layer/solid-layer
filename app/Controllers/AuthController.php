@@ -2,17 +2,18 @@
 
 namespace App\Controllers;
 
-use Bootstrap\Facades\URL;
-use Bootstrap\Facades\Auth;
-use Bootstrap\Facades\View;
-use Bootstrap\Facades\Request;
-use Bootstrap\Facades\Redirect;
-use Bootstrap\Facades\Flash;
-use Bootstrap\Facades\Mail;
-use Bootstrap\Facades\Lang;
-use Bootstrap\Facades\Session;
-use Bootstrap\Facades\Tag;
-use Bootstrap\Facades\Security;
+# using alias
+use URL;        // use Bootstrap\Facades\URL;
+use Auth;       // use Bootstrap\Facades\Auth;
+use View;       // use Bootstrap\Facades\View;
+use Request;    // use Bootstrap\Facades\Request;
+use Redirect;   // use Bootstrap\Facades\Redirect;
+use Flash;      // use Bootstrap\Facades\Flash;
+use Mail;       // use Bootstrap\Facades\Mail;
+use Lang;       // use Bootstrap\Facades\Lang;
+use Session;    // use Bootstrap\Facades\Session;
+use Tag;        // use Bootstrap\Facades\Tag;
+use Security;   // use Bootstrap\Facades\Security;
 use Bootstrap\Exceptions\AccessNotAllowedException;
 use App\Validation\RegistrationValidator;
 use App\Models\User;

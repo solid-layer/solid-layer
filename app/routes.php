@@ -1,7 +1,5 @@
 <?php
 
-use Bootstrap\Facades\Route;
-
 /*
 |-------------------------------------------------------------
 | Creating Routes
@@ -31,7 +29,7 @@ Route::add('/', [
 | to check the class located at app/Routes/
 */
 include __DIR__ . '/Routes/AuthRoutes.php';
-route()->mount(new AuthRoutes);
+Route::mount(new AuthRoutes);
 
 include __DIR__ . '/Routes/NewsfeedRoutes.php';
-route()->mount(new NewsfeedRoutes);
+Route::mount(new NewsfeedRoutes);

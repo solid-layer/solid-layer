@@ -78,6 +78,7 @@ return [
     | 
     */
     'services' => [
+        App\Providers\Aliaser::class,
         App\Providers\Console::class,
         App\Providers\Log::class,
         App\Providers\Cache::class,
@@ -101,5 +102,23 @@ return [
 
         // Register your own provider here.
         Sandbox\MySandBoxServiceProvider::class,
+    ],
+
+    'aliases' => [
+        'ACL'          => Bootstrap\Facades\ACL::class,
+        'Auth'         => Bootstrap\Facades\Auth::class,
+        'Filter'       => Bootstrap\Facades\Filter::class,
+        'Flash'        => Bootstrap\Facades\Flash::class,
+        'FlashSession' => Bootstrap\Facades\FlashSession::class,
+        'Lang'         => Bootstrap\Facades\Lang::class,
+        'Mail'         => Bootstrap\Facades\Mail::class,
+        'Redirect'     => Bootstrap\Facades\Redirect::class,
+        'Request'      => Bootstrap\Facades\Request::class,
+        'Route'        => Bootstrap\Facades\Route::class,
+        'Security'     => Bootstrap\Facades\Security::class,
+        'Session'      => Bootstrap\Facades\Session::class,
+        'Tag'          => Bootstrap\Facades\Tag::class,
+        'URL'          => Bootstrap\Facades\URL::class,
+        'View'         => Bootstrap\Facades\View::class,
     ],
 ];
