@@ -9,6 +9,9 @@ php:
 
 sudo: true
 
+before_install:
+  - chmod a+x bootstrap/tests/memcached.sh
+
 install:
   - bootstrap/tests/memcached.sh
 
@@ -22,6 +25,7 @@ env:
 before_script:
   - export HTTPS_PROXY_REQUEST_FULLURI=false
   - export HTTP_PROXY_REQUEST_FULLURI=true
+  - chmod a+x bootstrap/tests/install-php-extension.sh
   - bootstrap/tests/install-php-extension.sh ${PHALCON_VERSION}
   - php -r 'echo \Phalcon\Version::get()."\n";'
   - travis_retry composer self-update
