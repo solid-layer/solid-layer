@@ -30,7 +30,7 @@ class HelperTest extends PHPUnit_Framework_TestCase
     public function testCapabilities()
     {
         # getting the route should return the full path url
-        $this->assertEquals(
+        $this->assertContains(
             env('BASE_URI').'auth/login', 
             route('showLoginForm')
         );
