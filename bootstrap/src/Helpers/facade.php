@@ -136,3 +136,16 @@ if (! function_exists('redirect')) {
         return  $redirect->to($to);
     }
 }
+
+/*
+|-------------------------------------------------------------
+| Request from DI
+|-------------------------------------------------------------
+| Returning the injected 'request' in the DI
+*/
+if (! function_exists('request')) {
+    function request()
+    {
+        return di()->get('request');
+    }
+}

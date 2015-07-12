@@ -17,7 +17,10 @@ class Auth extends AclContainer
             Flash::error('Please login to access this page.');
 
             Redirect::to(
-                URL::route('showLoginForm')
+                URL::get(
+                    URL::route('showLoginForm'), 
+                    ['ref' => URL::current()]
+                )
             );
         }
     }

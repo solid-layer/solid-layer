@@ -8,7 +8,7 @@ class ProviderTest extends PHPUnit_Framework_TestCase
 {
     public function sampleDiContent()
     {
-        return [true, false, 123, '123'];
+        return [true, false, 123, '123ast'];
     }
 
     public function tearDown()

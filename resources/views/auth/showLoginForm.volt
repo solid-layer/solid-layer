@@ -18,6 +18,8 @@
             <form class="form-vertical" method="POST" action="<?php echo $this->url->get(['for' => 'attemptToLogin']) ?>">
                 {{ csrf_field() }}
 
+                <input type="hidden" name="ref" value="{{ request().get('ref') }}"> 
+
                 <div class="form-group">
                     <label>{{ lang.get('auth.login.username_label') }}</label>
                     <input type="text" name="username" class="form-control">

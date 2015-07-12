@@ -35,7 +35,16 @@ class View extends ServiceProvider
                     $compiler->addFunction('csrf_field', 'csrf_field');
                     $compiler->addFunction('dd', 'dd');
                     $compiler->addFunction('config', 'config');
+
+                    # facade
+                    $compiler->addFunction('security', 'security');
+                    $compiler->addFunction('tag', 'tag');
                     $compiler->addFunction('route', 'route');
+                    $compiler->addFunction('response', 'response');
+                    $compiler->addFunction('view', 'view');
+                    $compiler->addFunction('config', 'config');
+                    $compiler->addFunction('url', 'url');
+                    $compiler->addFunction('request', 'request');
 
                     return $volt;
                 },

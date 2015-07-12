@@ -204,6 +204,10 @@ class AuthController extends Controller
         #   $this->auth->attempt(...)
         if ( Auth::attempt($credentials) ) {
 
+            if (Request::has('ref')) {
+                return Redirect::to(Request::get('ref'));
+            }
+
             # alternative call:
             #   $this->auth->redirectIntended(...)
             return Auth::redirectIntended();

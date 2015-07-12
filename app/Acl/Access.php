@@ -21,7 +21,7 @@ class Access extends AclContainer
     {
         # change 'guests' to your user roles
         if (ACL::isAllowed('user', Route::getControllerName(), Route::getActionName()) == false) {
-            throw new AccessNotAllowedException("You are not allowed to access this page");
+            throw new AccessNotAllowedException('You are not allowed to access this page');
         }
     }
 }

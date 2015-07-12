@@ -15,8 +15,9 @@ class AuthRoutes extends RouterGroup
         $this->setPrefix('/auth');
 
 
-        $this->add('/login', [
-            'action' => 'showLoginForm'
+        $this->add('/login/:params', [
+            'action' => 'showLoginForm',
+            'params' => 1,
         ])->setName('showLoginForm');
 
 

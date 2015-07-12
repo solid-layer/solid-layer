@@ -15,6 +15,6 @@ class NewsfeedController extends Controller
 
     public function indexAction()
     {
-
+        return View::make('newsfeed.showLandingPage');
     }
 }
