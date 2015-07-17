@@ -3,8 +3,8 @@
 namespace App\Controllers;
 
 # using alias
-use Request; // use Bootstrap\Facades\Request;
-use View;    // use Bootstrap\Facades\View;
+use Request; # use Bootstrap\Facades\Request;
+use View;    # use Bootstrap\Facades\View;
 
 class NewsfeedController extends Controller
 {

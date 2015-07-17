@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 # using alias
-use View; // use Bootstrap\Facades\View;
+use View; # use Bootstrap\Facades\View;
 
 class WelcomeController extends Controller
 {

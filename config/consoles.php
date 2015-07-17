@@ -2,14 +2,14 @@
 
 return [
 
-    // add your console commands here ...
+    # ---- add your console commands here ...
 
-    /*
-    |--------------------------------------------------------
-    | PhalconSlayer Registered Commands
-    |---------------------------------------------------------
-    | Pre-registed commands
-    */
+
+    # -----------------------------------------------------------
+    # PhalconSlayer Registered Commands
+    # -----------------------------------------------------------
+    # ---- Pre-registed commands
+    Bootstrap\Console\MailInlinerCommand::class,
     Bootstrap\Console\VendorPublishCommand::class,
     Bootstrap\Console\ClearCacheCommand::class,
     Bootstrap\Console\ClearSessionCommand::class,
@@ -20,10 +20,10 @@ return [
     Bootstrap\Console\MakeModelCommand::class,
     Bootstrap\Console\MakeCollectionCommand::class,
     Bootstrap\Console\ServeCommand::class,
-    Bootstrap\Support\Phinx\Create::class,
-    Bootstrap\Support\Phinx\Migrate::class,
-    Bootstrap\Support\Phinx\Rollback::class,
-    Bootstrap\Support\Phinx\Status::class,
-    Bootstrap\Support\Phinx\Test::class,
-    // Bootstrap\Support\Phinx\InitAdapter::class,
+    Bootstrap\Support\Phinx\Console\Command\Create::class,
+    Bootstrap\Support\Phinx\Console\Command\Migrate::class,
+    Bootstrap\Support\Phinx\Console\Command\Rollback::class,
+    Bootstrap\Support\Phinx\Console\Command\Status::class,
+    Bootstrap\Support\Phinx\Console\Command\Test::class,
+    # ---- Bootstrap\Support\Phinx\Console\Command\Init::class,
 ];

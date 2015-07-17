@@ -112,8 +112,9 @@ if (! function_exists('url')) {
     function url($href = null, $params = []) 
     {
         $url = di()->get('url');
-        if ($href == null)
+        if ($href == null) {
             return $url;
+        }
 
         return  $url->get($href, $params);
     }

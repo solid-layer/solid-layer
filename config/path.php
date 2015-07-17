@@ -2,43 +2,42 @@
 
 return [
 
-    // add your path here ...
+    # ---- add your path here ...
 
-    /*
-    |--------------------------------------------------------
-    | PhalconSlayer Registered Path
-    |---------------------------------------------------------
-    | You can access this path using this function
-    */
+    # ------------------------------------------------------------
+    # PhalconSlayer Registered Path
+    # ------------------------------------------------------------
+    # ---- You can access this path using this function
 
-    # -- app
-    'app'            => APP_ROOT . '/app/',
+
+    # ---- app
+    'app'            => app_path(),
     'consoleDir'     => APP_ROOT . '/app/Console/',
     'collectionsDir' => APP_ROOT . '/app/Collections/',
     'controllersDir' => APP_ROOT . '/app/Controllers/',
     'modelsDir'      => APP_ROOT . '/app/Models/',
     'routesDir'      => APP_ROOT . '/app/Routes/',
 
-    # -- database
-    'database'       => APP_ROOT . '/database/',
+    # ---- database
+    'database'       => database_path(),
     'migrationsDir'  => APP_ROOT . '/database/migrations/',
 
-    # -- resources
-    'resources'      => APP_ROOT . '/resources/',
+    # ---- resources
+    'resources'      => resources_path(),
     'viewsDir'       => APP_ROOT . '/resources/views/',
     'langDir'        => APP_ROOT . '/resources/lang/',
 
-    # -- storage
-    'storage'        => APP_ROOT . '/storage/',
+    # ---- storage
+    'storage'        => storage_path(),
     'cacheDir'       => APP_ROOT . '/storage/cache/',
     'logsDir'        => APP_ROOT . '/storage/logs/',
     'sessionDir'     => APP_ROOT . '/storage/session/',
     'storageViewDir' => APP_ROOT . '/storage/views/',
 
-    'sandbox'        => APP_ROOT . '/sandbox/',
-    'config'         => APP_ROOT . '/config/',
-    'public'         => APP_ROOT . '/public/',
+    'sandbox'        => sandbox_path(),
+    'config'         => config_path(),
+    'public'         => public_path(),
 
-    # -- system base path
-    'baseUri'        => APP_ROOT,
+    # ---- system base path
+    'baseUri'        => base_path(),
 ];

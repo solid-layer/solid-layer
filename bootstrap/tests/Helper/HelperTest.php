@@ -31,7 +31,7 @@ class HelperTest extends PHPUnit_Framework_TestCase
     {
         # getting the route should return the full path url
         $this->assertContains(
-            env('BASE_URI').'auth/login', 
+            url()->getBaseUri().'auth/login', 
             route('showLoginForm')
         );
 
@@ -42,8 +42,12 @@ class HelperTest extends PHPUnit_Framework_TestCase
         );
 
         # by default the 'app.cache' is updated
-        $this->assertTrue(
-            config('app.cache')
+        $this->assertContains(
+            config('app.cache'),
+            [
+                true,
+                false,
+            ]
         );
     }
 }

@@ -2,40 +2,45 @@
 
 return [
 
-    /*
-    |--------------------------------------------------------
-    | Application Cache
-    |--------------------------------------------------------
-    | We need to cache our views and config for 
-    | efficiency, this will never affect user's cache
-    */
+    # ------------------------------------------------------------
+    # Application Cache
+    # ------------------------------------------------------------
+    # ---- We need to cache our views and config for 
+    # efficiency, this will never affect user's cache
     'cache' => true,
 
-    /*
-    |--------------------------------------------------------
-    | Application Debugging
-    |--------------------------------------------------------
-    | To easily track your bugs using pretty errors (whoops)
-    */
+
+
+    # ------------------------------------------------------------
+    # Application Debugging
+    # ------------------------------------------------------------
+    # ---- To easily track your bugs using pretty errors (whoops)
     'debug' => false,
 
-    /*
-    |--------------------------------------------------------
-    | Language Settings
-    |--------------------------------------------------------
-    | The place where you should supposed to assign which 
-    | language folder will be used.
-    */
+
+
+    # ------------------------------------------------------------
+    # Language Settings
+    # ------------------------------------------------------------
+    # ---- The place where you should supposed to assign which 
+    # language folder will be used.
     'lang' => 'en',
 
 
-    /*
-    |--------------------------------------------------------
-    | Mailer Settings
-    |--------------------------------------------------------
-    | To be able to send an email, provide your email setting
-    | mailer adapter should be
-    */
+
+    # ------------------------------------------------------------
+    # Base URI
+    # ------------------------------------------------------------
+    # ---- Define your own base uri, using console the default
+    # will be below
+    'base_uri' => 'http://localhost:8082/',
+
+
+    # ------------------------------------------------------------
+    # Mailer Settings
+    # ------------------------------------------------------------
+    # ---- To be able to send an email, provide your email setting
+    # mailer adapter should be
     'mailer' => [
         'adapter'    => env('MAILER_ADAPTER', 'swift'),
         'host'       => env('MAILER_HOST'),
@@ -46,62 +51,62 @@ return [
         'from'       => env('MAILER_MAIL_FROM'),
 
         'classes' => [
-            'swift'   => Bootstrap\Support\Mail\SwiftMailerAdapter::class,
-            'mailgun' => Bootstrap\Support\Mail\MailgunAdapter::class,
+            'swift'   => 
+                Bootstrap\Support\Mail\SwiftMailerAdapter::class,
+            'mailgun' => 
+                Bootstrap\Support\Mail\MailgunAdapter::class,
         ]
     ],
 
 
-    /*
-    |--------------------------------------------------------
-    | Authentication Settings
-    |---------------------------------------------------------
-    | So, we want to use slayer's model to process auto auth
-    */
+
+    # ------------------------------------------------------------
+    # Authentication Settings
+    # ------------------------------------------------------------
+    # ---- So, we want to use slayer's model to process auto auth
     'auth' => [
 
-        // pass in your user model
+        # - pass in your user model
         'model'          => 'App\Models\User',
 
-        // assigned field on what field will be used
+        # - assigned field on what field will be used
         'password_field' => 'password',
 
-        // When calling $this->auth->redirectIntended()
+        # - When calling $this->auth->redirectIntended()
         'auth_redirect'  => '/newsfeed',
     ],
 
 
-    /*
-    |--------------------------------------------------------
-    | Service Providers
-    |---------------------------------------------------------
-    | 
-    */
-    'services' => [
-        App\Providers\Aliaser::class,
-        App\Providers\Console::class,
-        App\Providers\Log::class,
-        App\Providers\Cache::class,
-        App\Providers\Lang::class,
-        App\Providers\Mail::class,
-        App\Providers\Flash::class,
-        App\Providers\FlashSession::class,
-        App\Providers\Redirect::class,
-        App\Providers\Auth::class,
-        App\Providers\URL::class,
-        App\Providers\DB::class,
-        App\Providers\MetadataAdapter::class,
-        App\Providers\Session::class,
-        App\Providers\Router::class,
-        App\Providers\Response::class,
-        App\Providers\Request::class,
-        App\Providers\Filter::class,
-        App\Providers\ACL::class,
-        App\Providers\View::class,
-        App\Providers\Dispatcher::class,
 
-        // Register your own provider here.
+    # ------------------------------------------------------------
+    # Service Providers
+    # ------------------------------------------------------------
+    'services' => [
+        App\Providers\Slayer\URL::class,
+        App\Providers\Slayer\Console::class,
+        App\Providers\Slayer\Aliaser::class,
+        App\Providers\Slayer\Log::class,
+        App\Providers\Slayer\Cache::class,
+        App\Providers\Slayer\Lang::class,
+        App\Providers\Slayer\Mail::class,
+        App\Providers\Slayer\Flash::class,
+        App\Providers\Slayer\FlashSession::class,
+        App\Providers\Slayer\Redirect::class,
+        App\Providers\Slayer\Auth::class,
+        App\Providers\Slayer\DB::class,
+        App\Providers\Slayer\MetadataAdapter::class,
+        App\Providers\Slayer\Session::class,
+        App\Providers\Slayer\Router::class,
+        App\Providers\Slayer\Response::class,
+        App\Providers\Slayer\Request::class,
+        App\Providers\Slayer\Filter::class,
+        App\Providers\Slayer\ACL::class,
+        App\Providers\Slayer\View::class,
+        App\Providers\Slayer\Dispatcher::class,
+
+        # - Register your own provider below.
         Sandbox\MySandBoxServiceProvider::class,
+
     ],
 
     'aliases' => [
@@ -120,5 +125,7 @@ return [
         'Tag'          => Bootstrap\Facades\Tag::class,
         'URL'          => Bootstrap\Facades\URL::class,
         'View'         => Bootstrap\Facades\View::class,
+
     ],
-];
+
+]; # - end of return

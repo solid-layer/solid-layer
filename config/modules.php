@@ -1,18 +1,15 @@
 <?php
 
 return [
+
     'slayer' => function($di) {
 
-        # By default, the sample below are already loaded
-        # when providers are loaded.
         // $di
         //     ->get('view')
         //     ->setViewsDir(config()->path->viewsDir);
-
         // $di
         //     ->get('dispatcher')
         //     ->setDefaultNamespace('App\Controllers');
-
     },
 
     'sandbox' => function($di) {

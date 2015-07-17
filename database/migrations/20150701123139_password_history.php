@@ -1,6 +1,7 @@
 <?php
 
-use Phinx\Migration\AbstractMigration;
+// use Phinx\Migration\AbstractMigration;
+use Bootstrap\Support\Phinx\Migration\AbstractMigration;
 
 class PasswordHistory extends AbstractMigration
 {
@@ -12,14 +13,7 @@ class PasswordHistory extends AbstractMigration
             $password_history
                 ->addColumn('user_id', 'integer')
                 ->addColumn('old_password', 'string')
-                // ->addTimestamps()
-                ->addColumn('created_at', 'timestamp', [
-                    'default' => 'CURRENT_TIMESTAMP'
-                ])
-                ->addColumn('updated_at', 'timestamp', [
-                    'default' => 'CURRENT_TIMESTAMP', 
-                    'update' => 'CURRENT_TIMESTAMP',
-                ])
+                ->addTimestamps()
                 ->create();
         }
 

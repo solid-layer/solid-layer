@@ -2,18 +2,18 @@
 
 namespace App\Controllers;
 
-# using alias
-use URL;        // use Bootstrap\Facades\URL;
-use Auth;       // use Bootstrap\Facades\Auth;
-use View;       // use Bootstrap\Facades\View;
-use Request;    // use Bootstrap\Facades\Request;
-use Redirect;   // use Bootstrap\Facades\Redirect;
-use Flash;      // use Bootstrap\Facades\Flash;
-use Mail;       // use Bootstrap\Facades\Mail;
-use Lang;       // use Bootstrap\Facades\Lang;
-use Session;    // use Bootstrap\Facades\Session;
-use Tag;        // use Bootstrap\Facades\Tag;
-use Security;   // use Bootstrap\Facades\Security;
+# ---- using aliasias
+use URL;        # use Bootstrap\Facades\URL;
+use Auth;       # use Bootstrap\Facades\Auth;
+use View;       # use Bootstrap\Facades\View;
+use Request;    # use Bootstrap\Facades\Request;
+use Redirect;   # use Bootstrap\Facades\Redirect;
+use Flash;      # use Bootstrap\Facades\Flash;
+use Mail;       # use Bootstrap\Facades\Mail;
+use Lang;       # use Bootstrap\Facades\Lang;
+use Session;    # use Bootstrap\Facades\Session;
+use Tag;        # use Bootstrap\Facades\Tag;
+use Security;   # use Bootstrap\Facades\Security;
 use App\Validation\RegistrationValidator;
 use App\Models\User;
 
@@ -36,15 +36,17 @@ class AuthController extends Controller
 
     public function showRegistrationFormAction()
     {
-        # just the info message
-        Flash::warning(Lang::get('responses/register.pre_flash_message'));
+        # ---- just the info message
+        Flash::warning(
+            Lang::get('responses/register.pre_flash_message')
+        );
 
 
-        # by default there is no session[input] found
+        # ---- by default there is no session[input] found
         # or else we need to persists the form by
         # assigning a default value
-        # alternative call:
-        #   $this->session->has(...)
+        # ---- alternative call:
+        #           $this->session->has(...)
         if (Session::has('input')) {
 
             # alternative call:
@@ -62,11 +64,12 @@ class AuthController extends Controller
         }
 
 
-        # by default, phalcon is smart enough to get
+        # ---- by default, phalcon is smart enough to get
         # 'auth.showRegistrationForm' as 
         # '<controller>.<action>'
-        # alternative call:
-        #   $this->view->make(...)
+        # ---- alternative call:
+        #           $this->view->make(...)
+
         // return View::make('auth.showRegistrationForm');
     }
 
@@ -77,30 +80,34 @@ class AuthController extends Controller
 
         $inputs = $this->request->get();
 
-        # let's validate the requests
+        # ---- let's validate the requests
         $messages = $validator->validate($inputs);
 
         $error_messages = '';
 
-        # if a message found, then let's process the redirection
+        # ---- if a message found, then let's process the 
+        # redirection
         if (count($messages)) {
 
-            # let's store the request to session[input]
+            # ---- let's store the request to session[input]
             # for persistence
-            # alternative call:
-            #   $this->session->set(...)
+            # ---- alternative call:
+            #           $this->session->set(...)
             Session::set('input', $this->request->get());
 
 
-            # if there is an error, let's map all the erros into one message
+            # ---- if there is an error, let's map all the erros 
+            # into one message
             foreach ($messages as $m) {
-                $error_messages .= '<li>' . $m->getMessage() . '</li>';
+                $error_messages .= 
+                    '<li>' . $m->getMessage() . '</li>';
             }
         }
 
-        # validate password and repeat password mismatch
+        # ---- validate password and repeat password mismatch
         if ($inputs['password'] != $inputs['repassword']) {
-            $error_messages .= '<li>Password and Repeat mismatch</li>';
+            $error_messages .= 
+                '<li>Password and Repeat mismatch</li>';
         }
 
         if (strlen($error_messages) != 0) {
@@ -111,21 +118,26 @@ class AuthController extends Controller
             );
 
 
-            # flash the error message
-            # alternative call:
-            #   $this->flash->error(...)
+            # ---- flash the error message
+            # ---- alternative call:
+            #           $this->flash->error(...)
             Flash::error($error_messages);
 
 
-            # redirect the user from the previous requests
-            # alternative call:
-            #   $this->request->previous()
+            # ---- redirect the user from the previous requests
+            # ---- alternative call:
+            #           $this->request->previous()
             return Redirect::to(URL::previous());
         }
 
 
-        # generate a token 
-        $token = sha1(uniqid() . md5(str_random() . date('Ymdhis') . uniqid()));
+        # ---- generate a token 
+        $token = sha1( uniqid() . md5(
+                str_random() . 
+                date('Ymdhis') . 
+                uniqid()
+            )
+        );
 
         $user = new User;
         $user->create([
@@ -134,7 +146,8 @@ class AuthController extends Controller
             'password' => Security::hash($inputs['password']),
             'token' => $token,
         ]);
-        # alternative creation:
+
+        # ---- alternative creation:
         //  $user->email = $inputs['email'];
         //  $user->username = $inputs['username'];
         //  $user->password = Security::hash($inputs['password']);
@@ -142,52 +155,59 @@ class AuthController extends Controller
         //  $user->create();
 
 
-        # generate a full path url providing the token
-        # alternative call:
-        #   $this->url->get(...)
+        # ---- generate a full path url providing the token
+        # ---- alternative call:
+        #           $this->url->get(...)
         $url = URL::route('activateUser', [
             'token' => $token,
         ]);
 
 
-        # alternative call:
-        #   $this->mail->send(..., [...], function() {})
-        Mail::send('emails.registered', ['url' => $url], function($mail) use ($inputs) {
-            $mail->to([$inputs['email']]);
-            $mail->subject('You have successfully registered.');
-        });
+        # ---- alternative call:
+        #           $this->mail->send(..., [...], function() {})
+        Mail::send('emails.registered', ['url' => $url], 
+            function($mail) use ($inputs) {
+                $mail->to([$inputs['email']]);
+                $mail->subject(
+                    'You have successfully registered.'
+                );
+            }
+        );
 
 
-        # flash success
-        # alternative call:
-        #   $this->flash->success(...)
-        Flash::success(Lang::get('responses/register.creation_success'));
+        # ---- flash success
+        # ---- alternative call:
+        #           $this->flash->success(...)
+        Flash::success(
+            Lang::get('responses/register.creation_success')
+        );
 
 
-        # alternative call:
-        #   $this->redirect->to(...)
+        # ---- alternative call:
+        #           $this->redirect->to(...)
         return Redirect::to(URL::route('showLoginForm'));
     }
 
 
     public function showLoginFormAction()
     {
-        # just the info message
-        # alternative call:
-        #   $this->flash->notice(...)
+        # ---- just the info message
+        # ---- alternative call:
+        #           $this->flash->notice(...)
         Flash::notice(
 
-            # alternative call:
-            #   $this->lang->get(...)
+            # ---- alternative call:
+            #           $this->lang->get(...)
             Lang::get(
                 'responses/login.pre_flash_message'   
             )
         );
 
-        # by default, phalcon is smart enough
+        # ---- by default, phalcon is smart enough
         # to get the 'auth.showLoginForm' as '<controller>.<action>' 
-        # alternative call:
-        #   $this->view->make(...)
+        # ---- alternative call:
+        #           $this->view->make(...)
+
         // return View::make('auth.showLoginForm');
     }
 
@@ -200,47 +220,47 @@ class AuthController extends Controller
             'is_activated' => 1,
         ];
 
-        # alternative call:
-        #   $this->auth->attempt(...)
+        # ---- alternative call:
+        #           $this->auth->attempt(...)
         if ( Auth::attempt($credentials) ) {
 
             if (Request::has('ref')) {
                 return Redirect::to(Request::get('ref'));
             }
 
-            # alternative call:
-            #   $this->auth->redirectIntended(...)
+            # ---- alternative call:
+            #           $this->auth->redirectIntended(...)
             return Auth::redirectIntended();
         }
 
 
-        # alternative call:
-        #   $this->redirect->error()
+        # ---- alternative call:
+        #           $this->redirect->error()
         Flash::error(
             Lang::get('responses/login.no_user')
         );
 
 
-        # alternative call
-        #   $this->redirect->previous();
+        # ---- alternative call
+        #           $this->redirect->previous();
         return Redirect::to(URL::previous());
     }
 
 
     public function logoutAction()
     {
-        # now let's destroy our auth
-        # alternative call:
-        #   $this->auth->destroy()
+        # ---- now let's destroy our auth
+        # ---- alternative call:
+        #           $this->auth->destroy()
         Auth::destroy();
 
-        # then redirect the user
-        # alternative call:
-        #   $this->redirect->to([...])
+        # ---- then redirect the user
+        # ---- alternative call:
+        #           $this->redirect->to([...])
         return Redirect::to(
 
-            # alternative call:
-            #   $this->url->get([...])
+            # ---- alternative call:
+            #           $this->url->get([...])
             URL::route('showLoginForm')
         );
     }
@@ -248,7 +268,8 @@ class AuthController extends Controller
 
     public function activateUserAction($token)
     {
-        $conditions = 'token = :token: AND is_activated = :isActivated:';
+        $conditions = 
+            'token = :token: AND is_activated = :isActivated:';
 
         $params = [
             'token' => $token,
@@ -261,19 +282,22 @@ class AuthController extends Controller
         ])->getFirst();
 
 
-        # return 404, if the condition not found
+        # ---- return 404, if the condition not found
         if (! $user) {
-            Flash::warning('We cant find your request, please try again, or contact us.');
+            Flash::warning(
+                'We cant find your request, please ' .
+                'try again, or contact us.'
+            );
 
             return View::make('error.show404');
         }
 
 
-        # activate the user
+        # ---- activate the user
         $user->setIsActivated(true);
 
 
-        # if user fails to save, show an error
+        # ---- if user fails to save, show an error
         if ($user->save() == false) {
 
             foreach ($user->getMessages() as $message) {
@@ -281,11 +305,13 @@ class AuthController extends Controller
                 Flash::error($message);
             }
         } else {
-            Flash::success('You have successfully activated your account, you are now allowed to login.');
+            Flash::success(
+                'You have successfully activated your account, ' . 
+                'you are now allowed to login.'
+            );
         }
 
-
-        # then redirect the user with the success message
+        # ---- then redirect the user with the success message
         return Redirect::to(URL::route('showLoginForm'));
     }
 }

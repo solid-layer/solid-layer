@@ -1,6 +1,7 @@
 <?php
 
-use Phinx\Migration\AbstractMigration;
+// use Phinx\Migration\AbstractMigration;
+use Bootstrap\Support\Phinx\Migration\AbstractMigration;
 
 class User extends AbstractMigration
 {
@@ -20,14 +21,7 @@ class User extends AbstractMigration
             ->addIndex(['first_name'])
             ->addIndex(['last_name'])
             ->addIndex(['token'])
-            // ->addTimestamps()
-            ->addColumn('created_at', 'timestamp', [
-                'default' => 'CURRENT_TIMESTAMP'
-            ])
-            ->addColumn('updated_at', 'timestamp', [
-                'default' => 'CURRENT_TIMESTAMP', 
-                'update' => 'CURRENT_TIMESTAMP',
-            ])
+            ->addTimestamps()
             ->create();
     }
 

@@ -22,6 +22,6 @@ class URL extends Phalcon_Mvc_Url
 
     public function current()
     {
-        return env('BASE_URI') . Route::getRewriteUri();
+        return $this->getBaseUri() . Route::getRewriteUri();
     }
 }
