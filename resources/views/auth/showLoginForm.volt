@@ -15,7 +15,7 @@
     <div class="col-sm-4 col-sm-offset-4">
             {{ flashSession.output() }}
             <hr>
-            <form class="form-vertical" method="POST" action="<?php echo $this->url->get(['for' => 'attemptToLogin']) ?>">
+            <form class="form-vertical" method="POST" action="<?php echo $this->url->get(['for' => 'attemptToLogin']) ?>" autocomplete="off">
                 {{ csrf_field() }}
 
                 <input type="hidden" name="ref" value="{{ request().get('ref') }}"> 
@@ -29,10 +29,10 @@
                     <input type="password" name="password" class="form-control">
                 </div>
                 <div class="pull-left">
-                    <a href="<?php echo $this->url->get(['for' => 'showRegistrationForm']) ?>" class="btn btn-xs btn-info">{{ lang.get('auth.button.register_button') }}</a> <a href="" class="btn btn-xs btn-danger">{{ lang.get('auth.button.forgot_button') }}</a>
+                    <a href="<?php echo $this->url->get(['for' => 'showRegistrationForm']) ?>" class="btn btn-info">{{ lang.get('auth.button.register_button') }}</a> <a href="" class="btn btn-danger">{{ lang.get('auth.button.forgot_button') }}</a>
                 </div>
                 <div class="pull-right">
-                    <input type="submit" value="{{ lang.get('auth.button.login_button') }}" class="btn btn-primary">
+                    <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> {{ lang.get('auth.button.login_button') }}</button>
                 </div>
             </form>
     </div>

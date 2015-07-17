@@ -8,8 +8,7 @@
 
         <title>{% block title %}{% endblock %}</title>
 
-        <link rel="stylesheet" type="text/css" href="{{static_url('css/bootstrap.min.css')}}">
-        <link rel="stylesheet" type="text/css" href="{{static_url('css/site.min.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{ base_uri('css/bootstrap.min.css') }}">
         <style type="text/css">
             body {
               background-color: #fefbf9 !important;
@@ -24,9 +23,7 @@
             {% block content %}{% endblock %}
         </div>
 
-        <script type="text/javascript" src="{{static_url('js/jquery-1.10.1.min.js')}}"></script>
-        <script type="text/javascript" src="{{static_url('js/bootstrap.min.js')}}"></script>
-        <script type="text/javascript" src="{{static_url('js/site.min.js')}}"></script>
+        <script type="text/javascript" src="{{ base_uri('js/bootstrap.min.js') }}"></script>
         {% block footer %}{% endblock %} 
     </body>
 </html>

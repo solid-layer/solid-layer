@@ -15,7 +15,7 @@
     <div class="col-sm-4 col-sm-offset-4">
             {{ flashSession.output() }}
             <hr>
-            <form class="form-vertical" method="POST" action="{{ url.get(['for':'storeRegistrationForm']) }}">
+            <form class="form-vertical" method="POST" action="{{ url.get(['for':'storeRegistrationForm']) }}" autocomplete="off">
                 <input type="hidden" name="{{ security.getTokenKey() }}" value="{{ security.getToken() }}"/>
                 <div class="form-group">
                     <label>Email</label>
@@ -34,7 +34,7 @@
                     {{ password_field('repassword', 'class': 'form-control') }}
                 </div>
                 <div class="pull-right">
-                    <input type="submit" value="Register" class="btn btn-info">
+                    <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> Register </button>
                 </div>
             </form>
     </div>

@@ -30,6 +30,8 @@ class View extends ServiceProvider
                     ]);
 
                     $compiler = $volt->getCompiler();
+
+                    # others
                     $compiler->addFunction('env', 'env');
                     $compiler->addFunction('echo_pre', 'echo_pre');
                     $compiler->addFunction('csrf_field', 'csrf_field');
@@ -45,6 +47,9 @@ class View extends ServiceProvider
                     $compiler->addFunction('config', 'config');
                     $compiler->addFunction('url', 'url');
                     $compiler->addFunction('request', 'request');
+
+                    # paths
+                    $compiler->addFunction('base_uri', 'base_uri');
 
                     return $volt;
                 },

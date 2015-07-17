@@ -4,6 +4,7 @@
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
       <title>Slayer - Structured Phalcon Framework</title>
       <link href='http://fonts.googleapis.com/css?family=Josefin+Sans:100,400' rel='stylesheet' type='text/css'>
+      <link rel="stylesheet" type="text/css" href="{{ base_uri('css/bootstrap.min.css') }}">
       <style type="text/css">
         body {
           font-family: 'Josefin Sans', sans-serif;
@@ -24,7 +25,9 @@
 
         <h1 style="margin:0;">Slayer</h1>
         <p>Structured Phalcon Framework</p>
-        <a style="text-decoration:underline" href="" target="_blank">Let's get Started!</a>
+        <a class="btn btn-link" href="http://slayer.readthedocs.org" target="_blank">Let's get Started!</a>
+
+        <a class="btn btn-primary btn-xs" href="{{ route('showLoginForm') }}"><span class="glyphicon glyphicon-bookmark"></span> Try sample forms</a>
       </div>
     </body>
 </html>

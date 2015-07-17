@@ -15,9 +15,15 @@ class Cache extends ServiceProvider
     public function register()
     {
         # 2 days cache
-        $front_cache = new FrontData(array(
-            'lifetime' => 172800
-        ));
+        $lifetime = 172800;
+
+        if (config()->app->debug) {
+            $lifetime = 1;
+        }
+
+        $front_cache = new FrontData([
+            'lifetime' => $lifetime,
+        ]);
 
         $cache = new BackFile($front_cache, [
             'cacheDir' => config()->path->cacheDir,
