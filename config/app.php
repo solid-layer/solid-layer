@@ -27,13 +27,20 @@ return [
     'lang' => 'en',
 
 
+    # ------------------------------------------------------------
+    # Schemes
+    # ------------------------------------------------------------
+    # ---- Mark true if your domain supports ssl, and to force 
+    # re-write every url to ssl
+    'ssl' => false,
+
 
     # ------------------------------------------------------------
     # Base URI
     # ------------------------------------------------------------
     # ---- Define your own base uri, using console the default
     # will be below
-    'base_uri' => 'http://localhost:8082/',
+    'base_uri' => 'localhost:8082',
 
 
     # ------------------------------------------------------------
@@ -90,7 +97,7 @@ return [
         App\Providers\Slayer\Lang::class,
         App\Providers\Slayer\Mail::class,
         App\Providers\Slayer\Flash::class,
-        App\Providers\Slayer\FlashSession::class,
+        App\Providers\Slayer\FlashBag::class,
         App\Providers\Slayer\Redirect::class,
         App\Providers\Slayer\Auth::class,
         App\Providers\Slayer\DB::class,
@@ -114,7 +121,7 @@ return [
         'Auth'         => Bootstrap\Facades\Auth::class,
         'Filter'       => Bootstrap\Facades\Filter::class,
         'Flash'        => Bootstrap\Facades\Flash::class,
-        'FlashSession' => Bootstrap\Facades\FlashSession::class,
+        'FlashBag'     => Bootstrap\Facades\FlashBag::class,
         'Lang'         => Bootstrap\Facades\Lang::class,
         'Mail'         => Bootstrap\Facades\Mail::class,
         'Redirect'     => Bootstrap\Facades\Redirect::class,

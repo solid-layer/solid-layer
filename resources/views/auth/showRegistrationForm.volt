@@ -13,7 +13,7 @@
 {% block content %}
     <div class="marginTop"></div>
     <div class="col-sm-4 col-sm-offset-4">
-            {{ flashSession.output() }}
+            {{ flash_bag.output() }}
             <hr>
             <form class="form-vertical" method="POST" action="{{ url.get(['for':'storeRegistrationForm']) }}" autocomplete="off">
                 <input type="hidden" name="{{ security.getTokenKey() }}" value="{{ security.getToken() }}"/>

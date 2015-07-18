@@ -24,6 +24,3 @@ Route::mount(new AuthRoutes);
 
 include __DIR__ . '/Routes/NewsfeedRoutes.php';
 Route::mount(new NewsfeedRoutes);
-
-include __DIR__ . '/Routes/EmailInlinerRoutes.php';
-Route::mount(new EmailInlinerRoutes);

@@ -3,43 +3,22 @@
 namespace App\Models;
 
 use Phalcon\Mvc\Model;
+use App\Models\Traits\Timestampable;
+use App\Models\Traits\SoftDeletable;
 
 class User extends Model
 {
+    use Timestampable;
+    use SoftDeletable;
+
     # ---- The table columns
     public $email;
-
     public $username;
-
     public $password;
-
     public $token;
-
     protected $first_name;
-
     protected $last_name;
-
     protected $is_activated;
-
-
-    public function initialize()
-    {
-        # ---- created_at and updated_at are not nullable
-        # so we should skip these fields upon creating
-        # a new record
-        $this->skipAttributesOnCreate([
-            'created_at',
-            'updated_at',
-        ]);
-
-        # ---- updated_at is not nullable
-        # so we should skip this field upon updating
-        # a record
-        $this->skipAttributesOnUpdate([
-            'updated_at',
-        ]);
-    }
-
 
     /**
      * By every request, phalcon will always pull this function

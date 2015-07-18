@@ -14,7 +14,6 @@ class URL extends ServiceProvider
     public function register()
     {
         $url = new UrlResolver();
-        $url->setBaseUri(config()->app->base_uri);
 
         return $url;
     }

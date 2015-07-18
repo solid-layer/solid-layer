@@ -8,6 +8,6 @@ class Status extends \Phinx\Console\Command\Status
     {
         parent::configure();
 
-        $this->setName('phinx:status');
+        $this->setName('db:status');
     }
 }

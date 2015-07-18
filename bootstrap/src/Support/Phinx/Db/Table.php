@@ -19,4 +19,14 @@ class Table extends PhinxTable
 
         return $this;
     }
+
+    public function addSoftDeletes()
+    {
+        $this
+            ->addColumn('deleted_at', 'timestamp', [
+                'null' => true,
+            ]);
+
+        return $this;
+    }
 }

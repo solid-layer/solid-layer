@@ -2,12 +2,36 @@
 
 namespace Bootstrap\Support\Phalcon\Mvc;
 
-use Phalcon\Mvc\Url as Phalcon_Mvc_Url;
+use Phalcon\Mvc\Url as PhalconMvcUrl;
 use Bootstrap\Facades\Response;
 use Bootstrap\Facades\Route;
 
-class URL extends Phalcon_Mvc_Url
+class URL extends PhalconMvcUrl
 {
+    public function __construct()
+    {
+        $this->setBaseUri($this->getScheme() . $this->getHost() . '/');
+    }
+
+    public function getScheme()
+    {
+        if (config()->app->ssl) {
+            return 'https://';
+        }
+
+        return 'http://';
+    }
+
+    public function getHost()
+    {
+        return $_SERVER['HTTP_HOST'];
+    }
+
+    public function getRequestUri()
+    {
+        return $_SERVER['REQUEST_URI'];
+    }
+
     public function previous()
     {
         return $_SERVER['HTTP_REFERER'];
@@ -22,6 +46,9 @@ class URL extends Phalcon_Mvc_Url
 
     public function current()
     {
-        return $this->getBaseUri() . Route::getRewriteUri();
+        $actual_link = 
+            $this->getScheme() . $this->getHost() . $this->getRequestUri();
+
+        return $actual_link;
     }
 }

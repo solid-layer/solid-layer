@@ -8,6 +8,6 @@ class Init extends \Phinx\Console\Command\Init
     {
         parent::configure();
 
-        $this->setName('phinx:init');
+        $this->setName('db:init');
     }
 }

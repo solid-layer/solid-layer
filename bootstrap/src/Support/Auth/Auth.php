@@ -8,51 +8,67 @@ use Bootstrap\Facades\Response;
 
 class Auth
 {
-    public function attempt($records, $remember = false)
+    /**
+     * 
+     */
+    public function attempt($records)
     {
         $password_field = config()->app->auth->password_field;
         if (isset($records[$password_field]) == false) {
             throw new Exception('Password field not found!');
         }
 
-        # get the password information
+
+        # ---- get the password information
         $password = $records[$password_field];
         unset($records[$password_field]);
 
-        # build the conditions
-        $conditions = [];
+
+        # ---- build the conditions
+        $conditions = null;
+        $first = true;
         foreach ($records as $key => $record) {
-            $conditions[] = "{$key} = :{$key}:";
+
+            if (! $first) {
+                $conditions .= 'AND';
+            }
+
+            $conditions .= " {$key} = :{$key}: ";
+            $first = false;
         }
 
-        # find the informations provided in the $records
+
+        # ---- find the informations provided in the $records
         $auth_model = config()->app->auth->model;
-        $records = $auth_model::find(
-                [
-                    $conditions,
-                    'bind' => $records
-                ]
-            )
-            ->getFirst();
+        $records = 
+            $auth_model::find(array(
+                $conditions, 
+                'bind' => $records,
+            ))->getFirst();
 
 
+        # ---- check if there is no record, then return false
         if ( ! $records) {
             return false;
         }
 
 
-        if (Security::checkHash($password, $records->{$password_field})) {
-            Session::set('is_authenticated', true);
+        # ---- now check if the password given is matched with the
+        # existing password recorded.
+        if ( Security::checkHash($password, $records->{$password_field}) ) {
+            Session::set('isAuthenticated', true);
             Session::set('user', $records);
 
             return true;
         }
 
-        # TODO: implement remember token
-
         return false;
     }
 
+
+    /**
+     * 
+     */
     public function redirectIntended()
     {
         $redirect_to = config()->app->auth->auth_redirect;
@@ -60,23 +76,35 @@ class Auth
         return Response::redirect($redirect_to);
     }
 
+
+    /**
+     * 
+     */
     public function check()
     {
-        if (Session::has('is_authenticated')) {
+        if (Session::has('isAuthenticated')) {
             return true;
         }
 
         return false;
     }
 
+
+    /**
+     * 
+     */
     public function user()
     {
         return Session::get('user');
     }
 
+
+    /**
+     * 
+     */
     public function destroy()
     {
-        Session::remove('is_authenticated');
+        Session::remove('isAuthenticated');
         Session::remove('user');
 
         return true;

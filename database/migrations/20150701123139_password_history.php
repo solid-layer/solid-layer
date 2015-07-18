@@ -14,6 +14,7 @@ class PasswordHistory extends AbstractMigration
                 ->addColumn('user_id', 'integer')
                 ->addColumn('old_password', 'string')
                 ->addTimestamps()
+                ->addSoftDeletes()
                 ->create();
         }
 

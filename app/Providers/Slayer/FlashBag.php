@@ -5,9 +5,9 @@ namespace App\Providers\Slayer;
 use Bootstrap\Services\Service\ServiceProvider;
 use Phalcon\Flash\Session as Phalcon_Flash_Session;
 
-class FlashSession extends ServiceProvider
+class FlashBag extends ServiceProvider
 {
-  protected $_alias = 'flashSession';
+  protected $_alias = 'flash_bag';
 
   protected $_shared = false;
 

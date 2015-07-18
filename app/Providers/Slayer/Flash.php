@@ -2,11 +2,17 @@
 
 namespace App\Providers\Slayer;
 
-/**
- * We will be over-riding the 'flash' as we will be mapping on
- * using the flashSession
- */
-class Flash extends FlashSession
+use Bootstrap\Services\Service\ServiceProvider;
+use Phalcon\Session\Bag as PhalconSessionBag;
+
+class Flash extends ServiceProvider
 {
-  protected $_alias = 'flash';
+    protected $_alias = 'flash';
+
+    protected $_shared = true;
+
+    public function register()
+    {
+        return new PhalconSessionBag('flash');
+    }
 }

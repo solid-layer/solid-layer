@@ -3,7 +3,7 @@
 namespace App\Acl;
 
 use Bootstrap\Services\Acl\AclContainer;
-use Bootstrap\Facades\Flash;
+use Bootstrap\Facades\FlashBag;
 use Bootstrap\Facades\Redirect;
 use Bootstrap\Facades\Auth as FacadeAuth;
 use Bootstrap\Facades\URL;
@@ -14,7 +14,7 @@ class Auth extends AclContainer
     {
         if (FacadeAuth::check() == false) {
 
-            Flash::error('Please login to access this page.');
+            FlashBag::error('Please login to access this page.');
 
             Redirect::to(
                 URL::get(

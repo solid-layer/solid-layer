@@ -3,17 +3,17 @@
 namespace App\Controllers;
 
 # ---- using aliasias
-use URL;        # use Bootstrap\Facades\URL;
-use Auth;       # use Bootstrap\Facades\Auth;
-use View;       # use Bootstrap\Facades\View;
-use Request;    # use Bootstrap\Facades\Request;
-use Redirect;   # use Bootstrap\Facades\Redirect;
-use Flash;      # use Bootstrap\Facades\Flash;
-use Mail;       # use Bootstrap\Facades\Mail;
-use Lang;       # use Bootstrap\Facades\Lang;
-use Session;    # use Bootstrap\Facades\Session;
-use Tag;        # use Bootstrap\Facades\Tag;
-use Security;   # use Bootstrap\Facades\Security;
+use URL;            # use Bootstrap\Facades\URL;
+use Auth;           # use Bootstrap\Facades\Auth;
+use View;           # use Bootstrap\Facades\View;
+use Request;        # use Bootstrap\Facades\Request;
+use Redirect;       # use Bootstrap\Facades\Redirect;
+use FlashBag;       # use Bootstrap\Facades\FlashBag;
+use Mail;           # use Bootstrap\Facades\Mail;
+use Lang;           # use Bootstrap\Facades\Lang;
+use Session;        # use Bootstrap\Facades\Session;
+use Tag;            # use Bootstrap\Facades\Tag;
+use Security;       # use Bootstrap\Facades\Security;
 use App\Validation\RegistrationValidator;
 use App\Models\User;
 
@@ -37,7 +37,7 @@ class AuthController extends Controller
     public function showRegistrationFormAction()
     {
         # ---- just the info message
-        Flash::warning(
+        FlashBag::warning(
             Lang::get('responses/register.pre_flash_message')
         );
 
@@ -121,7 +121,7 @@ class AuthController extends Controller
             # ---- flash the error message
             # ---- alternative call:
             #           $this->flash->error(...)
-            Flash::error($error_messages);
+            FlashBag::error($error_messages);
 
 
             # ---- redirect the user from the previous requests
@@ -165,7 +165,7 @@ class AuthController extends Controller
 
         # ---- alternative call:
         #           $this->mail->send(..., [...], function() {})
-        Mail::send('emails.registered', ['url' => $url], 
+        Mail::send('emails.registered-inligned', ['url' => $url], 
             function($mail) use ($inputs) {
                 $mail->to([$inputs['email']]);
                 $mail->subject(
@@ -175,17 +175,18 @@ class AuthController extends Controller
         );
 
 
-        # ---- flash success
-        # ---- alternative call:
-        #           $this->flash->success(...)
-        Flash::success(
-            Lang::get('responses/register.creation_success')
-        );
+        // # ---- flash success
+        // # ---- alternative call:
+        // #           $this->flash->success(...)
+        // FlashBag::success(
+        //     Lang::get('responses/register.creation_success')
+        // );
 
 
         # ---- alternative call:
         #           $this->redirect->to(...)
-        return Redirect::to(URL::route('showLoginForm'));
+        return Redirect::to(URL::route('showLoginForm'))
+            ->withSuccess(Lang::get('responses/register.creation_success'));
     }
 
 
@@ -194,12 +195,12 @@ class AuthController extends Controller
         # ---- just the info message
         # ---- alternative call:
         #           $this->flash->notice(...)
-        Flash::notice(
+        FlashBag::notice(
 
             # ---- alternative call:
             #           $this->lang->get(...)
             Lang::get(
-                'responses/login.pre_flash_message'   
+                'responses/login.pre_flash_message'
             )
         );
 
@@ -217,14 +218,14 @@ class AuthController extends Controller
         $credentials = [
             'username' => Request::get('username'),
             'password' => Request::get('password'),
-            'is_activated' => 1,
+            'is_activated' => true,
         ];
 
         # ---- alternative call:
         #           $this->auth->attempt(...)
         if ( Auth::attempt($credentials) ) {
 
-            if (Request::has('ref')) {
+            if (Request::has('ref') && strlen(Request::get('ref')) != 0) {
                 return Redirect::to(Request::get('ref'));
             }
 
@@ -234,16 +235,15 @@ class AuthController extends Controller
         }
 
 
-        # ---- alternative call:
-        #           $this->redirect->error()
-        Flash::error(
-            Lang::get('responses/login.no_user')
-        );
+        // # ---- alternative call:
+        // #           $this->redirect->error()
+        // FlashBag::error(
+        //     Lang::get('responses/login.no_user')
+        // );
 
 
-        # ---- alternative call
-        #           $this->redirect->previous();
-        return Redirect::to(URL::previous());
+        return Redirect::to(URL::previous())
+            ->withError(Lang::get('responses/login.no_user'));
     }
 
 
@@ -268,28 +268,23 @@ class AuthController extends Controller
 
     public function activateUserAction($token)
     {
-        $conditions = 
-            'token = :token: AND is_activated = :isActivated:';
-
-        $params = [
-            'token' => $token,
-            'isActivated' => false,
-        ];
-
         $user = User::find([
-            $conditions,
-            'bind' => $params,
+            'token = :token: AND is_activated = :is_activated:',
+            'bind' => [
+                'token' => $token,
+                'is_activated' => false,
+            ],
         ])->getFirst();
 
 
         # ---- return 404, if the condition not found
         if (! $user) {
-            Flash::warning(
+            FlashBag::warning(
                 'We cant find your request, please ' .
                 'try again, or contact us.'
             );
 
-            return View::make('error.show404');
+            return View::make('error.whoops');
         }
 
 
@@ -302,10 +297,10 @@ class AuthController extends Controller
 
             foreach ($user->getMessages() as $message) {
 
-                Flash::error($message);
+                FlashBag::error($message);
             }
         } else {
-            Flash::success(
+            FlashBag::success(
                 'You have successfully activated your account, ' . 
                 'you are now allowed to login.'
             );

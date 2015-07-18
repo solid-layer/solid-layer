@@ -8,6 +8,6 @@ class Rollback extends \Phinx\Console\Command\Rollback
     {
         parent::configure();
 
-        $this->setName('phinx:rollback');
+        $this->setName('db:rollback');
     }
 }

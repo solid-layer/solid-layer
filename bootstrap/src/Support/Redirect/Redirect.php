@@ -2,19 +2,27 @@
 
 namespace Bootstrap\Support\Redirect;
 
+use Phalcon\Session\Bag as PhalconSessionBag;
+use Bootstrap\Support\WithMagicMethodTrait;
 use Bootstrap\Facades\Response;
-use Bootstrap\Facades\Flash;
+use Bootstrap\Facades\Session;
 
 class Redirect
 {
+    use WithMagicMethodTrait;
+
     public function to($url)
     {
-        return Response::redirect($url);
+        Response::redirect($url);
+
+        return $this;
     }
 
     public function with($key, $value)
     {
-        Flash::message($key, $value);
+        di()->get('flash')->set($key, $value);
+
+        return $this;
     }
 
 }

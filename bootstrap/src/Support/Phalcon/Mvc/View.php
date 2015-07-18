@@ -4,33 +4,21 @@ namespace Bootstrap\Support\Phalcon\Mvc;
 
 use Phalcon\Mvc\View as PhalconView;
 use Bootstrap\Exceptions\ViewFileNotFoundException;
-use Bootstrap\Exceptions\BadMethodCallException;
+use Bootstrap\Support\WithMagicMethodTrait;
 
 /**
  * @author Daison Carino <daison12006013 [at] gmail [dot] com>
  */
 class View extends PhalconView
 {
+    use WithMagicMethodTrait;
+
     const LEVEL_NO_RENDER = 0;
     const LEVEL_ACTION_VIEW = 1;
     const LEVEL_BEFORE_TEMPLATE = 2;
     const LEVEL_LAYOUT = 3;
     const LEVEL_AFTER_TEMPLATE = 4;
     const LEVEL_MAIN_LAYOUT = 5;
-
-    /**
-     * Magic methods that uses 'withVarName'
-     *
-     * @return string
-     */
-    public function __call($method, $parameters)
-    {
-        if (starts_with($method, 'with')) {
-            return $this->with(snake_case(substr($method, 4)), $parameters[0]);
-        }
- 
-        throw new BadMethodCallException("Method [$method] does not exist on view.");
-    }
 
 
     /**

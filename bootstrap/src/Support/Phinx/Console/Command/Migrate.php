@@ -8,6 +8,6 @@ class Migrate extends \Phinx\Console\Command\Migrate
     {
         parent::configure();
 
-        $this->setName('phinx:migrate');
+        $this->setName('db:migrate');
     }
 }

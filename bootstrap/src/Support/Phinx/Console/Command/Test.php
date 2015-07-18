@@ -8,6 +8,6 @@ class Test extends \Phinx\Console\Command\Test
     {
         parent::configure();
 
-        $this->setName('phinx:test');
+        $this->setName('db:test');
     }
 }

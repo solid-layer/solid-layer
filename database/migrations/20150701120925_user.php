@@ -22,6 +22,7 @@ class User extends AbstractMigration
             ->addIndex(['last_name'])
             ->addIndex(['token'])
             ->addTimestamps()
+            ->addSoftDeletes()
             ->create();
     }
 

@@ -8,6 +8,6 @@ class Create extends \Phinx\Console\Command\Create
     {
         parent::configure();
 
-        $this->setName('phinx:create');
+        $this->setName('db:create');
     }
 }

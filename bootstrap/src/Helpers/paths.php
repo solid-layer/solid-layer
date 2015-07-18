@@ -3,7 +3,7 @@
 if (! function_exists('base_uri')) {
     function base_uri($extend_path = null)
     {
-        return url()->getBaseUri()  . '/' . remove_double_slash($extend_path);
+        return url()->getScheme() . url()->getHost() . '/' . remove_double_slash($extend_path);
     }
 }
 

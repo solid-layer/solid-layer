@@ -32,6 +32,10 @@ class Mail
         # we need to loop the maps
         foreach ($maps as $map) {
 
+            if (empty($this->config->{$map})) {
+                continue;
+            }
+
             # now call the adapter function
             # e.g 
             #   $this->adapter_obj->host($this->config->host);
