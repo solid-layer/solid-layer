@@ -11,7 +11,6 @@ $loader
         'Bootstrap'   => APP_ROOT . '/bootstrap/src/',
         
         'Sandbox'     => APP_ROOT . '/sandbox/',
-        'Sandbox\App' => APP_ROOT . '/sandbox/app/',
     ])
     ->registerPrefixes([
 

@@ -12,27 +12,27 @@ class MySandBoxServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publish([
-            __DIR__ . '/resources/views' => base_path('resources/views/vendor/sandbox'),
+            __DIR__ . '/Resources/views' => base_path('resources/views/vendor/sandbox'),
         ], 'views');
 
         $this->publish([
-            __DIR__ . '/resources/lang' => base_path('resources/lang/vendor/sandbox'),
+            __DIR__ . '/Resources/lang' => base_path('resources/lang/vendor/sandbox'),
         ], 'lang');
     }
 
     public function getViewsDir()
     {
-        return __DIR__ . '/resources/views';
+        return __DIR__ . '/Resources/views';
     }
 
     public function getLangDir()
     {
-        return __DIR__ . '/resources/lang';
+        return __DIR__ . '/Resources/lang';
     }
 
     public function register()
     {
-        require __DIR__ . '/app/routes.php';
+        require __DIR__ . '/App/routes.php';
 
         $this->console->add(new MySandboxCommand);
 
