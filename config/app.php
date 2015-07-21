@@ -27,12 +27,14 @@ return [
     'lang' => 'en',
 
 
+
     # ------------------------------------------------------------
-    # Schemes
+    # SSL Support
     # ------------------------------------------------------------
     # ---- Mark true if your domain supports ssl, and to force 
     # re-write every url to ssl
     'ssl' => false,
+
 
 
     # ------------------------------------------------------------
@@ -40,7 +42,8 @@ return [
     # ------------------------------------------------------------
     # ---- Define your own base uri, using console the default
     # will be below
-    'base_uri' => 'localhost:8082',
+    'base_uri' => 'localhost',
+
 
 
     # ------------------------------------------------------------
@@ -76,7 +79,7 @@ return [
         # - pass in your user model
         'model'          => 'App\Models\User',
 
-        # - assigned field on what field will be used
+        # - on what field will be used for the password
         'password_field' => 'password',
 
         # - When calling $this->auth->redirectIntended()
@@ -113,7 +116,7 @@ return [
 
         # - Register your own provider below.
         Sandbox\MySandBoxServiceProvider::class,
-
+        App\Providers\AwsServiceProvider::class,
     ],
 
     'aliases' => [
@@ -132,7 +135,7 @@ return [
         'Tag'          => Bootstrap\Facades\Tag::class,
         'URL'          => Bootstrap\Facades\URL::class,
         'View'         => Bootstrap\Facades\View::class,
-
+        'AWS'          => App\Facade\AwsFacade::class,
     ],
 
 ]; # - end of return

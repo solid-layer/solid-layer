@@ -25,5 +25,7 @@ return [
     Bootstrap\Support\Phinx\Console\Command\Rollback::class,
     Bootstrap\Support\Phinx\Console\Command\Status::class,
     Bootstrap\Support\Phinx\Console\Command\Test::class,
-    # ---- Bootstrap\Support\Phinx\Console\Command\Init::class,
-];
+
+
+    App\Console\AwsTestConsoleCommand::class,
+]; # - end of return

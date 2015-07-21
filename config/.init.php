@@ -15,6 +15,7 @@ return [
     # doing, instead add your own dependecies
     'acl'      => require_once __DIR__ . '/acl.php',
     'app'      => require_once __DIR__ . '/app.php',
+    'aws'      => require_once __DIR__ . '/aws.php',
     'consoles' => require_once __DIR__ . '/consoles.php',
     'database' => require_once __DIR__ . '/database.php',
     'inliner'  => require_once __DIR__ . '/inliner.php',

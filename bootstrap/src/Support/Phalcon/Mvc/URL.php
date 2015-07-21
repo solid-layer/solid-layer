@@ -24,7 +24,11 @@ class URL extends PhalconMvcUrl
 
     public function getHost()
     {
-        return $_SERVER['HTTP_HOST'];
+        if (isset($_SERVER['HTTP_HOST'])) {
+            return $_SERVER['HTTP_HOST'];
+        }
+
+        return config()->app->base_uri;
     }
 
     public function getRequestUri()
