@@ -1,8 +1,6 @@
+Slayer - Structured Phalcon Framework
+=====================================
 <img src="http://phalconist.com/phalconslayer/slayer/default.svg"> [![Build Status](https://travis-ci.org/phalconslayer/slayer.svg?branch=master)](https://travis-ci.org/phalconslayer/slayer)
-
-<hr>
-
-## Slayer - Structured Phalcon Framework
 
 Pre-built with symfony commands, Model-Controller-View generators and package deployment. While Slayer uses a different migration tool (Phinx) to make everything easy.
 
