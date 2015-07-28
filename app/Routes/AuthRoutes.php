@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Routes;
+
 use Phalcon\Mvc\Router\Group as RouterGroup;
 
 class AuthRoutes extends RouterGroup

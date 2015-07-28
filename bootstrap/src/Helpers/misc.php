@@ -66,3 +66,11 @@ if (! function_exists('csrf_field')) {
     ]);
   }
 }
+
+
+if (! function_exists('slayer_process_time')) {
+  function slayer_process_time()
+  {
+    return microtime(true) - SLAYER_START;
+  }
+}

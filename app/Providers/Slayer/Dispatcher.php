@@ -11,42 +11,42 @@ use Phalcon\Logger\Adapter\File as FileAdapter;
 
 class Dispatcher extends ServiceProvider
 {
-  protected $_alias = 'dispatcher';
+    protected $_alias = 'dispatcher';
 
-  protected $_shared = true;
+    protected $_shared = true;
 
-  public function register()
-  {
-    $event_manager = new EventsManager;
-    $event_manager->attach("dispatch:beforeException",
-      function($event, $dispatcher, $exception) {
+    public function register()
+    {
+        $event_manager = new EventsManager;
+        $event_manager->attach("dispatch:beforeException",
+            function($event, $dispatcher, $exception) {
 
-        $logger = new FileAdapter(config()->path->logsDir . 'error.log');
-        $logger->error($exception->getMessage());
+                $logger = new FileAdapter(config()->path->logsDir . 'error.log');
+                $logger->error($exception->getMessage());
 
-        if ($exception instanceof DispatchException) {
-            if (config()->app->debug != 'true') {
-              echo $dispatcher->getDI()->get('view')->take('error.whoops');
-              exit;
+                if ($exception instanceof DispatchException) {
+                    if (config()->app->debug != 'true') {
+                      $dispatcher->forward(array(
+                          'controller' => 'error',
+                          'action'     => 'whoops'
+                      ));
 
-              // $dispatcher->forward(array(
-              //     'controller' => 'pages',
-              //     'action'     => 'show404'
-              // ));
+                      return false;
+                    }
+
+                    throw new ControllerNotFoundException($exception->getMessage());
+
+                    return false;
+                }
+
             }
+        );
 
-            throw new ControllerNotFoundException('Handler or Action not found.');
+        $dispatcher = new MvcDispatcher();
+        $dispatcher->setEventsManager($event_manager);
+        $dispatcher->setDefaultNamespace('App\Controllers');
 
-            return false;
-        }
-      }
-    );
-
-    $dispatcher = new MvcDispatcher();
-    $dispatcher->setEventsManager($event_manager);
-    $dispatcher->setDefaultNamespace('App\Controllers');
-
-    return $dispatcher;
-  }
+        return $dispatcher;
+    }
 
 }

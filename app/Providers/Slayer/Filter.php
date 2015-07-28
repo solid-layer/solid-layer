@@ -7,12 +7,12 @@ use Phalcon\Filter as HttpFilter;
 
 class Filter extends ServiceProvider
 {
-  protected $_alias = 'filter';
+    protected $_alias = 'filter';
 
-  protected $_shared = false;
+    protected $_shared = false;
 
-  public function register()
-  {
-    return new HttpFilter;
-  }
+    public function register()
+    {
+        return new HttpFilter;
+    }
 }

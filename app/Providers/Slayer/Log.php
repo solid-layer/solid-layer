@@ -3,7 +3,8 @@
 namespace App\Providers\Slayer;
 
 use Bootstrap\Services\Service\ServiceProvider;
-use Phalcon\Logger\Adapter\File as FileAdapter;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 
 class Log extends ServiceProvider
 {
@@ -13,17 +14,15 @@ class Log extends ServiceProvider
 
     public function register()
     {
-        $logger = new FileAdapter(config()->path->logsDir . 'error.log');
+        $logger = new Logger('system_log');
+        $logger->pushHandler(new StreamHandler(config()->path->logsDir . 'error.log', Logger::DEBUG));
 
-        # initialized error logging
-        if ( di()->has('whoops') ) {
-            di()->get('whoops')->pushHandler(function ($exception, $inspector, $run) use ($logger) {
-                $logger->error('Message: ' . $exception->getMessage());
-                $logger->error('Code: ' . $exception->getCode());
-                $logger->error('File: ' . $exception->getFile());
-                $logger->error('Line: ' . $exception->getLine());
-                $logger->error('Trace: ' . json_encode($exception->getTrace()));
-            });
+        if (di()->has('whoops')) {
+            di()->get('whoops')->pushHandler(
+                function ($exception, $inspector, $run) use ($logger) {
+                    $logger->addError($exception->getMessage());
+                }
+            );
         }
 
         return $logger;

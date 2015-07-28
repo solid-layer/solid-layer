@@ -1,51 +1,25 @@
 <?php
 
-use Exception;
-use Whoops\Provider\Phalcon\WhoopsServiceProvider;
-use Phalcon\Mvc\Application;
+use Bootstrap\Debugger;
+// use Phalcon\Di\FactoryDefault;
+// use Phalcon\Mvc\Application;
+use Bootstrap\App;
 
+define('SLAYER_START', microtime(true));
 define('APP_ROOT', dirname(__DIR__));
 
 try {
-    
-    $di = new Phalcon\Di\FactoryDefault();
+
+    # -------------------------------------------------------------
+    # Composer Loader
+    # -------------------------------------------------------------
+    # ---- now call the composer autoload, this will require all
+    # our application dependecies
 
     require_once APP_ROOT . '/vendor/autoload.php';
 
-    /*
-    |-------------------------------------------------------------
-    | Whoops Debugger
-    |-------------------------------------------------------------
-    */
-    if (getenv('APP_DEBUG') == 'true') {
-        new WhoopsServiceProvider($di);
-    }
-
-
-    /*
-    |-------------------------------------------------------------
-    | Instantiate Phalcon App
-    |-------------------------------------------------------------
-    | We must inject our dependencies inside the Phalcon
-    | application layer, to make everything works.
-    */
-    $app = new Application($di);
-
-
-    /*
-    |-------------------------------------------------------------
-    | Bootstrapper
-    |-------------------------------------------------------------
-    */
-    require_once APP_ROOT . '/bootstrap/autoload.php';
-
-
-    /*
-    |-------------------------------------------------------------
-    | Now show the app content based on the uri requests
-    |-------------------------------------------------------------
-    */
-    echo $app->handle()->getContent();
+    $app = new App;
+    $app->run();
 
 } catch (Exception $e) {
     throw $e;

@@ -191,7 +191,7 @@ class AuthController extends Controller
 
 
     public function showLoginFormAction()
-    {
+    {x
         # ---- just the info message
         # ---- alternative call:
         #           $this->flash->notice(...)

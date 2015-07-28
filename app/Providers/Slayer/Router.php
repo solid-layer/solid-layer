@@ -3,6 +3,7 @@
 namespace App\Providers\Slayer;
 
 use Bootstrap\Services\Service\ServiceProvider;
+use Bootstrap\Support\Phalcon\Mvc\Router as PhalconRouter;
 
 class Router extends ServiceProvider
 {
@@ -12,7 +13,7 @@ class Router extends ServiceProvider
 
     public function register()
     {
-        $router = new \Phalcon\Mvc\Router(false);
+        $router = new PhalconRouter(false);
         $router->removeExtraSlashes(true);
 
         return $router;
