@@ -3,7 +3,7 @@
 return [
 
     # ---- add your config below
-    # ---- to access your config, you may call 
+    # ---- to access your config, you may call
     # ---- config()->{file}->{key}
 
 

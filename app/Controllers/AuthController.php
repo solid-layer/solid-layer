@@ -65,7 +65,7 @@ class AuthController extends Controller
 
 
         # ---- by default, phalcon is smart enough to get
-        # 'auth.showRegistrationForm' as 
+        # 'auth.showRegistrationForm' as
         # '<controller>.<action>'
         # ---- alternative call:
         #           $this->view->make(...)
@@ -85,7 +85,7 @@ class AuthController extends Controller
 
         $error_messages = '';
 
-        # ---- if a message found, then let's process the 
+        # ---- if a message found, then let's process the
         # redirection
         if (count($messages)) {
 
@@ -96,24 +96,24 @@ class AuthController extends Controller
             Session::set('input', $this->request->get());
 
 
-            # ---- if there is an error, let's map all the erros 
+            # ---- if there is an error, let's map all the erros
             # into one message
             foreach ($messages as $m) {
-                $error_messages .= 
+                $error_messages .=
                     '<li>' . $m->getMessage() . '</li>';
             }
         }
 
         # ---- validate password and repeat password mismatch
         if ($inputs['password'] != $inputs['repassword']) {
-            $error_messages .= 
+            $error_messages .=
                 '<li>Password and Repeat mismatch</li>';
         }
 
         if (strlen($error_messages) != 0) {
             $error_messages = sprintf('
                 Please check the error below:<br>
-                    <ul>%s</ul>', 
+                    <ul>%s</ul>',
                     $error_messages
             );
 
@@ -131,10 +131,10 @@ class AuthController extends Controller
         }
 
 
-        # ---- generate a token 
+        # ---- generate a token
         $token = sha1( uniqid() . md5(
-                str_random() . 
-                date('Ymdhis') . 
+                str_random() .
+                date('Ymdhis') .
                 uniqid()
             )
         );
@@ -165,7 +165,7 @@ class AuthController extends Controller
 
         # ---- alternative call:
         #           $this->mail->send(..., [...], function() {})
-        Mail::send('emails.registered-inligned', ['url' => $url], 
+        Mail::send('emails.registered-inligned', ['url' => $url],
             function($mail) use ($inputs) {
                 $mail->to([$inputs['email']]);
                 $mail->subject(
@@ -205,7 +205,7 @@ class AuthController extends Controller
         );
 
         # ---- by default, phalcon is smart enough
-        # to get the 'auth.showLoginForm' as '<controller>.<action>' 
+        # to get the 'auth.showLoginForm' as '<controller>.<action>'
         # ---- alternative call:
         #           $this->view->make(...)
 
@@ -301,7 +301,7 @@ class AuthController extends Controller
             }
         } else {
             FlashBag::success(
-                'You have successfully activated your account, ' . 
+                'You have successfully activated your account, ' .
                 'you are now allowed to login.'
             );
         }

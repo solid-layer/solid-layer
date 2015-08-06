@@ -38,7 +38,7 @@ class AwsTestConsoleCommand extends BaseCommand
             'Key'    => $key,
             'Body'   => fopen(public_path('css/'.$file_name), 'r'),
 
-            # - URL: 
+            # - URL:
             # https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl
             'ACL'    => 'public-read',
         ]);

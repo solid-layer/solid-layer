@@ -5,7 +5,7 @@ return [
     # ------------------------------------------------------------
     # Application Cache
     # ------------------------------------------------------------
-    # ---- We need to cache our views and config for 
+    # ---- We need to cache our views and config for
     # efficiency, this will never affect user's cache
     'cache' => true,
 
@@ -22,7 +22,7 @@ return [
     # ------------------------------------------------------------
     # Language Settings
     # ------------------------------------------------------------
-    # ---- The place where you should supposed to assign which 
+    # ---- The place where you should supposed to assign which
     # language folder will be used.
     'lang' => 'en',
 
@@ -31,7 +31,7 @@ return [
     # ------------------------------------------------------------
     # SSL Support
     # ------------------------------------------------------------
-    # ---- Mark true if your domain supports ssl, and to force 
+    # ---- Mark true if your domain supports ssl, and to force
     # re-write every url to ssl
     'ssl' => false,
 
@@ -61,9 +61,9 @@ return [
         'from'       => env('MAILER_MAIL_FROM'),
 
         'classes' => [
-            'swift'   => 
+            'swift'   =>
                 Bootstrap\Support\Mail\SwiftMailerAdapter::class,
-            'mailgun' => 
+            'mailgun' =>
                 Bootstrap\Support\Mail\MailgunAdapter::class,
         ]
     ],

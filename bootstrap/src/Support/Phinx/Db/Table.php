@@ -10,11 +10,10 @@ class Table extends PhinxTable
     {
         $this
             ->addColumn('created_at', 'timestamp', [
-                'default' => 'CURRENT_TIMESTAMP'
+                'default' => 'CURRENT_TIMESTAMP',
             ])
             ->addColumn('updated_at', 'timestamp', [
-                'default' => 'CURRENT_TIMESTAMP', 
-                'update' => 'CURRENT_TIMESTAMP',
+                'update'  => 'CURRENT_TIMESTAMP',
             ]);
 
         return $this;

@@ -23,7 +23,7 @@ class User extends Model
     /**
      * By every request, phalcon will always pull this function
      * as basis to know what is the table's name
-     * 
+     *
      * @return string
      */
     public function getSource()

@@ -3,7 +3,7 @@
 # ------------------------------------------------------------
 # Creating Routes
 # ------------------------------------------------------------
-# ---- You can use the Facade Route, or to use 
+# ---- You can use the Facade Route, or to use
 # the function that pulls the same DI
 
 Route::addGet('/', [
@@ -26,7 +26,7 @@ Route::addGet('/', [
 # -------------------------------------------------------------
 # Organized Routes using RouteGroup
 # -------------------------------------------------------------
-# ---- You can manage to create your own routes 
+# ---- You can manage to create your own routes
 # from a class, try to check the class located at app/Routes/
 
 Route::mount(new App\Routes\AuthRoutes);
