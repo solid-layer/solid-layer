@@ -24,8 +24,8 @@ class URL extends PhalconMvcUrl
 
     public function getHost()
     {
-        if (isset($_SERVER['HTTP_HOST'])) {
-            return $_SERVER['HTTP_HOST'];
+        if (isset( $_SERVER[ 'HTTP_HOST' ] )) {
+            return $_SERVER[ 'HTTP_HOST' ];
         }
 
         return config()->app->base_uri;
@@ -33,24 +33,24 @@ class URL extends PhalconMvcUrl
 
     public function getRequestUri()
     {
-        return $_SERVER['REQUEST_URI'];
+        return $_SERVER[ 'REQUEST_URI' ];
     }
 
     public function previous()
     {
-        return $_SERVER['HTTP_REFERER'];
+        return $_SERVER[ 'HTTP_REFERER' ];
     }
 
     public function route($for, $params = [], $pres = [])
     {
-        $params['for'] = $for;
+        $params[ 'for' ] = $for;
 
         return $this->get($params, $pres);
     }
 
     public function current()
     {
-        $actual_link = 
+        $actual_link =
             $this->getScheme() . $this->getHost() . $this->getRequestUri();
 
         return $actual_link;

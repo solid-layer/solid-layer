@@ -7,7 +7,7 @@ use Phinx\Migration\AbstractMigration as PhinxAbstractMigration;
 
 class AbstractMigration extends PhinxAbstractMigration
 {
-    public function table($tableName, $options = array())
+    public function table($tableName, $options = [])
     {
         return new Table($tableName, $options, $this->getAdapter());
     }

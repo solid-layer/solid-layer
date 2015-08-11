@@ -2,46 +2,38 @@
 
 return [
 
-    # ------------------------------------------------------------
-    # Application Cache
-    # ------------------------------------------------------------
-    # ---- We need to cache our views and config for 
-    # efficiency, this will never affect user's cache
-    'cache' => true,
-
 
 
     # ------------------------------------------------------------
     # Application Debugging
     # ------------------------------------------------------------
     # ---- To easily track your bugs using pretty errors (whoops)
-    'debug' => false,
+    'debug'    => false,
 
 
 
     # ------------------------------------------------------------
     # Language Settings
     # ------------------------------------------------------------
-    # ---- The place where you should supposed to assign which 
+    # ---- The place where you should supposed to assign which
     # language folder will be used.
-    'lang' => 'en',
+    'lang'     => 'en',
 
 
 
     # ------------------------------------------------------------
     # SSL Support
     # ------------------------------------------------------------
-    # ---- Mark true if your domain supports ssl, and to force 
+    # ---- Mark true if your domain supports ssl, and to force
     # re-write every url to ssl
-    'ssl' => false,
+    'ssl'      => false,
 
 
 
     # ------------------------------------------------------------
     # Base URI
     # ------------------------------------------------------------
-    # ---- Define your own base uri, using console the default
-    # will be below
+    # ---- Define your own base uri
     'base_uri' => 'localhost',
 
 
@@ -49,9 +41,9 @@ return [
     # ------------------------------------------------------------
     # Mailer Settings
     # ------------------------------------------------------------
-    # ---- To be able to send an email, provide your email setting
-    # mailer adapter should be
-    'mailer' => [
+    # ---- To be able to send an email, provide your email 
+    # settings, such as adapters and the like
+    'mailer'   => [
         'adapter'    => env('MAILER_ADAPTER', 'swift'),
         'host'       => env('MAILER_HOST'),
         'port'       => env('MAILER_PORT'),
@@ -60,12 +52,12 @@ return [
         'encryption' => env('MAILER_ENCRYPTION'),
         'from'       => env('MAILER_MAIL_FROM'),
 
-        'classes' => [
-            'swift'   => 
+        'classes'    => [
+            'swift'   =>
                 Bootstrap\Support\Mail\SwiftMailerAdapter::class,
-            'mailgun' => 
+            'mailgun' =>
                 Bootstrap\Support\Mail\MailgunAdapter::class,
-        ]
+        ],
     ],
 
 
@@ -74,14 +66,12 @@ return [
     # Authentication Settings
     # ------------------------------------------------------------
     # ---- So, we want to use slayer's model to process auto auth
-    'auth' => [
+    'auth'     => [
 
         # - pass in your user model
         'model'          => 'App\Models\User',
-
         # - on what field will be used for the password
         'password_field' => 'password',
-
         # - When calling $this->auth->redirectIntended()
         'auth_redirect'  => '/newsfeed',
     ],
@@ -114,28 +104,34 @@ return [
         App\Providers\Slayer\View::class,
         App\Providers\Slayer\Dispatcher::class,
 
+
         # - Register your own provider below.
         Sandbox\MySandBoxServiceProvider::class,
         App\Providers\AwsServiceProvider::class,
     ],
 
-    'aliases' => [
-        'ACL'          => Bootstrap\Facades\ACL::class,
-        'Auth'         => Bootstrap\Facades\Auth::class,
-        'Filter'       => Bootstrap\Facades\Filter::class,
-        'Flash'        => Bootstrap\Facades\Flash::class,
-        'FlashBag'     => Bootstrap\Facades\FlashBag::class,
-        'Lang'         => Bootstrap\Facades\Lang::class,
-        'Mail'         => Bootstrap\Facades\Mail::class,
-        'Redirect'     => Bootstrap\Facades\Redirect::class,
-        'Request'      => Bootstrap\Facades\Request::class,
-        'Route'        => Bootstrap\Facades\Route::class,
-        'Security'     => Bootstrap\Facades\Security::class,
-        'Session'      => Bootstrap\Facades\Session::class,
-        'Tag'          => Bootstrap\Facades\Tag::class,
-        'URL'          => Bootstrap\Facades\URL::class,
-        'View'         => Bootstrap\Facades\View::class,
-        'AWS'          => App\Facade\AwsFacade::class,
+
+    'aliases'  => [
+        'ACL'      => Bootstrap\Facades\ACL::class,
+        'Auth'     => Bootstrap\Facades\Auth::class,
+        'Config'   => Bootstrap\Facades\Config::class,
+        'Filter'   => Bootstrap\Facades\Filter::class,
+        'Flash'    => Bootstrap\Facades\Flash::class,
+        'FlashBag' => Bootstrap\Facades\FlashBag::class,
+        'Lang'     => Bootstrap\Facades\Lang::class,
+        'Mail'     => Bootstrap\Facades\Mail::class,
+        'Redirect' => Bootstrap\Facades\Redirect::class,
+        'Response' => Bootstrap\Facades\Response::class,
+        'Request'  => Bootstrap\Facades\Request::class,
+        'Route'    => Bootstrap\Facades\Route::class,
+        'Security' => Bootstrap\Facades\Security::class,
+        'Session'  => Bootstrap\Facades\Session::class,
+        'Tag'      => Bootstrap\Facades\Tag::class,
+        'URL'      => Bootstrap\Facades\URL::class,
+        'View'     => Bootstrap\Facades\View::class,
+        'Log'      => Bootstrap\Facades\Log::class,
+        'AWS'      => App\Facade\AwsFacade::class,
     ],
+
 
 ]; # - end of return

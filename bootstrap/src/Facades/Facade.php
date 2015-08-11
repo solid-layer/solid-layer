@@ -1,11 +1,11 @@
-<?php 
+<?php
 
 namespace Bootstrap\Facades;
 
 /**
  * @author Taylor Otwell
  */
-abstract class Facade 
+abstract class Facade
 {
 
     /**
@@ -47,29 +47,31 @@ abstract class Facade
     /**
      * Resolve the facade root instance from the container.
      *
-     * @param  string  $name
+     * @param  string $name
      * @return mixed
      */
     protected static function resolveFacadeInstance($name)
     {
-        if (is_object($name)) return $name;
-
-        if (isset(static::$resolvedInstance[$name])) {
-            return static::$resolvedInstance[$name];
+        if (is_object($name)) {
+            return $name;
         }
 
-        return static::$resolvedInstance[$name] = static::$app->$name;
+        if (isset( static::$resolvedInstance[ $name ] )) {
+            return static::$resolvedInstance[ $name ];
+        }
+
+        return static::$resolvedInstance[ $name ] = static::$app->$name;
     }
 
     /**
      * Clear a resolved facade instance.
      *
-     * @param  string  $name
+     * @param  string $name
      * @return void
      */
     public static function clearResolvedInstance($name)
     {
-        unset(static::$resolvedInstance[$name]);
+        unset( static::$resolvedInstance[ $name ] );
     }
 
     /**
@@ -79,7 +81,7 @@ abstract class Facade
      */
     public static function clearResolvedInstances()
     {
-        static::$resolvedInstance = array();
+        static::$resolvedInstance = [];
     }
 
     /**
@@ -95,7 +97,7 @@ abstract class Facade
     /**
      * Set the application instance.
      *
-     * @param  \Illuminate\Foundation\Application  $app
+     * @param  \Illuminate\Foundation\Application $app
      * @return void
      */
     public static function setFacadeApplication($app)
@@ -106,8 +108,8 @@ abstract class Facade
     /**
      * Handle dynamic, static calls to the object.
      *
-     * @param  string  $method
-     * @param  array   $args
+     * @param  string $method
+     * @param  array $args
      * @return mixed
      */
     public static function __callStatic($method, $args)
@@ -119,19 +121,20 @@ abstract class Facade
                 return $instance->$method();
 
             case 1:
-                return $instance->$method($args[0]);
+                return $instance->$method($args[ 0 ]);
 
             case 2:
-                return $instance->$method($args[0], $args[1]);
+                return $instance->$method($args[ 0 ], $args[ 1 ]);
 
             case 3:
-                return $instance->$method($args[0], $args[1], $args[2]);
+                return $instance->$method($args[ 0 ], $args[ 1 ], $args[ 2 ]);
 
             case 4:
-                return $instance->$method($args[0], $args[1], $args[2], $args[3]);
+                return $instance->$method($args[ 0 ], $args[ 1 ], $args[ 2 ],
+                    $args[ 3 ]);
 
             default:
-                return call_user_func_array(array($instance, $method), $args);
+                return call_user_func_array([$instance, $method], $args);
         }
     }
 }

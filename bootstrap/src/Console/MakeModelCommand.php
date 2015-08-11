@@ -10,7 +10,7 @@ class MakeModelCommand extends SlayerCommand
     protected $name = 'make:model';
 
     protected $description = 'Create a new model';
-    
+
     public function slash()
     {
         $name = ucfirst($this->input->getArgument('model'));
@@ -24,7 +24,7 @@ class MakeModelCommand extends SlayerCommand
         chdir(config()->path->modelsDir);
         $this->comment('Crafting Model...');
 
-        if ( file_exists($file_name) ) {
+        if (file_exists($file_name)) {
             $this->error('   Model already exists!');
         } else {
             file_put_contents($file_name, $stub);
@@ -35,8 +35,16 @@ class MakeModelCommand extends SlayerCommand
     protected function arguments()
     {
         return [
-            ['model', InputArgument::REQUIRED, 'Model name to be use e.g(User)'],
-            ['table', InputArgument::REQUIRED, 'Database table name e.g(users)'],
+            [
+                'model',
+                InputArgument::REQUIRED,
+                'Model name to be use e.g(User)',
+            ],
+            [
+                'table',
+                InputArgument::REQUIRED,
+                'Database table name e.g(users)',
+            ],
         ];
     }
 }

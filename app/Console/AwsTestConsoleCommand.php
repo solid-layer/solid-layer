@@ -11,7 +11,6 @@ class AwsTestConsoleCommand extends BaseCommand
 
     protected $description = 'AWS Test';
 
-
     public function slash()
     {
         # ---- pull the alias from DI 'aws' using the magic method __call
@@ -36,9 +35,8 @@ class AwsTestConsoleCommand extends BaseCommand
         $s3->putObject([
             'Bucket' => $bucket,
             'Key'    => $key,
-            'Body'   => fopen(public_path('css/'.$file_name), 'r'),
-
-            # - URL: 
+            'Body'   => fopen(public_path('css/' . $file_name), 'r'),
+            # - URL:
             # https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl
             'ACL'    => 'public-read',
         ]);

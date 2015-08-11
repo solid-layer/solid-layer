@@ -21,12 +21,12 @@ class View extends ServiceProvider
 
         $view->registerEngines([
 
-            '.volt' => 
+            '.volt'  =>
                 function ($view, $di) {
                     $volt = new PhalconVoltEngine($view, $di);
 
                     $volt->setOptions([
-                        'compiledPath' => config()->path->storageViewDir,
+                        'compiledPath'      => config()->path->storageViewDir,
                         'compiledSeparator' => '_',
                     ]);
 
@@ -55,8 +55,7 @@ class View extends ServiceProvider
 
                     return $volt;
                 },
-
-            '.phtml' => 
+            '.phtml' =>
                 'Phalcon\Mvc\View\Engine\Php',
         ]);
 
@@ -66,7 +65,7 @@ class View extends ServiceProvider
         # ---- after rendering the view
         # by default, we should destroy the flash
         $event_manager->attach("view:afterRender",
-            function($event, $dispatcher, $exception) {
+            function ($event, $dispatcher, $exception) {
 
                 # - this should destroy the flash
                 $flash = $dispatcher->getDI()->get('flash');

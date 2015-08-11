@@ -6,9 +6,6 @@ use Phalcon\Mvc\View as PhalconView;
 use Bootstrap\Exceptions\ViewFileNotFoundException;
 use Bootstrap\Support\WithMagicMethodTrait;
 
-/**
- * @author Daison Carino <daison12006013 [at] gmail [dot] com>
- */
 class View extends PhalconView
 {
     use WithMagicMethodTrait;
@@ -35,7 +32,7 @@ class View extends PhalconView
 
 
     /**
-     * 
+     *
      * @return bool
      */
     public function checkViewPath($path)
@@ -43,7 +40,7 @@ class View extends PhalconView
         $full_path = di()->get('view')->getViewsDir() . $path;
 
         $result = glob($full_path . '.*');
-        if ( ! $result ) {
+        if (!$result) {
             throw new ViewFileNotFoundException(
                 'Views file path(' . $full_path . ') not found.'
             );

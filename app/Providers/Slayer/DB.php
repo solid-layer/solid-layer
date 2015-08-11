@@ -14,43 +14,44 @@ use Exception;
 
 class DB extends ServiceProvider
 {
-  public $_alias = 'db';
+    public $_alias = 'db';
 
-  public $_shared = false;
+    public $_shared = false;
 
-  public function register()
-  {
-    if (env('APP_ENV') == 'travis') {
-        return $this;
-    }
-
-    $db_config = config()->database->toArray();
-
-    $db_adapters = [
-        'mysql' => Mysql::class,
-        'postgre' => Postgresql::class,
-        'sqlite' => Sqlite::class,
-        'oracle' => Oracle::class,
-    ];
-
-    $selected_adapter = strtolower($db_config['adapter']);
-
-    if (! isset($db_adapters[$selected_adapter]) ) {
-        throw new Exception('DB Adapter not found!');
-    }
-
-    $logger = new FileLogger(APP_ROOT . '/storage/logs/db.log');
-
-    $event_manager = new Events_Manager;
-    $event_manager->attach($this->_alias, function ($event, $conn) use ($logger) {
-        if ($event->getType() == 'beforeQuery') {
-            $logger->log($conn->getSQLStatement(), Logger::INFO);
+    public function register()
+    {
+        if (env('APP_ENV') == 'travis') {
+            return $this;
         }
-    });
 
-    $conn = new $db_adapters[$selected_adapter]($db_config);
-    $conn->setEventsManager($event_manager);
+        $db_config = config()->database->toArray();
 
-    return $conn;
-  }
+        $db_adapters = [
+            'mysql'   => Mysql::class,
+            'postgre' => Postgresql::class,
+            'sqlite'  => Sqlite::class,
+            'oracle'  => Oracle::class,
+        ];
+
+        $selected_adapter = strtolower($db_config[ 'adapter' ]);
+
+        if (!isset( $db_adapters[ $selected_adapter ] )) {
+            throw new Exception('DB Adapter not found!');
+        }
+
+        $logger = new FileLogger(APP_ROOT . '/storage/logs/db.log');
+
+        $event_manager = new Events_Manager;
+        $event_manager->attach($this->_alias,
+            function ($event, $conn) use ($logger) {
+                if ($event->getType() == 'beforeQuery') {
+                    $logger->log($conn->getSQLStatement(), Logger::INFO);
+                }
+            });
+
+        $conn = new $db_adapters[ $selected_adapter ]($db_config);
+        $conn->setEventsManager($event_manager);
+
+        return $conn;
+    }
 }

@@ -15,11 +15,11 @@
             <div class="row" style="margin-top:20px;">
                 <div class="col-sm-12 text-center">
                     <div class="alert alert-danger">
-                        <h4>Whoops error found!</h4>
-                        <p>Please tail slayer's log to view the error, or try to debug your system.</p>
+                        <h4>Whoops! Something went wrong.</h4>
+                        <p>It seems the system is not functioning.</p>
                     </div>
 
-                    <a target="_blank" href="http://www.github.com/phalconslayer/slayer"><code>Powered By: Slayer - Bootstrapped Phalcon Framework</code></a>
+                    <a target="_blank" href="http://www.github.com/phalconslayer/slayer"><code>Powered By: Slayer - Structured Phalcon Framework</code></a>
                 </div>
             </div>
         </div>

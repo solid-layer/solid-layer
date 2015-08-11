@@ -12,6 +12,6 @@ class MySandboxCommand extends SlayerCommand
 
     public function slash()
     {
-        
+
     }
 }

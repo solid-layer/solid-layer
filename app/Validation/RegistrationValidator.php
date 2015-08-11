@@ -10,16 +10,12 @@ class RegistrationValidator extends Validation
 {
     public function initialize()
     {
-        $this->add('username', new PresenceOf(array(
-            'message' => 'The username is required'
-        )));
+        $this->add('email', new PresenceOf([
+            'message' => 'The email is required',
+        ]));
 
-        $this->add('email', new PresenceOf(array(
-            'message' => 'The email is required'
-        )));
-
-        $this->add('email', new Email(array(
-            'message' => 'The email is not valid'
-        )));
+        $this->add('email', new Email([
+            'message' => 'The email is not valid',
+        ]));
     }
 }

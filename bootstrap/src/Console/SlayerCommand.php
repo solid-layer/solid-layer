@@ -36,19 +36,20 @@ abstract class SlayerCommand extends Command
 
         if (count($this->arguments())) {
             foreach ($this->arguments() as $arg) {
-                $this->addArgument(@$arg[0], @$arg[1], @$arg[2], @$arg[3]);
+                $this->addArgument(@$arg[ 0 ], @$arg[ 1 ], @$arg[ 2 ],
+                    @$arg[ 3 ]);
             }
         }
 
         if (count($this->options())) {
             foreach ($this->options() as $opt) {
-                $this->addOption(@$opt[0], @$opt[1], @$opt[2], @$opt[3], @$opt[4]);
+                $this->addOption(@$opt[ 0 ], @$opt[ 1 ], @$opt[ 2 ], @$opt[ 3 ],
+                    @$opt[ 4 ]);
             }
         }
 
         return $this;
     }
-
 
 
     protected function arguments()

@@ -38,8 +38,8 @@
                 <input type="hidden" name="ref" value="{{ request().get('ref') }}"> 
 
                 <div class="form-group">
-                    <label>{{ lang.get('auth.login.username_label') }}</label>
-                    <input type="text" name="username" class="form-control">
+                    <label>{{ lang.get('auth.login.email_label') }}</label>
+                    <input type="text" name="email" class="form-control">
                 </div>
 
                 <div class="form-group">
@@ -48,7 +48,8 @@
                 </div>
 
                 <div class="pull-left">
-                    <a href="<?php echo $this->url->get(['for' => 'showRegistrationForm']) ?>" class="btn btn-info">{{ lang.get('auth.button.register_button') }}</a> <a href="" class="btn btn-danger">{{ lang.get('auth.button.forgot_button') }}</a>
+                    <a href="<?php echo $this->url->get(['for' => 'showRegistrationForm']) ?>" class="btn btn-info">{{ lang.get('auth.button.register_button') }}</a>
+                    <a href="" class="disabled btn btn-danger">{{ lang.get('auth.button.forgot_button') }}</a>
                 </div>
 
                 <div class="pull-right">

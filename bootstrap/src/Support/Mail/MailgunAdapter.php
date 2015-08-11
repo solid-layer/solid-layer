@@ -10,7 +10,6 @@ class MailgunAdapter implements MailInterface
     private $host;
     private $username;
     private $password;
-
     private $from;
     private $to;
     private $subject;
@@ -91,12 +90,12 @@ class MailgunAdapter implements MailInterface
         ]);
     }
 
-    public function getKey()
+    private function getKey()
     {
         return config()->mailer->mailgun->secret;
     }
 
-    public function getDomain()
+    private function getDomain()
     {
         return config()->mailer->mailgun->domain;
     }

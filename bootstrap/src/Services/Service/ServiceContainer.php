@@ -9,8 +9,8 @@ class ServiceContainer
     public function addServiceProvider(ServiceProvider $obj)
     {
         di()->set(
-            $obj->getAlias(), 
-            $obj->callRegister(), 
+            $obj->getAlias(),
+            $obj->callRegister(),
             $obj->getShared()
         );
 

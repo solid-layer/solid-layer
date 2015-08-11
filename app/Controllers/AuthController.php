@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-# ---- using aliasias
+# ---- using aliases
 use URL;            # use Bootstrap\Facades\URL;
 use Auth;           # use Bootstrap\Facades\Auth;
 use View;           # use Bootstrap\Facades\View;
@@ -22,7 +22,7 @@ class AuthController extends Controller
     public function initialize()
     {
         $this->acl('csrf', [
-            'only' => [
+            'only'   => [
                 'attempt',
             ],
             'except' => [
@@ -55,8 +55,7 @@ class AuthController extends Controller
 
             # alternative call:
             #   $this->tag->setDefault(..., <value)
-            Tag::setDefault('email', $input['email']);
-            Tag::setDefault('username', $input['username']);
+            Tag::setDefault('email', $input[ 'email' ]);
 
             # alternative call:
             #   $this->session->remove(...)
@@ -65,7 +64,7 @@ class AuthController extends Controller
 
 
         # ---- by default, phalcon is smart enough to get
-        # 'auth.showRegistrationForm' as 
+        # 'auth.showRegistrationForm' as
         # '<controller>.<action>'
         # ---- alternative call:
         #           $this->view->make(...)
@@ -85,7 +84,7 @@ class AuthController extends Controller
 
         $error_messages = '';
 
-        # ---- if a message found, then let's process the 
+        # ---- if a message found, then let's process the
         # redirection
         if (count($messages)) {
 
@@ -96,25 +95,25 @@ class AuthController extends Controller
             Session::set('input', $this->request->get());
 
 
-            # ---- if there is an error, let's map all the erros 
+            # ---- if there is an error, let's map all the erros
             # into one message
             foreach ($messages as $m) {
-                $error_messages .= 
+                $error_messages .=
                     '<li>' . $m->getMessage() . '</li>';
             }
         }
 
         # ---- validate password and repeat password mismatch
-        if ($inputs['password'] != $inputs['repassword']) {
-            $error_messages .= 
+        if ($inputs[ 'password' ] != $inputs[ 'repassword' ]) {
+            $error_messages .=
                 '<li>Password and Repeat mismatch</li>';
         }
 
         if (strlen($error_messages) != 0) {
             $error_messages = sprintf('
                 Please check the error below:<br>
-                    <ul>%s</ul>', 
-                    $error_messages
+                    <ul>%s</ul>',
+                $error_messages
             );
 
 
@@ -131,28 +130,30 @@ class AuthController extends Controller
         }
 
 
-        # ---- generate a token 
-        $token = sha1( uniqid() . md5(
-                str_random() . 
-                date('Ymdhis') . 
+        # ---- generate a token
+        $token = sha1(uniqid() . md5(
+                str_random() .
+                date('Ymdhis') .
                 uniqid()
             )
         );
 
         $user = new User;
-        $user->create([
-            'email' => $inputs['email'],
-            'username' => $inputs['username'],
-            'password' => Security::hash($inputs['password']),
-            'token' => $token,
+        $success = $user->create([
+            'email'    => $inputs[ 'email' ],
+            'password' => Security::hash($inputs[ 'password' ]),
+            'token'    => $token,
         ]);
 
+        if ($success == false) {
+            throw new \Exception('Cant create an account!');
+        }
+
         # ---- alternative creation:
-        //  $user->email = $inputs['email'];
-        //  $user->username = $inputs['username'];
-        //  $user->password = Security::hash($inputs['password']);
-        //  $user->token = $token;
-        //  $user->create();
+         // $user->email = $inputs['email'];
+         // $user->password = Security::hash($inputs['password']);
+         // $user->token = $token;
+         // $user->create();
 
 
         # ---- generate a full path url providing the token
@@ -165,9 +166,9 @@ class AuthController extends Controller
 
         # ---- alternative call:
         #           $this->mail->send(..., [...], function() {})
-        Mail::send('emails.registered-inligned', ['url' => $url], 
-            function($mail) use ($inputs) {
-                $mail->to([$inputs['email']]);
+        Mail::send('emails.registered-inligned', ['url' => $url],
+            function ($mail) use ($inputs) {
+                $mail->to([$inputs[ 'email' ]]);
                 $mail->subject(
                     'You have successfully registered.'
                 );
@@ -197,15 +198,15 @@ class AuthController extends Controller
         #           $this->flash->notice(...)
         FlashBag::notice(
 
-            # ---- alternative call:
-            #           $this->lang->get(...)
+        # ---- alternative call:
+        #           $this->lang->get(...)
             Lang::get(
                 'responses/login.pre_flash_message'
             )
         );
 
         # ---- by default, phalcon is smart enough
-        # to get the 'auth.showLoginForm' as '<controller>.<action>' 
+        # to get the 'auth.showLoginForm' as '<controller>.<action>'
         # ---- alternative call:
         #           $this->view->make(...)
 
@@ -216,14 +217,14 @@ class AuthController extends Controller
     public function attemptToLoginAction()
     {
         $credentials = [
-            'username' => Request::get('username'),
-            'password' => Request::get('password'),
+            'email'        => Request::get('email'),
+            'password'     => Request::get('password'),
             'is_activated' => true,
         ];
 
         # ---- alternative call:
         #           $this->auth->attempt(...)
-        if ( Auth::attempt($credentials) ) {
+        if (Auth::attempt($credentials)) {
 
             if (Request::has('ref') && strlen(Request::get('ref')) != 0) {
                 return Redirect::to(Request::get('ref'));
@@ -259,8 +260,8 @@ class AuthController extends Controller
         #           $this->redirect->to([...])
         return Redirect::to(
 
-            # ---- alternative call:
-            #           $this->url->get([...])
+        # ---- alternative call:
+        #           $this->url->get([...])
             URL::route('showLoginForm')
         );
     }
@@ -271,14 +272,14 @@ class AuthController extends Controller
         $user = User::find([
             'token = :token: AND is_activated = :is_activated:',
             'bind' => [
-                'token' => $token,
+                'token'        => $token,
                 'is_activated' => false,
             ],
         ])->getFirst();
 
 
         # ---- return 404, if the condition not found
-        if (! $user) {
+        if (!$user) {
             FlashBag::warning(
                 'We cant find your request, please ' .
                 'try again, or contact us.'
@@ -301,7 +302,7 @@ class AuthController extends Controller
             }
         } else {
             FlashBag::success(
-                'You have successfully activated your account, ' . 
+                'You have successfully activated your account, ' .
                 'you are now allowed to login.'
             );
         }

@@ -18,9 +18,10 @@ class MakeControllerCommand extends SlayerCommand
         $stub = file_get_contents(__DIR__ . '/stubs/makeController.stub');
         $stub = str_replace('{controllerName}', $arg_name, $stub);
 
-        if ( $this->input->getOption('emptify') ) {
+        if ($this->input->getOption('emptify')) {
             $_controllerFunctions = file_get_contents(__DIR__ . '/stubs/_controllerFunctions.stub');
-            $stub = str_replace('{controllerFunctions}', $_controllerFunctions, $stub);
+            $stub = str_replace('{controllerFunctions}', $_controllerFunctions,
+                $stub);
         } else {
             $stub = str_replace('{controllerFunctions}', '', $stub);
         }
@@ -29,7 +30,7 @@ class MakeControllerCommand extends SlayerCommand
         chdir(config()->path->controllersDir);
         $this->comment('Crafting Controller...');
 
-        if ( file_exists($file_name) ) {
+        if (file_exists($file_name)) {
             $this->error('   Controller already exists!');
         } else {
             file_put_contents($file_name, $stub);
@@ -47,7 +48,13 @@ class MakeControllerCommand extends SlayerCommand
     protected function options()
     {
         return [
-            ['emptify', null, InputOption::VALUE_OPTIONAL, 'Remove all pre-defined functions', false],
+            [
+                'emptify',
+                null,
+                InputOption::VALUE_OPTIONAL,
+                'Remove all pre-defined functions',
+                false,
+            ],
         ];
     }
 }

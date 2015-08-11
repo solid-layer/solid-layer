@@ -3,7 +3,7 @@
 use Bootstrap\Facades\Route;
 
 Route::add('/sandbox/test', [
-    'module' => 'sandbox',
+    'module'     => 'sandbox',
     'controller' => 'Sandbox',
-    'action' => 'test',
+    'action'     => 'test',
 ]);

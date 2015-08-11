@@ -21,7 +21,7 @@ class ServeCommand extends SlayerCommand
 
         $this->info("Phalcon Slayer development server started on http://{$host}:{$port}/");
 
-        passthru('"'.PHP_BINARY.'"'." -S {$host}:{$port} \"{$base}\"/.htrouter.php");
+        passthru('"' . PHP_BINARY . '"' . " -S {$host}:{$port} \"{$base}\"/.htrouter.php");
     }
 
     protected function options()
@@ -38,8 +38,20 @@ class ServeCommand extends SlayerCommand
         }
 
         return [
-            ['host', null, InputOption::VALUE_OPTIONAL, 'The host address to serve the application on.', $host],
-            ['port', null, InputOption::VALUE_OPTIONAL, 'The port to serve the application on.', $port],
+            [
+                'host',
+                null,
+                InputOption::VALUE_OPTIONAL,
+                'The host address to serve the application on.',
+                $host,
+            ],
+            [
+                'port',
+                null,
+                InputOption::VALUE_OPTIONAL,
+                'The port to serve the application on.',
+                $port,
+            ],
         ];
     }
 }

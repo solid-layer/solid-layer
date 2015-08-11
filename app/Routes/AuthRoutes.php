@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Routes;
+
 use Phalcon\Mvc\Router\Group as RouterGroup;
 
 class AuthRoutes extends RouterGroup
@@ -22,22 +24,22 @@ class AuthRoutes extends RouterGroup
 
 
         $this->add('/attempt', [
-            'action' => 'attemptToLogin'
+            'action' => 'attemptToLogin',
         ])->setName('attemptToLogin');
 
 
         $this->add('/logout', [
-            'action' => 'logout'
+            'action' => 'logout',
         ])->setName('logout');
 
 
         $this->add('/register', [
-            'action' => 'showRegistrationForm'
+            'action' => 'showRegistrationForm',
         ])->setName('showRegistrationForm');
 
 
         $this->add('/register/store', [
-            'action' => 'storeRegistrationForm'
+            'action' => 'storeRegistrationForm',
         ])->setName('storeRegistrationForm');
 
 

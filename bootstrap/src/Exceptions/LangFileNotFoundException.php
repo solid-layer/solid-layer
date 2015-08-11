@@ -2,4 +2,4 @@
 
 namespace Bootstrap\Exceptions;
 
-class LangFileNotFoundException extends SlayerException {}
+class LangFileNotFoundException extends Handler {}

@@ -10,7 +10,7 @@ class MakeRouteCommand extends SlayerCommand
     protected $name = 'make:route';
 
     protected $description = 'Create a new route group';
-    
+
     public function slash()
     {
         $arg_name = ucfirst($this->input->getArgument('name'));
@@ -22,7 +22,7 @@ class MakeRouteCommand extends SlayerCommand
         chdir(config()->path->routesDir);
         $this->comment('Crafting Route Group...');
 
-        if ( file_exists($file_name) ) {
+        if (file_exists($file_name)) {
             $this->error('   Route already exists!');
         } else {
             file_put_contents($file_name, $stub);

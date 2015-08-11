@@ -3,9 +3,8 @@
 return [
 
     # ---- add your config below
-    # ---- to access your config, you may call 
+    # ---- to access your config, you may call
     # ---- config()->{file}->{key}
-
 
 
     # ------------------------------------------------------------
@@ -22,5 +21,6 @@ return [
     'mailer'   => require_once __DIR__ . '/mailer.php',
     'modules'  => require_once __DIR__ . '/modules.php',
     'path'     => require_once __DIR__ . '/path.php',
+
 
 ]; # - end of return

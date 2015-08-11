@@ -18,7 +18,7 @@ class Auth extends AclContainer
 
             Redirect::to(
                 URL::get(
-                    URL::route('showLoginForm'), 
+                    URL::route('showLoginForm'),
                     ['ref' => URL::current()]
                 )
             );
