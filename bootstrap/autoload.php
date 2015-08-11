@@ -1,6 +1,6 @@
 <?php
 
-if (! defined('APP_ROOT')) {
+if (!defined('APP_ROOT')) {
     define('APP_ROOT', dirname(__DIR__));
 
     $di = new \Phalcon\Di\FactoryDefault();
@@ -18,16 +18,16 @@ $dotenv->load();
 
 
 # Injecting config
-$main_config     = APP_ROOT . '/config/.init.php';
+$main_config = APP_ROOT . '/config/.init.php';
 $env_config_file = APP_ROOT . '/config/' . getenv('APP_ENV') . '/.init.php';
 
-$di->set('config', function() use ($main_config, $env_config_file) {
-    $config = new \Phalcon\Config( require_once $main_config );
+$di->set('config', function () use ($main_config, $env_config_file) {
+    $config = new \Phalcon\Config(require_once $main_config);
 
     if (file_exists($env_config_file)) {
-        $env_config = new \Phalcon\Config( require_once $env_config_file );
+        $env_config = new \Phalcon\Config(require_once $env_config_file);
 
-        $config->merge( $env_config );
+        $config->merge($env_config);
     }
 
     return $config;

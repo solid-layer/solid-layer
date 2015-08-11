@@ -12,7 +12,7 @@ class ClearCacheCommand extends SlayerCommand
     protected $name = 'clear:cache';
 
     protected $description = 'Clear the storage/cache folder';
-    
+
     public function slash()
     {
         $this->clear(config()->path->cacheDir);

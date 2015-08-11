@@ -6,7 +6,7 @@ return [
     # Register all the roles you have
     # ------------------------------------------------------------
     # ---- By default we're using 'administrator' and 'user'
-    'roles' => [
+    'roles'   => [
         'administrator',
         'user',
     ],
@@ -22,5 +22,6 @@ return [
         'csrf'    => App\Acl\CSRF::class,
         'auth'    => App\Acl\Auth::class,
     ],
+
 
 ]; # - end of return

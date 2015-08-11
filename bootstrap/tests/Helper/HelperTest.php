@@ -15,14 +15,14 @@ class HelperTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf(\Phalcon\Tag::class, tag());
         $this->assertInstanceOf(\Phalcon\Mvc\Router::class, route());
         $this->assertInstanceOf(
-            \Phalcon\Http\Response::class, 
+            \Phalcon\Http\Response::class,
             response()
         );
         $this->assertInstanceOf(\Phalcon\Mvc\View::class, view());
         $this->assertInstanceOf(\Phalcon\Config::class, config());
         $this->assertInstanceOf(\Phalcon\Mvc\Url::class, url());
         $this->assertInstanceOf(
-            \Bootstrap\Support\Redirect\Redirect::class, 
+            \Bootstrap\Support\Redirect\Redirect::class,
             redirect()
         );
     }
@@ -31,7 +31,7 @@ class HelperTest extends PHPUnit_Framework_TestCase
     {
         # getting the route should return the full path url
         $this->assertContains(
-            url()->getBaseUri().'auth/login', 
+            url()->getBaseUri() . 'auth/login',
             route('showLoginForm')
         );
 

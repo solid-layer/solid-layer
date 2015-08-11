@@ -4,5 +4,8 @@ namespace Bootstrap\Facades;
 
 class Redirect extends Facade
 {
-    protected static function getFacadeAccessor() { return 'redirect'; }
+    protected static function getFacadeAccessor()
+    {
+        return 'redirect';
+    }
 }

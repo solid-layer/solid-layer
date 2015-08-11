@@ -18,19 +18,15 @@
             <form class="form-vertical" method="POST" action="{{ url.get(['for':'storeRegistrationForm']) }}" autocomplete="off">
                 <input type="hidden" name="{{ security.getTokenKey() }}" value="{{ security.getToken() }}"/>
                 <div class="form-group">
-                    <label>Email</label>
+                    <label>{{ lang.get('auth.login.email_label') }}</label>
                     {{ text_field('email', 'class': 'form-control') }}
                 </div>
                 <div class="form-group">
-                    <label>Username</label>
-                    {{ text_field('username', 'class': 'form-control') }}
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
+                    <label>{{ lang.get('auth.login.password_label') }}</label>
                     {{ password_field('password', 'class': 'form-control') }}
                 </div>
                 <div class="form-group">
-                    <label>Repeat Password</label>
+                    <label>{{ lang.get('auth.login.re_password_label') }}</label>
                     {{ password_field('repassword', 'class': 'form-control') }}
                 </div>
                 <div class="pull-right">

@@ -47,7 +47,13 @@ class VendorPublishCommand extends SlayerCommand
     protected function options()
     {
         return [
-            ['tag', null, InputOption::VALUE_OPTIONAL, 'Specify which tag you want to publish', null],
+            [
+                'tag',
+                null,
+                InputOption::VALUE_OPTIONAL,
+                'Specify which tag you want to publish',
+                null,
+            ],
         ];
     }
 }

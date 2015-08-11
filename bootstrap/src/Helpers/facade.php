@@ -6,7 +6,7 @@
 |-------------------------------------------------------------
 | Returning the injected 'security' in the DI
 */
-if (! function_exists('security')) {
+if (!function_exists('security')) {
     function security()
     {
         return di()->get('security');
@@ -19,7 +19,7 @@ if (! function_exists('security')) {
 |-------------------------------------------------------------
 | Returning the injected 'tag' in the DI
 */
-if (! function_exists('tag')) {
+if (!function_exists('tag')) {
     function tag()
     {
         return di()->get('tag');
@@ -32,8 +32,8 @@ if (! function_exists('tag')) {
 |-------------------------------------------------------------
 | Returning the injected 'router' in the DI
 */
-if (! function_exists('route')) {
-    function route($name = null, $params = []) 
+if (!function_exists('route')) {
+    function route($name = null, $params = [])
     {
         if ($name == null) {
             return di()->get('router');
@@ -50,8 +50,8 @@ if (! function_exists('route')) {
 |-------------------------------------------------------------
 | Returning the injected 'response' in the DI
 */
-if (! function_exists('response')) {
-    function response() 
+if (!function_exists('response')) {
+    function response()
     {
         return di()->get('response');
     }
@@ -64,12 +64,13 @@ if (! function_exists('response')) {
 |-------------------------------------------------------------
 | Returning the injected 'view' in the DI
 */
-if (! function_exists('view')) {
-    function view($path = null, $params = []) 
+if (!function_exists('view')) {
+    function view($path = null, $params = [])
     {
         $view = di()->get('view');
-        if ($path == null)
+        if ($path == null) {
             return $view;
+        }
 
         return $view->make($path, $params);
     }
@@ -82,8 +83,8 @@ if (! function_exists('view')) {
 |-------------------------------------------------------------
 | Returning the injected 'config' in the DI
 */
-if (! function_exists('config')) {
-    function config($path = null) 
+if (!function_exists('config')) {
+    function config($path = null)
     {
         $config = di()->get('config');
         if ($path == null) {
@@ -108,15 +109,15 @@ if (! function_exists('config')) {
 |-------------------------------------------------------------
 | Returning the injected 'url' in the DI
 */
-if (! function_exists('url')) {
-    function url($href = null, $params = []) 
+if (!function_exists('url')) {
+    function url($href = null, $params = [])
     {
         $url = di()->get('url');
         if ($href == null) {
             return $url;
         }
 
-        return  $url->get($href, $params);
+        return $url->get($href, $params);
     }
 }
 
@@ -127,14 +128,15 @@ if (! function_exists('url')) {
 |-------------------------------------------------------------
 | Returning the injected 'redirect' in the DI
 */
-if (! function_exists('redirect')) {
-    function redirect($to = null) 
+if (!function_exists('redirect')) {
+    function redirect($to = null)
     {
         $redirect = di()->get('redirect');
-        if ($to == null)
+        if ($to == null) {
             return $redirect;
+        }
 
-        return  $redirect->to($to);
+        return $redirect->to($to);
     }
 }
 
@@ -144,7 +146,7 @@ if (! function_exists('redirect')) {
 |-------------------------------------------------------------
 | Returning the injected 'request' in the DI
 */
-if (! function_exists('request')) {
+if (!function_exists('request')) {
     function request()
     {
         return di()->get('request');

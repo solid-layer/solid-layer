@@ -7,12 +7,12 @@ use Phalcon\Http\Request as Http_Request;
 
 class Request extends ServiceProvider
 {
-  protected $_alias = 'request';
+    protected $_alias = 'request';
 
-  protected $_shared = false;
+    protected $_shared = false;
 
-  public function register()
-  {
-    return new Http_Request;
-  }
+    public function register()
+    {
+        return new Http_Request;
+    }
 }

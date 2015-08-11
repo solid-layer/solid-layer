@@ -9,19 +9,19 @@ use Bootstrap\Facades\Response;
 class Auth
 {
     /**
-     * 
+     *
      */
     public function attempt($records)
     {
         $password_field = config()->app->auth->password_field;
-        if (isset($records[$password_field]) == false) {
+        if (isset( $records[ $password_field ] ) == false) {
             throw new Exception('Password field not found!');
         }
 
 
         # ---- get the password information
-        $password = $records[$password_field];
-        unset($records[$password_field]);
+        $password = $records[ $password_field ];
+        unset( $records[ $password_field ] );
 
 
         # ---- build the conditions
@@ -29,7 +29,7 @@ class Auth
         $first = true;
         foreach ($records as $key => $record) {
 
-            if (! $first) {
+            if (!$first) {
                 $conditions .= 'AND';
             }
 
@@ -40,22 +40,22 @@ class Auth
 
         # ---- find the informations provided in the $records
         $auth_model = config()->app->auth->model;
-        $records = 
-            $auth_model::find(array(
-                $conditions, 
+        $records =
+            $auth_model::find([
+                $conditions,
                 'bind' => $records,
-            ))->getFirst();
+            ])->getFirst();
 
 
         # ---- check if there is no record, then return false
-        if ( ! $records) {
+        if (!$records) {
             return false;
         }
 
 
         # ---- now check if the password given is matched with the
         # existing password recorded.
-        if ( Security::checkHash($password, $records->{$password_field}) ) {
+        if (Security::checkHash($password, $records->{$password_field})) {
             Session::set('isAuthenticated', true);
             Session::set('user', $records);
 
@@ -67,7 +67,7 @@ class Auth
 
 
     /**
-     * 
+     *
      */
     public function redirectIntended()
     {
@@ -78,7 +78,7 @@ class Auth
 
 
     /**
-     * 
+     *
      */
     public function check()
     {
@@ -91,7 +91,7 @@ class Auth
 
 
     /**
-     * 
+     *
      */
     public function user()
     {
@@ -100,7 +100,7 @@ class Auth
 
 
     /**
-     * 
+     *
      */
     public function destroy()
     {

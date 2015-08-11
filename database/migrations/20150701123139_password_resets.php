@@ -8,10 +8,9 @@ class PasswordResets extends AbstractMigration
     {
         $password_resets = $this->table('password_resets');
 
-        if (! $this->hasTable('password_resets')) {
+        if (!$this->hasTable('password_resets')) {
 
             $password_resets
-
                 # columns
                 ->addColumn('user_id', 'integer')
                 ->addColumn('reset_token', 'string')

@@ -2,4 +2,4 @@
 
 namespace Bootstrap\Exceptions;
 
-class ViewFileNotFoundException extends SlayerException {}
+class ViewFileNotFoundException extends Handler {}

@@ -3,25 +3,26 @@
 namespace Bootstrap\Support\Mail;
 
 use Bootstrap\Facades\View;
+use Bootstrap\Contracts\Mail\MailInterface;
 
 class Mail
 {
-    private $body;
-    private $params;
-    private $adapter_obj;
+    private $adapter;
+
     private $config;
 
-    public function __construct(MailInterface $adapter_obj, $config)
+    public function __construct(MailInterface $adapter, $config)
     {
-        $this->adapter_obj = $adapter_obj;
+        $this->adapter = $adapter;
         $this->config = $config;
     }
 
-    public function initialize($view, $params)
+    public function initialize($view, $records)
     {
-        $body = View::take($view, $params);
-
-        $maps = [
+        # - we require our mail to auto-set the configurations
+        # in the functions, so we need to call the possible
+        # functions that doesn't require human calls
+        $functions = [
             'host',
             'port',
             'username',
@@ -29,33 +30,62 @@ class Mail
             'encryption',
         ];
 
-        # we need to loop the maps
-        foreach ($maps as $map) {
 
-            if (empty($this->config->{$map})) {
+        foreach ($functions as $function) {
+
+            # - if the provided config is empty, turn next loop
+            if (empty( $this->config->{$function} )) {
                 continue;
             }
 
-            # now call the adapter function
-            # e.g 
-            #   $this->adapter_obj->host($this->config->host);
-            #
-            $this->adapter_obj->{$map}($this->config->{$map});
+            # - now call the functions
+            $this
+                ->adapter
+                ->{$function}($this->config->{$function});
         }
 
-        $this->adapter_obj
+
+        # - render the view as partial
+        $body = View::take($view, $records);
+
+
+        # - we need to insert the global mailer 'from'
+        # and insert the body
+        $this
+            ->adapter
             ->from(config()->app->mailer->from)
             ->body($body);
 
-        return $this->adapter_obj;
+
+        # - now return the adapter, so that they could still pre-modify
+        # the function values
+        return $this->adapter;
     }
 
-    public function send($view, $params, $callback)
+    /**
+     * This will trigger the adapter's send function
+     *
+     * @param string $view The view path
+     * @param array $records The variables will be used on the view path
+     * @param mixed $callback
+     *
+     * @return boolean
+     */
+    public function send($view, $records, $callback)
     {
-        $init = $this->initialize($view, $params);
+        # - we will pass the view path and records
+        $init = $this->initialize($view, $records);
+
+
+        # - we will call the initialize function
         call_user_func($callback, $init);
 
+
+        # - we lastly triggering the send function
         $init->send();
+
+
+        return true;
     }
 
 }

@@ -4,5 +4,8 @@ namespace Bootstrap\Facades;
 
 class ACL extends Facade
 {
-    protected static function getFacadeAccessor() { return 'acl'; }
+    protected static function getFacadeAccessor()
+    {
+        return 'acl';
+    }
 }

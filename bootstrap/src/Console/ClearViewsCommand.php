@@ -12,7 +12,7 @@ class ClearViewsCommand extends SlayerCommand
     protected $name = 'clear:views';
 
     protected $description = 'Clear the storage/views folder';
-    
+
     public function slash()
     {
         $this->clear(config()->path->storageViewDir);

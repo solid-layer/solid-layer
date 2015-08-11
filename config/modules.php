@@ -2,7 +2,7 @@
 
 return [
 
-    'slayer' => function($di) {
+    'slayer'  => function ($di) {
 
         // $di
         //     ->get('view')
@@ -12,19 +12,21 @@ return [
         //     ->setDefaultNamespace('App\Controllers');
     },
 
-    'sandbox' => function($di) {
-        $_sandbox = $di->get('sandbox');
+    'sandbox' => function ($di) {
 
-        $views_dir = $_sandbox->getViewsDir();
+        $sandbox = $di->get('sandbox');
+
+        $views_dir = $sandbox->getViewsDir();
         if (is_dir(base_path('resources/views/vendor/sandbox'))) {
             $views_dir = base_path('resources/views/vendor/sandbox');
         }
 
-        $lang_dir = $_sandbox->getLangDir();
+        $lang_dir = $sandbox->getLangDir();
         if (is_dir(base_path('resources/lang/vendor/sandbox'))) {
             $lang_dir = base_path('resources/lang/vendor/sandbox');
         }
 
+        # - set the views dir and lang dir
         $di->get('view')->setViewsDir($views_dir);
         $di->get('lang')->setLangDir($lang_dir);
         $di

@@ -13,11 +13,9 @@ class User extends Model
 
     # ---- The table columns
     public $email;
-    public $username;
     public $password;
     public $token;
-    protected $first_name;
-    protected $last_name;
+    protected $name;
     protected $is_activated;
 
     /**
@@ -33,28 +31,14 @@ class User extends Model
 
 
     /**
-     * Set the first_name field
+     * Set the name field
      *
-     * @param string $first_name setting the user's first name
+     * @param string $name setting the name of the user
      * @return mixed
      */
-    public function setFirstName($first_name)
+    public function setName($name)
     {
-        $this->first_name = $first_name;
-
-        return $this;
-    }
-
-
-    /**
-     * Set the last_name field
-     *
-     * @param string $last_name setting the user's last name
-     * @return mixed
-     */
-    public function setLastName($last_name)
-    {
-        $this->last_name = $last_name;
+        $this->name = $name;
 
         return $this;
     }

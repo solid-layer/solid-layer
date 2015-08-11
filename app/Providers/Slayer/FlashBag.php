@@ -17,7 +17,7 @@ class FlashBag extends ServiceProvider
             'error'   => 'alert alert-danger',
             'success' => 'alert alert-success',
             'notice'  => 'alert alert-info',
-            'warning' => 'alert alert-warning'
+            'warning' => 'alert alert-warning',
         ]);
 
         return $flash_session;

@@ -2,10 +2,10 @@
 
 namespace Bootstrap\Facades;
 
-class Config extends Facade
+class Log extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'config';
+        return 'log';
     }
 }

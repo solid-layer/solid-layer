@@ -4,5 +4,8 @@ namespace Bootstrap\Facades;
 
 class Flash extends Facade
 {
-    protected static function getFacadeAccessor() { return 'flash'; }
+    protected static function getFacadeAccessor()
+    {
+        return 'flash';
+    }
 }

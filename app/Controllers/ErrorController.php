@@ -8,6 +8,11 @@ class ErrorController Extends Controller
 {
     public function whoopsAction()
     {
-        return View::make('error.whoops');
+        return View::make('errors.whoops');
+    }
+
+    public function pageNotFoundAction()
+    {
+        return View::make('errors.404');
     }
 }

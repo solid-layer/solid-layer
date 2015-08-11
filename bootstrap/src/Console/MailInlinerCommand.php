@@ -11,13 +11,13 @@ class MailInlinerCommand extends SlayerCommand
 {
     protected $name = 'mail:inliner';
     protected $description = 'Parse templates inlining css and js';
-    
+
 
     /**
      * It combines all the css provided so that the system could
-     * analyze which class/ids will be used and will be inlined 
+     * analyze which class/ids will be used and will be inlined
      *
-     * @param mixed $css_files 
+     * @param mixed $css_files
      * @return string
      */
     protected function combineCss($css_files)
@@ -25,7 +25,7 @@ class MailInlinerCommand extends SlayerCommand
         $combined_css = null;
 
         foreach ($css_files as $css) {
-            $combined_css .= 
+            $combined_css .=
                 file_get_contents(
                     remove_double_slash($css)
                 );
@@ -35,11 +35,10 @@ class MailInlinerCommand extends SlayerCommand
     }
 
 
-
     /**
      * A parser function or rebuilder to inline original file
      * into an email based html
-     * 
+     *
      * @param mixed $record assigned key from inliner config
      * @return null
      */
@@ -57,7 +56,7 @@ class MailInlinerCommand extends SlayerCommand
 
         # ---- now get all related glob
         $related_files = glob($base_file);
-        if (empty($related_files) == true) {
+        if (empty( $related_files ) == true) {
             $this->comment('   System can\'t find the file: ' . $base_file);
 
             return;
@@ -66,25 +65,25 @@ class MailInlinerCommand extends SlayerCommand
 
         # ---- set the html
         $inliner->setHTML(
-            file_get_contents($related_files[0])
+            file_get_contents($related_files[ 0 ])
         );
 
 
         # ---- set the css files
         $inliner->setCSS(
-            $this->combineCss($record['css'])
+            $this->combineCss($record[ 'css' ])
         );
 
 
         # ----  get the dirname and file name
-        $dirname = dirname($related_files[0]);
+        $dirname = dirname($related_files[ 0 ]);
         $converted_name = basename($record->file) . '-inligned.volt';
 
 
         # ---- overwrite or create a file based on the dirname
         # and file name
         file_put_contents(
-            $dirname . '/' . $converted_name, 
+            $dirname . '/' . $converted_name,
             rawurldecode($inliner->convert())
         );
 
@@ -92,8 +91,6 @@ class MailInlinerCommand extends SlayerCommand
         # ---- log, show some sucess
         $this->comment('   ' . basename($record->file) . ' inlined! saved as ' . $converted_name);
     }
-
-
 
 
     /**
@@ -117,16 +114,14 @@ class MailInlinerCommand extends SlayerCommand
         # then we should get the specific inline key
         if (strlen($record) != 0) {
 
-            if (isset($records[$record]) == false) {
+            if (isset( $records[ $record ] ) == false) {
                 $this->error($record . ' not found!');
 
                 return;
             }
 
             $this->parse(config()->inliner->{$record});
-        }
-
-        # ---- or, else parse all the inliner
+        } # ---- or, else parse all the inliner
         else {
             foreach (config()->inliner as $record) {
                 $this->parse($record, true);
@@ -135,14 +130,19 @@ class MailInlinerCommand extends SlayerCommand
     }
 
 
-
     /**
      * {@inheritDoc}
      */
     protected function options()
     {
         return [
-            ['record', null, InputOption::VALUE_OPTIONAL, 'The record key to be parsed.', null],
+            [
+                'record',
+                null,
+                InputOption::VALUE_OPTIONAL,
+                'The record key to be parsed.',
+                null,
+            ],
         ];
     }
 }

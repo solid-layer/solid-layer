@@ -10,7 +10,7 @@ class MakeCollectionCommand extends SlayerCommand
     protected $name = 'make:collection';
 
     protected $description = 'Create a new collection';
-    
+
     public function slash()
     {
         $name = ucfirst($this->input->getArgument('model'));
@@ -24,7 +24,7 @@ class MakeCollectionCommand extends SlayerCommand
         chdir(config()->path->collectionsDir);
         $this->comment('Crafting Collection...');
 
-        if ( file_exists($file_name) ) {
+        if (file_exists($file_name)) {
             $this->error('   Collection already exists!');
         } else {
             file_put_contents($file_name, $stub);
@@ -35,8 +35,16 @@ class MakeCollectionCommand extends SlayerCommand
     protected function arguments()
     {
         return [
-            ['model', InputArgument::REQUIRED, 'Model name to be use e.g(Robot)'],
-            ['collection', InputArgument::REQUIRED, 'ODM collection name e.g(robots)'],
+            [
+                'model',
+                InputArgument::REQUIRED,
+                'Model name to be use e.g(Robot)',
+            ],
+            [
+                'collection',
+                InputArgument::REQUIRED,
+                'ODM collection name e.g(robots)',
+            ],
         ];
     }
 }

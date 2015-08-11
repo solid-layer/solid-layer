@@ -8,19 +8,18 @@ class User extends AbstractMigration
     {
         $users = $this->table('users');
         $users
-
             # columns
             ->addColumn('email', 'string')
             ->addColumn('password', 'string')
             ->addColumn('name', 'string', ['null' => true])
-            ->addColumn('email_token', 'string')
+            ->addColumn('token', 'string')
             ->addColumn('is_activated', 'boolean', ['default' => false])
 
             # indexes
             ->addIndex(['email'], ['unique' => true])
             ->addIndex(['name'])
             ->addIndex(['password'])
-            ->addIndex(['email_token'])
+            ->addIndex(['token'])
 
             # created_at and updated_at
             ->addTimestamps()

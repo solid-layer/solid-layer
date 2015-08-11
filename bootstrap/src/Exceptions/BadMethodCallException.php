@@ -2,4 +2,4 @@
 
 namespace Bootstrap\Exceptions;
 
-class BadMethodCallException extends SlayerException {}
+class BadMethodCallException extends Handler {}

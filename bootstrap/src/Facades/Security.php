@@ -4,5 +4,8 @@ namespace Bootstrap\Facades;
 
 class Security extends Facade
 {
-    protected static function getFacadeAccessor() { return 'security'; }
+    protected static function getFacadeAccessor()
+    {
+        return 'security';
+    }
 }

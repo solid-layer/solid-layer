@@ -4,11 +4,6 @@ return [
 
     # ---- add your path here ...
 
-    # ------------------------------------------------------------
-    # PhalconSlayer Registered Path
-    # ------------------------------------------------------------
-    # ---- You can access this path using this function
-
 
     # ---- app
     'app'            => app_path(),
@@ -18,14 +13,17 @@ return [
     'modelsDir'      => APP_ROOT . '/app/Models/',
     'routesDir'      => APP_ROOT . '/app/Routes/',
 
+
     # ---- database
     'database'       => database_path(),
     'migrationsDir'  => APP_ROOT . '/database/migrations/',
+
 
     # ---- resources
     'resources'      => resources_path(),
     'viewsDir'       => APP_ROOT . '/resources/views/',
     'langDir'        => APP_ROOT . '/resources/lang/',
+
 
     # ---- storage
     'storage'        => storage_path(),
@@ -33,10 +31,10 @@ return [
     'logsDir'        => APP_ROOT . '/storage/logs/',
     'sessionDir'     => APP_ROOT . '/storage/session/',
     'storageViewDir' => APP_ROOT . '/storage/views/',
-
     'sandbox'        => sandbox_path(),
     'config'         => config_path(),
     'public'         => public_path(),
+
 
     # ---- system base path
     'baseUri'        => base_path(),

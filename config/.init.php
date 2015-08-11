@@ -7,7 +7,6 @@ return [
     # ---- config()->{file}->{key}
 
 
-
     # ------------------------------------------------------------
     # PhalconSlayer Files
     # ------------------------------------------------------------
@@ -22,5 +21,6 @@ return [
     'mailer'   => require_once __DIR__ . '/mailer.php',
     'modules'  => require_once __DIR__ . '/modules.php',
     'path'     => require_once __DIR__ . '/path.php',
+
 
 ]; # - end of return

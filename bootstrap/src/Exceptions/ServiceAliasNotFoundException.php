@@ -2,4 +2,4 @@
 
 namespace Bootstrap\Exceptions;
 
-class ServiceAliasNotFoundException extends SlayerException {}
+class ServiceAliasNotFoundException extends Handler {}

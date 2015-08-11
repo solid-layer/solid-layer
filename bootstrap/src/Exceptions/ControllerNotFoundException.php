@@ -2,4 +2,4 @@
 
 namespace Bootstrap\Exceptions;
 
-class ControllerNotFoundException extends SlayerException {}
+class ControllerNotFoundException extends Handler {}

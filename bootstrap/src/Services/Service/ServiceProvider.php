@@ -62,7 +62,7 @@ class ServiceProvider
     {
         $register = $this->register();
 
-        if ( $register == false ) {
+        if ($register == false) {
             throw new Exception(
                 'register method not found on service "' . get_class($this) . '"'
             );
@@ -83,27 +83,34 @@ class ServiceProvider
     }
 
 
-    public function boot() { return false; }
-    public function register() { return false; }
+    public function boot()
+    {
+        return false;
+    }
+
+    public function register()
+    {
+        return false;
+    }
 
 
     public function publish(Array $paths, $tag = null)
     {
         if ($tag) {
-            $this->_publish[$tag] = $paths;
+            $this->_publish[ $tag ] = $paths;
         } else {
             $this->_publish[] = $paths;
         }
     }
-    
+
     public function getToBePublished($tag = null)
     {
         if ($tag) {
-            if (! isset($this->_publish[$tag])) {
+            if (!isset( $this->_publish[ $tag ] )) {
                 throw new Exception('Tag not found.');
             }
 
-            return [$this->_publish[$tag]];
+            return [$this->_publish[ $tag ]];
         }
 
         return $this->_publish;

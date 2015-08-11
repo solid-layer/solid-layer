@@ -7,7 +7,8 @@ trait ClearTrait
     public function clear($path)
     {
         $files = new \RecursiveIteratorIterator(
-            new \RecursiveDirectoryIterator($path, \RecursiveDirectoryIterator::SKIP_DOTS),
+            new \RecursiveDirectoryIterator($path,
+                \RecursiveDirectoryIterator::SKIP_DOTS),
             \RecursiveIteratorIterator::CHILD_FIRST
         );
 
@@ -16,7 +17,7 @@ trait ClearTrait
         ];
 
         foreach ($files as $file) {
-            if ( in_array($file->getFileName(), $ignore) ) {
+            if (in_array($file->getFileName(), $ignore)) {
                 continue;
             }
 

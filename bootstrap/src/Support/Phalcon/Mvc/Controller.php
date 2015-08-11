@@ -38,7 +38,7 @@ class Controller extends \Phalcon\Mvc\Controller
         $this->except_actions = $this->_getExceptActions();
 
         # now load the class
-        $class = config()->acl->classes[$alias];
+        $class = config()->acl->classes[ $alias ];
         $this->_loader(new $class);
     }
 
@@ -47,8 +47,8 @@ class Controller extends \Phalcon\Mvc\Controller
     {
         # make the value as key as well
         foreach ($records as $idx => $record) {
-            $records[$record] = $record;
-            unset($records[$idx]);
+            $records[ $record ] = $record;
+            unset( $records[ $idx ] );
         }
 
         return $records;
@@ -57,37 +57,38 @@ class Controller extends \Phalcon\Mvc\Controller
 
     private function _getOnlyActions()
     {
-        if (! isset($this->options['only'])) {
+        if (!isset( $this->options[ 'only' ] )) {
             return [];
         }
 
-        return $this->_valueToKeyCombiner($this->options['only']);
+        return $this->_valueToKeyCombiner($this->options[ 'only' ]);
     }
 
 
     private function _getExceptActions()
     {
-        if (! isset($this->options['except'])) {
+        if (!isset( $this->options[ 'except' ] )) {
             return [];
         }
 
-        return $this->_valueToKeyCombiner($this->options['except']);
+        return $this->_valueToKeyCombiner($this->options[ 'except' ]);
     }
 
 
     private function _loader(AclContainer $obj)
     {
         if (count($this->options)) {
-            if ( isset($this->only_actions[$this->action_name]) == false ) {
+            if (isset( $this->only_actions[ $this->action_name ] ) == false) {
                 return;
             }
 
-            if ( isset($this->except_actions[$this->action_name]) ) {
+            if (isset( $this->except_actions[ $this->action_name ] )) {
                 return;
             }
         }
 
-        ACL::addResource(new Resource($this->controller_name), $this->action_name);
+        ACL::addResource(new Resource($this->controller_name),
+            $this->action_name);
 
         if (count($obj->getAllowedRoles())) {
             foreach ($obj->getAllowedRoles() as $role) {

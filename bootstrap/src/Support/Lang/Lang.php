@@ -28,14 +28,14 @@ class Lang
         $exploded = explode('.', $path);
 
         return [
-            'file' => $this->dir . '/' . $this->language . '/' . $exploded[0] . '.php',
+            'file'     => $this->dir . '/' . $this->language . '/' . $exploded[ 0 ] . '.php',
             'exploded' => $exploded,
         ];
     }
 
     protected function _hasFile($file)
     {
-        if (! file_exists($file)) {
+        if (!file_exists($file)) {
             return false;
         }
 
@@ -53,7 +53,7 @@ class Lang
     {
         $attribute = $this->_getAttribute($path);
 
-        if (! $this->_hasFile($attribute['file'])) {
+        if (!$this->_hasFile($attribute[ 'file' ])) {
             return false;
         }
 
@@ -64,25 +64,25 @@ class Lang
     {
         $attribute = $this->_getAttribute($path);
 
-        if (! $this->_hasFile($attribute['file'])) {
+        if (!$this->_hasFile($attribute[ 'file' ])) {
             throw new LangFileNotFoundException("File {$file} not found!");
         }
 
         # get all the arrays with messages
-        $templates = $this->_getDottedFile($attribute['file']);
+        $templates = $this->_getDottedFile($attribute[ 'file' ]);
 
         # get the file name
-        $file_name = $attribute['exploded'][0];
+        $file_name = $attribute[ 'exploded' ][ 0 ];
 
         # get the recursive search of key
         $recursive = substr($path, strlen($file_name) + 1);
 
         # get the message content
-        $content = $templates[$recursive];
+        $content = $templates[ $recursive ];
 
         if (count($params)) {
             foreach ($params as $key => $val) {
-                $content = str_replace('{'.$key.'}' , $val, $content);
+                $content = str_replace('{' . $key . '}', $val, $content);
             }
         }
 
