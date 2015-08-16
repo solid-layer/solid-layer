@@ -1,11 +1,12 @@
 <?php
 
-namespace Bootstrap\Console;
+namespace Bootstrap\Console\Make;
 
+use Bootstrap\Console\SlayerCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
-class MakeConsoleCommand extends SlayerCommand
+class ConsoleCommand extends SlayerCommand
 {
     protected $name = 'make:console';
 
@@ -18,7 +19,7 @@ class MakeConsoleCommand extends SlayerCommand
         $stub = file_get_contents(__DIR__ . '/stubs/makeConsole.stub');
         $stub = str_replace('{consoleName}', $arg_name, $stub);
 
-        $file_name = $arg_name . 'ConsoleCommand.php';
+        $file_name = $arg_name . 'Command.php';
         chdir(config()->path->consoleDir);
         $this->comment('Crafting Console...');
 

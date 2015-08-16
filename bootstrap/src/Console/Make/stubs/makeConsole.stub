@@ -2,11 +2,10 @@
 
 namespace App\Console;
 
-use Bootstrap\Console\SlayerCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
-class {consoleName}ConsoleCommand extends SlayerCommand
+class {consoleName}Command extends Command
 {
     protected $name = 'my:command';
 
@@ -21,7 +20,7 @@ class {consoleName}ConsoleCommand extends SlayerCommand
     }
 
     /**
-     * Arguments... 
+     * Arguments...
      *
      * @return mixed
      */
@@ -34,7 +33,7 @@ class {consoleName}ConsoleCommand extends SlayerCommand
 
     /**
      * Options...
-     * 
+     *
      * @return mixed
      */
     protected function options()

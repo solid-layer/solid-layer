@@ -1,11 +1,12 @@
 <?php
 
-namespace Bootstrap\Console;
+namespace Bootstrap\Console\Make;
 
+use Bootstrap\Console\SlayerCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
-class MakeCollectionCommand extends SlayerCommand
+class CollectionCommand extends SlayerCommand
 {
     protected $name = 'make:collection';
 
@@ -13,21 +14,31 @@ class MakeCollectionCommand extends SlayerCommand
 
     public function slash()
     {
-        $name = ucfirst($this->input->getArgument('model'));
+        $arg_name = ucfirst($this->input->getArgument('collection'));
+
+
         $stub = file_get_contents(__DIR__ . '/stubs/makeCollection.stub');
-        $stub = str_replace('{collectionName}', $name, $stub);
+        $stub = str_replace('{collectionName}', $arg_name, $stub);
 
-        $source_name = $this->input->getArgument('collection');
-        $stub = str_replace('{collection}', $source_name, $stub);
 
-        $file_name = $name . '.php';
+        $source_name = $this->input->getOption('source');
+        if (strlen($source_name) == 0) {
+            $source_name = strtolower($arg_name);
+        }
+
+        $stub = str_replace('{sourceName}', $source_name, $stub);
+
+
+        $file_name = $arg_name . '.php';
         chdir(config()->path->collectionsDir);
         $this->comment('Crafting Collection...');
+
 
         if (file_exists($file_name)) {
             $this->error('   Collection already exists!');
         } else {
             file_put_contents($file_name, $stub);
+
             $this->info('   Collection has been created!');
         }
     }
@@ -36,14 +47,22 @@ class MakeCollectionCommand extends SlayerCommand
     {
         return [
             [
-                'model',
+                'collection',
                 InputArgument::REQUIRED,
                 'Model name to be use e.g(Robot)',
             ],
+        ];
+    }
+
+    protected function options()
+    {
+        return [
             [
-                'collection',
-                InputArgument::REQUIRED,
-                'ODM collection name e.g(robots)',
+                'source',
+                null,
+                InputOption::VALUE_OPTIONAL,
+                'The source name to use',
+                false,
             ],
         ];
     }

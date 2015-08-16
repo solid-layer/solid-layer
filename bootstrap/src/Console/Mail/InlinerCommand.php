@@ -1,13 +1,14 @@
 <?php
 
-namespace Bootstrap\Console;
+namespace Bootstrap\Console\Mail;
 
-use View;
+use Bootstrap\Console\SlayerCommand;
+use Bootstrap\Facades\View;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 use TijsVerkoyen\CssToInlineStyles\CssToInlineStyles;
 
-class MailInlinerCommand extends SlayerCommand
+class InlinerCommand extends SlayerCommand
 {
     protected $name = 'mail:inliner';
     protected $description = 'Parse templates inlining css and js';

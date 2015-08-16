@@ -1,13 +1,15 @@
 <?php
 
-namespace Bootstrap\Console;
+namespace Bootstrap\Console\Vendor;
 
+use Bootstrap\Console\SlayerCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
-class VendorPublishCommand extends SlayerCommand
+class PublishCommand extends SlayerCommand
 {
-    protected $name = 'vendor:publish';
+    protected $name        = 'vendor:publish';
+
     protected $description = 'Publish a vendor package';
 
     public function slash()

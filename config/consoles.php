@@ -5,25 +5,24 @@ return [
     # -----------------------------------------------------------
     # PhalconSlayer Registered Commands
     # -----------------------------------------------------------
-    # ---- Pre-registed commands
-    Bootstrap\Console\MailInlinerCommand::class,
-    Bootstrap\Console\VendorPublishCommand::class,
-    Bootstrap\Console\ClearCacheCommand::class,
-    Bootstrap\Console\ClearSessionCommand::class,
-    Bootstrap\Console\ClearViewsCommand::class,
-    Bootstrap\Console\MakeRouteCommand::class,
-    Bootstrap\Console\MakeConsoleCommand::class,
-    Bootstrap\Console\MakeControllerCommand::class,
-    Bootstrap\Console\MakeModelCommand::class,
-    Bootstrap\Console\MakeCollectionCommand::class,
-    Bootstrap\Console\ServeCommand::class,
+    # - Pre-registered commands
+    Bootstrap\Console\Mail\InlinerCommand::class,
+    Bootstrap\Console\Vendor\PublishCommand::class,
+    Bootstrap\Console\Clear\CacheCommand::class,
+    Bootstrap\Console\Clear\SessionCommand::class,
+    Bootstrap\Console\Clear\ViewsCommand::class,
+    Bootstrap\Console\Clear\LogsCommand::class,
+    Bootstrap\Console\Make\RouteCommand::class,
+    Bootstrap\Console\Make\ConsoleCommand::class,
+    Bootstrap\Console\Make\ControllerCommand::class,
+    Bootstrap\Console\Make\ModelCommand::class,
+    Bootstrap\Console\Make\CollectionCommand::class,
+    Bootstrap\Console\Server\ServeCommand::class,
     Bootstrap\Support\Phinx\Console\Command\Create::class,
     Bootstrap\Support\Phinx\Console\Command\Migrate::class,
     Bootstrap\Support\Phinx\Console\Command\Rollback::class,
     Bootstrap\Support\Phinx\Console\Command\Status::class,
-    Bootstrap\Support\Phinx\Console\Command\Test::class,
 
-    # ---- add your console commands here ...
-    // App\Console\AwsTestConsoleCommand::class,
+    # - add your console commands below ...
 
 ]; # - end of return

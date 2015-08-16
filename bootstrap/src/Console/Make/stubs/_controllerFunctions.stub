@@ -5,19 +5,19 @@
 
     public function indexAction()
     {
-        return View::make('welcome.index');
+        return View::make('{controllerName}.index');
     }
 
     public function storeAction()
     {
-        if (Request::isPost()) {
+        if ( Request::isPost() ) {
             // do some stuff....
         }
     }
 
     public function showAction($id)
     {
-        return View::make('welcome.show')
+        return View::make('{controllerName}.show')
             ->with('id' => $id)
             ->batch([
                 'var1' => 'val1',
@@ -25,16 +25,16 @@
             ]);
     }
 
-    public function deleteAction($id)
+    public function updateAction($id)
     {
-        if (Request::isAjax()) {
+        if ( Request::isPost() ) {
             // do some stuff....
         }
     }
 
-    public function updateAction($id)
+    public function deleteAction($id)
     {
-        if (Request::isPost()) {
+        if ( Request::isPost() && Request::isAjax() ) {
             // do some stuff....
         }
     }

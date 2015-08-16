@@ -1,6 +1,6 @@
 <?php
 
-namespace Bootstrap\Console;
+namespace Bootstrap\Console\Clear;
 
 trait ClearTrait
 {

@@ -4,7 +4,7 @@ namespace App\Console;
 
 use Bootstrap\Console\SlayerCommand;
 
-class BaseCommand extends SlayerCommand
+class Command extends SlayerCommand
 {
     public function slash()
     {

@@ -2,8 +2,6 @@
 
 namespace App\Routes;
 
-use Phalcon\Mvc\Router\Group as RouterGroup;
-
 class NewsfeedRoutes extends RouterGroup
 {
     public function initialize()

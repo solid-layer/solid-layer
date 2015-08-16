@@ -1,11 +1,12 @@
 <?php
 
-namespace Bootstrap\Console;
+namespace Bootstrap\Console\Clear;
 
+use Bootstrap\Console\SlayerCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
-class ClearViewsCommand extends SlayerCommand
+class ViewsCommand extends SlayerCommand
 {
     use ClearTrait;
 

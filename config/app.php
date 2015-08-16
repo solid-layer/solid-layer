@@ -103,12 +103,12 @@ return [
         App\Providers\Slayer\ACL::class,
         App\Providers\Slayer\View::class,
         App\Providers\Slayer\Dispatcher::class,
+        App\Providers\Slayer\Mongo::class,
 
 
         # - Register your own provider below.
-        // App\Providers\Slayer\Mongo::class,
-        // Sandbox\MySandBoxServiceProvider::class,
         // App\Providers\AwsServiceProvider::class,
+        // Sandbox\MySandBoxServiceProvider::class,
     ],
 
 
