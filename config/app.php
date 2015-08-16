@@ -106,8 +106,9 @@ return [
 
 
         # - Register your own provider below.
-        Sandbox\MySandBoxServiceProvider::class,
-        App\Providers\AwsServiceProvider::class,
+        // App\Providers\Slayer\Mongo::class,
+        // Sandbox\MySandBoxServiceProvider::class,
+        // App\Providers\AwsServiceProvider::class,
     ],
 
 

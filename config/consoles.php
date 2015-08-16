@@ -2,9 +2,6 @@
 
 return [
 
-    # ---- add your console commands here ...
-
-
     # -----------------------------------------------------------
     # PhalconSlayer Registered Commands
     # -----------------------------------------------------------
@@ -25,5 +22,8 @@ return [
     Bootstrap\Support\Phinx\Console\Command\Rollback::class,
     Bootstrap\Support\Phinx\Console\Command\Status::class,
     Bootstrap\Support\Phinx\Console\Command\Test::class,
-    App\Console\AwsTestConsoleCommand::class,
+
+    # ---- add your console commands here ...
+    // App\Console\AwsTestConsoleCommand::class,
+
 ]; # - end of return
