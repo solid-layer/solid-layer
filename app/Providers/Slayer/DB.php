@@ -4,12 +4,12 @@ namespace App\Providers\Slayer;
 
 use Bootstrap\Services\Service\ServiceProvider;
 use Phalcon\Events\Manager as Events_Manager;
-use Phalcon\Logger\Adapter\File as FileLogger;
 use Phalcon\Db\Adapter\Pdo\Mysql;
 use Phalcon\Db\Adapter\Pdo\Postgresql;
 use Phalcon\Db\Adapter\Pdo\Sqlite;
 use Phalcon\Db\Adapter\Pdo\Oracle;
-use Phalcon\Logger;
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
 use Exception;
 
 class DB extends ServiceProvider
@@ -20,36 +20,48 @@ class DB extends ServiceProvider
 
     public function register()
     {
-        if (env('APP_ENV') == 'travis') {
+        $db_config = config()->database->rdbms;
+        if ( ! $db_config->enabled) {
             return $this;
         }
 
-        $db_config = config()->database->toArray();
-
-        $db_adapters = [
+        $drivers = [
             'mysql'   => Mysql::class,
             'postgre' => Postgresql::class,
             'sqlite'  => Sqlite::class,
             'oracle'  => Oracle::class,
         ];
 
-        $selected_adapter = strtolower($db_config[ 'adapter' ]);
+        $selected_driver = strtolower($db_config->driver);
 
-        if (!isset( $db_adapters[ $selected_adapter ] )) {
-            throw new Exception('DB Adapter not found!');
+        if ( ! isset( $drivers[ $selected_driver ] )) {
+
+            throw new Exception('DB Adapter ' . $selected_driver . ' not found!');
         }
 
-        $logger = new FileLogger(APP_ROOT . '/storage/logs/db.log');
-
+        # - An event to log our queries
         $event_manager = new Events_Manager;
+
         $event_manager->attach($this->_alias,
-            function ($event, $conn) use ($logger) {
-                if ($event->getType() == 'beforeQuery') {
-                    $logger->log($conn->getSQLStatement(), Logger::INFO);
+
+            function ($event, $conn) {
+
+                if ( $event->getType() == 'beforeQuery' ) {
+
+                    $logger = new Logger('DB');
+                    $logger->pushHandler(
+                        new StreamHandler(
+                            config()->path->logsDir . 'db.log',
+                            Logger::INFO
+                        )
+                    );
+
+                    $logger->info($conn->getSQLStatement());
                 }
             });
 
-        $conn = new $db_adapters[ $selected_adapter ]($db_config);
+        $conn = new $drivers[ $selected_driver ]($db_config->toArray());
+
         $conn->setEventsManager($event_manager);
 
         return $conn;
