@@ -20,34 +20,47 @@ class DB extends ServiceProvider
 
     public function register()
     {
-        $db_config = config()->database->rdbms;
-        if ( ! $db_config->enabled) {
+        $db_config = config()->database;
+
+        # ------------------------------------------------------
+        # - If empty, then disable DB by just returning itself
+        # ------------------------------------------------------
+
+        if ( strlen($db_config->adapter) == 0 ) {
             return $this;
         }
 
+
         $drivers = [
             'mysql'   => Mysql::class,
-            'postgre' => Postgresql::class,
+            'pgsql' => Postgresql::class,
             'sqlite'  => Sqlite::class,
             'oracle'  => Oracle::class,
         ];
 
-        $selected_driver = strtolower($db_config->driver);
+        $selected_driver = strtolower($db_config->adapter);
+
+
+        # ------------------------------------------------------
+        # - Check if the drivers found in the lists
+        # ------------------------------------------------------
 
         if ( ! isset( $drivers[ $selected_driver ] )) {
 
             throw new Exception('DB Adapter ' . $selected_driver . ' not found!');
         }
 
+
+        # ------------------------------------------------------
         # - An event to log our queries
+        # ------------------------------------------------------
+
         $event_manager = new Events_Manager;
-
-        $event_manager->attach($this->_alias,
-
+        $event_manager->attach(
+            $this->_alias,
             function ($event, $conn) {
 
                 if ( $event->getType() == 'beforeQuery' ) {
-
                     $logger = new Logger('DB');
                     $logger->pushHandler(
                         new StreamHandler(
@@ -58,9 +71,20 @@ class DB extends ServiceProvider
 
                     $logger->info($conn->getSQLStatement());
                 }
-            });
+            }
+        );
 
-        $conn = new $drivers[ $selected_driver ]($db_config->toArray());
+
+        # ------------------------------------------------------
+        # - Instantiate the class and get the adapter
+        # ------------------------------------------------------
+
+        $conn = new $drivers[ $selected_driver ](
+            $db_config
+                ->adapters
+                ->{$selected_driver}
+                ->toArray()
+        );
 
         $conn->setEventsManager($event_manager);
 
