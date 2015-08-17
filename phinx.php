@@ -11,7 +11,7 @@ return [
         'migrations' => '%%PHINX_CONFIG_DIR%%/database/migrations',
     ],
     'environments' => [
-        'default_migration_table' => 'slayer_phinx_log',
+        'default_migration_table' => 'migrations',
         'default_database'        => $env,
         $env                      => [
             'adapter' => env('DB_ADAPTER', 'mysql'),
