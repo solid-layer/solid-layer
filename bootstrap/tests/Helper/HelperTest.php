@@ -40,14 +40,5 @@ class HelperTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf(
             \Phalcon\Mvc\View::class, view('welcome')
         );
-
-        # by default the 'app.cache' is updated
-        $this->assertContains(
-            config('app.cache'),
-            [
-                true,
-                false,
-            ]
-        );
     }
 }
