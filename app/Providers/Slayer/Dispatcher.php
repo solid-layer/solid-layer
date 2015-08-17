@@ -17,31 +17,24 @@ class Dispatcher extends ServiceProvider
     public function register()
     {
         $event_manager = new EventsManager;
-        $event_manager->attach("dispatch:beforeException",
+
+        $event_manager->attach(
+            'dispatch:beforeException',
             function ($event, $dispatcher, $exception) {
 
                 if ($exception instanceof DispatchException) {
-
-                    if (config()->app->debug != 'true') {
-
-                        $dispatcher->forward([
-                            'controller' => 'error',
-                            'action'     => 'pageNotFound',
-                        ]);
-
-                        return false;
-                    }
 
                     throw new ControllerNotFoundException($exception->getMessage());
 
                     return false;
                 }
-
             }
         );
 
         $dispatcher = new MvcDispatcher();
+
         $dispatcher->setEventsManager($event_manager);
+
         $dispatcher->setDefaultNamespace('App\Controllers');
 
         return $dispatcher;

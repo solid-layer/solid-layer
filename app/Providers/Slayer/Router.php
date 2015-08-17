@@ -13,16 +13,27 @@ class Router extends ServiceProvider
 
     public function register()
     {
-        # disable the auto router for controller
+        # -----------------------------------------------------
+        # - Disable the auto router for controller
+        # -----------------------------------------------------
+
         $router = new PhalconRouter(false);
 
-        # add page not found handler
-        $router->notFound([
-            'controller' => 'error',
-            'action'     => 'pageNotFound',
-        ]);
 
-        # remove the extra slashes
+        # -----------------------------------------------------
+        # - To enable your own 404 page, uncomment below code.
+        # -----------------------------------------------------
+
+        // $router->notFound([
+        //     'controller' => 'error',
+        //     'action'     => 'pageNotFound',
+        // ]);
+
+
+        # -----------------------------------------------------
+        # - Remove the extra slashes
+        # -----------------------------------------------------
+
         $router->removeExtraSlashes(true);
 
 

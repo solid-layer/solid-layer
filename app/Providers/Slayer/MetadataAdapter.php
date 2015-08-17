@@ -13,6 +13,6 @@ class MetadataAdapter extends ServiceProvider
 
     public function register()
     {
-        return new Memory();
+        return new Memory;
     }
 }

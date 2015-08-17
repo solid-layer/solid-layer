@@ -15,6 +15,7 @@ class Log extends ServiceProvider
     public function register()
     {
         $logger = new Logger('slayer');
+
         $logger->pushHandler(
             new StreamHandler(
                 config()->path->logsDir . 'slayer.log',
