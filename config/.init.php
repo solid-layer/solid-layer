@@ -2,15 +2,14 @@
 
 return [
 
-    # ---- add your config below
-    # ---- to access your config, you may call
-    # ---- config()->{file}->{key}
+    # - add your config below to access your config,
+    # you may call config()->{file}->{key}
 
 
     # ------------------------------------------------------------
     # PhalconSlayer Files
     # ------------------------------------------------------------
-    # ---- Do not edit below, if you don't know what you're
+    # - Do not edit below, if you don't know what you're
     # doing, instead add your own dependecies
     'acl'      => require_once __DIR__ . '/acl.php',
     'app'      => require_once __DIR__ . '/app.php',
