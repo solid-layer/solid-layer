@@ -71,8 +71,9 @@ class Handler extends Exception
     protected function getDebugMode()
     {
         $prop = false;
+        $debug = config()->app->debug;
 
-        if ($debug = config()->app->debug == 'true' || $debug === true) {
+        if ($debug  == 'true' || $debug === true) {
 
             $prop = true;
         }
