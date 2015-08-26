@@ -1,7 +1,7 @@
 <?php
 
-require_once APP_ROOT . '/vendor/autoload.php';
-$dotenv = new Dotenv\Dotenv(APP_ROOT);
+require_once BASE_PATH . '/vendor/autoload.php';
+$dotenv = new Dotenv\Dotenv(BASE_PATH);
 $dotenv->load();
 
 $env = env('APP_ENV');
