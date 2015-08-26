@@ -2,7 +2,7 @@
 
 namespace Bootstrap\Support\Lang;
 
-use Bootstrap\Exceptions\LangFileNotFoundException;
+use Bootstrap\Exceptions\FileNotFoundException;
 
 class Lang
 {
@@ -65,7 +65,7 @@ class Lang
         $attribute = $this->_getAttribute($path);
 
         if (!$this->_hasFile($attribute[ 'file' ])) {
-            throw new LangFileNotFoundException("File {$file} not found!");
+            throw new FileNotFoundException("File {$file} not found!");
         }
 
         # get all the arrays with messages

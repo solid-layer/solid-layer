@@ -22,7 +22,7 @@ if (!function_exists('dd')) {
 | Echo Pre and Exit
 |-------------------------------------------------------------
 | Sometimes we need more prettier than var_dump, so this is
-| the solution    
+| the solution
 */
 if (!function_exists('echo_pre')) {
     function echo_pre($var)
@@ -36,9 +36,9 @@ if (!function_exists('echo_pre')) {
 
 /*
 |-------------------------------------------------------------
-| 
+|
 |-------------------------------------------------------------
-| 
+|
 */
 if (!function_exists('env')) {
     function env($const, $default = '')
@@ -55,9 +55,9 @@ if (!function_exists('env')) {
 
 /*
 |-------------------------------------------------------------
-| 
+|
 |-------------------------------------------------------------
-| 
+|
 */
 if (!function_exists('csrf_field')) {
     function csrf_field()
@@ -74,5 +74,19 @@ if (!function_exists('slayer_process_time')) {
     function slayer_process_time()
     {
         return microtime(true) - SLAYER_START;
+    }
+}
+
+if (!function_exists('iterate_require')) {
+    function iterate_require(array $files)
+    {
+        $ret = [];
+
+        foreach ($files as $file) {
+            $ret[basename($file, '.php')] = require $file;
+        }
+
+
+        return $ret;
     }
 }
