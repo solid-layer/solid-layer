@@ -18,6 +18,7 @@ return [
     Bootstrap\Console\Make\ModelCommand::class,
     Bootstrap\Console\Make\CollectionCommand::class,
     Bootstrap\Console\Server\ServeCommand::class,
+    Bootstrap\Console\Script\RunCommand::class,
     Bootstrap\Support\Phinx\Console\Command\Create::class,
     Bootstrap\Support\Phinx\Console\Command\Migrate::class,
     Bootstrap\Support\Phinx\Console\Command\Rollback::class,

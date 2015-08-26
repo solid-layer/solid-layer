@@ -3,20 +3,27 @@
 return [
 
 
+    'modular' => false,
+
+
 
     # ------------------------------------------------------------
     # Application Debugging
     # ------------------------------------------------------------
-    # ---- To easily track your bugs using pretty errors (whoops)
+    # - To easily track your bugs, by defining it to true, you
+    # can get a full error response
+
     'debug'    => false,
+
 
 
 
     # ------------------------------------------------------------
     # Language Settings
     # ------------------------------------------------------------
-    # ---- The place where you should supposed to assign which
+    # - The place where you should supposed to assign which
     # language folder will be used.
+
     'lang'     => 'en',
 
 
@@ -24,8 +31,9 @@ return [
     # ------------------------------------------------------------
     # SSL Support
     # ------------------------------------------------------------
-    # ---- Mark true if your domain supports ssl, and to force
+    # - Mark true if your domain supports ssl, and to force
     # re-write every url to ssl
+
     'ssl'      => false,
 
 
@@ -33,7 +41,8 @@ return [
     # ------------------------------------------------------------
     # Base URI
     # ------------------------------------------------------------
-    # ---- Define your own base uri
+    # - Define your own base uri
+
     'base_uri' => 'localhost',
 
 
@@ -41,8 +50,9 @@ return [
     # ------------------------------------------------------------
     # Mailer Settings
     # ------------------------------------------------------------
-    # ---- To be able to send an email, provide your email 
+    # - To be able to send an email, provide your email
     # settings, such as adapters and the like
+
     'mailer'   => [
         'adapter'    => env('MAILER_ADAPTER', 'swift'),
         'host'       => env('MAILER_HOST'),
@@ -65,14 +75,9 @@ return [
     # ------------------------------------------------------------
     # Authentication Settings
     # ------------------------------------------------------------
-    # ---- So, we want to use slayer's model to process auto auth
     'auth'     => [
-
-        # - pass in your user model
         'model'          => 'App\Models\User',
-        # - on what field will be used for the password
         'password_field' => 'password',
-        # - When calling $this->auth->redirectIntended()
         'auth_redirect'  => '/newsfeed',
     ],
 
@@ -82,32 +87,33 @@ return [
     # Service Providers
     # ------------------------------------------------------------
     'services' => [
-        App\Providers\Slayer\URL::class,
-        App\Providers\Slayer\Console::class,
-        App\Providers\Slayer\Aliaser::class,
-        App\Providers\Slayer\Log::class,
-        App\Providers\Slayer\Cache::class,
-        App\Providers\Slayer\Lang::class,
-        App\Providers\Slayer\Mail::class,
-        App\Providers\Slayer\Flash::class,
-        App\Providers\Slayer\FlashBag::class,
-        App\Providers\Slayer\Redirect::class,
-        App\Providers\Slayer\Auth::class,
-        App\Providers\Slayer\DB::class,
-        App\Providers\Slayer\MetadataAdapter::class,
-        App\Providers\Slayer\Session::class,
-        App\Providers\Slayer\Router::class,
-        App\Providers\Slayer\Response::class,
-        App\Providers\Slayer\Request::class,
-        App\Providers\Slayer\Filter::class,
-        App\Providers\Slayer\ACL::class,
-        App\Providers\Slayer\View::class,
-        App\Providers\Slayer\Dispatcher::class,
-        App\Providers\Slayer\Mongo::class,
+        Components\Providers\Slayer\URL::class,
+        Components\Providers\Slayer\Console::class,
+        Components\Providers\Slayer\Aliaser::class,
+        Components\Providers\Slayer\Log::class,
+        Components\Providers\Slayer\Cache::class,
+        Components\Providers\Slayer\Lang::class,
+        Components\Providers\Slayer\Mail::class,
+        Components\Providers\Slayer\Flash::class,
+        Components\Providers\Slayer\FlashBag::class,
+        Components\Providers\Slayer\Redirect::class,
+        Components\Providers\Slayer\Auth::class,
+        Components\Providers\Slayer\DB::class,
+        Components\Providers\Slayer\MetadataAdapter::class,
+        Components\Providers\Slayer\Session::class,
+        Components\Providers\Slayer\Router::class,
+        Components\Providers\Slayer\Response::class,
+        Components\Providers\Slayer\Request::class,
+        Components\Providers\Slayer\Filter::class,
+        Components\Providers\Slayer\ACL::class,
+        Components\Providers\Slayer\View::class,
+        Components\Providers\Slayer\Dispatcher::class,
+        Components\Providers\Slayer\Mongo::class,
 
 
-        # - Register your own provider below.
-        // App\Providers\AwsServiceProvider::class,
+        # - register class providers below.
+
+        // Components\Providers\AwsServiceProvider::class,
         // Sandbox\MySandBoxServiceProvider::class,
     ],
 
@@ -131,7 +137,11 @@ return [
         'URL'      => Bootstrap\Facades\URL::class,
         'View'     => Bootstrap\Facades\View::class,
         'Log'      => Bootstrap\Facades\Log::class,
-        'AWS'      => App\Facade\AwsFacade::class,
+
+
+        # register class aliases below.
+
+        // 'AWS'      => Components\Facade\AwsFacade::class,
     ],
 
 

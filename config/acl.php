@@ -2,10 +2,9 @@
 
 return [
 
-    # ------------------------------------------------------------
     # Register all the roles you have
     # ------------------------------------------------------------
-    # ---- By default we're using 'administrator' and 'user'
+    # - By default we're using 'administrator' and 'user'
     'roles'   => [
         'administrator',
         'user',
@@ -13,14 +12,13 @@ return [
 
 
 
+    # Filter Classes
     # ------------------------------------------------------------
-    # Acl Classes
-    # ------------------------------------------------------------
-    # ---- Register your class to load
+    # - Register your class to load
     'classes' => [
-        'default' => App\Acl\Access::class,
-        'csrf'    => App\Acl\CSRF::class,
-        'auth'    => App\Acl\Auth::class,
+        'default' => Components\Filters\Access::class,
+        'csrf'    => Components\Filters\CSRF::class,
+        'auth'    => Components\Filters\Auth::class,
     ],
 
 

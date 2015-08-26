@@ -1,41 +1,33 @@
 <?php
 
 return [
+    'baseUri'        => BASE_PATH,
 
-    # ---- add your path here ...
+    # - app
+    'app'            => BASE_PATH . '/app/',
+    'consoleDir'     => BASE_PATH . '/app/Console/',
+    'collectionsDir' => BASE_PATH . '/app/Collections/',
+    'controllersDir' => BASE_PATH . '/app/Controllers/',
+    'modelsDir'      => BASE_PATH . '/app/Models/',
+    'routesDir'      => BASE_PATH . '/app/Routes/',
 
+    # - database
+    'database'       => BASE_PATH . '/database/',
+    'migrationsDir'  => BASE_PATH . '/database/migrations/',
 
-    # ---- app
-    'app'            => app_path(),
-    'consoleDir'     => APP_ROOT . '/app/Console/',
-    'collectionsDir' => APP_ROOT . '/app/Collections/',
-    'controllersDir' => APP_ROOT . '/app/Controllers/',
-    'modelsDir'      => APP_ROOT . '/app/Models/',
-    'routesDir'      => APP_ROOT . '/app/Routes/',
+    # - resources
+    'resources'      => BASE_PATH . '/resources/',
+    'viewsDir'       => BASE_PATH . '/resources/views/',
+    'langDir'        => BASE_PATH . '/resources/lang/',
 
+    # - storage
+    'storage'        => BASE_PATH . '/storage/',
+    'cacheDir'       => BASE_PATH . '/storage/cache/',
+    'logsDir'        => BASE_PATH . '/storage/logs/',
+    'sessionDir'     => BASE_PATH . '/storage/session/',
+    'storageViewDir' => BASE_PATH . '/storage/views/',
 
-    # ---- database
-    'database'       => database_path(),
-    'migrationsDir'  => APP_ROOT . '/database/migrations/',
-
-
-    # ---- resources
-    'resources'      => resources_path(),
-    'viewsDir'       => APP_ROOT . '/resources/views/',
-    'langDir'        => APP_ROOT . '/resources/lang/',
-
-
-    # ---- storage
-    'storage'        => storage_path(),
-    'cacheDir'       => APP_ROOT . '/storage/cache/',
-    'logsDir'        => APP_ROOT . '/storage/logs/',
-    'sessionDir'     => APP_ROOT . '/storage/session/',
-    'storageViewDir' => APP_ROOT . '/storage/views/',
-    'sandbox'        => sandbox_path(),
-    'config'         => config_path(),
-    'public'         => public_path(),
-
-
-    # ---- system base path
-    'baseUri'        => base_path(),
+    'sandbox'        => BASE_PATH . '/sandbox/',
+    'config'         => BASE_PATH . '/config/',
+    'public'         => BASE_PATH . '/public/',
 ];
