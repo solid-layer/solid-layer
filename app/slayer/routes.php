@@ -21,5 +21,5 @@ Route::addGet('/', [
 # -------------------------------------------------------------
 # - You can manage creating your own routes
 
-Route::mount(new App\Routes\AuthRoutes);
-Route::mount(new App\Routes\NewsfeedRoutes);
+Route::mount(new App\Slayer\Routes\AuthRoutes);
+Route::mount(new App\Slayer\Routes\NewsfeedRoutes);
