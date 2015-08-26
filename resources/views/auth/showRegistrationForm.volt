@@ -13,28 +13,31 @@
 {% block content %}
     <div class="marginTop"></div>
     <div class="col-sm-4 col-sm-offset-4">
-            {{ flash_bag.output() }}
-            <hr>
-            <form class="form-vertical" method="POST" action="{{ url.get(['for':'storeRegistrationForm']) }}" autocomplete="off">
-                <input type="hidden" name="{{ security.getTokenKey() }}" value="{{ security.getToken() }}"/>
-                <div class="form-group">
-                    <label>{{ lang.get('auth.login.email_label') }}</label>
-                    {{ text_field('email', 'class': 'form-control') }}
-                </div>
-                <div class="form-group">
-                    <label>{{ lang.get('auth.login.password_label') }}</label>
-                    {{ password_field('password', 'class': 'form-control') }}
-                </div>
-                <div class="form-group">
-                    <label>{{ lang.get('auth.login.re_password_label') }}</label>
-                    {{ password_field('repassword', 'class': 'form-control') }}
-                </div>
-                <div class="pull-right">
-                    <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> Register </button>
-                </div>
-            </form>
+        {{ flash_bag.output() }}
+        <hr>
+        <form class="form-vertical" method="POST" action="{{ url.get(['for':'storeRegistrationForm']) }}" autocomplete="off">
+            <input type="hidden" name="{{ security.getTokenKey() }}" value="{{ security.getToken() }}"/>
+            <div class="form-group">
+                <label>{{ lang.get('auth.login.email_label') }}</label>
+                {{ text_field('email', 'class': 'form-control') }}
+            </div>
+            <div class="form-group">
+                <label>{{ lang.get('auth.login.password_label') }}</label>
+                {{ password_field('password', 'class': 'form-control') }}
+            </div>
+            <div class="form-group">
+                <label>{{ lang.get('auth.login.re_password_label') }}</label>
+                {{ password_field('repassword', 'class': 'form-control') }}
+            </div>
+            <div class="pull-right">
+                <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> Register </button>
+            </div>
+        </form>
+        <div class="clearfix"></div>
+
     </div>
-    <div class="clearfix"></div>
+
+    {{ partial('layouts/processingTime') }}
 {% endblock %}
 
 {% block footer %}

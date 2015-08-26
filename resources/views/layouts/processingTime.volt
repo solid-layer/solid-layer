@@ -1,0 +1,1 @@
+<div style="position:absolute;bottom:0;" class="well">Processing Time: <?php echo slayer_process_time() ?></div>
