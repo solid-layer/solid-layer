@@ -8,13 +8,13 @@
 | Was based in laravel framework, this helper helps users to
 | debug arrays or outputs
 */
-if (!function_exists('dd')) {
-    function dd($var)
-    {
-        var_dump($var);
-        exit;
-    }
-}
+// if (!function_exists('dd')) {
+//     function dd($var)
+//     {
+//         var_dump($var);
+//         exit;
+//     }
+// }
 
 
 /*
@@ -70,6 +70,12 @@ if (!function_exists('csrf_field')) {
 }
 
 
+/*
+|-------------------------------------------------------------
+|
+|-------------------------------------------------------------
+|
+*/
 if (!function_exists('slayer_process_time')) {
     function slayer_process_time()
     {
@@ -77,16 +83,23 @@ if (!function_exists('slayer_process_time')) {
     }
 }
 
+
+/*
+|-------------------------------------------------------------
+|
+|-------------------------------------------------------------
+|
+*/
 if (!function_exists('iterate_require')) {
     function iterate_require(array $files)
     {
-        $ret = [];
+        $results = [];
 
         foreach ($files as $file) {
-            $ret[basename($file, '.php')] = require $file;
+            $results[basename($file, '.php')] = require $file;
         }
 
 
-        return $ret;
+        return $results;
     }
 }

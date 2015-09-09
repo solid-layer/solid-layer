@@ -3,7 +3,7 @@
 if (!function_exists('base_path')) {
     function base_path($extend_path = null)
     {
-        return config()->path->baseUri . '/' . $extend_path;
+        return config()->path->root . $extend_path;
     }
 }
 
