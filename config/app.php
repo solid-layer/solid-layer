@@ -3,10 +3,6 @@
 return [
 
 
-    'modular' => false,
-
-
-
     # ------------------------------------------------------------
     # Application Debugging
     # ------------------------------------------------------------
@@ -14,8 +10,6 @@ return [
     # can get a full error response
 
     'debug'    => false,
-
-
 
 
     # ------------------------------------------------------------
@@ -27,7 +21,6 @@ return [
     'lang'     => 'en',
 
 
-
     # ------------------------------------------------------------
     # SSL Support
     # ------------------------------------------------------------
@@ -37,14 +30,12 @@ return [
     'ssl'      => false,
 
 
-
     # ------------------------------------------------------------
     # Base URI
     # ------------------------------------------------------------
     # - Define your own base uri
 
     'base_uri' => 'localhost',
-
 
 
     # ------------------------------------------------------------
@@ -71,21 +62,21 @@ return [
     ],
 
 
-
     # ------------------------------------------------------------
     # Authentication Settings
     # ------------------------------------------------------------
+
     'auth'     => [
-        'model'          => 'App\Models\User',
+        'model'          => 'Components\Models\User',
         'password_field' => 'password',
         'auth_redirect'  => '/newsfeed',
     ],
 
 
-
     # ------------------------------------------------------------
     # Service Providers
     # ------------------------------------------------------------
+
     'services' => [
         Components\Providers\Slayer\URL::class,
         Components\Providers\Slayer\Console::class,
@@ -111,10 +102,10 @@ return [
         Components\Providers\Slayer\Mongo::class,
 
 
-        # - register class providers below.
+        # - register your classes below.
 
         // Components\Providers\AwsServiceProvider::class,
-        // Sandbox\MySandBoxServiceProvider::class,
+        Acme\Acme\AcmeServiceProvider::class,
     ],
 
 
@@ -143,6 +134,5 @@ return [
 
         // 'AWS'      => Components\Facade\AwsFacade::class,
     ],
-
 
 ]; # - end of return

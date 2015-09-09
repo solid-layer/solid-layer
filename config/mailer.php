@@ -7,4 +7,4 @@ return [
         'domain' => '',
         'secret' => '',
     ],
-];
+]; # - end of return

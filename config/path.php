@@ -1,33 +1,23 @@
 <?php
 
 return [
-    'baseUri'        => BASE_PATH,
+    'root'          => BASE_PATH . '/',
+    'app'           => BASE_PATH . '/app/',
+    'console'       => BASE_PATH . '/components/Console/',
+    'collections'   => BASE_PATH . '/components/Collections/',
+    'models'        => BASE_PATH . '/components/Models/',
+    'config'        => BASE_PATH . '/config/',
+    'database'      => BASE_PATH . '/database/',
+    'migrations'    => BASE_PATH . '/database/migrations/',
+    'public'        => BASE_PATH . '/public/',
+    'resources'     => BASE_PATH . '/resources/',
+    'views'         => BASE_PATH . '/resources/views/',
+    'lang'          => BASE_PATH . '/resources/lang/',
+    'sandbox'       => BASE_PATH . '/sandbox/',
+    'storage'       => BASE_PATH . '/storage/',
+    'cache'         => BASE_PATH . '/storage/cache/',
+    'logs'          => BASE_PATH . '/storage/logs/',
+    'session'       => BASE_PATH . '/storage/session/',
+    'storage_views' => BASE_PATH . '/storage/views/',
 
-    # - app
-    'app'            => BASE_PATH . '/app/',
-    'consoleDir'     => BASE_PATH . '/app/Console/',
-    'collectionsDir' => BASE_PATH . '/app/Collections/',
-    'controllersDir' => BASE_PATH . '/app/Controllers/',
-    'modelsDir'      => BASE_PATH . '/app/Models/',
-    'routesDir'      => BASE_PATH . '/app/Routes/',
-
-    # - database
-    'database'       => BASE_PATH . '/database/',
-    'migrationsDir'  => BASE_PATH . '/database/migrations/',
-
-    # - resources
-    'resources'      => BASE_PATH . '/resources/',
-    'viewsDir'       => BASE_PATH . '/resources/views/',
-    'langDir'        => BASE_PATH . '/resources/lang/',
-
-    # - storage
-    'storage'        => BASE_PATH . '/storage/',
-    'cacheDir'       => BASE_PATH . '/storage/cache/',
-    'logsDir'        => BASE_PATH . '/storage/logs/',
-    'sessionDir'     => BASE_PATH . '/storage/session/',
-    'storageViewDir' => BASE_PATH . '/storage/views/',
-
-    'sandbox'        => BASE_PATH . '/sandbox/',
-    'config'         => BASE_PATH . '/config/',
-    'public'         => BASE_PATH . '/public/',
-];
+]; # - end of return

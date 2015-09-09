@@ -1,6 +1,7 @@
 <?php
 
 return [
+
     'deploy' => [
         'ssh root@website.org',
         'cd /var/www/slayer/',
@@ -22,7 +23,4 @@ return [
         'composer dumpautoload',
     ],
 
-    'sample' => [
-        'ls',
-    ],
-];
+]; # - end of return

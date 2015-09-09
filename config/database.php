@@ -3,14 +3,14 @@
 return [
 
     # ------------------------------------------------------
-    # - You may use sqlite, mysql, pgsql, oracle
+    # You may use sqlite, mysql, pgsql, oracle
     # ------------------------------------------------------
 
     'adapter' => env('DB_ADAPTER', 'mysql'),
 
 
     # ------------------------------------------------------
-    # - The adapters lists
+    # The adapters lists
     # ------------------------------------------------------
 
     'adapters' => [
@@ -51,7 +51,7 @@ return [
 
 
     # ------------------------------------------------------
-    # - To enable mongo, use this configuration
+    # To enable mongo, use this configuration
     # ------------------------------------------------------
 
     'mongo' => [
@@ -59,4 +59,5 @@ return [
         'host'     => 'mongodb:///tmp/mongodb-27017.sock,localhost:27017',
         'dbname'   => 'slayer',
     ],
-];
+
+]; # - end of return
