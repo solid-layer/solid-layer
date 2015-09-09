@@ -2,18 +2,11 @@
 
 namespace Bootstrap\Support\Phalcon\Mvc;
 
-use Bootstrap\Services\Acl\AclContainer;
-use Bootstrap\Facades\Route;
-use Bootstrap\Facades\ACL;
-use Phalcon\Acl\Resource;
-
 class Controller extends \Phalcon\Mvc\Controller
 {
     private $action_name;
     private $controller_name;
     private $options = [];
-    private $only_actions = [];
-    private $except_actions = [];
 
     /**
      * This will be called first by Default from Phalcon Docs
@@ -30,16 +23,18 @@ class Controller extends \Phalcon\Mvc\Controller
      */
     public function acl($alias, $options = [])
     {
-        # set the options
-        $this->options = $options;
+        # - now load the acl class
 
-        # set the only/except actions
-        $this->only_actions = $this->_getOnlyActions();
-        $this->except_actions = $this->_getExceptActions();
-
-        # now load the class
         $class = config()->acl->classes[ $alias ];
-        $this->_loader(new $class);
+
+        $acl = new AclLoader(new $class);
+        $acl
+            ->setActionName($this->action_name)
+            ->setControllerName($this->controller_name)
+            ->setOptions($options)
+            ->setOnlyActions($this->_getOnlyActions())
+            ->setExceptActions($this->_getExceptActions())
+            ->load();
     }
 
 
@@ -74,34 +69,4 @@ class Controller extends \Phalcon\Mvc\Controller
         return $this->_valueToKeyCombiner($this->options[ 'except' ]);
     }
 
-
-    private function _loader(AclContainer $obj)
-    {
-        if (count($this->options)) {
-            if (isset( $this->only_actions[ $this->action_name ] ) == false) {
-                return;
-            }
-
-            if (isset( $this->except_actions[ $this->action_name ] )) {
-                return;
-            }
-        }
-
-        ACL::addResource(new Resource($this->controller_name),
-            $this->action_name);
-
-        if (count($obj->getAllowedRoles())) {
-            foreach ($obj->getAllowedRoles() as $role) {
-                ACL::allow($role, $this->controller_name, $this->action_name);
-            }
-        }
-
-        if (count($obj->getAllowedRoles())) {
-            foreach ($obj->getDeniedRoles() as $role) {
-                ACL::deny($role, $this->controller_name, $this->action_name);
-            }
-        }
-
-        $obj->load();
-    }
 }

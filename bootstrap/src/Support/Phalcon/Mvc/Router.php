@@ -29,11 +29,11 @@ class Router extends PhalconMvcRouter
             }
         }
 
-        # ---- get the default namespace from the dispatcher
+        # - get the default namespace from the dispatcher
         $default_namespace = $this->getDI()->get('dispatcher')->getDefaultNamespace() . '\\';
 
 
-        # ---- if the uses is not empty, we should get the class properties
+        # - if the uses is not empty, we should get the class properties
         # such as namespace, class short name
         if (!empty( $uses )) {
             $reflection = new \ReflectionClass($default_namespace . $uses[ 0 ]);
