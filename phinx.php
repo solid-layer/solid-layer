@@ -1,7 +1,7 @@
 <?php
 
-require_once APP_ROOT . '/vendor/autoload.php';
-$dotenv = new Dotenv\Dotenv(APP_ROOT);
+require_once BASE_PATH . '/vendor/autoload.php';
+$dotenv = new Dotenv\Dotenv(BASE_PATH);
 $dotenv->load();
 
 $env = env('APP_ENV');
@@ -11,7 +11,7 @@ return [
         'migrations' => '%%PHINX_CONFIG_DIR%%/database/migrations',
     ],
     'environments' => [
-        'default_migration_table' => 'slayer_phinx_log',
+        'default_migration_table' => 'migrations',
         'default_database'        => $env,
         $env                      => [
             'adapter' => env('DB_ADAPTER', 'mysql'),

@@ -2,6 +2,7 @@
 
 namespace Bootstrap\Support\Mail;
 
+use Bootstrap\Contracts\Mail\MailInterface;
 use Mailgun\Mailgun as Mailgun_Mailgun;
 
 class MailgunAdapter implements MailInterface

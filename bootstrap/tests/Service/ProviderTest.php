@@ -6,19 +6,19 @@ use Bootstrap\Services\Service\ServiceProvider;
 
 class ProviderTest extends PHPUnit_Framework_TestCase
 {
-    public function sampleDiContent()
-    {
-        return [true, false, 123, '123ast'];
-    }
-
     public function tearDown()
     {
         m::close();
     }
 
+    public function sampleDiContent()
+    {
+        return [true, false, 123, '123ast'];
+    }
+
     public function testService()
     {
-        $provider = m::mock('App\Providers\Slayer\ACL');
+        $provider = m::mock('Components\Providers\Slayer\ACL');
         $provider
             ->shouldReceive(
                 'register'
@@ -42,15 +42,18 @@ class ProviderTest extends PHPUnit_Framework_TestCase
             ->andReturn(true);
 
         $container = new ServiceContainer;
-        $container->addServiceProvider($provider);
+        $container
+            ->addServiceProvider($provider);
 
 
-        # assert should be instance of ServiceProvider::class
+        # - assert should be instance of ServiceProvider::class
+
         $this->assertInstanceOf(ServiceProvider::class, $provider);
 
-        # assert via array subset, in the first place, the di()
+        # - assert via array subset, in the first place, the di()
         # should already injected the 'servicetest' and it should
         # be pullable
+
         $this->assertArraySubset(
             di()->get('servicetest')->sampleDiContent(),
             $this->sampleDiContent()

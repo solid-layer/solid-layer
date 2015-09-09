@@ -14,12 +14,6 @@ env:
   - PHALCON_VERSION="phalcon-v2.0.0"
 
 before_script:
-  # install  phalcon/cphalcon
-  - git clone -q --depth=1 https://github.com/phalcon/cphalcon.git -b ${PHALCON_VERSION}
-  - cd cphalcon/ext; export CFLAGS="-g3 -O1 -fno-delete-null-pointer-checks -Wall"; phpize && ./configure --enable-phalcon && make -j4 && make install && phpenv config-add ../unit-tests/ci/phalcon.ini
-  - php -r 'echo \Phalcon\Version::get()."\n";'
-  - cd ../..
-
   # copy .env.travis as .env file
   - cp ./bootstrap/tests/.env.travis ./.env
 
@@ -28,6 +22,12 @@ before_script:
   - travis_retry composer require phpunit/phpunit --prefer-dist
   - travis_retry composer require mockery/mockery --prefer-dist
   - travis_retry composer update --prefer-source --no-interaction --prefer-stable
+
+  # install  phalcon/cphalcon
+  - git clone -q --depth=1 https://github.com/phalcon/cphalcon.git -b ${PHALCON_VERSION}
+  - cd cphalcon/ext; export CFLAGS="-g3 -O1 -fno-delete-null-pointer-checks -Wall"; phpize && ./configure --enable-phalcon && make -j4 && make install && phpenv config-add ../unit-tests/ci/phalcon.ini
+  - php -r 'echo \Phalcon\Version::get()."\n";'
+  - cd ../..
 
 script:
   - chmod a+x ./vendor/bin/phpunit

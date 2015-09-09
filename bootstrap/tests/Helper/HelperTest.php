@@ -1,53 +1,52 @@
 <?php
 
-use Mockery as m;
+// use Mockery as m;
+
+use Bootstrap\Support\Redirect\Redirect;
+use Phalcon\Security;
+use Phalcon\Tag;
+use Phalcon\Mvc\Router;
+use Phalcon\Http\Response;
+use Phalcon\Mvc\View;
+use Phalcon\Config;
+use Phalcon\Mvc\Url;
 
 class HelperTest extends PHPUnit_Framework_TestCase
 {
-    public function tearDown()
+    public function setUp()
     {
-        m::close();
+        $GLOBALS['kernel']->run('main');
     }
 
     public function testInstances()
     {
-        $this->assertInstanceOf(\Phalcon\Security::class, security());
-        $this->assertInstanceOf(\Phalcon\Tag::class, tag());
-        $this->assertInstanceOf(\Phalcon\Mvc\Router::class, route());
-        $this->assertInstanceOf(
-            \Phalcon\Http\Response::class,
-            response()
-        );
-        $this->assertInstanceOf(\Phalcon\Mvc\View::class, view());
-        $this->assertInstanceOf(\Phalcon\Config::class, config());
-        $this->assertInstanceOf(\Phalcon\Mvc\Url::class, url());
-        $this->assertInstanceOf(
-            \Bootstrap\Support\Redirect\Redirect::class,
-            redirect()
-        );
+        $this->assertInstanceOf(Config::class, config());
+        $this->assertInstanceOf(Redirect::class, redirect());
+        $this->assertInstanceOf(Response::class, response());
+        $this->assertInstanceOf(Router::class, route());
+        $this->assertInstanceOf(Security::class, security());
+        $this->assertInstanceOf(Tag::class, tag());
+        $this->assertInstanceOf(Url::class, url());
+        $this->assertInstanceOf(View::class, view());
     }
 
     public function testCapabilities()
     {
-        # getting the route should return the full path url
+        $this->assertContains(config()->app->debug, [
+            true,
+            false,
+        ]);
+
+        # - getting the route should return the full path url
+
         $this->assertContains(
             url()->getBaseUri() . 'auth/login',
             route('showLoginForm')
         );
 
-        # You will get an error if the file 'welcome.volt not found'
-        # The only solution to know if this work
-        $this->assertInstanceOf(
-            \Phalcon\Mvc\View::class, view('welcome')
-        );
+        # - You will get an error if the file 'welcome.volt not found',
+        # the only solution to know if this works is to know the instance
 
-        # by default the 'app.cache' is updated
-        $this->assertContains(
-            config('app.cache'),
-            [
-                true,
-                false,
-            ]
-        );
+        $this->assertInstanceOf(View::class, view('welcome'));
     }
 }

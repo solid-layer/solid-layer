@@ -16,7 +16,7 @@
         </style>
 
         {% block header %}
-        {% endblock %} 
+        {% endblock %}
     </head>
     <body>
         <div class="container-fluid">
@@ -24,6 +24,6 @@
         </div>
 
         <script type="text/javascript" src="{{ base_uri('js/bootstrap.min.js') }}"></script>
-        {% block footer %}{% endblock %} 
+        {% block footer %}{% endblock %}
     </body>
 </html>

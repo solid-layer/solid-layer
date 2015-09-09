@@ -3,8 +3,10 @@
 namespace Bootstrap\Exceptions;
 
 use Exception;
+use ErrorException;
 use Symfony\Component\Debug\ExceptionHandler;
-use Monolog\ErrorHandler;
+use Monolog\ErrorHandler as MonologErrorHandler;
+use Symfony\Component\Debug\Exception\FlattenException;
 
 class Handler extends Exception
 {
@@ -15,54 +17,75 @@ class Handler extends Exception
     public function __construct($message = null, $code = null, $previous = null)
     {
         parent::__construct($message, $code, $previous);
-
-        $this->initialize();
     }
 
-
     /**
-     * Initialize the process of the symfony handlers
+     * Handles fatal error, based on the lists
      */
-    protected function initialize()
+    public function handleFatalError()
     {
-        $this->handler = new ExceptionHandler($this->getDebugMode());
+        $error = error_get_last();
 
-        ErrorHandler::register(di()->get('log'));
-
-        return $this;
+        if ($error && $error['type'] &= E_PARSE | E_ERROR | E_CORE_ERROR | E_COMPILE_ERROR) {
+            $this->handleError(
+                $error['type'],
+                $error['message'],
+                $error['file'],
+                $error['line']
+            );
+        }
     }
 
     /**
-     * Get the default symfony whoops error
+     * Creates an error exception
      *
+     * @param  [type] $num     error type e.g(E_PARSE | E_ERROR ...)
+     * @param  [type] $str     error message
+     * @param  [type] $file    the file affected by the error
+     * @param  [type] $line    on what line affects
+     * @param  [type] $context the contenxt
+     */
+    public function handleError($num, $str, $file, $line, $context = null)
+    {
+        $e = new ErrorException($str, 0, $num, $file, $line);
+
+        $this->handleExceptionError(
+            FlattenException::create($e)
+        );
+    }
+
+    /**
+     * Print outs a simple but useful debugging ui
+     *
+     * @param  FlattenException $e instanced exception based on FlattenException
+     */
+    public function handleExceptionError(FlattenException $e)
+    {
+        $this->render($e);
+    }
+
+    public function render($e)
+    {
+        (new ExceptionHandler($this->getDebugMode()))->sendPhpResponse($e);
+    }
+
+    /**
+     * Processes the error, fatal and exceptions
      */
     protected function report()
     {
-        $prev = set_exception_handler([
-            $this->handler,
-            $this->function_name
-        ]);
+        # - let monolog handle the logging in the errors,
+        # unless you want it to, you can refer to method
+        # handleExceptionError()
 
-        return $this->handler;
-    }
+        MonologErrorHandler::register(di()->get('log'));
 
-    /**
-     * Get the default handler
-     */
-    protected function getHandler()
-    {
-        return $this->handler;
-    }
 
-    /**
-     * Override the default symfony handler
-     */
-    protected function setHandler(array $arg)
-    {
-        $this->handler       = $arg[ 0 ];
-        $this->function_name = $arg[ 1 ];
+        # - register all the the loggers we have
 
-        return $this;
+        register_shutdown_function([$this, 'handleFatalError']);
+        set_error_handler([$this, 'handleError']);
+        set_exception_handler([$this, 'handleExceptionError']);
     }
 
     /**
@@ -70,13 +93,12 @@ class Handler extends Exception
      */
     protected function getDebugMode()
     {
-        $prop = false;
+        $ret = false;
 
         if ($debug = config()->app->debug == 'true' || $debug === true) {
-
-            $prop = true;
+            $ret = true;
         }
 
-        return $prop;
+        return $ret;
     }
 }

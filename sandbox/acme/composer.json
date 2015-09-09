@@ -1,0 +1,10 @@
+{
+    "name": "phalconslayer/acme",
+    "authors": [
+        {
+            "name": "Daison Carino",
+            "email": "daison12006013@gmail.com"
+        }
+    ],
+    "require": {}
+}
