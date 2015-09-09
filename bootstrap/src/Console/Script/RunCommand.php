@@ -3,6 +3,7 @@
 namespace Bootstrap\Console\Script;
 
 use Bootstrap\Console\SlayerCommand;
+use Bootstrap\Console\CLI;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
@@ -26,14 +27,9 @@ class RunCommand extends SlayerCommand
 
         $lines = $lists[$script];
 
-        $combined = null;
+        $output = CLI::bash($lines);
 
-        foreach ( $lines as $line ) {
-            $combined .= "echo \"\e[32m{$line}\e[37m\";" .  $line . ";\n";
-        }
-
-        $output = shell_exec($combined . " 2>&1");
-        if ($output) {
+        if ( $output ) {
             $this->comment($output);
         }
     }

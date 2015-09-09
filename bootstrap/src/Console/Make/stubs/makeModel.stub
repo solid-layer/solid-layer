@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Models;
+namespace Components\Models;
 
-use App\Models\Traits\Timestampable;
-use App\Models\Traits\SoftDeletable;
+use Components\Models\Traits\Timestampable;
+use Components\Models\Traits\SoftDeletable;
 
 class {modelName} extends Model
 {

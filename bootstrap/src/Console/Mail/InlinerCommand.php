@@ -45,17 +45,17 @@ class InlinerCommand extends SlayerCommand
      */
     protected function parse($record)
     {
-        # ---- instatiate the package inliner
+        # - instatiate the package inliner
         $inliner = new CssToInlineStyles;
 
 
-        # ---- let's get the views dir combine the record file
+        # - let's get the views dir combine the record file
         $base_file = remove_double_slash(
             View::getViewsDir() . $record->file . '.*'
         );
 
 
-        # ---- now get all related glob
+        # - now get all related glob
         $related_files = glob($base_file);
         if (empty( $related_files ) == true) {
             $this->comment('   System can\'t find the file: ' . $base_file);
@@ -64,24 +64,24 @@ class InlinerCommand extends SlayerCommand
         }
 
 
-        # ---- set the html
+        # - set the html
         $inliner->setHTML(
             file_get_contents($related_files[ 0 ])
         );
 
 
-        # ---- set the css files
+        # - set the css files
         $inliner->setCSS(
             $this->combineCss($record[ 'css' ])
         );
 
 
-        # ----  get the dirname and file name
+        # -  get the dirname and file name
         $dirname = dirname($related_files[ 0 ]);
         $converted_name = basename($record->file) . '-inligned.volt';
 
 
-        # ---- overwrite or create a file based on the dirname
+        # - overwrite or create a file based on the dirname
         # and file name
         file_put_contents(
             $dirname . '/' . $converted_name,
@@ -89,7 +89,7 @@ class InlinerCommand extends SlayerCommand
         );
 
 
-        # ---- log, show some sucess
+        # - log, show some sucess
         $this->comment('   ' . basename($record->file) . ' inlined! saved as ' . $converted_name);
     }
 
@@ -99,19 +99,19 @@ class InlinerCommand extends SlayerCommand
      */
     public function slash()
     {
-        # ---- show some pretty comments that we're now inlining
+        # - show some pretty comments that we're now inlining
         $this->comment('Inlining...');
 
 
-        # ---- let's get if there's an option assigned to 'record'
+        # - let's get if there's an option assigned to 'record'
         $record = $this->input->getOption('record');
 
 
-        # ---- get all the records in inliner.php file
+        # - get all the records in inliner.php file
         $records = config()->inliner->toArray();
 
 
-        # ---- determine if option 'record' is not empty
+        # - determine if option 'record' is not empty
         # then we should get the specific inline key
         if (strlen($record) != 0) {
 
@@ -122,7 +122,7 @@ class InlinerCommand extends SlayerCommand
             }
 
             $this->parse(config()->inliner->{$record});
-        } # ---- or, else parse all the inliner
+        } # - or, else parse all the inliner
         else {
             foreach (config()->inliner as $record) {
                 $this->parse($record, true);

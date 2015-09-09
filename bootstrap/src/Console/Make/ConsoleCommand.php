@@ -20,7 +20,7 @@ class ConsoleCommand extends SlayerCommand
         $stub = str_replace('{consoleName}', $arg_name, $stub);
 
         $file_name = $arg_name . 'Command.php';
-        chdir(config()->path->consoleDir);
+        chdir(config()->path->console);
         $this->comment('Crafting Console...');
 
         if (file_exists($file_name)) {

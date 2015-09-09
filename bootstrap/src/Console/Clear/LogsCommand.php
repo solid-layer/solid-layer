@@ -16,6 +16,6 @@ class LogsCommand extends SlayerCommand
 
     public function slash()
     {
-        $this->clear(config()->path->logsDir);
+        $this->clear(config()->path->logs);
     }
 }
