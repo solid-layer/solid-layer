@@ -10,20 +10,27 @@ class Handler extends BaseHandler
 {
     public function report()
     {
-        # -----------------------------------------------------
-        # To enable your own template, uncomment below code
-        # -----------------------------------------------------
-
-        // if ($this->getDebugMode() == false) {
-        //     $this->setHandler([$this, 'whoopsy']);
-        // }
-
         parent::report();
     }
 
-    public function whoopsy()
+    public function render($exception)
     {
-        echo View::take('errors.whoops');
-        return;
+        # - you may also want to extract the error for other purpose
+        # such as logging it to your slack notification or bugsnag
+
+        // ... notifications | bugsnag | etc...
+
+
+        # - the code below will print a symfony debugging ui
+
+        parent::render($exception);
+
+
+        # - the code below will be your custom whoops view
+
+        // echo View::take('errors.whoops', [
+        //     'exception' => $exception,
+        // ]);
+        // exit;
     }
 }

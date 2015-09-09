@@ -16,7 +16,20 @@
                 <div class="col-sm-12 text-center">
                     <div class="alert alert-danger">
                         <h4>Whoops! Something went wrong.</h4>
-                        <p>It seems the system is not functioning.</p>
+
+                        <?php if (!empty($exception) && config()->app->debug ): ?>
+
+                            <p>{{ exception.getMessage() }}</p>
+                            <p>
+                                <b>File:</b> {{ exception.getFile() }} on line <b>{{ exception.getLine() }}</b>
+                            </p>
+
+                        <?php else: ?>
+
+                            <p>It seems the system is not functioning.</p>
+
+                        <?php endif ?>
+
                     </div>
 
                     <a target="_blank" href="http://www.github.com/phalconslayer/slayer"><code>Powered By: Slayer - Structured Phalcon Framework</code></a>
