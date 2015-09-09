@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Routes;
+namespace App\Main\Routes;
 
-class AuthRoutes extends RouterGroup
+class AuthRoutes extends RouteGroup
 {
     public function initialize()
     {
@@ -10,36 +10,28 @@ class AuthRoutes extends RouterGroup
             'controller' => 'Auth',
         ]);
 
-
-        # All the routes start with /auth
         $this->setPrefix('/auth');
-
 
         $this->add('/login/:params', [
             'action' => 'showLoginForm',
             'params' => 1,
         ])->setName('showLoginForm');
 
-
         $this->add('/attempt', [
             'action' => 'attemptToLogin',
         ])->setName('attemptToLogin');
-
 
         $this->add('/logout', [
             'action' => 'logout',
         ])->setName('logout');
 
-
         $this->add('/register', [
             'action' => 'showRegistrationForm',
         ])->setName('showRegistrationForm');
 
-
         $this->add('/register/store', [
             'action' => 'storeRegistrationForm',
         ])->setName('storeRegistrationForm');
-
 
         $this->add('/activation/{token}', [
             'action' => 'activateUser',

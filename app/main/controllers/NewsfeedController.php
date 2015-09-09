@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Main\Controllers;
 
 # using alias
 use Request; # use Bootstrap\Facades\Request;

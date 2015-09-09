@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Main\Controllers;
 
-# using alias
-use View; # use Bootstrap\Facades\View;
+use View;   # use Bootstrap\Facades\View;
 
 class WelcomeController extends Controller
 {

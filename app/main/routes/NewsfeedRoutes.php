@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Routes;
+namespace App\Main\Routes;
 
-class NewsfeedRoutes extends RouterGroup
+class NewsfeedRoutes extends RouteGroup
 {
     public function initialize()
     {
