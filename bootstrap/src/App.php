@@ -13,6 +13,7 @@ class App
 {
     private $di;
     private $app;
+    private $error_handler;
 
     /**
      * Load our dependencies by locating our vendor
@@ -24,6 +25,12 @@ class App
         define('SLAYER_START', microtime(true));
 
         require_once $base . '/vendor/autoload.php';
+
+        $compiled = $base . '/storage/slayer/compiled.php';
+
+        if ( file_exists($compiled) && php_sapi_name() != 'cli' ) {
+            require_once $compiled;
+        }
     }
 
 
@@ -45,8 +52,11 @@ class App
         # - load the .env file, that will enteract with
         # configurations, for environment specific
 
-        $dotenv = new Dotenv(BASE_PATH);
-        $dotenv->load();
+        if ( file_exists(BASE_PATH . '/.env') ) {
+            $dotenv = new Dotenv( BASE_PATH );
+            $dotenv->load();
+        }
+
 
 
         # - let's create an empty config with just an empty
@@ -103,6 +113,7 @@ class App
         # native phalcon classes
 
         $container = new ServiceContainer;
+
         foreach (config()->app->services as $provider) {
             $container->addServiceProvider(new $provider);
         }
@@ -115,34 +126,13 @@ class App
             require BASE_PATH . '/bootstrap/modules.php'
         );
 
+
         # - handle errors and exceptions
 
-        $this->getErrorHandler()->report();
+        (new ErrorHandler)->report();
 
-
-        # - check if system is modular or not
-
-        if ( ! config()->app->modular ) {
-            $main_route_file = BASE_PATH . '/app/routes.php';
-            if ( ! file_exists($main_route_file)) {
-                throw new FileNotFoundException($main_route_file . ' not found!');
-            }
-
-            require_once BASE_PATH . '/app/routes.php';
-        }
 
         return $this;
-    }
-
-
-    /**
-     * Return an instance of Exceptions Handler
-     *
-     * @return mixed App\Exceptions\Handler
-     */
-    public function getErrorHandler()
-    {
-        return new ErrorHandler;
     }
 
 
@@ -163,15 +153,9 @@ class App
      */
     public function run($module = null)
     {
-        if ( ! config()->app->modular ) {
-            return $this;
-        }
+        require_once BASE_PATH . '/app/' . $module . '/routes.php';
 
-        if ( ! empty($module) ) {
-            require_once BASE_PATH . '/app/' . $module . '/routes.php';
-
-            $this->app->setDefaultModule($module);
-        }
+        $this->app->setDefaultModule($module);
 
         return $this;
     }
