@@ -2,25 +2,25 @@
 
 return [
 
-    'slayer'  => function ($di) {
+    'main'  => function ($di) {
 
         $di
             ->get('dispatcher')
-            ->setDefaultNamespace('App\Slayer\Controllers');
+            ->setDefaultNamespace('App\Main\Controllers');
     },
 
-    'sandbox' => function ($di) {
+    'acme' => function ($di) {
 
-        $sandbox = $di->get('sandbox');
+        $acme = $di->get('acme');
 
-        $views_dir = $sandbox->getViewsDir();
-        if (is_dir(base_path('resources/views/vendor/sandbox'))) {
-            $views_dir = base_path('resources/views/vendor/sandbox');
+        $views_dir = $acme->getViewsDir();
+        if (is_dir(base_path('resources/views/vendor/acme'))) {
+            $views_dir = base_path('resources/views/vendor/acme');
         }
 
-        $lang_dir = $sandbox->getLangDir();
-        if (is_dir(base_path('resources/lang/vendor/sandbox'))) {
-            $lang_dir = base_path('resources/lang/vendor/sandbox');
+        $lang_dir = $acme->getLangDir();
+        if (is_dir(base_path('resources/lang/vendor/acme'))) {
+            $lang_dir = base_path('resources/lang/vendor/acme');
         }
 
         # - set the views dir and lang dir
@@ -28,6 +28,6 @@ return [
         $di->get('lang')->setLangDir($lang_dir);
         $di
             ->get('dispatcher')
-            ->setDefaultNamespace('Sandbox\App\Controllers');
+            ->setDefaultNamespace('Acme\Acme\App\Controllers');
     },
 ];
