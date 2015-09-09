@@ -26,7 +26,7 @@ class Cache extends ServiceProvider
         ]);
 
         $cache = new BackFile($front_cache, [
-            'cacheDir' => config()->path->cacheDir,
+            'cacheDir' => config()->path->cache,
         ]);
 
         return $cache;

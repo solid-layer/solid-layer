@@ -8,13 +8,16 @@ use Bootstrap\Exceptions\AccessNotAllowedException;
 
 class CSRF extends BaseFilter
 {
-    public function load()
+    public function load($next)
     {
         if (Request::isPost()) {
 
             if (Security::checkToken() == false) {
 
-                # --- or redirect the user . . .
+                # - throw exception or redirect the user
+                # or render a content using
+                # View::take(<resources.view>);exit;
+
                 throw new AccessNotAllowedException('What are you doing?');
             }
         }

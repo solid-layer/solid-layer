@@ -11,7 +11,7 @@ class Handler extends BaseHandler
     public function report()
     {
         # -----------------------------------------------------
-        # - To enable your own template, uncomment below code
+        # To enable your own template, uncomment below code
         # -----------------------------------------------------
 
         // if ($this->getDebugMode() == false) {
