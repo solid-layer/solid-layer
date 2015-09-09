@@ -1,11 +1,11 @@
 <?php
 
-namespace Sandbox\App\Controllers;
+namespace Acme\Acme\App\Controllers;
 
 use Bootstrap\Support\Phalcon\Mvc\Controller as BaseController;
 use Bootstrap\Facades\View;
 
-class SandboxController extends BaseController
+class AcmeController extends BaseController
 {
     public function testAction()
     {
