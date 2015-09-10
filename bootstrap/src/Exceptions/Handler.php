@@ -59,7 +59,7 @@ class Handler extends Exception
      *
      * @param  FlattenException $e instanced exception based on FlattenException
      */
-    public function handleExceptionError(FlattenException $e)
+    public function handleExceptionError(Exception $e)
     {
         $this->render($e);
     }
