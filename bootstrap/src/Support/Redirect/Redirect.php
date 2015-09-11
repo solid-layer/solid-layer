@@ -2,10 +2,7 @@
 
 namespace Bootstrap\Support\Redirect;
 
-use Phalcon\Session\Bag as PhalconSessionBag;
 use Bootstrap\Support\WithMagicMethodTrait;
-use Bootstrap\Facades\Response;
-use Bootstrap\Facades\Session;
 
 class Redirect
 {
@@ -13,7 +10,7 @@ class Redirect
 
     public function to($url)
     {
-        Response::redirect($url);
+        di()->get('response')->redirect($url);
 
         return $this;
     }
