@@ -12,7 +12,7 @@ class View extends ServiceProvider
 {
     protected $_alias = 'view';
 
-    protected $_shared = false;
+    protected $_shared = true;
 
     public function register()
     {
@@ -55,8 +55,9 @@ class View extends ServiceProvider
 
                     return $volt;
                 },
-            '.phtml' =>
-                'Phalcon\Mvc\View\Engine\Php',
+
+            '.phtml'     => 'Phalcon\Mvc\View\Engine\Php',
+            '.blade.php' => 'Bootstrap\Adapters\Blade\BladeAdapter',
         ]);
 
         # ---- instatiate a new event manager
