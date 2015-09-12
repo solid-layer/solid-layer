@@ -22,6 +22,15 @@ return [
 
 
     # ------------------------------------------------------------
+    # Default Timezone
+    # ------------------------------------------------------------
+    # - The system time to be, useful for CRUD records that will
+    # based on the timezone
+
+    'timezone'     => 'UTC',
+
+
+    # ------------------------------------------------------------
     # SSL Support
     # ------------------------------------------------------------
     # - Mark true if your domain supports ssl, and to force
