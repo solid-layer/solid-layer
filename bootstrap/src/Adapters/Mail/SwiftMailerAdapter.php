@@ -1,6 +1,6 @@
 <?php
 
-namespace Bootstrap\Support\Mail;
+namespace Bootstrap\Adapters\Mail;
 
 use Bootstrap\Contracts\Mail\MailInterface;
 use Swift_Message;

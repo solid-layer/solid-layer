@@ -64,9 +64,9 @@ return [
 
         'classes'    => [
             'swift'   =>
-                Bootstrap\Support\Mail\SwiftMailerAdapter::class,
+                Bootstrap\Adapters\Mail\SwiftMailerAdapter::class,
             'mailgun' =>
-                Bootstrap\Support\Mail\MailgunAdapter::class,
+                Bootstrap\Adapters\Mail\MailgunAdapter::class,
         ],
     ],
 
