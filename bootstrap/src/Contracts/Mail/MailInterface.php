@@ -37,17 +37,17 @@ interface MailInterface
     /**
      * The email(s) who acts as the receiver(s)
      */
-    public function to(Array $emails);
+    public function to(array $emails);
 
     /**
      * The email(s) who acts as the blind carbon copy
      */
-    // public function bcc(Array $emails);
+    // public function bcc(array $emails);
 
     /**
      * The email(s) who acts as the carbon copy
      */
-    // public function cc(Array $emails);
+    // public function cc(array $emails);
 
     /**
      * The email subject

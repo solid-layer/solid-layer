@@ -3,7 +3,7 @@
 namespace Bootstrap\Adapters\Mail;
 
 use Bootstrap\Contracts\Mail\MailInterface;
-use Mailgun\Mailgun as Mailgun_Mailgun;
+use Mailgun\Mailgun;
 
 class MailgunAdapter implements MailInterface
 {
@@ -58,7 +58,7 @@ class MailgunAdapter implements MailInterface
         return $this;
     }
 
-    public function to(Array $emails)
+    public function to(array $emails)
     {
         $this->to = implode(', ', $emails);
 
@@ -81,7 +81,7 @@ class MailgunAdapter implements MailInterface
 
     public function send()
     {
-        $mailgun = new Mailgun_Mailgun($this->getKey());
+        $mailgun = new Mailgun($this->getKey());
 
         return $mailgun->sendMessage($this->getDomain(), [
             'from'    => $this->from,

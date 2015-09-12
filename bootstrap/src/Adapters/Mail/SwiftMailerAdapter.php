@@ -64,7 +64,7 @@ class SwiftMailerAdapter implements MailInterface
         return $this;
     }
 
-    public function to(Array $emails)
+    public function to(array $emails)
     {
         $this->message->setTo($emails);
 
