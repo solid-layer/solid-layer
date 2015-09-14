@@ -18,6 +18,11 @@ class MailgunAdapter implements MailInterface
     private $subject;
     private $html;
 
+    public function attach($file)
+    {
+        // ... todo
+    }
+
     public function encryption($encryption)
     {
         $this->encryption = $encryption;
