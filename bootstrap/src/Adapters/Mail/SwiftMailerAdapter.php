@@ -9,50 +9,55 @@ use Swift_Mailer;
 
 class SwiftMailerAdapter implements MailInterface
 {
-    private $encryption;
-    private $host;
-    private $username;
-    private $password;
-    private $mailer;
     private $message;
-    private $port;
+    private $transport;
 
     public function __construct()
     {
         $this->message = Swift_Message::newInstance();
+        $this->transport = Swift_SmtpTransport::newInstance();
+    }
+
+    public function attach($file)
+    {
+        $this->message->attach($file);
+
+        return $this;
     }
 
     public function encryption($encryption)
     {
-        $this->encryption = $encryption;
+        if ($this->encryption) {
+            $transport->setEncryption($encryption);
+        }
 
         return $this;
     }
 
     public function host($host)
     {
-        $this->host = $host;
+        $this->transport->setHost($host);
 
         return $this;
     }
 
     public function port($port)
     {
-        $this->port = $port;
+        $this->transport->setPort($port);
 
         return $this;
     }
 
     public function username($username)
     {
-        $this->username = $username;
+        $this->transport->setUsername($username);
 
         return $this;
     }
 
     public function password($password)
     {
-        $this->password = $password;
+        $this->transport->setPassword($password);
 
         return $this;
     }
@@ -67,6 +72,20 @@ class SwiftMailerAdapter implements MailInterface
     public function to(array $emails)
     {
         $this->message->setTo($emails);
+
+        return $this;
+    }
+
+    public function bcc(array $emails)
+    {
+        $this->message->setBcc($emails);
+
+        return $this;
+    }
+
+    public function cc(array $emails)
+    {
+        $this->message->setBcc($emails);
 
         return $this;
     }
@@ -87,18 +106,7 @@ class SwiftMailerAdapter implements MailInterface
 
     public function send()
     {
-        $transport = Swift_SmtpTransport::newInstance();
-        $transport
-            ->setHost($this->host)
-            ->setPort($this->port)
-            ->setUsername($this->username)
-            ->setPassword($this->password);
-
-        if ($this->encryption) {
-            $transport->setEncryption($this->encryption);
-        }
-
-        $mailer = Swift_Mailer::newInstance($transport);
+        $mailer = Swift_Mailer::newInstance($this->transport);
 
         return $mailer->send($this->message);
     }

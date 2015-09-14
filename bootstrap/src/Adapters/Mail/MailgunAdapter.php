@@ -13,6 +13,8 @@ class MailgunAdapter implements MailInterface
     private $password;
     private $from;
     private $to;
+    private $bcc;
+    private $cc;
     private $subject;
     private $html;
 
@@ -65,6 +67,20 @@ class MailgunAdapter implements MailInterface
         return $this;
     }
 
+    public function bcc(array $emails)
+    {
+        $this->bcc = $emails;
+
+        return $this;
+    }
+
+    public function cc(array $emails)
+    {
+        $this->cc = $emails;
+
+        return $this;
+    }
+
     public function subject($subject)
     {
         $this->subject = $subject;
@@ -86,6 +102,8 @@ class MailgunAdapter implements MailInterface
         return $mailgun->sendMessage($this->getDomain(), [
             'from'    => $this->from,
             'to'      => $this->to,
+            'cc'      => $this->cc,
+            'bcc'     => $this->bcc,
             'subject' => $this->subject,
             'html'    => $this->html,
         ]);
