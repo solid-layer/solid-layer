@@ -38,7 +38,7 @@ class App
     {
         # - load the compiled file
 
-        $compiled = $base . '/storage/slayer/compiled.php';
+        $compiled = BASE_PATH . '/storage/slayer/compiled.php';
 
         if ( file_exists($compiled) && php_sapi_name() != 'cli' ) {
             require_once $compiled;
