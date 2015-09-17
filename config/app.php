@@ -76,7 +76,7 @@ return [
     # ------------------------------------------------------------
 
     'auth'     => [
-        'model'          => 'Components\Models\User',
+        'model'          => Components\Models\User::class,
         'password_field' => 'password',
         'auth_redirect'  => '/newsfeed',
     ],
