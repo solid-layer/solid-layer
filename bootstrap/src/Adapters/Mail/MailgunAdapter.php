@@ -7,6 +7,7 @@ use Mailgun\Mailgun;
 
 class MailgunAdapter implements MailInterface
 {
+    private $files;
     private $encryption;
     private $host;
     private $username;
@@ -20,7 +21,9 @@ class MailgunAdapter implements MailInterface
 
     public function attach($file)
     {
-        // ... todo
+        $this->files[] = $file;
+
+        return $this;
     }
 
     public function encryption($encryption)
@@ -102,26 +105,61 @@ class MailgunAdapter implements MailInterface
 
     public function send()
     {
-        $mailgun = new Mailgun($this->getKey());
+        // dd($this->getData());
 
-        return $mailgun->sendMessage($this->getDomain(), [
-            'from'    => $this->from,
-            'to'      => $this->to,
-            'cc'      => $this->cc,
-            'bcc'     => $this->bcc,
-            'subject' => $this->subject,
-            'html'    => $this->html,
-        ]);
+        $mailgun = new Mailgun($this->getSecretKey());
+
+        return $mailgun->sendMessage(
+            $this->getDomain()
+            ,$this->getData()
+            ,$this->getFiles()
+        );
     }
 
-    private function getKey()
+    private function getData()
     {
-        return config()->mailer->mailgun->secret;
+        $ret = [
+            'from'    => $this->from,
+            'subject' => $this->subject,
+            'html'    => $this->html,
+        ];
+
+        if ( !empty($this->to) ) {
+            $ret['to'] = $this->to;
+        }
+
+        if ( !empty($this->cc) ) {
+            $ret['cc'] = $this->cc;
+        }
+
+        if ( !empty($this->bcc) ) {
+            $ret['bcc'] = $this->bcc;
+        }
+
+        return $ret;
+    }
+
+    private function getFiles()
+    {
+        $ret = [];
+
+        if ( count($this->files) ) {
+            foreach ($this->files as $file) {
+                $ret['attachment'][] = $file;
+            }
+        }
+
+        return $ret;
+    }
+
+    private function getSecretKey()
+    {
+        return config()->services->mailgun->secret;
     }
 
     private function getDomain()
     {
-        return config()->mailer->mailgun->domain;
+        return config()->services->mailgun->domain;
     }
 
 }

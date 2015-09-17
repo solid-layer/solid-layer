@@ -6,6 +6,7 @@ use Bootstrap\Contracts\Mail\MailInterface;
 use Swift_Message;
 use Swift_SmtpTransport;
 use Swift_Mailer;
+use Swift_Attachment;
 
 class SwiftMailerAdapter implements MailInterface
 {
@@ -20,7 +21,9 @@ class SwiftMailerAdapter implements MailInterface
 
     public function attach($file)
     {
-        $this->message->attach($file);
+        $this->message->attach(
+            Swift_Attachment::fromPath($file)
+        );
 
         return $this;
     }
