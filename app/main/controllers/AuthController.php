@@ -2,6 +2,7 @@
 
 namespace App\Main\Controllers;
 
+use PDO;
 use URL;            # use Bootstrap\Facades\URL;
 use Auth;           # use Bootstrap\Facades\Auth;
 use View;           # use Bootstrap\Facades\View;
@@ -15,6 +16,7 @@ use Tag;            # use Bootstrap\Facades\Tag;
 use Security;       # use Bootstrap\Facades\Security;
 use Components\Validation\RegistrationValidator;
 use Components\Models\User;
+use Phalcon\Mvc\Model\Transaction\Failed as TransactionFailed;
 
 class AuthController extends Controller
 {
@@ -157,47 +159,62 @@ class AuthController extends Controller
             )
         );
 
-        $user = new User;
-        $success = $user->create([
-            'email'    => $inputs[ 'email' ],
-            'password' => Security::hash($inputs[ 'password' ]),
-            'token'    => $token,
-        ]);
 
-        if ($success == false) {
-            throw new \Exception('Cant create an account!');
-        }
+        try {
 
+            # - alternative way to create a new record
 
-        # - alternative way to create a new record
+            // $user->email = $inputs['email'];
+            // $user->password = Security::hash($inputs['password']);
+            // $user->token = $token;
+            // $user->create();
 
-        // $user->email = $inputs['email'];
-        // $user->password = Security::hash($inputs['password']);
-        // $user->token = $token;
-        // $user->create();
+            $user = new User;
+            $user->beginTransaction();
+            $success = $user->create([
+                'email'    => $inputs[ 'email' ],
+                'password' => Security::hash($inputs[ 'password' ]),
+                'token'    => $token,
+            ]);
 
-
-        # - generate a full path url providing the token
-        #
-        # - alternative call:
-        #   $this->url->get( ... )
-
-        $url = URL::route('activateUser', [
-            'token' => $token,
-        ]);
-
-
-        # - alternative call:
-        #   $this->mail->send( ... , [ ... ], function(){ ... })
-
-        Mail::send('emails.registered-inligned', ['url' => $url],
-            function ($mail) use ($inputs) {
-                $mail->to([$inputs[ 'email' ]]);
-                $mail->subject(
-                    'You have successfully registered.'
-                );
+            if ($success == false) {
+                throw new \Exception('Cant create an account!');
             }
-        );
+
+
+            # - generate a full path url providing the token
+            #
+            # - alternative call:
+            #   $this->url->get( ... )
+
+            $url = URL::route('activateUser', [
+                'token' => $token,
+            ]);
+
+
+            # - alternative call:
+            #   $this->mail->send( ... , [ ... ], function(){ ... })
+
+            Mail::send('emails.registered-inligned', ['url' => $url],
+                function ($mail) use ($inputs) {
+
+                    $mail->to([
+                        $inputs['email'],
+                    ]);
+
+                    $mail->subject(
+                        'You are now registered successfully.'
+                    );
+                }
+            );
+
+            $user->commit();
+
+        } catch (TransactionFailed $e) {
+            throw $e;
+        } catch (Exception $e) {
+            throw $e;
+        }
 
 
         # - flash success
@@ -205,9 +222,9 @@ class AuthController extends Controller
         # - alternative call:
         #   $this->flash->success( ... )
 
-        FlashBag::success(
-            Lang::get('responses/register.creation_success')
-        );
+        // FlashBag::success(
+        //     Lang::get('responses/register.creation_success')
+        // );
 
 
         # - alternative call:
@@ -324,7 +341,7 @@ class AuthController extends Controller
                 'try again, or contact us.'
             );
 
-            return View::make('error.whoops');
+            return View::make('errors.404');
         }
 
 
