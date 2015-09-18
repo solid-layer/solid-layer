@@ -82,6 +82,34 @@ class View extends PhalconView
     {
         return $this->setVars($array);
     }
+    
+    /**
+     * Reconstructing \Phalcon\Tag::setDefault via method chaining
+     *
+     * @param string $key
+     * @param string $val
+     *
+     * @return mixed
+     */
+    public function withDefault($key, $val)
+    {
+        Tag::setDefault($key, $val);
+        return $this;
+    }
+
+    /**
+     * Reconstructing \Phalcon\Tag::setDefaults via method chaining
+     *
+     * @param array $values
+     * @param bool $merge
+     *
+     * @return mixed
+     */
+    public function withDefaults($values, $merge = false)
+    {
+        Tag::setDefaults($values, $merge);
+        return $this;
+    }
 
 
     /**
