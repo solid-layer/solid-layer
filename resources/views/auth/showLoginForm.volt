@@ -36,16 +36,16 @@
         <form class="form-vertical" method="POST" action="{{ route('attemptToLogin') }}" autocomplete="off">
             {{ csrf_field() }}
 
-            <input type="hidden" name="ref" value="{{ request().get('ref') }}"> 
+            <input type="hidden" name="ref" value="{{ request().get('ref') }}">
 
             <div class="form-group">
                 <label>{{ lang.get('auth.login.email_label') }}</label>
-                <input type="text" name="email" class="form-control">
+                {{ text_field('email', 'class': 'form-control') }}
             </div>
 
             <div class="form-group">
                 <label>{{ lang.get('auth.login.password_label') }}</label>
-                <input type="password" name="password" class="form-control">
+                {{ password_field('password', 'class': 'form-control') }}
             </div>
 
             <div class="pull-left">
