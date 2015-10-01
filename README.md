@@ -3,7 +3,7 @@ Slayer - Structured Phalcon Framework
 
 <img src="http://phalconist.com/phalconslayer/slayer/default.svg"> [![Build Status](https://travis-ci.org/phalconslayer/slayer.svg?branch=master)](https://travis-ci.org/phalconslayer/slayer)
 
-Pre-built with symfony commands, mvc generators and package deployment. Slayer is built with extensive packages such as flysystem, symfony components, swiftmailer, phinx and many more (refer to composer.json)
+Slayer is made to support dependencies while still reaching the speed of Phalcon Framework, it is built with extensive packages such as flysystem, symfony components, swiftmailer, phinx and many more (refer to composer.json)
 
 ## Base Framework - Phalcon Framework
 
