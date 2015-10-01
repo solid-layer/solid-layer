@@ -48,6 +48,14 @@ return [
 
 
     # ------------------------------------------------------------
+    # Flysystem
+    # ------------------------------------------------------------
+    # - Define your default flysystem
+
+    'flysystem' => 'local',
+
+
+    # ------------------------------------------------------------
     # Mailer Settings
     # ------------------------------------------------------------
     # - To be able to send an email, provide your email
@@ -113,8 +121,8 @@ return [
 
         # - register your classes below.
 
-        // Components\Providers\AwsServiceProvider::class,
         Acme\Acme\AcmeServiceProvider::class,
+        Components\Providers\FlysystemServiceProvider::class,
     ],
 
 
@@ -141,7 +149,8 @@ return [
 
         # register class aliases below.
 
-        // 'AWS'      => Components\Facade\AwsFacade::class,
+        'File'      => Components\Facade\FileFacade::class,
+        'Flysystem' => Components\Facade\FlysystemFacade::class,
     ],
 
 ]; # - end of return
