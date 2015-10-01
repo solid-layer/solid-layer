@@ -2,7 +2,6 @@
 
 namespace App\Main\Controllers;
 
-use PDO;
 use URL;            # use Bootstrap\Facades\URL;
 use Auth;           # use Bootstrap\Facades\Auth;
 use View;           # use Bootstrap\Facades\View;
