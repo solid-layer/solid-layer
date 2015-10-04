@@ -18,7 +18,7 @@ Route::addGet('/', [
 # ----------------------------------------------------------
 # Organized Routes using RouteGroup
 # ----------------------------------------------------------
-# - You can manage creating your own routes
+# - Mount your route classes
 
 Route::mount(new App\Main\Routes\AuthRoutes);
 Route::mount(new App\Main\Routes\NewsfeedRoutes);
