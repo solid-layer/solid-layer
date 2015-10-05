@@ -2,6 +2,7 @@
 
 namespace App\Main\Controllers;
 
+use DB;
 use URL;            # use Bootstrap\Facades\URL;
 use Auth;           # use Bootstrap\Facades\Auth;
 use View;           # use Bootstrap\Facades\View;
@@ -161,15 +162,9 @@ class AuthController extends Controller
 
         try {
 
-            # - alternative way to create a new record
-
-            // $user->email = $inputs['email'];
-            // $user->password = Security::hash($inputs['password']);
-            // $user->token = $token;
-            // $user->create();
+            DB::begin();
 
             $user = new User;
-            $user->beginTransaction();
             $success = $user->create([
                 'email'    => $inputs[ 'email' ],
                 'password' => Security::hash($inputs[ 'password' ]),
@@ -182,7 +177,6 @@ class AuthController extends Controller
 
 
             # - generate a full path url providing the token
-            #
             # - alternative call:
             #   $this->url->get( ... )
 
@@ -207,11 +201,15 @@ class AuthController extends Controller
                 }
             );
 
-            $user->commit();
+            DB::commit();
 
         } catch (TransactionFailed $e) {
+            DB::rollback();
+
             throw $e;
         } catch (Exception $e) {
+            DB::rollback();
+
             throw $e;
         }
 
