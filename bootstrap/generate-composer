@@ -1,0 +1,63 @@
+#!/usr/bin/env php
+<?php
+
+$props = [
+    'name'     => 'phalconslayer/slayer',
+    "keywords" => [
+        'skeleton', 'boilerplate', 'framework', 'phalcon', 'slayer',
+        'bootstrap',
+    ],
+    'description' => 'Bootstrapped Phalcon Framework',
+    'license'     => 'MIT',
+
+    'require' => [
+        'classpreloader/classpreloader'     => '^2.0',
+        'classpreloader/console'            => '^1.0',
+        'illuminate/view'                   => '^5.1',
+        'illuminate/support'                => '^5.1',
+        'league/flysystem'                  => '^1.0',
+        'mailgun/mailgun-php'               => '~1.7.2',
+        'monolog/monolog'                   => '^1.15',
+        'robmorgan/phinx'                   => '^0.4.4',
+        'symfony/console'                   => '^2.7',
+        'swiftmailer/swiftmailer'           => '^5.4',
+        'symfony/debug'                     => '^2.7',
+        'symfony/var-dumper'                => '^2.7',
+        'tijsverkoyen/css-to-inline-styles' => '^1.5',
+        'vlucas/phpdotenv'                  => '^2.0',
+    ],
+
+    'require-dev' => [
+        "phpunit/phpunit" => "^4.7",
+        "mockery/mockery" => "^0.9.4",
+    ],
+
+
+    # ----------------------------------------------------------------
+    # Autoload Classes
+    # ----------------------------------------------------------------
+    # - the code below will be generating an array record of all
+    # classes listed
+
+    'autoload' => [
+        'classmap' => [
+            'app/',
+            'sandbox/',
+        ],
+        'psr-4' => [
+            'Components\\' => 'components/',
+            'Bootstrap\\'  => 'bootstrap/src/',
+        ]
+    ],
+];
+
+
+file_put_contents(
+    dirname(__DIR__) . '/composer.json',
+    json_encode($props, JSON_PRETTY_PRINT)
+);
+
+print "Running (composer validate):\n";
+$output = shell_exec('composer validate');
+print $output;
+exit();

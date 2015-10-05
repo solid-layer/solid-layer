@@ -36,33 +36,34 @@
         <form class="form-vertical" method="POST" action="{{ route('attemptToLogin') }}" autocomplete="off">
             {{ csrf_field() }}
 
-            <input type="hidden" name="ref" value="{{ request().get('ref') }}"> 
+            <input type="hidden" name="ref" value="{{ request().get('ref') }}">
 
             <div class="form-group">
                 <label>{{ lang.get('auth.login.email_label') }}</label>
-                <input type="text" name="email" class="form-control">
+                {{ text_field('email', 'class': 'form-control') }}
             </div>
 
             <div class="form-group">
                 <label>{{ lang.get('auth.login.password_label') }}</label>
-                <input type="password" name="password" class="form-control">
+                {{ password_field('password', 'class': 'form-control') }}
             </div>
 
-            <div class="pull-left">
-                <a href="<?php echo $this->url->get(['for' => 'showRegistrationForm']) ?>" class="btn btn-info">{{ lang.get('auth.button.register_button') }}</a>
-                <a href="" class="disabled btn btn-danger">{{ lang.get('auth.button.forgot_button') }}</a>
+            <div class="form-group">
+                <div class="text-center">
+                    <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> {{ lang.get('auth.button.login_button') }}</button>
+
+                    <a href="{{ route('showRegistrationForm') }}" class="btn btn-info">{{ lang.get('auth.button.register_button') }}</a>
+
+                    <a href="" class="disabled btn btn-danger">{{ lang.get('auth.button.forgot_button') }}</a>
+                </div>
             </div>
 
-            <div class="pull-right">
-                <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> {{ lang.get('auth.button.login_button') }}</button>
-            </div>
-
+            <div class="clearfix"></div>
+            {{ partial('layouts/processingTime') }}
         </form>
-        <div class="clearfix"></div>
 
     </div>
 
-    {{ partial('layouts/processingTime') }}
 {% endblock %}
 
 {% block footer %}

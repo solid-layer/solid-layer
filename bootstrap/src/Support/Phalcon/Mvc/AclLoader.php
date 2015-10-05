@@ -3,7 +3,7 @@
 namespace Bootstrap\Support\Phalcon\Mvc;
 
 use Bootstrap\Services\Acl\AclContainer;
-use Bootstrap\Facades\ACL as ACL;
+use Bootstrap\Facades\ACL;
 use Phalcon\Acl\Resource;
 
 class AclLoader
@@ -57,7 +57,7 @@ class AclLoader
 
     public function load()
     {
-        if (count($this->options)) {
+        if (!empty($this->options)) {
             if (isset( $this->only_actions[ $this->action_name ] ) == false) {
                 return;
             }
@@ -67,14 +67,14 @@ class AclLoader
             }
         }
 
-        FacadeACL::addResource(
+        ACL::addResource(
             new Resource($this->controller_name),
             $this->action_name
         );
 
-        if (count($this->obj->getAllowedRoles())) {
+        if (!empty($this->obj->getAllowedRoles())) {
             foreach ($this->obj->getAllowedRoles() as $role) {
-                FacadeACL::allow(
+                ACL::allow(
                     $role,
                     $this->controller_name,
                     $this->action_name
@@ -82,9 +82,9 @@ class AclLoader
             }
         }
 
-        if (count($this->obj->getAllowedRoles())) {
+        if (!empty($this->obj->getDeniedRoles())) {
             foreach ($this->obj->getDeniedRoles() as $role) {
-                FacadeACL::deny(
+                ACL::deny(
                     $role,
                     $this->controller_name,
                     $this->action_name

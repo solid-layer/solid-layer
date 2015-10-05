@@ -57,9 +57,9 @@ class Handler extends Exception
     /**
      * Print outs a simple but useful debugging ui
      *
-     * @param  FlattenException $e instanced exception based on FlattenException
+     * @param $e instanced exception based on FlattenException
      */
-    public function handleExceptionError(FlattenException $e)
+    public function handleExceptionError($e)
     {
         $this->render($e);
     }

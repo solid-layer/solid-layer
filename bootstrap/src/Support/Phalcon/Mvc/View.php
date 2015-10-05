@@ -2,6 +2,7 @@
 
 namespace Bootstrap\Support\Phalcon\Mvc;
 
+use Phalcon\Tag;
 use Phalcon\Mvc\View as PhalconView;
 use Bootstrap\Exceptions\ViewFileNotFoundException;
 use Bootstrap\Support\WithMagicMethodTrait;
@@ -81,6 +82,36 @@ class View extends PhalconView
     public function batch($array)
     {
         return $this->setVars($array);
+    }
+
+    /**
+     * Reconstructing \Phalcon\Tag::setDefault via method chaining
+     *
+     * @param string $key
+     * @param string $val
+     *
+     * @return mixed
+     */
+    public function formDefault($key, $val)
+    {
+        Tag::setDefault($key, $val);
+
+        return $this;
+    }
+
+    /**
+     * Reconstructing \Phalcon\Tag::setDefaults via method chaining
+     *
+     * @param array $values
+     * @param bool $merge
+     *
+     * @return mixed
+     */
+    public function formDefaults($values, $merge = false)
+    {
+        Tag::setDefaults($values, $merge);
+
+        return $this;
     }
 
 

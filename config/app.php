@@ -3,44 +3,61 @@
 return [
 
 
-    # ------------------------------------------------------------
+    # ----------------------------------------------------------------
     # Application Debugging
-    # ------------------------------------------------------------
+    # ----------------------------------------------------------------
     # - To easily track your bugs, by defining it to true, you
     # can get a full error response
 
     'debug'    => false,
 
 
-    # ------------------------------------------------------------
+    # ----------------------------------------------------------------
     # Language Settings
-    # ------------------------------------------------------------
+    # ----------------------------------------------------------------
     # - The place where you should supposed to assign which
     # language folder will be used.
 
     'lang'     => 'en',
 
 
-    # ------------------------------------------------------------
+    # ----------------------------------------------------------------
+    # Default Timezone
+    # ----------------------------------------------------------------
+    # - The system time to be, useful for CRUD records that will
+    # based on the timezone
+
+    'timezone'     => 'UTC',
+
+
+    # ----------------------------------------------------------------
     # SSL Support
-    # ------------------------------------------------------------
+    # ----------------------------------------------------------------
     # - Mark true if your domain supports ssl, and to force
     # re-write every url to ssl
 
     'ssl'      => false,
 
 
-    # ------------------------------------------------------------
+    # ----------------------------------------------------------------
     # Base URI
-    # ------------------------------------------------------------
+    # ----------------------------------------------------------------
     # - Define your own base uri
 
     'base_uri' => 'localhost',
 
 
-    # ------------------------------------------------------------
+    # ----------------------------------------------------------------
+    # Flysystem
+    # ----------------------------------------------------------------
+    # - Define your default flysystem
+
+    'flysystem' => 'local',
+
+
+    # ----------------------------------------------------------------
     # Mailer Settings
-    # ------------------------------------------------------------
+    # ----------------------------------------------------------------
     # - To be able to send an email, provide your email
     # settings, such as adapters and the like
 
@@ -55,27 +72,27 @@ return [
 
         'classes'    => [
             'swift'   =>
-                Bootstrap\Support\Mail\SwiftMailerAdapter::class,
+                Bootstrap\Adapters\Mail\SwiftMailerAdapter::class,
             'mailgun' =>
-                Bootstrap\Support\Mail\MailgunAdapter::class,
+                Bootstrap\Adapters\Mail\MailgunAdapter::class,
         ],
     ],
 
 
-    # ------------------------------------------------------------
+    # ----------------------------------------------------------------
     # Authentication Settings
-    # ------------------------------------------------------------
+    # ----------------------------------------------------------------
 
     'auth'     => [
-        'model'          => 'Components\Models\User',
+        'model'          => Components\Models\User::class,
         'password_field' => 'password',
         'auth_redirect'  => '/newsfeed',
     ],
 
 
-    # ------------------------------------------------------------
+    # ----------------------------------------------------------------
     # Service Providers
-    # ------------------------------------------------------------
+    # ----------------------------------------------------------------
 
     'services' => [
         Components\Providers\Slayer\URL::class,
@@ -104,8 +121,8 @@ return [
 
         # - register your classes below.
 
-        // Components\Providers\AwsServiceProvider::class,
         Acme\Acme\AcmeServiceProvider::class,
+        Components\Providers\FlysystemServiceProvider::class,
     ],
 
 
@@ -132,7 +149,8 @@ return [
 
         # register class aliases below.
 
-        // 'AWS'      => Components\Facade\AwsFacade::class,
+        'File'      => Components\Facade\FileFacade::class,
+        'Flysystem' => Components\Facade\FlysystemFacade::class,
     ],
 
 ]; # - end of return

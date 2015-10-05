@@ -11,7 +11,7 @@
         <link rel="stylesheet" type="text/css" href="{{ base_uri('css/bootstrap.min.css') }}">
         <style type="text/css">
             body {
-              background-color: #fefbf9 !important;
+              background-color: #f7f7f7 !important;
             }
         </style>
 

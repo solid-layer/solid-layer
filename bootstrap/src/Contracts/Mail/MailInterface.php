@@ -5,27 +5,32 @@ namespace Bootstrap\Contracts\Mail;
 interface MailInterface
 {
     /**
-     * Setting up the encryption type
+     * [attach description]
+     */
+    public function attach($file);
+
+    /**
+     * Set the encryption type
      */
     public function encryption($encryption);
 
     /**
-     * Set the hostname of your email driver
+     * Set the host of your mail provider
      */
     public function host($host);
 
     /**
-     * Set the port of your email driver
+     * Set the port of your mail provider
      */
     public function port($port);
 
     /**
-     * Set the username of your email driver
+     * Set the username of your mail provider
      */
     public function username($username);
 
     /**
-     * Set the password of your email driver
+     * Set the password of your mail provider
      */
     public function password($password);
 
@@ -37,30 +42,30 @@ interface MailInterface
     /**
      * The email(s) who acts as the receiver(s)
      */
-    public function to(Array $emails);
+    public function to(array $emails);
 
     /**
-     * The email(s) who acts as the blind carbon copy
+     * The email(s) who acts as the blind carbon copy receiver(s)
      */
-    // public function bcc(Array $emails);
+    public function bcc(array $emails);
 
     /**
-     * The email(s) who acts as the carbon copy
+     * The email(s) who acts as the carbon copy receiver(s)
      */
-    // public function cc(Array $emails);
+    public function cc(array $emails);
 
     /**
-     * The email subject
+     * Set the subject of your email
      */
     public function subject($subject);
 
     /**
-     * The email body, this calls the email content
+     * Set the content of your email
      */
     public function body($body);
 
     /**
-     * This will be triggered when calling Mail::send()
+     * This function will be triggered upon sending
      */
     public function send();
 }

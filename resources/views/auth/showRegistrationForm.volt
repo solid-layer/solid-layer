@@ -15,7 +15,7 @@
     <div class="col-sm-4 col-sm-offset-4">
         {{ flash_bag.output() }}
         <hr>
-        <form class="form-vertical" method="POST" action="{{ url.get(['for':'storeRegistrationForm']) }}" autocomplete="off">
+        <form class="form-vertical" method="POST" action="{{ route('storeRegistrationForm') }}" autocomplete="off">
             <input type="hidden" name="{{ security.getTokenKey() }}" value="{{ security.getToken() }}"/>
             <div class="form-group">
                 <label>{{ lang.get('auth.login.email_label') }}</label>
@@ -32,12 +32,10 @@
             <div class="pull-right">
                 <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> Register </button>
             </div>
+            <div class="clearfix"></div>
+            {{ partial('layouts/processingTime') }}
         </form>
-        <div class="clearfix"></div>
-
     </div>
-
-    {{ partial('layouts/processingTime') }}
 {% endblock %}
 
 {% block footer %}

@@ -11,9 +11,11 @@ use Phalcon\Mvc\Application;
 
 class App
 {
-    private $di;
     private $app;
+    private $base;
+    private $di;
     private $error_handler;
+    private $path;
 
     /**
      * Load our dependencies by locating our vendor
@@ -22,24 +24,28 @@ class App
      */
     public function __construct($base)
     {
-        define('SLAYER_START', microtime(true));
+        $this->base = $base;
+    }
 
-        require_once $base . '/vendor/autoload.php';
+    protected function loadComposer()
+    {
+        # - load composer, for dependencies
 
-        $compiled = $base . '/storage/slayer/compiled.php';
+        require_once $this->base . '/vendor/autoload.php';
+    }
+
+    protected function loadOptimizedCompiledFile()
+    {
+        # - load the compiled file
+
+        $compiled = BASE_PATH . '/storage/slayer/compiled.php';
 
         if ( file_exists($compiled) && php_sapi_name() != 'cli' ) {
             require_once $compiled;
         }
     }
 
-
-    /**
-     * This lives all the configurations and settings to load all components
-     *
-     * @return mixed
-     */
-    public function bootstrap()
+    protected function loadFactory()
     {
         $this->di = new FactoryDefault;
 
@@ -47,44 +53,53 @@ class App
         # application layer
 
         $this->app = new Application($this->di);
+    }
 
-
+    protected function loadDotEnv()
+    {
         # - load the .env file, that will enteract with
         # configurations, for environment specific
 
-        if ( file_exists(BASE_PATH . '/.env') ) {
-            $dotenv = new Dotenv( BASE_PATH );
+        if ( file_exists($this->base . '/.env') ) {
+            $dotenv = new Dotenv( $this->base );
             $dotenv->load();
         }
+    }
 
-
-
+    protected function initializeConfig()
+    {
         # - let's create an empty config with just an empty
         # array, this is just for us to prepare the config
 
         $this->di->set('config', function() {
             return new Config([]);
         }, true);
+    }
 
-
+    protected function loadConfigPath()
+    {
         # - get the paths and merge the array values to the
         # empty config as we instantiated above
 
-        $path = require_once BASE_PATH . '/config/path.php';
-        $this->di->get('config')->merge( new Config(['path' => $path]) );
+        $this->path = require_once $this->base . '/config/path.php';
+        $this->di->get('config')->merge( new Config(['path' => $this->path]) );
+    }
 
-
+    protected function loadHelpers()
+    {
         # - require our collection of helpers before we proceed
         # to merging all the config files.
 
         require_once __DIR__ . '/helpers.php';
+    }
 
-
+    protected function loadConfigFolder()
+    {
         # - iterate all the base config files and require
         # the files to return an array values
 
         $base_config_files = iterate_require(
-            folder_files($path['config'])
+            folder_files($this->path['config'])
         );
 
 
@@ -92,7 +107,7 @@ class App
         # process the same thing as the base config files
 
         $env_config_files  = iterate_require(
-            folder_files($path['config'] . getenv('APP_ENV'))
+            folder_files($this->path['config'] . getenv('APP_ENV'))
         );
 
 
@@ -101,14 +116,25 @@ class App
 
         config()->merge( new Config($base_config_files) );
         config()->merge( new Config($env_config_files) );
+    }
 
+    protected function loadTimeZone()
+    {
+        date_default_timezone_set(
+            di()->get('config')->app->timezone
+        );
+    }
 
+    protected function loadFacader()
+    {
         # - load our global facade class to handle singleton
         # like access
 
         Facade::setFacadeApplication($this->app);
+    }
 
-
+    protected function loadServices()
+    {
         # - load all the service providers, providing our
         # native phalcon classes
 
@@ -117,24 +143,60 @@ class App
         foreach (config()->app->services as $provider) {
             $container->addServiceProvider(new $provider);
         }
+    }
 
-
+    protected function registerModules()
+    {
         # - get all our modules and register it to our phalcon
         # application
 
         $this->app->registerModules(
-            require BASE_PATH . '/bootstrap/modules.php'
+            require $this->base . '/bootstrap/modules.php'
         );
+    }
 
-
+    protected function handleErrors()
+    {
         # - handle errors and exceptions
 
         (new ErrorHandler)->report();
+    }
 
+    /**
+     * This lives all the configurations and settings to load all components
+     *
+     * @return mixed
+     */
+    public function bootstrap()
+    {
+        $this->loadComposer();
+
+        $this->loadOptimizedCompiledFile();
+
+        $this->loadFactory();
+
+        $this->loadDotEnv();
+
+        $this->initializeConfig();
+
+        $this->loadConfigPath();
+
+        $this->loadHelpers();
+
+        $this->loadConfigFolder();
+
+        $this->loadTimeZone();
+
+        $this->loadFacader();
+
+        $this->loadServices();
+
+        $this->registerModules();
+
+        $this->handleErrors();
 
         return $this;
     }
-
 
     /**
      * Render the system content
@@ -153,7 +215,7 @@ class App
      */
     public function run($module = null)
     {
-        require_once BASE_PATH . '/app/' . $module . '/routes.php';
+        require_once $this->base . '/app/' . $module . '/routes.php';
 
         $this->app->setDefaultModule($module);
 

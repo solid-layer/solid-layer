@@ -2,13 +2,14 @@
 
 return [
 
-    # -----------------------------------------------------------
+    # ----------------------------------------------------------------
     # PhalconSlayer Registered Commands
-    # -----------------------------------------------------------
+    # ----------------------------------------------------------------
     # - Pre-registered commands
 
     Bootstrap\Console\App\ControllerCommand::class,
     Bootstrap\Console\App\RouteCommand::class,
+    Bootstrap\Console\Clear\AllCommand::class,
     Bootstrap\Console\Clear\CacheCommand::class,
     Bootstrap\Console\Clear\SessionCommand::class,
     Bootstrap\Console\Clear\ViewsCommand::class,

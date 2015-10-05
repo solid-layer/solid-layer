@@ -32,8 +32,8 @@ class Controller extends \Phalcon\Mvc\Controller
             ->setActionName($this->action_name)
             ->setControllerName($this->controller_name)
             ->setOptions($options)
-            ->setOnlyActions($this->_getOnlyActions())
-            ->setExceptActions($this->_getExceptActions())
+            ->setOnlyActions($this->_getOnlyActions($options))
+            ->setExceptActions($this->_getExceptActions($options))
             ->load();
     }
 
@@ -41,6 +41,7 @@ class Controller extends \Phalcon\Mvc\Controller
     private function _valueToKeyCombiner($records)
     {
         # make the value as key as well
+
         foreach ($records as $idx => $record) {
             $records[ $record ] = $record;
             unset( $records[ $idx ] );
@@ -50,23 +51,23 @@ class Controller extends \Phalcon\Mvc\Controller
     }
 
 
-    private function _getOnlyActions()
+    private function _getOnlyActions($options)
     {
-        if (!isset( $this->options[ 'only' ] )) {
+        if ( ! isset($options[ 'only' ]) ) {
             return [];
         }
 
-        return $this->_valueToKeyCombiner($this->options[ 'only' ]);
+        return $this->_valueToKeyCombiner($options[ 'only' ]);
     }
 
 
-    private function _getExceptActions()
+    private function _getExceptActions($options)
     {
-        if (!isset( $this->options[ 'except' ] )) {
+        if ( ! isset($options[ 'except' ]) ) {
             return [];
         }
 
-        return $this->_valueToKeyCombiner($this->options[ 'except' ]);
+        return $this->_valueToKeyCombiner($options[ 'except' ]);
     }
 
 }

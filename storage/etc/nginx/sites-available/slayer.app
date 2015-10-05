@@ -1,4 +1,5 @@
 server {
+    listen 80;
     listen 443 ssl;
     server_name slayer.app;
     root "/var/www/phalconslayer/public";
@@ -38,6 +39,6 @@ server {
         deny all;
     }
 
-    ssl_certificate     /etc/nginx/ssl/slayer.app.crt;
-    ssl_certificate_key /etc/nginx/ssl/slayer.app.key;
+    #ssl_certificate     /etc/nginx/ssl/slayer.app.crt;
+    #ssl_certificate_key /etc/nginx/ssl/slayer.app.key;
 }

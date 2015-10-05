@@ -12,6 +12,8 @@ class AcmeConsoleCommand extends SlayerCommand
 
     public function slash()
     {
+        $this->comment('You are running sandbox\acme:');
 
+        $this->comment('- acme:test works well!');
     }
 }

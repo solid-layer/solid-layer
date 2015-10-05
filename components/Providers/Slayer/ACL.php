@@ -3,9 +3,9 @@
 namespace Components\Providers\Slayer;
 
 use Bootstrap\Services\Service\ServiceProvider;
-use Phalcon\Acl\Role;
-use Phalcon\Acl as Phalcon_Acl;
-use Phalcon\Acl\Adapter\Memory as Phalcon_Acl_Adapter_Memory;
+use Phalcon\Acl\Role as PhalconRole;
+use Phalcon\Acl as PhalconACL;
+use Phalcon\Acl\Adapter\Memory as PhalconMemoryAdapter;
 
 class ACL extends ServiceProvider
 {
@@ -15,11 +15,11 @@ class ACL extends ServiceProvider
 
     public function register()
     {
-        $acl = new Phalcon_Acl_Adapter_Memory;
-        $acl->setDefaultAction(Phalcon_Acl::DENY);
+        $acl = new PhalconMemoryAdapter;
+        $acl->setDefaultAction(PhalconACL::DENY);
 
         foreach (config()->acl->roles as $role) {
-            $acl->addRole(new Role($role));
+            $acl->addRole(new PhalconRole($role));
         }
 
         return $acl;
