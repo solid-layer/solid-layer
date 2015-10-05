@@ -5,3 +5,13 @@
 /README.md export-ignore
 /LICENSE export-ignore
 /.travis.yml export-ignore
+/app text=auto
+/bootstrap text=auto
+/components text=auto
+/config text=auto
+/database text=auto
+/public text=auto
+/resources text=auto
+/sandbox text=auto
+/storage text=auto
+/tests text=auto
