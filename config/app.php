@@ -130,6 +130,7 @@ return [
         'ACL'      => Bootstrap\Facades\ACL::class,
         'Auth'     => Bootstrap\Facades\Auth::class,
         'Config'   => Bootstrap\Facades\Config::class,
+        'DB'       => Bootstrap\Facades\DB::class,
         'Filter'   => Bootstrap\Facades\Filter::class,
         'Flash'    => Bootstrap\Facades\Flash::class,
         'FlashBag' => Bootstrap\Facades\FlashBag::class,
