@@ -19,8 +19,8 @@ before_script:
 
   # run the composer update
   - travis_retry composer self-update
-  - travis_retry composer require phpunit/phpunit --prefer-dist
-  - travis_retry composer require mockery/mockery --prefer-dist
+  - travis_retry composer require phpunit/phpunit=^4.7
+  - travis_retry composer require mockery/mockery=^0.9.4
   - travis_retry composer update --prefer-source --no-interaction --prefer-stable
 
   # install  phalcon/cphalcon
