@@ -1,0 +1,7 @@
+/bootstrap/tests export-ignore
+/bootstrap/phpunit.xml export-ignore
+/config/travis export-ignore
+/config/local export-ignore
+/README.md export-ignore
+/LICENSE export-ignore
+/.travis.yml export-ignore
