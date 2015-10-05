@@ -8,7 +8,7 @@ use Bootstrap\Exceptions\AccessNotAllowedException;
 
 class CSRF extends BaseFilter
 {
-    public function load($next)
+    public function load()
     {
         if (Request::isPost()) {
 

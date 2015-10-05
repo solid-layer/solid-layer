@@ -19,6 +19,7 @@ class Access extends BaseFilter
     public function load()
     {
         # change 'guests' to your user roles
+
         if (ACL::isAllowed('user', Route::getControllerName(),
                 Route::getActionName()) == false
         ) {
