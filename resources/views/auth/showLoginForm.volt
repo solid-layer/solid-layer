@@ -48,21 +48,22 @@
                 {{ password_field('password', 'class': 'form-control') }}
             </div>
 
-            <div class="pull-left">
-                <a href="<?php echo $this->url->get(['for' => 'showRegistrationForm']) ?>" class="btn btn-info">{{ lang.get('auth.button.register_button') }}</a>
-                <a href="" class="disabled btn btn-danger">{{ lang.get('auth.button.forgot_button') }}</a>
+            <div class="form-group">
+                <div class="text-center">
+                    <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> {{ lang.get('auth.button.login_button') }}</button>
+
+                    <a href="{{ route('showRegistrationForm') }}" class="btn btn-info">{{ lang.get('auth.button.register_button') }}</a>
+
+                    <a href="" class="disabled btn btn-danger">{{ lang.get('auth.button.forgot_button') }}</a>
+                </div>
             </div>
 
-            <div class="pull-right">
-                <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> {{ lang.get('auth.button.login_button') }}</button>
-            </div>
-
+            <div class="clearfix"></div>
+            {{ partial('layouts/processingTime') }}
         </form>
-        <div class="clearfix"></div>
 
     </div>
 
-    {{ partial('layouts/processingTime') }}
 {% endblock %}
 
 {% block footer %}
