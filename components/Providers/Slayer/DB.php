@@ -69,7 +69,12 @@ class DB extends ServiceProvider
                         )
                     );
 
-                    $logger->info($conn->getSQLStatement());
+                    $variables = $conn->getSQLVariables();
+                    if ( $variables ) {
+                        $logger->info($conn->getSQLStatement() . ' ['. join(',', $variables) . ']');
+                    } else {
+                        $logger->info($conn->getSQLStatement());
+                    }
                 }
             }
         );
