@@ -2,9 +2,9 @@
 
 namespace Components\Filters;
 
+use Bootstrap\Exceptions\AccessNotAllowedException;
 use Bootstrap\Facades\Request;
 use Bootstrap\Facades\Security;
-use Bootstrap\Exceptions\AccessNotAllowedException;
 
 class CSRF extends BaseFilter
 {

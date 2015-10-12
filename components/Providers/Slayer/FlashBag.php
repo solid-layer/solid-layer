@@ -3,7 +3,7 @@
 namespace Components\Providers\Slayer;
 
 use Bootstrap\Services\Service\ServiceProvider;
-use Phalcon\Flash\Session as Phalcon_Flash_Session;
+use Phalcon\Flash\Session as PhalconFlashSession;
 
 class FlashBag extends ServiceProvider
 {
@@ -13,7 +13,7 @@ class FlashBag extends ServiceProvider
 
     public function register()
     {
-        $flash_session = new Phalcon_Flash_Session([
+        $flash_session = new PhalconFlashSession([
             'error'   => 'alert alert-danger',
             'success' => 'alert alert-success',
             'notice'  => 'alert alert-info',

@@ -3,8 +3,8 @@
 namespace Components\Providers\Slayer;
 
 use Bootstrap\Services\Service\ServiceProvider;
-use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
 
 class Log extends ServiceProvider
 {
