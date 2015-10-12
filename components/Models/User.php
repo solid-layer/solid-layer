@@ -10,7 +10,6 @@ class User extends Model
     use Timestampable;
     use SoftDeletable;
 
-    # ---- The table columns
     public $email;
     public $password;
     public $token;
@@ -51,7 +50,7 @@ class User extends Model
      */
     public function setIsActivated($bool)
     {
-        $this->is_activated = $bool ? 1 : 0;
+        $this->is_activated = (int) $bool;
 
         return $this;
     }

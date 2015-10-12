@@ -9,7 +9,7 @@ use Phalcon\Config;
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Mvc\Application;
 
-class App
+class Kernel
 {
     private $app;
     private $base;
@@ -90,7 +90,7 @@ class App
         # - require our collection of helpers before we proceed
         # to merging all the config files.
 
-        require_once __DIR__ . '/helpers.php';
+        require_once __DIR__ . '/Support/Helpers/init.php';
     }
 
     protected function loadConfigFolder()
@@ -211,6 +211,7 @@ class App
      * Here, you will be loading the system by defining the module
      *
      * @param string $module The module name
+     *
      * @return mixed $this->app
      */
     public function run($module = null)

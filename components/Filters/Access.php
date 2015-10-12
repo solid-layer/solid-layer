@@ -2,9 +2,9 @@
 
 namespace Components\Filters;
 
-use Bootstrap\Facades\Route;
-use Bootstrap\Facades\ACL;
 use Bootstrap\Exceptions\AccessNotAllowedException;
+use Bootstrap\Facades\ACL;
+use Bootstrap\Facades\Route;
 
 class Access extends BaseFilter
 {

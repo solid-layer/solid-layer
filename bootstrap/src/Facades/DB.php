@@ -2,10 +2,10 @@
 
 namespace Bootstrap\Facades;
 
-class Route extends Facade
+class DB extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'router';
+        return 'db';
     }
 }

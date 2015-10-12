@@ -3,13 +3,13 @@
 namespace Components\Providers\Slayer;
 
 use Bootstrap\Services\Service\ServiceProvider;
-use Phalcon\Events\Manager as Events_Manager;
-use Phalcon\Db\Adapter\Pdo\Mysql;
-use Phalcon\Db\Adapter\Pdo\Postgresql;
-use Phalcon\Db\Adapter\Pdo\Sqlite;
-use Phalcon\Db\Adapter\Pdo\Oracle;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
+use Phalcon\Db\Adapter\Pdo\Mysql;
+use Phalcon\Db\Adapter\Pdo\Oracle;
+use Phalcon\Db\Adapter\Pdo\Postgresql;
+use Phalcon\Db\Adapter\Pdo\Sqlite;
+use Phalcon\Events\Manager as EventsManager;
 use Exception;
 
 class DB extends ServiceProvider
@@ -55,7 +55,7 @@ class DB extends ServiceProvider
         # - An event to log our queries
         # ------------------------------------------------------
 
-        $event_manager = new Events_Manager;
+        $event_manager = new EventsManager;
         $event_manager->attach(
             $this->_alias,
             function ($event, $conn) {
@@ -69,7 +69,12 @@ class DB extends ServiceProvider
                         )
                     );
 
-                    $logger->info($conn->getSQLStatement());
+                    $variables = $conn->getSQLVariables();
+                    if ( $variables ) {
+                        $logger->info($conn->getSQLStatement() . ' ['. join(',', $variables) . ']');
+                    } else {
+                        $logger->info($conn->getSQLStatement());
+                    }
                 }
             }
         );

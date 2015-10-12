@@ -4,8 +4,8 @@ namespace Components\Providers\Slayer;
 
 use Bootstrap\Exceptions\ControllerNotFoundException;
 use Bootstrap\Services\Service\ServiceProvider;
-use Phalcon\Mvc\Dispatcher as MvcDispatcher;
 use Phalcon\Events\Manager as EventsManager;
+use Phalcon\Mvc\Dispatcher as MvcDispatcher;
 use Phalcon\Mvc\Dispatcher\Exception as DispatchException;
 
 class Dispatcher extends ServiceProvider

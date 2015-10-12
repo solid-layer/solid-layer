@@ -2,9 +2,9 @@
 
 namespace Components\Filters;
 
+use Bootstrap\Facades\Auth as FacadeAuth;
 use Bootstrap\Facades\FlashBag;
 use Bootstrap\Facades\Redirect;
-use Bootstrap\Facades\Auth as FacadeAuth;
 use Bootstrap\Facades\URL;
 
 class Auth extends BaseFilter

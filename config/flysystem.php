@@ -10,7 +10,7 @@ return [
     ],
 
     // 's3' => [
-    //     'class'  => Components\Flysystem\AwsS3::class,
+    //     'class'  => Components\Flysystem\S3::class,
     //     'config' => [
     //         'credentials' => [
     //             'key'    => 'key here',

@@ -3,9 +3,9 @@
 namespace Components\Providers\Slayer;
 
 use Bootstrap\Services\Service\ServiceProvider;
-use Phalcon\Acl\Role as PhalconRole;
 use Phalcon\Acl as PhalconACL;
 use Phalcon\Acl\Adapter\Memory as PhalconMemoryAdapter;
+use Phalcon\Acl\Role as PhalconRole;
 
 class ACL extends ServiceProvider
 {
