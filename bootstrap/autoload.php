@@ -3,6 +3,6 @@
 define('BASE_PATH', dirname(__DIR__));
 define('SLAYER_START', microtime(true));
 
-require __DIR__ . '/src/App.php';
+require __DIR__ . '/src/Kernel.php';
 
-$kernel = (new App(BASE_PATH))->bootstrap();
+$kernel = (new Kernel(BASE_PATH))->bootstrap();
