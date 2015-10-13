@@ -94,8 +94,9 @@ class Handler extends Exception
     protected function getDebugMode()
     {
         $ret = false;
+        $debug = config()->app->debug == 'true';
 
-        if ($debug = config()->app->debug == 'true' || $debug === true) {
+        if ( $debug || $debug === true) {
             $ret = true;
         }
 
