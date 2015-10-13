@@ -2,21 +2,26 @@
 
 namespace Bootstrap\Adapters\Blade;
 
+use Bootstrap\Support\Illuminate\View\Factory;
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\View\Compilers\BladeCompiler;
 use Illuminate\View\Engines\CompilerEngine;
 use Phalcon\Mvc\View\Engine;
-use Illuminate\Filesystem\Filesystem;
 
 class BladeAdapter extends Engine
 {
+    protected $view;
     protected $blade;
 
     public function __construct($view, $di)
     {
         parent::__construct($view, $di);
+
         $this->blade_engine = new CompilerEngine(
             new BladeCompiler( new Filesystem, config()->path->storage_views)
         );
+
+        $this->view = $view;
     }
 
     protected function compiler()
@@ -33,7 +38,6 @@ class BladeAdapter extends Engine
             $this->compiler()->compile($path);
         }
 
-
         # - now buffer the compiled template to get the php variables
         # and also declare under the buffer about the parameters.
 
@@ -44,6 +48,8 @@ class BladeAdapter extends Engine
                 ${$key} = $value;
             }
         }
+
+        $__env = new Factory($this);
 
         include $this->compiler()->getCompiledPath($path);
 
