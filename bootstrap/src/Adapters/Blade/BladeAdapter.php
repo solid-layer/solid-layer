@@ -7,6 +7,7 @@ use Illuminate\Filesystem\Filesystem;
 use Illuminate\View\Compilers\BladeCompiler;
 use Illuminate\View\Engines\CompilerEngine;
 use Phalcon\Mvc\View\Engine;
+use Log;
 
 class BladeAdapter extends Engine
 {
@@ -24,7 +25,7 @@ class BladeAdapter extends Engine
         $this->view = $view;
     }
 
-    protected function compiler()
+    public function compiler()
     {
         return $this->blade_engine->getCompiler();
     }
@@ -53,6 +54,8 @@ class BladeAdapter extends Engine
 
         include $this->compiler()->getCompiledPath($path);
 
-        di()->get('view')->setContent(ob_get_clean());
+        di()
+            ->get('view')
+            ->setContent(ob_get_clean());
     }
 }

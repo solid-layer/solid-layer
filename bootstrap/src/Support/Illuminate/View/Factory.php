@@ -10,6 +10,8 @@ class Factory
     protected $sections = [];
     protected $sectionStack = [];
 
+    private $path;
+
     public function __construct($blade)
     {
         $this->blade = $blade;
@@ -53,9 +55,23 @@ class Factory
         $view = $this->normalizeName($view);
         $view = $this->blade->getView()->getViewsDir() . str_replace('.', '/', $view);
 
-        $this->blade->render($view . '.blade.php');
+        $this->__path = str_replace('//', '/', $view . '.blade.php');
 
-        return $this->blade;
+        return $this;
+    }
+
+    public function render()
+    {
+        ob_start();
+
+        $compiled_path = $this->blade->compiler()
+            ->getCompiledPath($this->__path);
+
+        $__env = $this;
+
+        include $compiled_path;
+
+        return ob_get_clean();
     }
 
     protected function normalizeName($name)
@@ -70,4 +86,20 @@ class Factory
 
         return $namespace.$delimiter.str_replace('/', '.', $name);
     }
+
+    public function yieldContent($section, $default = '')
+    {
+        $sectionContent = $default;
+
+        if (isset($this->sections[$section])) {
+            $sectionContent = $this->sections[$section];
+        }
+
+        $sectionContent = str_replace('@@parent', '--parent--holder--', $sectionContent);
+
+        return str_replace(
+            '--parent--holder--', '@parent', str_replace('@parent', '', $sectionContent)
+        );
+    }
+
 }
