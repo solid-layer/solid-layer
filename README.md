@@ -13,6 +13,10 @@ Phalcon is not only about performance, our goal is to make it robust, rich in fe
 
 ## Contributing
 
+When committing updates, the first word in the title should represent a present tense, something like (adding, updating, removing, changing, moving and etc.) or the more formal way (add, update, remove, change, move and etc.).
+
+We will be using the past tense words, such as (added, updated, removed, changed, moved and etc.) to our release section.
+
 You can pull the most updated branch ``dev``, create a pull request of your forked updates, issues should be reported using GitHub's Issues and all security concerns should be emailed to ``daison12006013@gmail.com`` promptly.
 
 Thanks to all [contributors](https://github.com/phalconslayer/slayer/graphs/contributors).
