@@ -14,6 +14,7 @@ return [
     Bootstrap\Console\Clear\LogsCommand::class,
     Bootstrap\Console\Clear\SessionCommand::class,
     Bootstrap\Console\Clear\ViewsCommand::class,
+    Bootstrap\Console\DB\SeedCommand::class,
     Bootstrap\Console\Mail\InlinerCommand::class,
     Bootstrap\Console\Make\CollectionCommand::class,
     Bootstrap\Console\Make\ConsoleCommand::class,
