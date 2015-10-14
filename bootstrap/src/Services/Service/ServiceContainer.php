@@ -6,14 +6,27 @@ use Bootstrap\Exceptions\ServiceAliasNotFoundException;
 
 class ServiceContainer
 {
-    public function addServiceProvider(ServiceProvider $obj)
+    private $providers;
+
+    public function addServiceProvider(ServiceProvider $provider)
     {
-        di()->set(
-            $obj->getAlias(),
-            $obj->callRegister(),
-            $obj->getShared()
-        );
+        $this->providers[] = $provider;
 
         return $this;
+    }
+
+    public function boot()
+    {
+        foreach ($this->providers as $provider) {
+            di()->set(
+                $provider->getAlias(),
+                $provider->callRegister(),
+                $provider->getShared()
+            );
+        }
+
+        foreach ($this->providers as $provider) {
+            $provider->boot();
+        }
     }
 }
