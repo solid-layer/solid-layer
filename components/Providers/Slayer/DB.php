@@ -3,6 +3,7 @@
 namespace Components\Providers\Slayer;
 
 use Bootstrap\Services\Service\ServiceProvider;
+use Exception;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Phalcon\Db\Adapter\Pdo\Mysql;
@@ -10,7 +11,6 @@ use Phalcon\Db\Adapter\Pdo\Oracle;
 use Phalcon\Db\Adapter\Pdo\Postgresql;
 use Phalcon\Db\Adapter\Pdo\Sqlite;
 use Phalcon\Events\Manager as EventsManager;
-use Exception;
 
 class DB extends ServiceProvider
 {
@@ -20,30 +20,27 @@ class DB extends ServiceProvider
 
     public function register()
     {
-        $db_config = config()->database;
+        $app = config()->app;
 
-        # ------------------------------------------------------
+
         # - If empty, then disable DB by just returning itself
-        # ------------------------------------------------------
 
-        if ( strlen($db_config->adapter) == 0 ) {
+        if ( strlen($app->db_adapter) == 0 ) {
             return $this;
         }
 
 
         $drivers = [
-            'mysql'   => Mysql::class,
-            'pgsql' => Postgresql::class,
-            'sqlite'  => Sqlite::class,
-            'oracle'  => Oracle::class,
+            'mysql'  => Mysql::class,
+            'pgsql'  => Postgresql::class,
+            'sqlite' => Sqlite::class,
+            'oracle' => Oracle::class,
         ];
 
-        $selected_driver = strtolower($db_config->adapter);
+        $selected_driver = strtolower($app->db_adapter);
 
 
-        # ------------------------------------------------------
         # - Check if the drivers found in the lists
-        # ------------------------------------------------------
 
         if ( ! isset( $drivers[ $selected_driver ] )) {
 
@@ -51,9 +48,7 @@ class DB extends ServiceProvider
         }
 
 
-        # ------------------------------------------------------
         # - An event to log our queries
-        # ------------------------------------------------------
 
         $event_manager = new EventsManager;
         $event_manager->attach(
@@ -80,16 +75,16 @@ class DB extends ServiceProvider
         );
 
 
-        # ------------------------------------------------------
         # - Instantiate the class and get the adapter
-        # ------------------------------------------------------
 
         $conn = new $drivers[ $selected_driver ](
-            $db_config
+            config()
+                ->database
                 ->adapters
                 ->{$selected_driver}
                 ->toArray()
         );
+
 
         $conn->setEventsManager($event_manager);
 

@@ -3,14 +3,6 @@
 return [
 
     # ----------------------------------------------------------------
-    # Default Database Adapter
-    # ----------------------------------------------------------------
-    # - Configure your default database adapter, by default (mysql)
-
-    'adapter' => env('DB_ADAPTER', 'mysql'),
-
-
-    # ----------------------------------------------------------------
     # Database Adapter Settings
     # ----------------------------------------------------------------
     # -
@@ -54,7 +46,7 @@ return [
     # ----------------------------------------------------------------
     # MongoDB
     # ----------------------------------------------------------------
-    # - Enable your mongo database
+    # - Enable your nosql as your database
 
     'mongo' => [
         'enabled'  => false,
