@@ -3,7 +3,7 @@
 
 $props = [
     'name'     => 'phalconslayer/slayer',
-    "keywords" => [
+    'keywords' => [
         'skeleton', 'boilerplate', 'framework', 'phalcon', 'slayer',
         'bootstrap',
     ],
