@@ -6,15 +6,18 @@ use Illuminate\View\ViewFinderInterface;
 
 class Factory
 {
-    protected $blade;
+    protected $views_dir;
     protected $sections = [];
     protected $sectionStack = [];
 
-    private $path;
+    private $__engine;
+    private $__path;
+    private $__params = [];
 
-    public function __construct($blade)
+    public function __construct($engine, $views_dir)
     {
-        $this->blade = $blade;
+        $this->__engine  = $engine;
+        $this->views_dir = $views_dir;
     }
 
     public function startSection($section, $content = '')
@@ -50,26 +53,38 @@ class Factory
         $this->sections[$section] = $content;
     }
 
-    public function make($view, $data = [], $mergeData = [])
+    public function make($view, $data = [], $merge_data = [])
     {
         $view = $this->normalizeName($view);
-        $view = $this->blade->getView()->getViewsDir() . str_replace('.', '/', $view);
+        $view = $this->views_dir . str_replace('.', '/', $view);
 
         $this->__path = str_replace('//', '/', $view . '.blade.php');
+
+        $this->__params = $data;
+        if (!empty($merge_data)) {
+            $this->__params = array_merge($this->__params, $merge_data);
+        }
 
         return $this;
     }
 
     public function render()
     {
-        ob_start();
+        if ($this->getEngineCompiler()->isExpired($this->__path)) {
+            $this->getEngineCompiler()->compile($this->__path);
+        }
 
-        $compiled_path = $this->blade->compiler()
-            ->getCompiledPath($this->__path);
+        ob_start();
 
         $__env = $this;
 
-        include $compiled_path;
+        if ( !empty($this->__params) ) {
+            foreach ($this->__params as $key => $value) {
+                ${$key} = $value;
+            }
+        }
+
+        include $this->getEngineCompiler()->getCompiledPath($this->__path);
 
         return ob_get_clean();
     }
@@ -102,4 +117,13 @@ class Factory
         );
     }
 
+    public function getEngineCompiler()
+    {
+        return $this->getEngine()->getCompiler();
+    }
+
+    public function getEngine()
+    {
+        return $this->__engine;
+    }
 }

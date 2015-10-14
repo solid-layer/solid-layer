@@ -11,51 +11,30 @@ use Log;
 
 class BladeAdapter extends Engine
 {
-    protected $view;
     protected $blade;
 
     public function __construct($view, $di)
     {
         parent::__construct($view, $di);
 
-        $this->blade_engine = new CompilerEngine(
+        $this->blade = new CompilerEngine(
             new BladeCompiler( new Filesystem, config()->path->storage_views)
         );
-
-        $this->view = $view;
-    }
-
-    public function compiler()
-    {
-        return $this->blade_engine->getCompiler();
     }
 
     public function render($path, $params = [])
     {
-        # - let's check if the blade file time is different
-        # from the compiled file
+        $path = str_replace($this->getView()->getViewsDir(), '', $path);
+        $path = str_replace('.blade.php', '', $path);
 
-        if ($this->compiler()->isExpired($path)) {
-            $this->compiler()->compile($path);
-        }
-
-        # - now buffer the compiled template to get the php variables
-        # and also declare under the buffer about the parameters.
-
-        ob_start();
-
-        if ( !empty($params) ) {
-            foreach ($params as $key => $value) {
-                ${$key} = $value;
-            }
-        }
-
-        $__env = new Factory($this);
-
-        include $this->compiler()->getCompiledPath($path);
+        $view = new Factory($this->blade, $this->getView()->getViewsDir());
 
         di()
             ->get('view')
-            ->setContent(ob_get_clean());
+            ->setContent(
+                $view
+                    ->make($path, $params)
+                    ->render()
+            );
     }
 }
