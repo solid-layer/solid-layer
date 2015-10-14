@@ -1,9 +1,9 @@
 <?php
 
-use Components\Exceptions\Handler as ErrorHandler;
 use Bootstrap\Exceptions\FileNotFoundException;
 use Bootstrap\Facades\Facade;
 use Bootstrap\Services\Service\ServiceContainer;
+use Components\Exceptions\Handler as ErrorHandler;
 use Dotenv\Dotenv;
 use Phalcon\Config;
 use Phalcon\Di\FactoryDefault;
@@ -48,6 +48,7 @@ class Kernel
     protected function loadFactory()
     {
         $this->di = new FactoryDefault;
+
 
         # - we must inject our dependencies inside the Phalcon
         # application layer
@@ -140,6 +141,7 @@ class Kernel
 
         $container = new ServiceContainer;
 
+
         foreach (config()->app->services as $provider) {
             $container->addServiceProvider(new $provider);
         }
@@ -208,17 +210,22 @@ class Kernel
         echo $this->app->handle()->getContent();
     }
 
-
     /**
      * Here, you will be loading the system by defining the module
      *
      * @param string $module The module name
      *
-     * @return mixed $this->app
+     * @return mixed
      */
-    public function run($module = null)
+    public function run($module)
     {
-        require_once $this->base . '/app/' . $module . '/routes.php';
+        $path = $this->base . '/app/' . $module . '/routes.php';
+
+        if ( !file_exists($path) ) {
+            throw new Exception("Module [$module] routes.php not found.");
+        }
+
+        require_once $path;
 
         $this->app->setDefaultModule($module);
 
