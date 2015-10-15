@@ -3,8 +3,8 @@
 namespace Components\Filters;
 
 use Bootstrap\Exceptions\AccessNotAllowedException;
-use Bootstrap\Facades\ACL;
-use Bootstrap\Facades\Route;
+use Components\Facades\Slayer\ACL;
+use Components\Facades\Slayer\Route;
 
 class Access extends BaseFilter
 {

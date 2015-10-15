@@ -2,10 +2,10 @@
 
 namespace Components\Filters;
 
-use Bootstrap\Facades\Auth as FacadeAuth;
-use Bootstrap\Facades\FlashBag;
-use Bootstrap\Facades\Redirect;
-use Bootstrap\Facades\URL;
+use Components\Facades\Slayer\Auth as FacadeAuth;
+use Components\Facades\Slayer\FlashBag;
+use Components\Facades\Slayer\Redirect;
+use Components\Facades\Slayer\URL;
 
 class Auth extends BaseFilter
 {

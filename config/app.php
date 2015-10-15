@@ -136,31 +136,31 @@ return [
 
 
     'aliases'  => [
-        'ACL'      => Bootstrap\Facades\ACL::class,
-        'Auth'     => Bootstrap\Facades\Auth::class,
-        'Config'   => Bootstrap\Facades\Config::class,
-        'DB'       => Bootstrap\Facades\DB::class,
-        'Filter'   => Bootstrap\Facades\Filter::class,
-        'Flash'    => Bootstrap\Facades\Flash::class,
-        'FlashBag' => Bootstrap\Facades\FlashBag::class,
-        'Lang'     => Bootstrap\Facades\Lang::class,
-        'Log'      => Bootstrap\Facades\Log::class,
-        'Mail'     => Bootstrap\Facades\Mail::class,
-        'Redirect' => Bootstrap\Facades\Redirect::class,
-        'Request'  => Bootstrap\Facades\Request::class,
-        'Response' => Bootstrap\Facades\Response::class,
-        'Route'    => Bootstrap\Facades\Route::class,
-        'Security' => Bootstrap\Facades\Security::class,
-        'Session'  => Bootstrap\Facades\Session::class,
-        'Tag'      => Bootstrap\Facades\Tag::class,
-        'URL'      => Bootstrap\Facades\URL::class,
-        'View'     => Bootstrap\Facades\View::class,
+        'ACL'      => Components\Facades\Slayer\ACL::class,
+        'Auth'     => Components\Facades\Slayer\Auth::class,
+        'Config'   => Components\Facades\Slayer\Config::class,
+        'DB'       => Components\Facades\Slayer\DB::class,
+        'Filter'   => Components\Facades\Slayer\Filter::class,
+        'Flash'    => Components\Facades\Slayer\Flash::class,
+        'FlashBag' => Components\Facades\Slayer\FlashBag::class,
+        'Lang'     => Components\Facades\Slayer\Lang::class,
+        'Log'      => Components\Facades\Slayer\Log::class,
+        'Mail'     => Components\Facades\Slayer\Mail::class,
+        'Redirect' => Components\Facades\Slayer\Redirect::class,
+        'Request'  => Components\Facades\Slayer\Request::class,
+        'Response' => Components\Facades\Slayer\Response::class,
+        'Route'    => Components\Facades\Slayer\Route::class,
+        'Security' => Components\Facades\Slayer\Security::class,
+        'Session'  => Components\Facades\Slayer\Session::class,
+        'Tag'      => Components\Facades\Slayer\Tag::class,
+        'URL'      => Components\Facades\Slayer\URL::class,
+        'View'     => Components\Facades\Slayer\View::class,
 
 
         # register class aliases below.
 
-        'File'      => Components\Facade\FileFacade::class,
-        'Flysystem' => Components\Facade\FlysystemFacade::class,
+        'File'      => Components\Facades\FileFacade::class,
+        'Flysystem' => Components\Facades\FlysystemFacade::class,
     ],
 
 ]; # - end of return

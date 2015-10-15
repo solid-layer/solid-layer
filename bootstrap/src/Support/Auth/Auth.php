@@ -2,9 +2,9 @@
 
 namespace Bootstrap\Support\Auth;
 
-use Bootstrap\Facades\Session;
-use Bootstrap\Facades\Security;
-use Bootstrap\Facades\Response;
+use Components\Facades\Slayer\Session;
+use Components\Facades\Slayer\Security;
+use Components\Facades\Slayer\Response;
 
 class Auth
 {

@@ -3,8 +3,8 @@
 namespace Components\Filters;
 
 use Bootstrap\Exceptions\AccessNotAllowedException;
-use Bootstrap\Facades\Request;
-use Bootstrap\Facades\Security;
+use Components\Facades\Slayer\Request;
+use Components\Facades\Slayer\Security;
 
 class CSRF extends BaseFilter
 {

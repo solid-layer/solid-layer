@@ -1,6 +1,6 @@
 <?php
 
-use Bootstrap\Facades\Route;
+use Components\Facades\Slayer\Route;
 
 Route::add('/acme/test', [
     'module'     => 'acme',

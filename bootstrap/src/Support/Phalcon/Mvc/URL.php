@@ -3,8 +3,8 @@
 namespace Bootstrap\Support\Phalcon\Mvc;
 
 use Phalcon\Mvc\Url as PhalconMvcUrl;
-use Bootstrap\Facades\Response;
-use Bootstrap\Facades\Route;
+use Components\Facades\Slayer\Response;
+use Components\Facades\Slayer\Route;
 
 class URL extends PhalconMvcUrl
 {

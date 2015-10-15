@@ -3,7 +3,7 @@
 namespace Bootstrap\Console\Mail;
 
 use Bootstrap\Console\SlayerCommand;
-use Bootstrap\Facades\View;
+use Components\Facades\Slayer\View;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 use TijsVerkoyen\CssToInlineStyles\CssToInlineStyles;

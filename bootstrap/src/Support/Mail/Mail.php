@@ -2,7 +2,7 @@
 
 namespace Bootstrap\Support\Mail;
 
-use Bootstrap\Facades\View;
+use Components\Facades\Slayer\View;
 use Bootstrap\Contracts\Mail\MailInterface;
 
 class Mail

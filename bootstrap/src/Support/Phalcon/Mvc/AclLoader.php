@@ -3,7 +3,7 @@
 namespace Bootstrap\Support\Phalcon\Mvc;
 
 use Bootstrap\Services\Acl\AclContainer;
-use Bootstrap\Facades\ACL;
+use Components\Facades\Slayer\ACL;
 use Phalcon\Acl\Resource;
 
 class AclLoader
