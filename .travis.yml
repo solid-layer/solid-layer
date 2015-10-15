@@ -18,9 +18,8 @@ env:
 
 before_script:
 
+  # create 'slayer' database
   - mysql -e 'create database slayer charset=utf8mb4 collate=utf8mb4_unicode_ci;'
-  - php slayer db:migrate
-  - php slayer db:seed
 
   # copy .env.travis as .env file
   - cp ./bootstrap/tests/.env.travis ./.env
@@ -36,6 +35,10 @@ before_script:
   - cd cphalcon/ext; export CFLAGS="-g3 -O1 -fno-delete-null-pointer-checks -Wall"; phpize && ./configure --enable-phalcon && make -j4 && make install && phpenv config-add ../unit-tests/ci/phalcon.ini
   - php -r 'echo \Phalcon\Version::get()."\n";'
   - cd ../..
+
+  # run the migration and seeder
+  - php slayer db:migrate
+  - php slayer db:seed
 
 script:
   - chmod a+x ./vendor/bin/phpunit
