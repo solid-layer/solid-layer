@@ -41,9 +41,13 @@ class ProviderTest extends PHPUnit_Framework_TestCase
             ->once()
             ->andReturn(true);
 
+        $provider
+            ->shouldReceive('boot')
+            ->once();
+
         $container = new ServiceContainer;
-        $container
-            ->addServiceProvider($provider);
+        $container->addServiceProvider($provider);
+        $container->boot();
 
 
         # - assert should be instance of ServiceProvider::class
