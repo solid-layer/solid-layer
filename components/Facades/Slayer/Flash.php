@@ -1,6 +1,8 @@
 <?php
 
-namespace Bootstrap\Facades;
+namespace Components\Facades\Slayer;
+
+use Bootstrap\Facades\Facade;
 
 class Flash extends Facade
 {

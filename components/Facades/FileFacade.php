@@ -1,13 +1,13 @@
 <?php
 
-namespace Components\Facade;
+namespace Components\Facades;
 
 use Bootstrap\Facades\Facade;
 
-class FlysystemFacade extends Facade
+class FileFacade extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'flysystem_manager';
+        return 'flysystem';
     }
 }

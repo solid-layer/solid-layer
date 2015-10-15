@@ -1,13 +1,13 @@
 <?php
 
-namespace Components\Facade;
+namespace Components\Facades\Slayer;
 
 use Bootstrap\Facades\Facade;
 
-class FileFacade extends Facade
+class Filter extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'flysystem';
+        return 'filter';
     }
 }
