@@ -104,11 +104,11 @@ return [
     # ----------------------------------------------------------------
 
     'services' => [
+        Bootstrap\Providers\Console::class,
         Components\Providers\Slayer\ACL::class,
         Components\Providers\Slayer\Aliaser::class,
         Components\Providers\Slayer\Auth::class,
         Components\Providers\Slayer\Cache::class,
-        Components\Providers\Slayer\Console::class,
         Components\Providers\Slayer\DB::class,
         Components\Providers\Slayer\Dispatcher::class,
         Components\Providers\Slayer\Filter::class,

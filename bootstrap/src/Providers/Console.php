@@ -1,19 +1,16 @@
 <?php
 
-namespace Components\Providers\Slayer;
+namespace Bootstrap\Providers;
 
 use Bootstrap\Services\Service\ServiceProvider;
 use Symfony\Component\Console\Application;
-
-// use Symfony\Component\Console\Input\InputInterface;
-// use Symfony\Component\Console\Output\OutputInterface;
 
 class Console extends ServiceProvider
 {
     protected $_alias = 'console';
 
     private $version = 'v0.0.1';
-    private $description = 'Slayer (c) Daison Carino';
+    private $description = '[Slayer] brood (c) Daison Carino';
     private $application = null;
 
     public function register()
