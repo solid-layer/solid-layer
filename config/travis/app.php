@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'db_adapter' => null,
+    // 'db_adapter' => null,
 ];
