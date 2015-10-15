@@ -32,11 +32,6 @@ class HelperTest extends PHPUnit_Framework_TestCase
 
     public function testCapabilities()
     {
-        $this->assertContains(config()->app->debug, [
-            true,
-            false,
-        ]);
-
         # - getting the route should return the full path url
 
         $this->assertContains(
