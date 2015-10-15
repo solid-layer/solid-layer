@@ -66,6 +66,12 @@ class Handler extends Exception
 
     public function render($e)
     {
+        if ( php_sapi_name() == 'cli' ) {
+            var_dump($e);
+
+            return;
+        }
+
         (new ExceptionHandler($this->getDebugMode()))->sendPhpResponse($e);
     }
 
