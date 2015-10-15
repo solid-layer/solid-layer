@@ -102,6 +102,10 @@ if (!function_exists('remove_double_slash')) {
 if (!function_exists('folder_files')) {
     function folder_files($path)
     {
+        if ( file_exists($path) == false ) {
+            return [];
+        }
+
         $iterator = new RecursiveDirectoryIterator(
             $path,
             RecursiveDirectoryIterator::SKIP_DOTS
