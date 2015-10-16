@@ -39,11 +39,11 @@ before_script:
   - cd ../..
 
   # run the migration and seeder
-  - php slayer db:migrate
-  - php slayer db:seed
+  - php brood db:migrate
+  - php brood db:seed
 
 script:
   - chmod a+x ./vendor/bin/phpunit
   - chmod a+x ./bootstrap/phpunit.xml
   - ./vendor/bin/phpunit -c ./bootstrap/phpunit.xml
-  - php slayer db:rollback
+  - php brood db:rollback
