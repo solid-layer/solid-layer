@@ -1,9 +1,8 @@
 <?php
-
 namespace Acme\Acme;
 
-use Bootstrap\Services\Service\ServiceProvider;
 use Acme\Acme\App\Console\AcmeConsoleCommand;
+use Bootstrap\Services\Service\ServiceProvider;
 
 class AcmeServiceProvider extends ServiceProvider
 {

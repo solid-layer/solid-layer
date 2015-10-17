@@ -1,5 +1,4 @@
 <?php
-
 namespace Acme\Acme\App\Console;
 
 use Bootstrap\Console\SlayerCommand;
