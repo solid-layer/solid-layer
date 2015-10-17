@@ -13,9 +13,8 @@ use Bootstrap\Services\Service\ServiceProvider;
 
 class DB extends ServiceProvider
 {
-    public $_alias = 'db';
-
-    public $_shared = false;
+    protected $alias  = 'db';
+    protected $shared = false;
 
     public function register()
     {
@@ -51,7 +50,7 @@ class DB extends ServiceProvider
 
         $event_manager = new EventsManager;
         $event_manager->attach(
-            $this->_alias,
+            $this->alias,
             function ($event, $conn) {
 
                 if ( $event->getType() == 'beforeQuery' ) {

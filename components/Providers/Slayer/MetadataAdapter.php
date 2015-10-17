@@ -6,9 +6,8 @@ use Bootstrap\Services\Service\ServiceProvider;
 
 class MetadataAdapter extends ServiceProvider
 {
-    protected $_alias = 'modelsMetadata';
-
-    protected $_shared = false;
+    protected $alias  = 'modelsMetadata';
+    protected $shared = false;
 
     public function register()
     {

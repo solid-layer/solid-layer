@@ -9,9 +9,8 @@ use Phalcon\Mvc\Dispatcher\Exception as DispatchException;
 
 class Dispatcher extends ServiceProvider
 {
-    protected $_alias = 'dispatcher';
-
-    protected $_shared = true;
+    protected $alias  = 'dispatcher';
+    protected $shared = true;
 
     public function register()
     {

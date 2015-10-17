@@ -6,9 +6,8 @@ use Bootstrap\Services\Service\ServiceProvider;
 
 class Request extends ServiceProvider
 {
-    protected $_alias = 'request';
-
-    protected $_shared = false;
+    protected $alias  = 'request';
+    protected $shared = false;
 
     public function register()
     {

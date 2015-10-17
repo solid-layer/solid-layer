@@ -5,9 +5,8 @@ use Bootstrap\Services\Service\ServiceProvider;
 
 class Aliaser extends ServiceProvider
 {
-    public $_alias = 'aliaser';
-
-    public $_shared = false;
+    protected $alias = 'aliaser';
+    protected $shared = false;
 
     public function register()
     {

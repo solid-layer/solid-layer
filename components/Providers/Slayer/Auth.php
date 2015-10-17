@@ -6,9 +6,8 @@ use Bootstrap\Services\Service\ServiceProvider;
 
 class Auth extends ServiceProvider
 {
-    public $_alias = 'auth';
-
-    public $_shared = false;
+    protected $alias  = 'auth';
+    protected $shared = false;
 
     public function register()
     {

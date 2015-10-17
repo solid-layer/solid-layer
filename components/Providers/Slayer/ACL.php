@@ -8,9 +8,8 @@ use Phalcon\Acl\Adapter\Memory as PhalconMemoryAdapter;
 
 class ACL extends ServiceProvider
 {
-    public $_alias = 'acl';
-
-    public $_shared = false;
+    protected $alias  = 'acl';
+    protected $shared = false;
 
     public function register()
     {

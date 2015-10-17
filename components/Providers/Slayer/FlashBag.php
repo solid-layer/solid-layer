@@ -6,9 +6,8 @@ use Phalcon\Flash\Session as PhalconFlashSession;
 
 class FlashBag extends ServiceProvider
 {
-    protected $_alias = 'flash_bag';
-
-    protected $_shared = false;
+    protected $alias  = 'flash_bag';
+    protected $shared = false;
 
     public function register()
     {

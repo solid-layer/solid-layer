@@ -9,9 +9,8 @@ use Phalcon\Mvc\View\Engine\Volt as PhalconVoltEngine;
 
 class View extends ServiceProvider
 {
-    protected $_alias = 'view';
-
-    protected $_shared = true;
+    protected $alias  = 'view';
+    protected $shared = true;
 
     public function register()
     {

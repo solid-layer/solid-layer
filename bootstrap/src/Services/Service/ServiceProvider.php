@@ -3,56 +3,44 @@ namespace Bootstrap\Services\Service;
 
 use Exception;
 use Bootstrap\Services\ServiceMagicMethods;
+use Bootstrap\Exceptions\ServiceAliasNotFoundException;
 
 class ServiceProvider
 {
     use ServiceMagicMethods;
 
-    /**
-     * By default $_alias is null
-     */
-    protected $_alias = null;
-
+    protected $alias = null;
+    protected $shared = false;
+    protected $publishStack = [];
 
     /**
-     * By default $_shared is false
-     */
-    protected $_shared = false;
-
-
-    protected $_publish = [];
-
-
-    /**
-     * Get the if the provider is a shared or not
+     * Get the provider if it is a shared or not
      *
      * @return boolean
      */
     public function getShared()
     {
-        return $this->_shared;
+        return $this->shared;
     }
-
 
     /**
      * Get the service alias when accessing to di()->get(<alias>)
      *
-     * @return String
+     * @return string
      */
     public function getAlias()
     {
-        if (strlen($this->_alias) == 0) {
+        if (strlen($this->alias) == 0) {
             throw new ServiceAliasNotFoundException(
-                'protected $_alias not found on service "' . get_class($this) . '"'
+                'protected $alias not found on service "' . get_class($this) . '"'
             );
         }
 
-        return $this->_alias;
+        return $this->alias;
     }
 
-
     /**
-     * call the register() function who extends this class
+     * Call the register() function who extends this class
      * by default, register() will return a false result
      *
      * @return mixed
@@ -70,7 +58,6 @@ class ServiceProvider
         return $register;
     }
 
-
     /**
      * Get the global config in the <root>/config/... files
      *
@@ -81,37 +68,61 @@ class ServiceProvider
         return config();
     }
 
-
+    /**
+     * The process after all di are loaded
+     *
+     * @return bool
+     */
     public function boot()
     {
         return false;
     }
 
+    /**
+     * Registered process based on DI scope
+     *
+     * @return bool
+     */
     public function register()
     {
         return false;
     }
 
-
+    /**
+     * [publish description]
+     *
+     * @param  mixed  $paths The array paths to be copied from and to
+     * @param  string $tag   The tag name to be triggered upon running command
+     */
     public function publish(Array $paths, $tag = null)
     {
-        if ($tag) {
-            $this->_publish[ $tag ] = $paths;
+        if ( $tag ) {
+            $this->publishStack[ $tag ] = $paths;
         } else {
-            $this->_publish[] = $paths;
+            $this->publishStack[] = $paths;
         }
     }
 
+    /**
+     * Get published stacks based on tag
+     *
+     * @param  string $tag The tag name to be triggered upon running command
+     *
+     * @return mixed       Stack of all publish keys
+     */
     public function getToBePublished($tag = null)
     {
-        if ($tag) {
-            if (!isset( $this->_publish[ $tag ] )) {
+        if ( $tag ) {
+
+            if ( ! isset($this->publishStack[ $tag ]) ) {
                 throw new Exception('Tag not found.');
             }
 
-            return [$this->_publish[ $tag ]];
+            return [
+                $this->publishStack[ $tag ]
+            ];
         }
 
-        return $this->_publish;
+        return $this->publishStack;
     }
 }

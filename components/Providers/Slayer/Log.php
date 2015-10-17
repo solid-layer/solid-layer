@@ -7,9 +7,8 @@ use Bootstrap\Services\Service\ServiceProvider;
 
 class Log extends ServiceProvider
 {
-    protected $_alias = 'log';
-
-    protected $_shared = false;
+    protected $alias  = 'log';
+    protected $shared = false;
 
     public function register()
     {

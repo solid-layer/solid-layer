@@ -6,9 +6,8 @@ use Bootstrap\Services\Service\ServiceProvider;
 
 class Flash extends ServiceProvider
 {
-    protected $_alias = 'flash';
-
-    protected $_shared = true;
+    protected $alias  = 'flash';
+    protected $shared = true;
 
     public function register()
     {

@@ -6,9 +6,8 @@ use Bootstrap\Support\Redirect\Redirect as SupportRedirect;
 
 class Redirect extends ServiceProvider
 {
-    protected $_alias = 'redirect';
-
-    protected $_shared = false;
+    protected $alias  = 'redirect';
+    protected $shared = false;
 
     public function register()
     {

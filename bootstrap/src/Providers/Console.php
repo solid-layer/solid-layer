@@ -6,11 +6,10 @@ use Bootstrap\Services\Service\ServiceProvider;
 
 class Console extends ServiceProvider
 {
-    protected $_alias = 'console';
-
-    private $version = 'v0.0.1';
-    private $description = '[Slayer] brood (c) Daison Carino';
-    private $application = null;
+    private   $version     = 'v0.0.1';
+    private   $description = '[Slayer] brood (c) Daison Carino';
+    private   $application = null;
+    protected $alias       = 'console';
 
     public function register()
     {

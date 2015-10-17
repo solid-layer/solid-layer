@@ -6,9 +6,8 @@ use Bootstrap\Services\Service\ServiceProvider;
 
 class Filter extends ServiceProvider
 {
-    protected $_alias = 'filter';
-
-    protected $_shared = false;
+    protected $alias  = 'filter';
+    protected $shared = false;
 
     public function register()
     {

@@ -7,9 +7,8 @@ use Bootstrap\Services\Service\ServiceProvider;
 
 class Cache extends ServiceProvider
 {
-    public $_alias = 'cache';
-
-    public $_shared = false;
+    protected $alias  = 'cache';
+    protected $shared = false;
 
     public function register()
     {

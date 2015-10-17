@@ -8,8 +8,8 @@ use Bootstrap\Services\Service\ServiceProvider;
 
 class FlysystemServiceProvider extends ServiceProvider
 {
-    protected $_alias = 'flysystem';
-    protected $_shared = true;
+    protected $alias  = 'flysystem';
+    protected $shared = true;
 
     public function register()
     {
