@@ -1,5 +1,4 @@
 <?php
-
 namespace Bootstrap\Support\Mail;
 
 use Components\Facades\Slayer\View;

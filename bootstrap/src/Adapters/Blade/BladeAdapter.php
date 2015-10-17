@@ -1,13 +1,12 @@
 <?php
-
 namespace Bootstrap\Adapters\Blade;
 
-use Bootstrap\Support\Illuminate\View\Factory;
-use Illuminate\Filesystem\Filesystem;
-use Illuminate\View\Compilers\BladeCompiler;
-use Illuminate\View\Engines\CompilerEngine;
-use Phalcon\Mvc\View\Engine;
 use Log;
+use Phalcon\Mvc\View\Engine;
+use Illuminate\Filesystem\Filesystem;
+use Illuminate\View\Engines\CompilerEngine;
+use Illuminate\View\Compilers\BladeCompiler;
+use Bootstrap\Support\Illuminate\View\Factory;
 
 class BladeAdapter extends Engine
 {

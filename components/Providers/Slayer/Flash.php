@@ -1,9 +1,8 @@
 <?php
-
 namespace Components\Providers\Slayer;
 
-use Bootstrap\Services\Service\ServiceProvider;
 use Phalcon\Session\Bag as PhalconSessionBag;
+use Bootstrap\Services\Service\ServiceProvider;
 
 class Flash extends ServiceProvider
 {

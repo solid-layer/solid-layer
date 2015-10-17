@@ -1,11 +1,10 @@
 <?php
-
 namespace Components\Providers\Slayer;
 
-use Bootstrap\Services\Service\ServiceProvider;
 use Phalcon\Acl as PhalconACL;
-use Phalcon\Acl\Adapter\Memory as PhalconMemoryAdapter;
 use Phalcon\Acl\Role as PhalconRole;
+use Bootstrap\Services\Service\ServiceProvider;
+use Phalcon\Acl\Adapter\Memory as PhalconMemoryAdapter;
 
 class ACL extends ServiceProvider
 {

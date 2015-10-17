@@ -1,12 +1,11 @@
 <?php
-
 namespace Components\Validation;
 
 use Phalcon\Validation;
+use Components\Models\User;
 use Phalcon\Validation\Validator\Email;
 use Phalcon\Validation\Validator\PresenceOf;
 use Phalcon\Validation\Validator\Uniqueness;
-use Components\Models\User;
 
 class RegistrationValidator extends Validation
 {

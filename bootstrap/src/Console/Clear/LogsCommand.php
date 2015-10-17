@@ -1,10 +1,9 @@
 <?php
-
 namespace Bootstrap\Console\Clear;
 
 use Bootstrap\Console\SlayerCommand;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Input\InputArgument;
 
 class LogsCommand extends SlayerCommand
 {

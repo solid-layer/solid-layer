@@ -1,5 +1,4 @@
 <?php
-
 namespace Bootstrap\Support\Phinx\Db;
 
 use Phinx\Db\Table as PhinxTable;

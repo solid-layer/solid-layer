@@ -1,5 +1,4 @@
 <?php
-
 namespace Bootstrap\Support\Phinx\Console\Command;
 
 class Test extends \Phinx\Console\Command\Test

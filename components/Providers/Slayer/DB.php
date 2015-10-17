@@ -1,16 +1,15 @@
 <?php
-
 namespace Components\Providers\Slayer;
 
-use Bootstrap\Services\Service\ServiceProvider;
 use Exception;
-use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Phalcon\Db\Adapter\Pdo\Mysql;
+use Monolog\Handler\StreamHandler;
+use Phalcon\Db\Adapter\Pdo\Sqlite;
 use Phalcon\Db\Adapter\Pdo\Oracle;
 use Phalcon\Db\Adapter\Pdo\Postgresql;
-use Phalcon\Db\Adapter\Pdo\Sqlite;
 use Phalcon\Events\Manager as EventsManager;
+use Bootstrap\Services\Service\ServiceProvider;
 
 class DB extends ServiceProvider
 {

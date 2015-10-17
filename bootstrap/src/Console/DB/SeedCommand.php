@@ -1,9 +1,8 @@
 <?php
-
 namespace Bootstrap\Console\DB;
 
-use Bootstrap\Console\SlayerCommand;
 use Bootstrap\Support\DB\Factory;
+use Bootstrap\Console\SlayerCommand;
 
 class SeedCommand extends SlayerCommand
 {

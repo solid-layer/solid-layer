@@ -1,9 +1,8 @@
 <?php
-
 namespace Components\Providers\Slayer;
 
-use Bootstrap\Services\Service\ServiceProvider;
 use Phalcon\Filter as HttpFilter;
+use Bootstrap\Services\Service\ServiceProvider;
 
 class Filter extends ServiceProvider
 {

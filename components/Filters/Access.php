@@ -1,10 +1,9 @@
 <?php
-
 namespace Components\Filters;
 
-use Bootstrap\Exceptions\AccessNotAllowedException;
 use Components\Facades\Slayer\ACL;
 use Components\Facades\Slayer\Route;
+use Bootstrap\Exceptions\AccessNotAllowedException;
 
 class Access extends BaseFilter
 {

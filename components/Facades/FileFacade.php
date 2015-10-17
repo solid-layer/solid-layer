@@ -1,5 +1,4 @@
 <?php
-
 namespace Components\Facades;
 
 use Bootstrap\Facades\Facade;

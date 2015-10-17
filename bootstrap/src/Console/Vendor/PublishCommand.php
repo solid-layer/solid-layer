@@ -1,10 +1,9 @@
 <?php
-
 namespace Bootstrap\Console\Vendor;
 
 use Bootstrap\Console\SlayerCommand;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Input\InputArgument;
 
 class PublishCommand extends SlayerCommand
 {

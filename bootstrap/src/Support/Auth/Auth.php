@@ -1,5 +1,4 @@
 <?php
-
 namespace Bootstrap\Support\Auth;
 
 use Components\Facades\Slayer\Session;

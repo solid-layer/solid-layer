@@ -1,5 +1,4 @@
 <?php
-
 namespace Bootstrap\Support\Phinx\Console\Command;
 
 class Status extends \Phinx\Console\Command\Status

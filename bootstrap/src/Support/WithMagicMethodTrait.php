@@ -1,5 +1,4 @@
 <?php
-
 namespace Bootstrap\Support;
 
 use Bootstrap\Exceptions\BadMethodCallException;

@@ -1,11 +1,10 @@
 <?php
-
 namespace Bootstrap\Support\Phalcon\Mvc;
 
 use Phalcon\Tag;
 use Phalcon\Mvc\View as PhalconView;
-use Bootstrap\Exceptions\ViewFileNotFoundException;
 use Bootstrap\Support\WithMagicMethodTrait;
+use Bootstrap\Exceptions\ViewFileNotFoundException;
 
 class View extends PhalconView
 {

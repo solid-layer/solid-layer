@@ -1,5 +1,4 @@
 <?php
-
 namespace Bootstrap\Services\Acl;
 
 use Bootstrap\Services\ServiceMagicMethods;

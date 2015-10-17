@@ -1,5 +1,4 @@
 <?php
-
 namespace Bootstrap\Support\Illuminate\View;
 
 use Illuminate\View\ViewFinderInterface;

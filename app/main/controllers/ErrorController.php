@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Main\Controllers;
 
 use View;

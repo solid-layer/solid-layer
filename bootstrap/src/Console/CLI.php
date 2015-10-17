@@ -1,5 +1,4 @@
 <?php
-
 namespace Bootstrap\Console;
 
 class CLI

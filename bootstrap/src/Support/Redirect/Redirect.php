@@ -1,5 +1,4 @@
 <?php
-
 namespace Bootstrap\Support\Redirect;
 
 use Bootstrap\Support\WithMagicMethodTrait;

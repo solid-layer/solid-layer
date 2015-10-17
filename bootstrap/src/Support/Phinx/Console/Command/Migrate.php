@@ -1,5 +1,4 @@
 <?php
-
 namespace Bootstrap\Support\Phinx\Console\Command;
 
 class Migrate extends \Phinx\Console\Command\Migrate

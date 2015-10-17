@@ -1,9 +1,8 @@
 <?php
-
 namespace Components\Providers\Slayer;
 
-use Bootstrap\Services\Service\ServiceProvider;
 use Phalcon\Mvc\Model\Metadata\Memory;
+use Bootstrap\Services\Service\ServiceProvider;
 
 class MetadataAdapter extends ServiceProvider
 {

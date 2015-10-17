@@ -1,13 +1,13 @@
 <?php
 
-use Bootstrap\Exceptions\FileNotFoundException;
-use Bootstrap\Facades\Facade;
-use Bootstrap\Services\Service\ServiceContainer;
-use Components\Exceptions\Handler as ErrorHandler;
 use Dotenv\Dotenv;
 use Phalcon\Config;
-use Phalcon\Di\FactoryDefault;
 use Phalcon\Mvc\Application;
+use Bootstrap\Facades\Facade;
+use Phalcon\Di\FactoryDefault;
+use Bootstrap\Exceptions\FileNotFoundException;
+use Bootstrap\Services\Service\ServiceContainer;
+use Components\Exceptions\Handler as ErrorHandler;
 
 class Kernel
 {
@@ -155,7 +155,8 @@ class Kernel
         # application
 
         $this->app->registerModules(
-            require $this->base . '/bootstrap/modules.php'
+            // require $this->base . '/bootstrap/modules.php'
+            require config()->path->app . '/modules.php'
         );
     }
 

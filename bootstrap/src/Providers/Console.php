@@ -1,9 +1,8 @@
 <?php
-
 namespace Bootstrap\Providers;
 
-use Bootstrap\Services\Service\ServiceProvider;
 use Symfony\Component\Console\Application;
+use Bootstrap\Services\Service\ServiceProvider;
 
 class Console extends ServiceProvider
 {

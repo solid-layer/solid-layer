@@ -1,5 +1,4 @@
 <?php
-
 namespace Bootstrap\Support\Phalcon\Mvc;
 
 use Phalcon\Mvc\Router as PhalconMvcRouter;

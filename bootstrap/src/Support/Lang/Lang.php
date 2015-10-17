@@ -1,5 +1,4 @@
 <?php
-
 namespace Bootstrap\Support\Lang;
 
 use Bootstrap\Exceptions\FileNotFoundException;

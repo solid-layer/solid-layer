@@ -1,5 +1,4 @@
 <?php
-
 namespace Components\Models;
 
 use Components\Models\Traits\Timestampable;

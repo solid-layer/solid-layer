@@ -1,5 +1,4 @@
 <?php
-
 namespace Bootstrap\Support\Phinx\Migration;
 
 use Bootstrap\Support\Phinx\Db\Table;

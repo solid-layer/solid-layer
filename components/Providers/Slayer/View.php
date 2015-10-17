@@ -1,11 +1,10 @@
 <?php
-
 namespace Components\Providers\Slayer;
 
 use Bootstrap\Laravel\Blade\BladeAdapter;
+use Phalcon\Events\Manager as EventsManager;
 use Bootstrap\Services\Service\ServiceProvider;
 use Bootstrap\Support\Phalcon\Mvc\View as PhalconView;
-use Phalcon\Events\Manager as EventsManager;
 use Phalcon\Mvc\View\Engine\Volt as PhalconVoltEngine;
 
 class View extends ServiceProvider

@@ -1,10 +1,9 @@
 <?php
-
 namespace Bootstrap\Support\Phalcon\Mvc;
 
+use Components\Facades\Slayer\Route;
 use Phalcon\Mvc\Url as PhalconMvcUrl;
 use Components\Facades\Slayer\Response;
-use Components\Facades\Slayer\Route;
 
 class URL extends PhalconMvcUrl
 {

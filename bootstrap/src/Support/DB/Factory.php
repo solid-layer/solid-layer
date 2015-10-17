@@ -1,5 +1,4 @@
 <?php
-
 namespace Bootstrap\Support\DB;
 
 use Faker\Factory as FakerFactory;

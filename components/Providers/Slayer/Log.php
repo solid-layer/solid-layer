@@ -1,10 +1,9 @@
 <?php
-
 namespace Components\Providers\Slayer;
 
-use Bootstrap\Services\Service\ServiceProvider;
-use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+use Bootstrap\Services\Service\ServiceProvider;
 
 class Log extends ServiceProvider
 {

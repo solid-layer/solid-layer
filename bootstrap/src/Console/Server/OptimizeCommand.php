@@ -1,11 +1,10 @@
 <?php
-
 namespace Bootstrap\Console\Server;
 
-use Bootstrap\Console\SlayerCommand;
 use Bootstrap\Console\CLI;
-use Symfony\Component\Console\Input\InputArgument;
+use Bootstrap\Console\SlayerCommand;
 use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Input\InputArgument;
 
 class OptimizeCommand extends SlayerCommand
 {

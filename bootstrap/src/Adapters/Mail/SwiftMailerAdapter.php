@@ -1,12 +1,11 @@
 <?php
-
 namespace Bootstrap\Adapters\Mail;
 
-use Bootstrap\Contracts\Mail\MailInterface;
-use Swift_Message;
-use Swift_SmtpTransport;
 use Swift_Mailer;
+use Swift_Message;
 use Swift_Attachment;
+use Swift_SmtpTransport;
+use Bootstrap\Contracts\Mail\MailInterface;
 
 class SwiftMailerAdapter implements MailInterface
 {

@@ -1,5 +1,4 @@
 <?php
-
 namespace Bootstrap\Support\Phinx\Console\Command;
 
 class Create extends \Phinx\Console\Command\Create

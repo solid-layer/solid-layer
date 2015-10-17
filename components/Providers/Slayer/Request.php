@@ -1,9 +1,8 @@
 <?php
-
 namespace Components\Providers\Slayer;
 
+use Phalcon\Http\Request as HttpRequest;
 use Bootstrap\Services\Service\ServiceProvider;
-use Phalcon\Http\Request as Http_Request;
 
 class Request extends ServiceProvider
 {
@@ -13,6 +12,6 @@ class Request extends ServiceProvider
 
     public function register()
     {
-        return new Http_Request;
+        return new HttpRequest;
     }
 }

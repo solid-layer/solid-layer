@@ -1,5 +1,4 @@
 <?php
-
 namespace {namespace};
 
 class {routeName}Routes extends RouteGroup

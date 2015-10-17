@@ -1,5 +1,4 @@
 <?php
-
 namespace Components\Flysystem;
 
 use League\Flysystem\Adapter\Local as LeagueFlysystemAdapterLocal;

@@ -1,11 +1,10 @@
 <?php
-
 namespace Bootstrap\Console\App;
 
-use Bootstrap\Console\SlayerCommand;
 use Bootstrap\Console\CLI;
-use Symfony\Component\Console\Input\InputArgument;
+use Bootstrap\Console\SlayerCommand;
 use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Input\InputArgument;
 
 class RouteCommand extends SlayerCommand
 {

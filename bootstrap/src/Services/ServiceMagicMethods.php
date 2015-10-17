@@ -1,5 +1,4 @@
 <?php
-
 namespace Bootstrap\Services;
 
 trait ServiceMagicMethods

@@ -1,5 +1,4 @@
 <?php
-
 namespace Bootstrap\Contracts\Mail;
 
 interface MailInterface

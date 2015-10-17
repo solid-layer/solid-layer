@@ -1,21 +1,20 @@
 <?php
-
 namespace App\Main\Controllers;
 
 use DB;
-use URL;            # use Bootstrap\Facades\URL;
-use Auth;           # use Bootstrap\Facades\Auth;
-use View;           # use Bootstrap\Facades\View;
-use Request;        # use Bootstrap\Facades\Request;
-use Redirect;       # use Bootstrap\Facades\Redirect;
-use FlashBag;       # use Bootstrap\Facades\FlashBag;
-use Mail;           # use Bootstrap\Facades\Mail;
-use Lang;           # use Bootstrap\Facades\Lang;
-use Session;        # use Bootstrap\Facades\Session;
-use Tag;            # use Bootstrap\Facades\Tag;
-use Security;       # use Bootstrap\Facades\Security;
-use Components\Validation\RegistrationValidator;
+use URL;
+use Tag;
+use Auth;
+use View;
+use Mail;
+use Lang;
+use Session;
+use Request;
+use Redirect;
+use FlashBag;
+use Security;
 use Components\Models\User;
+use Components\Validation\RegistrationValidator;
 use Phalcon\Mvc\Model\Transaction\Failed as TransactionFailed;
 
 class AuthController extends Controller

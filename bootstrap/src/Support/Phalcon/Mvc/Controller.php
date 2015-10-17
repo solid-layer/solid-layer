@@ -1,5 +1,4 @@
 <?php
-
 namespace Bootstrap\Support\Phalcon\Mvc;
 
 class Controller extends \Phalcon\Mvc\Controller

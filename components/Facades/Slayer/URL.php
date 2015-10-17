@@ -1,5 +1,4 @@
 <?php
-
 namespace Components\Facades\Slayer;
 
 use Bootstrap\Facades\Facade;

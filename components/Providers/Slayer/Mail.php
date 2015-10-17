@@ -1,10 +1,9 @@
 <?php
-
 namespace Components\Providers\Slayer;
 
+use Exception;
 use Bootstrap\Services\Service\ServiceProvider;
 use Bootstrap\Support\Mail\Mail as SupportMail;
-use Exception;
 
 class Mail extends ServiceProvider
 {

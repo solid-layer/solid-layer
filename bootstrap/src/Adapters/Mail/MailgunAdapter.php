@@ -1,9 +1,8 @@
 <?php
-
 namespace Bootstrap\Adapters\Mail;
 
-use Bootstrap\Contracts\Mail\MailInterface;
 use Mailgun\Mailgun;
+use Bootstrap\Contracts\Mail\MailInterface;
 
 class MailgunAdapter implements MailInterface
 {

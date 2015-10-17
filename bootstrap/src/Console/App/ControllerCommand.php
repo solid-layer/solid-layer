@@ -1,5 +1,4 @@
 <?php
-
 namespace Bootstrap\Console\App;
 
 use Bootstrap\Console\SlayerCommand;

@@ -1,10 +1,9 @@
 <?php
-
 namespace Components\Filters;
 
-use Bootstrap\Exceptions\AccessNotAllowedException;
 use Components\Facades\Slayer\Request;
 use Components\Facades\Slayer\Security;
+use Bootstrap\Exceptions\AccessNotAllowedException;
 
 class CSRF extends BaseFilter
 {

@@ -1,5 +1,4 @@
 <?php
-
 namespace Bootstrap\Exceptions;
 
 use Exception;

@@ -1,5 +1,4 @@
 <?php
-
 namespace Components\Providers\Slayer;
 
 use Bootstrap\Services\Service\ServiceProvider;

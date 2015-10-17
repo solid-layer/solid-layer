@@ -1,9 +1,8 @@
 <?php
-
 namespace Components\Providers\Slayer;
 
-use Bootstrap\Services\Service\ServiceProvider;
 use Bootstrap\Support\Auth\Auth as SlayerAuth;
+use Bootstrap\Services\Service\ServiceProvider;
 
 class Auth extends ServiceProvider
 {

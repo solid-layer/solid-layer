@@ -1,10 +1,9 @@
 <?php
-
 namespace Bootstrap\Support\Phalcon\Mvc;
 
-use Bootstrap\Services\Acl\AclContainer;
-use Components\Facades\Slayer\ACL;
 use Phalcon\Acl\Resource;
+use Components\Facades\Slayer\ACL;
+use Bootstrap\Services\Acl\AclContainer;
 
 class AclLoader
 {
