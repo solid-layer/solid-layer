@@ -6,16 +6,16 @@ use Illuminate\View\ViewFinderInterface;
 class Factory
 {
     protected $views_dir;
-    protected $sections = [];
+    protected $sections     = [];
     protected $sectionStack = [];
 
-    private $__engine;
-    private $__path;
-    private $__params = [];
+    private   $engine;
+    private   $path;
+    private   $params       = [];
 
     public function __construct($engine, $views_dir)
     {
-        $this->__engine  = $engine;
+        $this->engine  = $engine;
         $this->views_dir = $views_dir;
     }
 
@@ -57,11 +57,11 @@ class Factory
         $view = $this->normalizeName($view);
         $view = $this->views_dir . str_replace('.', '/', $view);
 
-        $this->__path = str_replace('//', '/', $view . '.blade.php');
+        $this->path = str_replace('//', '/', $view . '.blade.php');
 
-        $this->__params = $data;
+        $this->params = $data;
         if (!empty($merge_data)) {
-            $this->__params = array_merge($this->__params, $merge_data);
+            $this->params = array_merge($this->params, $merge_data);
         }
 
         return $this;
@@ -69,21 +69,21 @@ class Factory
 
     public function render()
     {
-        if ($this->getEngineCompiler()->isExpired($this->__path)) {
-            $this->getEngineCompiler()->compile($this->__path);
+        if ($this->getEngineCompiler()->isExpired($this->path)) {
+            $this->getEngineCompiler()->compile($this->path);
         }
 
         ob_start();
 
         $__env = $this;
 
-        if ( !empty($this->__params) ) {
-            foreach ($this->__params as $key => $value) {
+        if ( !empty($this->params) ) {
+            foreach ($this->params as $key => $value) {
                 ${$key} = $value;
             }
         }
 
-        include $this->getEngineCompiler()->getCompiledPath($this->__path);
+        include $this->getEngineCompiler()->getCompiledPath($this->path);
 
         return ob_get_clean();
     }
@@ -123,6 +123,6 @@ class Factory
 
     public function getEngine()
     {
-        return $this->__engine;
+        return $this->engine;
     }
 }

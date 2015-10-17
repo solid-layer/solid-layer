@@ -7,16 +7,16 @@ class AclContainer
 {
     use ServiceMagicMethods;
 
-    protected $_allowed_roles = [];
-    protected $_denied_roles = [];
+    protected $allowed_roles = [];
+    protected $denied_roles = [];
 
     public function getAllowedRoles()
     {
-        return $this->_allowed_roles;
+        return $this->allowed_roles;
     }
 
     public function getDeniedRoles()
     {
-        return $this->_denied_roles;
+        return $this->denied_roles;
     }
 }

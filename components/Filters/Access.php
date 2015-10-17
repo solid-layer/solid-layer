@@ -7,11 +7,11 @@ use Bootstrap\Exceptions\AccessNotAllowedException;
 
 class Access extends BaseFilter
 {
-    protected $_allowed_roles = [
+    protected $allowed_roles = [
         'administrator',
     ];
 
-    protected $_denied_roles = [
+    protected $denied_roles = [
         'user',
     ];
 

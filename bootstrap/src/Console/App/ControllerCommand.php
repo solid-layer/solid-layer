@@ -8,8 +8,7 @@ use Symfony\Component\Console\Input\InputOption;
 
 class ControllerCommand extends SlayerCommand
 {
-    protected $name = 'app:controller';
-
+    protected $name        = 'app:controller';
     protected $description = 'Generate a controller';
 
     public function slash()
@@ -28,11 +27,11 @@ class ControllerCommand extends SlayerCommand
 
         # - else empty
         else {
-            $_controllerFunctions = file_get_contents(__DIR__ . '/stubs/_controllerFunctions.stub');
+            $controller_functions = file_get_contents(__DIR__ . '/stubs/_controllerFunctions.stub');
 
             $stub = str_replace(
                 '{controllerFunctions}',
-                $_controllerFunctions,
+                $controller_functions,
                 $stub
             );
 
@@ -47,23 +46,23 @@ class ControllerCommand extends SlayerCommand
         $file_name = $arg_name . 'Controller.php';
 
         $module = $this->input->getArgument('module');
-        $hasDir = is_dir(config()->path->app . $module);
+        $has_dir = is_dir(config()->path->app . $module);
 
-        if ( $hasDir == false ) {
+        if ( $has_dir == false ) {
             $this->error('Module not found `' . $module . '`');
 
             return;
         }
 
-        $controllersDir = config()->path->app . $module . '/Controllers';
+        $controllers_dir = config()->path->app . $module . '/Controllers';
 
-        if ( is_dir($controllersDir) == false ) {
+        if ( is_dir($controllers_dir) == false ) {
             $this->error('Controllers folder not found from your module: `' . $module . '`');
 
             return;
         }
 
-        chdir( $controllersDir );
+        chdir( $controllers_dir );
         $stub = str_replace('{namespace}',  'App\\' . $module . '\\Controllers', $stub);
 
         $this->comment('Crafting Controller...');

@@ -1,6 +1,7 @@
 <?php
 namespace Bootstrap\Console;
 
+use Bootstrap\Services\ServiceMagicMethods;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
@@ -9,10 +10,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 abstract class SlayerCommand extends Command
 {
-    use \Bootstrap\Services\ServiceMagicMethods;
+    use ServiceMagicMethods;
 
-    protected $_arguments;
-    protected $_options;
     protected $input;
     protected $output;
 
@@ -50,7 +49,6 @@ abstract class SlayerCommand extends Command
         return $this;
     }
 
-
     protected function arguments()
     {
         return [];
@@ -61,28 +59,23 @@ abstract class SlayerCommand extends Command
         return [];
     }
 
-
     public function info($string)
     {
         $this->output->writeln("<info>$string</info>");
     }
-
 
     public function line($string)
     {
         $this->output->writeln($string);
     }
 
-
     public function comment($string)
     {
         $this->output->writeln("<comment>$string</comment>");
     }
 
-
     public function error($string)
     {
         $this->output->writeln("<error>$string</error>");
     }
-
 }
