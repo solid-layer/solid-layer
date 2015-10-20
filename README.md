@@ -15,9 +15,9 @@ Phalcon is not only about performance, our goal is to make it robust, rich in fe
 
 When creating a new issue, it should starts with (add, update, remove, change, move and etc.)
 
-If you will be committing, the first word in the title should represent a present particles e.g(adding, updating, removing, changing, moving and etc.)
+If you will be committing, the first word in the title should be a present participles e.g(adding, updating, removing, changing, moving and etc.)
 
-Every release will be past participles e.g(added, updated, removed, changed, moved and etc.).
+Every release will be using a past participles e.g(added, updated, removed, changed, moved and etc.).
 
 Let's have an example,
   - You'll be creating a new issue, you saw some bugs, you must title it to
