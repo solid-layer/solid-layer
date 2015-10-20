@@ -13,11 +13,26 @@ Phalcon is not only about performance, our goal is to make it robust, rich in fe
 
 ## Contributing
 
-When committing updates, the first word in the title should represent a present tense, something like (adding, updating, removing, changing, moving and etc.) or the more formal way (add, update, remove, change, move and etc.).
+When creating a new issue, it should starts with (add, update, remove, change, move and etc.)
 
-We will be using the past tense words, such as (added, updated, removed, changed, moved and etc.) to our release section.
+If you will be committing, the first word in the title should represent a present particles e.g(adding, updating, removing, changing, moving and etc.)
 
-You can pull the most updated branch ``dev``, create a pull request of your forked updates, issues should be reported using GitHub's Issues and all security concerns should be emailed to ``daison12006013@gmail.com`` promptly.
+Every release will be past participles e.g(added, updated, removed, changed, moved and etc.).
+
+Let's have an example,
+  - You'll be creating a new issue, you saw some bugs, you must title it to
+    - issue#8: __fix the error regarding Foo\Bar handle function__
+  - One of our contributors did some update, the commit title must be
+    - commit title: __fixing the error regarding issue #8 ...__
+  - We consolidated all the commits, and the project lead will be releasing a new version
+    - Version <major>.<minor>.<patch>
+      - __fixed error regarding issue #8 ... by @<username>__
+      - added ...
+      - updated ...
+      - changed ...
+      - etc ...
+
+You can pull the most updated branch ``dev``, create a pull request of your forked branch updates, issues should be reported using GitHub's Issues and all security concerns should be emailed to ``daison12006013@gmail.com`` promptly.
 
 Thanks to all [contributors](https://github.com/phalconslayer/slayer/graphs/contributors).
 
