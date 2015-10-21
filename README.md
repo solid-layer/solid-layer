@@ -13,24 +13,7 @@ Phalcon is not only about performance, our goal is to make it robust, rich in fe
 
 ## Contributing
 
-When creating a new issue, it should starts with (add, update, remove, change, move and etc.)
-
-If you will be committing, the first word in the title should be a present participles e.g(adding, updating, removing, changing, moving and etc.)
-
-Every release will be using a past participles e.g(added, updated, removed, changed, moved and etc.).
-
-Let's have an example,
-  - You'll be creating a new issue, you saw some bugs, you must title it to
-    - issue#8: __fix the error regarding Foo\Bar handle function__
-  - One of our contributors did some update, the commit title must be
-    - commit title: __fixing the error regarding issue #8 ...__
-  - We consolidated all the commits, and the project lead will be releasing a new version
-    - Version <major>.<minor>.<patch>
-      - __fixed error regarding issue #8 ... by @<username>__
-      - added ...
-      - updated ...
-      - changed ...
-      - etc ...
+Please fully read the [CONTRIBUTING.md](https://github.com/phalconslayer/slayer/blob/dev/CONTRIBUTING.md)
 
 You can pull the most updated branch ``dev``, create a pull request of your forked branch updates, issues should be reported using GitHub's Issues and all security concerns should be emailed to ``daison12006013@gmail.com`` promptly.
 
