@@ -2,95 +2,76 @@
 namespace Bootstrap\Support\Phalcon\Mvc;
 
 use Phalcon\Acl\Resource;
-use Components\Facades\Slayer\ACL;
-use Bootstrap\Services\Acl\AclContainer;
 
 class AclLoader
 {
     private $obj;
+    private $action;
     private $options;
+    private $controller;
     private $only_actions;
     private $except_actions;
-    private $action_name;
-    private $controller_name;
 
-    public function __construct(AclContainer $obj)
+    public function __construct($obj)
     {
-        $this->obj = $obj;
-    }
-
-    public function setActionName($action_name)
-    {
-        $this->action_name = $action_name;
-
-        return $this;
-    }
-
-    public function setControllerName($controller_name)
-    {
-        $this->controller_name = $controller_name;
-
-        return $this;
-    }
-
-    public function setOptions($options)
-    {
-        $this->options = $options;
-
-        return $this;
-    }
-
-    public function setOnlyActions($actions)
-    {
-        $this->only_actions = $actions;
-
-        return $this;
-    }
-
-    public function setExceptActions($actions)
-    {
-        $this->except_actions = $actions;
-
-        return $this;
+        $this->obj        = $obj;
+        $this->controller = di()->get('router')->getControllerName();
+        $this->action     = di()->get('router')->getActionName();
     }
 
     public function load()
     {
-        if (!empty($this->options)) {
-            if (isset( $this->only_actions[ $this->action_name ] ) == false) {
-                return;
-            }
-
-            if (isset( $this->except_actions[ $this->action_name ] )) {
-                return;
-            }
-        }
-
-        ACL::addResource(
-            new Resource($this->controller_name),
-            $this->action_name
+        di()->get('acl')->addResource(
+            new Resource($this->controller),
+            $this->action
         );
 
-        if (!empty($this->obj->getAllowedRoles())) {
-            foreach ($this->obj->getAllowedRoles() as $role) {
-                ACL::allow(
-                    $role,
-                    $this->controller_name,
-                    $this->action_name
-                );
+        $allowed_roles = di()->get('config')->acl->allowed->toArray();
+        foreach ($allowed_roles as $role_name => $role) {
+            foreach ($role as $controller) {
+                $attr = explode('::', $controller);
+
+                $name = $attr[0];
+
+                if ( $name !== $this->controller) {
+                    continue;
+                }
+
+                $actions = explode(',', $attr[1]);
+
+                foreach ($actions as $action) {
+                    di()->get('acl')->allow(
+                        $role_name,
+                        $name,
+                        $action
+                    );
+                }
             }
         }
 
-        if (!empty($this->obj->getDeniedRoles())) {
-            foreach ($this->obj->getDeniedRoles() as $role) {
-                ACL::deny(
-                    $role,
-                    $this->controller_name,
-                    $this->action_name
-                );
+        $denied_roles  = di()->get('config')->acl->denied->toArray();
+        foreach ($denied_roles as $role_name => $role) {
+            foreach ($role as $controller) {
+                $attr = explode('::', $controller);
+
+                $name = $attr[0];
+
+                if ( $name !== $this->controller ) {
+                    continue;
+                }
+
+                $actions = explode(',', $attr[1]);
+
+                foreach ($actions as $action) {
+                    di()->get('acl')->deny(
+                        $role_name,
+                        $name,
+                        $action
+                    );
+                }
             }
         }
 
-        $this->obj->load();
+        return;
     }
 }

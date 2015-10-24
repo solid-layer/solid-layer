@@ -1,5 +1,5 @@
 <?php
-namespace Components\Collections;
+namespace Components\Collection;
 
 use Phalcon\Mvc\Collection as BaseCollection;
 

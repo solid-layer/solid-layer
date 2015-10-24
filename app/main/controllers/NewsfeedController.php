@@ -8,7 +8,7 @@ class NewsfeedController extends Controller
 {
     public function initialize()
     {
-        $this->acl('auth');
+        $this->middleware('auth');
     }
 
     public function indexAction()

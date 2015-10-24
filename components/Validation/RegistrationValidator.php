@@ -2,7 +2,7 @@
 namespace Components\Validation;
 
 use Phalcon\Validation;
-use Components\Models\User;
+use Components\Model\User;
 use Phalcon\Validation\Validator\Email;
 use Phalcon\Validation\Validator\PresenceOf;
 use Phalcon\Validation\Validator\Uniqueness;
@@ -21,7 +21,7 @@ class RegistrationValidator extends Validation
 
         $this->add('email', new Uniqueness([
             'model' => User::class,
-            'message' => 'The email has existed'
+            'message' => 'The email already exists'
         ]));
     }
 }

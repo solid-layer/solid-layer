@@ -13,30 +13,12 @@ use Request;
 use Redirect;
 use FlashBag;
 use Security;
-use Components\Models\User;
+use Components\Model\User;
 use Components\Validation\RegistrationValidator;
 use Phalcon\Mvc\Model\Transaction\Failed as TransactionFailed;
 
 class AuthController extends Controller
 {
-    public function initialize()
-    {
-        $this->acl('csrf', [
-            'only'   => [
-                'attemptToLogin',
-            ],
-            'except' => [
-                'showRegistrationForm',
-                'storeRegistrationForm',
-                'showLoginForm',
-                'view',
-                'logout',
-                'activateUser',
-            ],
-        ]);
-    }
-
-
     public function showRegistrationFormAction()
     {
         # - just the info message
@@ -260,6 +242,8 @@ class AuthController extends Controller
 
     public function attemptToLoginAction()
     {
+        $this->middleware('csrf');
+
         $credentials = [
             'email'        => Request::get('email'),
             'password'     => Request::get('password'),

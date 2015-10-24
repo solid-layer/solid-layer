@@ -3,7 +3,7 @@ namespace Components\Console;
 
 use Bootstrap\Console\SlayerCommand;
 
-class Command extends SlayerCommand
+class Console extends SlayerCommand
 {
     public function slash()
     {

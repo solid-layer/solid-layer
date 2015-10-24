@@ -1,5 +1,5 @@
 <?php
-namespace Components\Models;
+namespace Components\Model;
 
 use Phalcon\Mvc\Model as BaseModel;
 use Phalcon\Mvc\Model\Transaction\Manager as TransactionManager;

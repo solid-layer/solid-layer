@@ -93,7 +93,7 @@ return [
     # ----------------------------------------------------------------
 
     'auth'     => [
-        'model'          => Components\Models\User::class,
+        'model'          => Components\Model\User::class,
         'password_field' => 'password',
         'auth_redirect'  => '/newsfeed',
     ],

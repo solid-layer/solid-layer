@@ -9,16 +9,12 @@ use Phalcon\Acl\Adapter\Memory as PhalconMemoryAdapter;
 class ACL extends ServiceProvider
 {
     protected $alias  = 'acl';
-    protected $shared = false;
+    protected $shared = true;
 
     public function register()
     {
         $acl = new PhalconMemoryAdapter;
-        $acl->setDefaultAction(PhalconACL::DENY);
-
-        foreach (config()->acl->roles as $role) {
-            $acl->addRole(new PhalconRole($role));
-        }
+        $acl->setDefaultAction(config()->acl->default_action);
 
         return $acl;
     }
