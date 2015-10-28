@@ -35,7 +35,7 @@ if (!function_exists('tag')) {
 if (!function_exists('route')) {
     function route($name = null, $params = [])
     {
-        if ($name == null) {
+        if ($name === null) {
             return di()->get('router');
         }
 
@@ -68,7 +68,7 @@ if (!function_exists('view')) {
     function view($path = null, $params = [])
     {
         $view = di()->get('view');
-        if ($path == null) {
+        if ($path === null) {
             return $view;
         }
 
@@ -87,7 +87,7 @@ if (!function_exists('config')) {
     function config($path = null)
     {
         $config = di()->get('config');
-        if ($path == null) {
+        if ($path === null) {
             return $config;
         }
 
@@ -113,7 +113,7 @@ if (!function_exists('url')) {
     function url($href = null, $params = [])
     {
         $url = di()->get('url');
-        if ($href == null) {
+        if ($href === null) {
             return $url;
         }
 
@@ -132,7 +132,7 @@ if (!function_exists('redirect')) {
     function redirect($to = null)
     {
         $redirect = di()->get('redirect');
-        if ($to == null) {
+        if ($to === null) {
             return $redirect;
         }
 
