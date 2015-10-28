@@ -1,6 +1,7 @@
 <?php
 namespace Components\Providers\Slayer;
 
+use MongoClient;
 use Bootstrap\Services\Service\ServiceProvider;
 
 class Mongo extends ServiceProvider

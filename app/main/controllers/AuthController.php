@@ -13,6 +13,7 @@ use Request;
 use Redirect;
 use FlashBag;
 use Security;
+use Exception;
 use Components\Model\User;
 use Components\Validation\RegistrationValidator;
 use Phalcon\Mvc\Model\Transaction\Failed as TransactionFailed;
@@ -129,7 +130,7 @@ class AuthController extends Controller
             ]);
 
             if ($success == false) {
-                throw new \Exception('Cant create an account!');
+                throw new Exception('Cant create an account!');
             }
 
 
