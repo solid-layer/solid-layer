@@ -83,7 +83,7 @@ class Factory
             }
         }
 
-        include $this->getEngineCompiler()->getCompiledPath($this->path);
+        require $this->getEngineCompiler()->getCompiledPath($this->path);
 
         return ob_get_clean();
     }
