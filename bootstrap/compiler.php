@@ -4,7 +4,7 @@ define('BASE_PATH', dirname(__DIR__));
 
 use ClassPreloader\ClassLoader;
 
-require_once BASE_PATH . '/vendor/classpreloader/classpreloader/src/ClassLoader.php';
+require BASE_PATH . '/vendor/classpreloader/classpreloader/src/ClassLoader.php';
 
 $config = ClassLoader::getIncludes(function (ClassLoader $loader) {
     $loader->register();

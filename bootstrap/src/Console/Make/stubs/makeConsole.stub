@@ -4,11 +4,11 @@ namespace Components\Console;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
-class {consoleName}Command extends Command
+class {consoleName} extends Console
 {
-    protected $name = 'my:command';
+    protected $name = 'console:name';
 
-    protected $description = 'My Command Description';
+    protected $description = 'console description';
 
     /**
      * Add your code below

@@ -31,7 +31,7 @@ class Kernel
     {
         # - load composer, for dependencies
 
-        require_once $this->base . '/vendor/autoload.php';
+        require $this->base . '/vendor/autoload.php';
     }
 
     protected function loadOptimizedCompiledFile()
@@ -41,7 +41,7 @@ class Kernel
         $compiled = BASE_PATH . '/storage/slayer/compiled.php';
 
         if ( file_exists($compiled) && php_sapi_name() != 'cli' ) {
-            require_once $compiled;
+            require $compiled;
         }
     }
 
@@ -82,7 +82,7 @@ class Kernel
         # - get the paths and merge the array values to the
         # empty config as we instantiated above
 
-        $this->path = require_once $this->base . '/config/path.php';
+        $this->path = require $this->base . '/config/path.php';
         $this->di->get('config')->merge( new Config(['path' => $this->path]) );
     }
 
@@ -91,7 +91,7 @@ class Kernel
         # - require our collection of helpers before we proceed
         # to merging all the config files.
 
-        require_once __DIR__ . '/Support/Helpers/init.php';
+        require __DIR__ . '/Support/Helpers/init.php';
     }
 
     protected function loadConfigFolder()
@@ -226,7 +226,7 @@ class Kernel
             throw new Exception("Module [$module] routes.php not found.");
         }
 
-        require_once $path;
+        require $path;
 
         $this->app->setDefaultModule($module);
 

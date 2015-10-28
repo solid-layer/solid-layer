@@ -19,7 +19,7 @@ class SeedCommand extends SlayerCommand
         if ( !empty($files) ) {
             foreach ($files as $file) {
                 $this->comment('Processing ' . basename($file) . '...');
-                include_once $file;
+                require $file;
                 $this->info('Done.' . "\n");
             }
         }
