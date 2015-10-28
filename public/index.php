@@ -1,6 +1,6 @@
 <?php
 
-require_once dirname(__DIR__) . '/bootstrap/autoload.php';
+require dirname(__DIR__) . '/bootstrap/autoload.php';
 
 $kernel
     ->run('main')
