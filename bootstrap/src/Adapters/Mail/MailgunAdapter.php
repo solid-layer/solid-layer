@@ -160,5 +160,4 @@ class MailgunAdapter implements MailInterface
     {
         return config()->services->mailgun->domain;
     }
-
 }

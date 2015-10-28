@@ -22,7 +22,7 @@ class Lang
         return $this;
     }
 
-    protected function _getAttribute($path)
+    protected function getAttribute($path)
     {
         $exploded = explode('.', $path);
 
@@ -32,7 +32,7 @@ class Lang
         ];
     }
 
-    protected function _hasFile($file)
+    protected function hasFile($file)
     {
         if (!file_exists($file)) {
             return false;
@@ -41,7 +41,7 @@ class Lang
         return true;
     }
 
-    protected function _getDottedFile($file)
+    protected function getDottedFile($file)
     {
         $array = require $file;
 
@@ -50,9 +50,9 @@ class Lang
 
     public function has($path)
     {
-        $attribute = $this->_getAttribute($path);
+        $attribute = $this->getAttribute($path);
 
-        if (!$this->_hasFile($attribute[ 'file' ])) {
+        if (!$this->hasFile($attribute[ 'file' ])) {
             return false;
         }
 
@@ -61,14 +61,14 @@ class Lang
 
     public function get($path, $params = [])
     {
-        $attribute = $this->_getAttribute($path);
+        $attribute = $this->getAttribute($path);
 
-        if (!$this->_hasFile($attribute[ 'file' ])) {
+        if (!$this->hasFile($attribute[ 'file' ])) {
             throw new FileNotFoundException("File {$file} not found!");
         }
 
         # get all the arrays with messages
-        $templates = $this->_getDottedFile($attribute[ 'file' ]);
+        $templates = $this->getDottedFile($attribute[ 'file' ]);
 
         # get the file name
         $file_name = $attribute[ 'exploded' ][ 0 ];

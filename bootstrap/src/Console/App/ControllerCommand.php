@@ -16,16 +16,19 @@ class ControllerCommand extends SlayerCommand
         $arg_name = ucfirst($this->input->getArgument('name'));
 
         # - get the main stub file
+
         $stub = file_get_contents(__DIR__ . '/stubs/makeController.stub');
         $stub = str_replace('{controllerName}', $arg_name, $stub);
 
 
         # - to use emptify
+
         if ($this->input->getOption('emptify') === true) {
             $stub = str_replace('{controllerFunctions}', '', $stub);
         }
 
         # - else empty
+
         else {
             $controller_functions = file_get_contents(__DIR__ . '/stubs/_controllerFunctions.stub');
 
@@ -42,7 +45,8 @@ class ControllerCommand extends SlayerCommand
             );
         }
 
-        # create the file name
+        # - create the file name
+
         $file_name = $arg_name . 'Controller.php';
 
         $module = $this->input->getArgument('module');

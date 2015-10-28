@@ -20,5 +20,4 @@ class FlashBag extends ServiceProvider
 
         return $flash_session;
     }
-
 }

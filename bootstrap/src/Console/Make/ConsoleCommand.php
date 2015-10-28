@@ -35,5 +35,4 @@ class ConsoleCommand extends SlayerCommand
             ['name', InputArgument::REQUIRED, 'Console name to be used'],
         ];
     }
-
 }

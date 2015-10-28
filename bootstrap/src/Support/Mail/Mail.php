@@ -85,5 +85,4 @@ class Mail
 
         return true;
     }
-
 }

@@ -21,5 +21,4 @@ class Mail extends ServiceProvider
 
         return new SupportMail(new $adapter_class, $settings);
     }
-
 }

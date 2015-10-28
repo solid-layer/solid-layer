@@ -35,5 +35,4 @@ class Dispatcher extends ServiceProvider
 
         return $dispatcher;
     }
-
 }

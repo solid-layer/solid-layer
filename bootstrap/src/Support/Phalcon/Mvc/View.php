@@ -23,7 +23,7 @@ class View extends PhalconView
      *
      * @return string
      */
-    protected function _changeDotToSlash($path)
+    protected function changeDotToSlash($path)
     {
         $path = str_replace('.', '/', $path);
 
@@ -55,7 +55,7 @@ class View extends PhalconView
      */
     public function make($path, $records = [])
     {
-        $path = $this->_changeDotToSlash($path);
+        $path = $this->changeDotToSlash($path);
         $this->checkViewPath($path);
 
         return $this->pick($path);
@@ -121,9 +121,8 @@ class View extends PhalconView
      */
     public function take($view, $params = null)
     {
-        $view = $this->_changeDotToSlash($view);
+        $view = $this->changeDotToSlash($view);
 
         return $this->getRender(null, $view, $params);
     }
-
 }

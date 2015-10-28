@@ -33,5 +33,4 @@ class FlysystemServiceProvider extends ServiceProvider
 
         return new MountManager($flies);
     }
-
 }

@@ -26,5 +26,4 @@ class ACL implements Middleware
 
         return $next($command);
     }
-
 }

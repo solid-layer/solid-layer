@@ -10,7 +10,7 @@ class Router extends PhalconMvcRouter
         parent::__construct($bool);
     }
 
-    private function _getParsedRoutes($target)
+    private function getParsedRoutes($target)
     {
 
         $route_name = null;
@@ -64,9 +64,9 @@ class Router extends PhalconMvcRouter
         ];
     }
 
-    private function _createRoute($verb, $name, $target)
+    private function createRoute($verb, $name, $target)
     {
-        $parsed_route = $this->_getParsedRoutes($target);
+        $parsed_route = $this->getParsedRoutes($target);
 
         $func = 'add' . $verb;
         $route = $this->{$func}($name, $parsed_route[ 'target' ]);
@@ -80,11 +80,11 @@ class Router extends PhalconMvcRouter
 
     public function get($name, $target)
     {
-        return $this->_createRoute('Get', $name, $target);
+        return $this->createRoute('Get', $name, $target);
     }
 
     public function post($name, $target)
     {
-        return $this->_createRoute('Post', $name, $target);
+        return $this->createRoute('Post', $name, $target);
     }
 }

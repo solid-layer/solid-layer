@@ -24,5 +24,4 @@ class OptimizeCommand extends SlayerCommand
 
         $this->comment( $output );
     }
-
 }

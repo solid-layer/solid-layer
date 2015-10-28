@@ -28,5 +28,4 @@ class Controller extends \Phalcon\Mvc\Controller
         $command_bus = new CommandBus([$instance]);
         $command_bus->handle( $this );
     }
-
 }

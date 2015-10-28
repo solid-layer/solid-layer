@@ -77,5 +77,4 @@ class View extends ServiceProvider
 
         return $view;
     }
-
 }

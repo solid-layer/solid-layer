@@ -20,5 +20,4 @@ class Redirect
 
         return $this;
     }
-
 }
