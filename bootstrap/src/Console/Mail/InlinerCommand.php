@@ -1,7 +1,6 @@
 <?php
 namespace Bootstrap\Console\Mail;
 
-// use Components\Facades\Slayer\View;
 use Bootstrap\Console\SlayerCommand;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
