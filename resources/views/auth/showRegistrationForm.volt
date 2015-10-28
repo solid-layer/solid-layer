@@ -8,7 +8,7 @@
 
 {% block content %}
     <div class="marginTop"></div>
-    <div class="col-sm-4 col-sm-offset-4">
+    <div class="col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2">
         {{ flash_bag.output() }}
         <hr>
         <div class="well">
