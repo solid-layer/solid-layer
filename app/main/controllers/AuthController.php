@@ -129,7 +129,7 @@ class AuthController extends Controller
                 'token'    => $token,
             ]);
 
-            if ($success == false) {
+            if ($success === false) {
                 throw new Exception('Cant create an account!');
             }
 
@@ -273,7 +273,7 @@ class AuthController extends Controller
 
         # - if user fails to save, show an error
 
-        if ($user->save() == false) {
+        if ($user->save() === false) {
 
             foreach ($user->getMessages() as $message) {
 

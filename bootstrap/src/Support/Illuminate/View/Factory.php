@@ -92,7 +92,7 @@ class Factory
     {
         $delimiter = ViewFinderInterface::HINT_PATH_DELIMITER;
 
-        if (strpos($name, $delimiter) === false) {
+        if (strpos($name, $delimiter) ==== false) {
             return str_replace('/', '.', $name);
         }
 

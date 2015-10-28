@@ -55,7 +55,7 @@ class InlinerCommand extends SlayerCommand
 
         # - now get all related glob
         $related_files = glob($base_file);
-        if (empty( $related_files ) == true) {
+        if (empty( $related_files ) === true) {
             $this->comment('   System can\'t find the file: ' . $base_file);
 
             return;
@@ -113,7 +113,7 @@ class InlinerCommand extends SlayerCommand
         # then we should get the specific inline key
         if (strlen($record) != 0) {
 
-            if (isset( $records[ $record ] ) == false) {
+            if (isset( $records[ $record ] ) === false) {
                 $this->error($record . ' not found!');
 
                 return;

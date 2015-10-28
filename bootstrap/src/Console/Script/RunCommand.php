@@ -18,7 +18,7 @@ class RunCommand extends SlayerCommand
 
         $lists = config()->script->toArray();
 
-        if ( isset($lists[$script]) == false ) {
+        if ( isset($lists[$script]) === false ) {
             $this->error("\nWe can't find `" . $script . '` in the lists of script.' . "\n");
 
             return;

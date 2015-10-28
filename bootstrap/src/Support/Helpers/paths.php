@@ -59,7 +59,7 @@ if (!function_exists('sandbox_path')) {
 if (!function_exists('cp')) {
     function cp($source, $dest)
     {
-        if (is_dir($dest) == false) {
+        if (is_dir($dest) === false) {
             mkdir($dest, 0755, true);
         }
 
@@ -80,7 +80,7 @@ if (!function_exists('cp')) {
                 # check if there is existing directory
                 # else create.
                 $_temp_dir = $dest . '/' . $iterator->getSubPathName();
-                if (is_dir($_temp_dir) == false) {
+                if (is_dir($_temp_dir) === false) {
                     mkdir($dest . '/' . $iterator->getSubPathName(), true);
                 }
             } # else, it is a file
@@ -102,7 +102,7 @@ if (!function_exists('remove_double_slash')) {
 if (!function_exists('folder_files')) {
     function folder_files($path)
     {
-        if ( file_exists($path) == false ) {
+        if ( file_exists($path) === false ) {
             return [];
         }
 

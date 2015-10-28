@@ -25,7 +25,7 @@ class RouteCommand extends SlayerCommand
         $module = $this->input->getArgument('module');
         $hasDir = is_dir(config()->path->app . $module);
 
-        if ( $hasDir == false ) {
+        if ( $hasDir === false ) {
             $this->error('Module not found `' . $module . '`');
 
             return;
@@ -33,7 +33,7 @@ class RouteCommand extends SlayerCommand
 
         $routesDir = config()->path->app . $module . '/Routes';
 
-        if ( is_dir($routesDir) == false ) {
+        if ( is_dir($routesDir) === false ) {
             $this->error('Routes folder not found from your module: `' . $module . '`');
 
             return;

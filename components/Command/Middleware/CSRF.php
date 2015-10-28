@@ -14,7 +14,7 @@ class CSRF implements Middleware
 
         if ( $request->isPost() ) {
 
-            if ( $security->checkToken() == false ) {
+            if ( $security->checkToken() === false ) {
 
                 # - throw exception or redirect the user
                 # or render a content using

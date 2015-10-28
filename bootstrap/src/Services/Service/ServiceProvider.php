@@ -49,7 +49,7 @@ class ServiceProvider
     {
         $register = $this->register();
 
-        if ($register == false) {
+        if ($register === false) {
             throw new Exception(
                 'register method not found on service "' . get_class($this) . '"'
             );

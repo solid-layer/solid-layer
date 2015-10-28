@@ -21,7 +21,7 @@ class ControllerCommand extends SlayerCommand
 
 
         # - to use emptify
-        if ($this->input->getOption('emptify') == true) {
+        if ($this->input->getOption('emptify') === true) {
             $stub = str_replace('{controllerFunctions}', '', $stub);
         }
 
@@ -48,7 +48,7 @@ class ControllerCommand extends SlayerCommand
         $module = $this->input->getArgument('module');
         $has_dir = is_dir(config()->path->app . $module);
 
-        if ( $has_dir == false ) {
+        if ( $has_dir === false ) {
             $this->error('Module not found `' . $module . '`');
 
             return;
@@ -56,7 +56,7 @@ class ControllerCommand extends SlayerCommand
 
         $controllers_dir = config()->path->app . $module . '/Controllers';
 
-        if ( is_dir($controllers_dir) == false ) {
+        if ( is_dir($controllers_dir) === false ) {
             $this->error('Controllers folder not found from your module: `' . $module . '`');
 
             return;

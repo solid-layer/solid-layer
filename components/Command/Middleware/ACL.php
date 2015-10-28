@@ -18,7 +18,7 @@ class ACL implements Middleware
             $router->getActionName()
         );
 
-        if ( $is_allowed == false ) {
+        if ( $is_allowed === false ) {
             throw new AccessNotAllowedException(
                 'You are not allowed to access this page'
             );

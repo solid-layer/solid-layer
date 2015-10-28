@@ -9,7 +9,7 @@ class Auth
     {
         $password_field = config()->app->auth->password_field;
 
-        if (isset( $records[ $password_field ] ) == false) {
+        if (isset( $records[ $password_field ] ) === false) {
             throw new Exception('Password field not found!');
         }
 
