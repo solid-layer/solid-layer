@@ -1,10 +1,6 @@
 <?php
 namespace Bootstrap\Support\Auth;
 
-use Components\Facades\Slayer\Session;
-use Components\Facades\Slayer\Security;
-use Components\Facades\Slayer\Response;
-
 class Auth
 {
     /**
@@ -54,9 +50,9 @@ class Auth
 
         # - now check if the password given is matched with the
         # existing password recorded.
-        if (Security::checkHash($password, $records->{$password_field})) {
-            Session::set('isAuthenticated', true);
-            Session::set('user', $records);
+        if (di()->get('security')->checkHash($password, $records->{$password_field})) {
+            di()->get('session')->set('isAuthenticated', true);
+            di()->get('session')->set('user', $records);
 
             return true;
         }
@@ -72,7 +68,7 @@ class Auth
     {
         $redirect_to = config()->app->auth->auth_redirect;
 
-        return Response::redirect($redirect_to);
+        return di()->get('response')->redirect($redirect_to);
     }
 
 
@@ -81,7 +77,7 @@ class Auth
      */
     public function check()
     {
-        if (Session::has('isAuthenticated')) {
+        if (di()->get('session')->has('isAuthenticated')) {
             return true;
         }
 
@@ -94,7 +90,7 @@ class Auth
      */
     public function user()
     {
-        return Session::get('user');
+        return di()->get('session')->get('user');
     }
 
 
@@ -103,8 +99,8 @@ class Auth
      */
     public function destroy()
     {
-        Session::remove('isAuthenticated');
-        Session::remove('user');
+        di()->get('session')->remove('isAuthenticated');
+        di()->get('session')->remove('user');
 
         return true;
     }

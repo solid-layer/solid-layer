@@ -1,7 +1,7 @@
 <?php
 namespace Bootstrap\Console\Mail;
 
-use Components\Facades\Slayer\View;
+// use Components\Facades\Slayer\View;
 use Bootstrap\Console\SlayerCommand;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
@@ -50,7 +50,7 @@ class InlinerCommand extends SlayerCommand
 
         # - let's get the views dir combine the record file
         $base_file = remove_double_slash(
-            View::getViewsDir() . $record->file . '.*'
+            di()->get('view')->getViewsDir() . $record->file . '.*'
         );
 
 

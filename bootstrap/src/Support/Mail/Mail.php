@@ -1,7 +1,6 @@
 <?php
 namespace Bootstrap\Support\Mail;
 
-use Components\Facades\Slayer\View;
 use Bootstrap\Contracts\Mail\MailInterface;
 
 class Mail
@@ -45,7 +44,7 @@ class Mail
 
 
         # - render the view as partial
-        $body = View::take($view, $records);
+        $body = di()->get('view')->take($view, $records);
 
 
         # - we need to insert the global mailer 'from'
