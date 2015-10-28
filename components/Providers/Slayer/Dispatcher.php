@@ -23,8 +23,6 @@ class Dispatcher extends ServiceProvider
                 if ($exception instanceof DispatchException) {
 
                     throw new ControllerNotFoundException($exception->getMessage());
-
-                    return false;
                 }
             }
         );

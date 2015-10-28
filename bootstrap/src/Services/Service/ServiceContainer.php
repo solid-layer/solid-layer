@@ -1,8 +1,6 @@
 <?php
 namespace Bootstrap\Services\Service;
 
-use Bootstrap\Exceptions\ServiceAliasNotFoundException;
-
 class ServiceContainer
 {
     private $providers;

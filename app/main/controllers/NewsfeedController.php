@@ -2,7 +2,6 @@
 namespace App\Main\Controllers;
 
 use View;
-use Request;
 
 class NewsfeedController extends Controller
 {

@@ -2,7 +2,6 @@
 namespace Bootstrap\Console\Make;
 
 use Bootstrap\Console\SlayerCommand;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
 class ConsoleCommand extends SlayerCommand

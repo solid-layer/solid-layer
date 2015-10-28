@@ -1,7 +1,6 @@
 <?php
 namespace Components\Providers;
 
-use Aws\Sdk;
 use League\Flysystem\Filesystem;
 use League\Flysystem\MountManager;
 use Bootstrap\Services\Service\ServiceProvider;

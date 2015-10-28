@@ -1,7 +1,6 @@
 <?php
 namespace Bootstrap\Adapters\Blade;
 
-use Log;
 use Phalcon\Mvc\View\Engine;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\View\Engines\CompilerEngine;

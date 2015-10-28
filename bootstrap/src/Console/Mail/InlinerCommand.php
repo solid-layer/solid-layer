@@ -3,7 +3,6 @@ namespace Bootstrap\Console\Mail;
 
 use Bootstrap\Console\SlayerCommand;
 use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Input\InputArgument;
 use TijsVerkoyen\CssToInlineStyles\CssToInlineStyles;
 
 class InlinerCommand extends SlayerCommand

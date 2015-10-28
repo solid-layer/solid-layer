@@ -3,7 +3,6 @@ namespace Bootstrap\Console\Server;
 
 use Bootstrap\Console\SlayerCommand;
 use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Input\InputArgument;
 
 class ServeCommand extends SlayerCommand
 {

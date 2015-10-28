@@ -3,7 +3,6 @@ namespace Bootstrap\Console\App;
 
 use Bootstrap\Console\CLI;
 use Bootstrap\Console\SlayerCommand;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
 class RouteCommand extends SlayerCommand

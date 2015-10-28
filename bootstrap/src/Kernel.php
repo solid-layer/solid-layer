@@ -5,7 +5,6 @@ use Phalcon\Config;
 use Phalcon\Mvc\Application;
 use Bootstrap\Facades\Facade;
 use Phalcon\Di\FactoryDefault;
-use Bootstrap\Exceptions\FileNotFoundException;
 use Bootstrap\Services\Service\ServiceContainer;
 use Components\Exceptions\Handler as ErrorHandler;
 
