@@ -7,10 +7,10 @@ use Bootstrap\Contracts\Mail\MailInterface;
 class MailgunAdapter implements MailInterface
 {
     private $files;
-    private $encryption;
-    private $host;
-    private $username;
-    private $password;
+    // private $encryption;
+    // private $host;
+    // private $username;
+    // private $password;
     private $from;
     private $to;
     private $bcc;
@@ -104,8 +104,6 @@ class MailgunAdapter implements MailInterface
 
     public function send()
     {
-        // dd($this->getData());
-
         $mailgun = new Mailgun($this->getSecretKey());
 
         return $mailgun->sendMessage(

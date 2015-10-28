@@ -9,10 +9,6 @@ use Symfony\Component\Debug\Exception\FlattenException;
 
 class Handler extends Exception
 {
-    private $handler;
-
-    private $function_name = 'handle';
-
     public function __construct($message = null, $code = null, $previous = null)
     {
         parent::__construct($message, $code, $previous);

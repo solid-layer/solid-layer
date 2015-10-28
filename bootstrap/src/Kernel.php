@@ -13,7 +13,6 @@ class Kernel
     private $app;
     private $base;
     private $di;
-    private $error_handler;
     private $path;
 
     /**

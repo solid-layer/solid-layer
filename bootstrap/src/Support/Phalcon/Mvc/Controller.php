@@ -22,7 +22,7 @@ class Controller extends \Phalcon\Mvc\Controller
 
         # - call the ACL loader
 
-        (new AclLoader($instance))->load();
+        (new AclLoader)->load();
 
 
         $command_bus = new CommandBus([$instance]);

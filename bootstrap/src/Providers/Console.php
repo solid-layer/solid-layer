@@ -8,7 +8,6 @@ class Console extends ServiceProvider
 {
     private   $version     = 'v0.0.1';
     private   $description = '[Slayer] brood (c) Daison Carino';
-    private   $application = null;
     protected $alias       = 'console';
 
     public function register()

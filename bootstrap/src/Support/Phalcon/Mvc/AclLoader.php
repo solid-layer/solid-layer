@@ -5,16 +5,11 @@ use Phalcon\Acl\Resource;
 
 class AclLoader
 {
-    private $obj;
     private $action;
-    private $options;
     private $controller;
-    private $only_actions;
-    private $except_actions;
 
-    public function __construct($obj)
+    public function __construct()
     {
-        $this->obj        = $obj;
         $this->controller = di()->get('router')->getControllerName();
         $this->action     = di()->get('router')->getActionName();
     }
