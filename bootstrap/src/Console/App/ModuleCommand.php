@@ -6,9 +6,9 @@ use Bootstrap\Console\SlayerCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use League\Flysystem\Adapter\Local as LeagueFlysystemAdapterLocal;
 
-class MakeCommand extends SlayerCommand
+class ModuleCommand extends SlayerCommand
 {
-    protected $name        = 'app:make';
+    protected $name        = 'app:module';
     protected $description = 'Generate a new module';
 
     private $app;

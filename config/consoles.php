@@ -8,7 +8,7 @@ return [
     # - Pre-registered commands
 
     Bootstrap\Console\App\ControllerCommand::class,
-    Bootstrap\Console\App\MakeCommand::class,
+    Bootstrap\Console\App\ModuleCommand::class,
     Bootstrap\Console\App\RouteCommand::class,
     Bootstrap\Console\Clear\AllCommand::class,
     Bootstrap\Console\Clear\CacheCommand::class,
