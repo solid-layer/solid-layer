@@ -22,7 +22,7 @@ class OptimizeCommand extends SlayerCommand
         $output = CLI::bash([
             'php vendor/classpreloader/console/classpreloader.php compile ' .
             '--config="bootstrap/compiler.php" ' .
-            '--output="'.config()->path->storage.'/slayer/compiled.php" ' .
+            '--output="' . config()->path->storage . '/slayer/compiled.php" ' .
             '--strip_comments=1',
         ]);
 
