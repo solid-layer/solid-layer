@@ -2,7 +2,6 @@
 namespace Bootstrap\Console\App;
 
 use League\Flysystem\Filesystem;
-use Bootstrap\Console\CLI;
 use Bootstrap\Console\SlayerCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use League\Flysystem\Adapter\Local as LeagueFlysystemAdapterLocal;
@@ -44,8 +43,6 @@ class RouteCommand extends SlayerCommand
 
             return;
         }
-
-        $routesDir = config()->path->app . $module . '/Routes';
 
         $module  = $this->input->getArgument('module');
 
