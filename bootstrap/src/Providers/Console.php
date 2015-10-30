@@ -14,8 +14,10 @@ class Console extends ServiceProvider
     {
         $app = new Application($this->description, $this->version);
 
-        foreach (config()->consoles as $console) {
-            $app->add(new $console);
+        if ( php_sapi_name() === 'cli' ) {
+            foreach (config()->consoles as $console) {
+                $app->add(new $console);
+            }
         }
 
         return $app;
