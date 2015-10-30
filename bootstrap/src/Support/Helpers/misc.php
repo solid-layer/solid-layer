@@ -1,22 +1,5 @@
 <?php
 
-
-/*
-|-------------------------------------------------------------
-| Die and Dump
-|-------------------------------------------------------------
-| Was based in laravel framework, this helper helps users to
-| debug arrays or outputs
-*/
-// if (!function_exists('dd')) {
-//     function dd($var)
-//     {
-//         var_dump($var);
-//         exit;
-//     }
-// }
-
-
 /*
 |-------------------------------------------------------------
 | Echo Pre and Exit
@@ -101,5 +84,46 @@ if (!function_exists('iterate_require')) {
 
 
         return $results;
+    }
+}
+
+
+/*
+|-------------------------------------------------------------
+|
+|-------------------------------------------------------------
+|
+*/
+if (!function_exists('stubify')) {
+    function stubify($content, $params)
+    {
+        foreach ($params as $key => $value) {
+            $content = str_replace('{'.$key.'}', $value, $content);
+        }
+
+        return $content;
+    }
+}
+
+
+/*
+|-------------------------------------------------------------
+|
+|-------------------------------------------------------------
+|
+*/
+if (!function_exists('path_to_namespace')) {
+    function path_to_namespace($path)
+    {
+        $path = trim(str_replace('/', ' ', $path));
+        $exploded_path = explode(' ', $path);
+
+        $ret = [];
+
+        foreach ($exploded_path as $word) {
+            $ret[] = ucfirst($word);
+        }
+
+        return studly_case(implode('\\', $ret));
     }
 }

@@ -1,23 +1,38 @@
 <?php
 namespace Bootstrap\Console\App;
 
+use League\Flysystem\Filesystem;
 use Bootstrap\Console\CLI;
 use Bootstrap\Console\SlayerCommand;
 use Symfony\Component\Console\Input\InputArgument;
+use League\Flysystem\Adapter\Local as LeagueFlysystemAdapterLocal;
 
 class RouteCommand extends SlayerCommand
 {
-    protected $name = 'app:route-group';
+    protected $name        = 'app:route';
+    protected $description = 'Generate a new route group';
 
-    protected $description = 'Create a new route group';
+    private $app;
+
+    public function __construct()
+    {
+        $this->app = new Filesystem(
+            new LeagueFlysystemAdapterLocal(config()->path->app, 0)
+        );
+
+        parent::__construct();
+    }
 
     public function slash()
     {
-        $arg_name = ucfirst($this->input->getArgument('name'));
+        $app_path = str_replace(BASE_PATH, '', config()->path->app);
+        $arg_name = studly_case(str_slug($this->input->getArgument('name'), '_'));
 
         $stub = file_get_contents(__DIR__ . '/stubs/makeRoute.stub');
-        $stub = str_replace('{routeName}', $arg_name, $stub);
-        $stub = str_replace('{prefixRouteName}', strtolower($arg_name), $stub);
+        $stub = stubify($stub, [
+            'routeName' => $arg_name,
+            'prefixRouteName' => strtolower($arg_name),
+        ]);
 
         $file_name = $arg_name . 'Routes.php';
 
@@ -32,32 +47,43 @@ class RouteCommand extends SlayerCommand
 
         $routesDir = config()->path->app . $module . '/Routes';
 
-        if ( is_dir($routesDir) === false ) {
+        $module  = $this->input->getArgument('module');
+
+        if ( $this->app->has($module) === false ) {
+            $this->error('Module not found `' . $module . '`');
+
+            return;
+        }
+
+        $routes = $module . '/routes/';
+        if ( $this->app->has($routes) === false ) {
             $this->error('Routes folder not found from your module: `' . $module . '`');
 
             return;
         }
 
-        chdir( $routesDir );
-        $stub = str_replace('{namespace}',           'App\\' . $module . '\\Routes',      $stub);
-        $stub = str_replace('{controllerNamespace}', 'App\\' . $module . '\\Controllers', $stub);
+        $stub = stubify(
+            $stub, [
+                'namespace' => path_to_namespace($app_path . $routes),
+                'controllerNamespace' => path_to_namespace(
+                    $app_path . $module . '/controllers/'
+                )
+            ]
+        );
 
 
-        $this->info('Crafting Route Group...');
+        $this->info('Crafting Route...');
 
-        if ( file_exists($file_name) ) {
+        if ( $this->app->has($file_name) ) {
             $this->error('   Route already exists!');
 
             return;
         }
 
-        file_put_contents($file_name, $stub);
-        $this->comment('   Route has been created!');
+        $this->app->put($routes . $file_name, $stub);
+        $this->info('   ' . $file_name . ' created!');
 
-        chdir(config()->path->root);
-        CLI::bash([
-            'composer dumpautoload',
-        ]);
+        $this->callDumpAutoload();
     }
 
     protected function arguments()

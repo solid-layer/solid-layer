@@ -78,4 +78,11 @@ abstract class SlayerCommand extends Command
     {
         $this->output->writeln("<error>$string</error>");
     }
+
+    public function callDumpAutoload()
+    {
+        CLI::bash([
+            'composer dumpautoload',
+        ]);
+    }
 }

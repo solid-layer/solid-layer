@@ -1,8 +1,3 @@
-    public function initialize()
-    {
-        $this->acl('default');
-    }
-
     public function indexAction()
     {
         return View::make('{controllerName}.index');
@@ -11,7 +6,7 @@
     public function storeAction()
     {
         if ( Request::isPost() ) {
-            // do some stuff....
+            // do some stuff ...
         }
     }
 
@@ -28,13 +23,13 @@
     public function updateAction($id)
     {
         if ( Request::isPost() ) {
-            // do some stuff....
+            // do some stuff ...
         }
     }
 
     public function deleteAction($id)
     {
         if ( Request::isPost() && Request::isAjax() ) {
-            // do some stuff....
+            // do some stuff ...
         }
     }
