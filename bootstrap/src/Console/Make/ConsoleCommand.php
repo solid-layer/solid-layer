@@ -15,9 +15,13 @@ class ConsoleCommand extends SlayerCommand
         $arg_name = ucfirst($this->input->getArgument('name'));
 
         $stub = file_get_contents(__DIR__ . '/stubs/makeConsole.stub');
-        $stub = str_replace('{consoleName}', $arg_name, $stub);
+        $stub = stubify(
+            $stub, [
+                'consoleName' => $arg_name,
+            ]
+        );
 
-        $file_name = $arg_name . 'Command.php';
+        $file_name = $arg_name . '.php';
         chdir(config()->path->console);
         $this->comment('Crafting Console...');
 
