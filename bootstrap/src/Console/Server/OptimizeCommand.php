@@ -13,12 +13,16 @@ class OptimizeCommand extends SlayerCommand
     public function slash()
     {
         $this->info('Removing compiled file...');
-        @unlink(BASE_PATH . '/storage/slayer/compiled.php');
+
+        $compiled_file = BASE_PATH . '/storage/slayer/compiled.php';
+        if ( file_exists($compiled_file) ) {
+            unlink($compiled_file);
+        }
 
         $output = CLI::bash([
             'php vendor/classpreloader/console/classpreloader.php compile ' .
             '--config="bootstrap/compiler.php" ' .
-            '--output="storage/slayer/compiled.php" ' .
+            '--output="'.config()->path->storage.'/slayer/compiled.php" ' .
             '--strip_comments=1',
         ]);
 
