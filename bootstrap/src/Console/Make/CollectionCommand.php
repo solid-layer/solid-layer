@@ -15,7 +15,6 @@ class CollectionCommand extends SlayerCommand
     {
         $arg_name = ucfirst($this->input->getArgument('collection'));
 
-
         $stub = file_get_contents(__DIR__ . '/stubs/makeCollection.stub');
         $stub = str_replace('{collectionName}', $arg_name, $stub);
 
@@ -29,7 +28,7 @@ class CollectionCommand extends SlayerCommand
 
 
         $file_name = $arg_name . '.php';
-        chdir(config()->path->collectionsDir);
+        chdir(config()->path->collections);
         $this->comment('Crafting Collection...');
 
 

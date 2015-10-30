@@ -29,7 +29,7 @@ class ModelCommand extends SlayerCommand
 
 
         $file_name = $arg_name . '.php';
-        chdir(config()->path->modelsDir);
+        chdir(config()->path->models);
         $this->comment('Crafting Model...');
 
 
