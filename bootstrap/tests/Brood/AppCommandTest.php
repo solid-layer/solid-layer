@@ -29,7 +29,7 @@ class AppCommandTest extends PHPUnit_Framework_TestCase
         ]);
 
         $has_file = file_exists(config()->path->app . 'test_module/routes.php');
-        $this->assertTrue($has_file);
+        $this->assertTrue($has_file, 'check if module "test_module" were generated');
 
 
 
@@ -38,7 +38,7 @@ class AppCommandTest extends PHPUnit_Framework_TestCase
         ]);
 
         $has_file = file_exists(config()->path->app . 'test_module/routes/TestRoutes.php');
-        $this->assertTrue($has_file, "check if file exists");
+        $this->assertTrue($has_file, 'check if route "test" were generated');
 
 
 
@@ -47,6 +47,6 @@ class AppCommandTest extends PHPUnit_Framework_TestCase
         ]);
 
         $has_file = file_exists(config()->path->app . 'test_module/controllers/TestController.php');
-        $this->assertTrue($has_file, "Does it have TestController.php");
+        $this->assertTrue($has_file, 'check if controller "test" were generated');
     }
 }
