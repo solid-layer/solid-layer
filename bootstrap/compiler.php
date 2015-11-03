@@ -1,21 +1,15 @@
 <?php
 
-define('BASE_PATH', dirname(__DIR__));
+require dirname(__DIR__) . '/vendor/classpreloader/classpreloader/src/ClassLoader.php';
 
 use ClassPreloader\ClassLoader;
 
-require BASE_PATH . '/vendor/classpreloader/classpreloader/src/ClassLoader.php';
-
 $config = ClassLoader::getIncludes(function (ClassLoader $loader) {
     $loader->register();
+
+    require dirname(__DIR__) . '/bootstrap/autoload.php';
 });
 
-$files = include BASE_PATH . '/config/compile.php';
-
-foreach ($files as $file) {
-    if ( file_exists($file) ) {
-        $config->addFile($file);
-    }
-}
+$config->addExclusiveFilter('/Swift\/Mime\/SimpleMessage/');
 
 return $config;

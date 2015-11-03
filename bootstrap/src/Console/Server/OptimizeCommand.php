@@ -12,12 +12,18 @@ class OptimizeCommand extends SlayerCommand
 
     public function slash()
     {
-        $this->info('Removing compiled file...');
+        $output = CLI::bash([
+            'composer dumpautoload --optimize',
+        ]);
+
+        $this->info('Removing previous compiled file...');
 
         $compiled_file = BASE_PATH . '/storage/slayer/compiled.php';
         if ( file_exists($compiled_file) ) {
             unlink($compiled_file);
         }
+
+        $this->comment( $output );
 
         $output = CLI::bash([
             'php vendor/classpreloader/console/classpreloader.php compile ' .
