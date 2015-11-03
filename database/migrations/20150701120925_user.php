@@ -13,7 +13,7 @@ class User extends AbstractMigration
             ->addColumn('password', 'string')
             ->addColumn('name', 'string', ['null' => true])
             ->addColumn('token', 'string')
-            ->addColumn('is_activated', 'boolean', ['default' => false])
+            ->addColumn('activated', 'boolean', ['default' => false])
 
             # indexes
             ->addIndex(['email'], ['unique' => true])

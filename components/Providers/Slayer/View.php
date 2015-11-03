@@ -21,7 +21,10 @@ class View extends ServiceProvider
         $view->registerEngines([
 
             '.volt'  =>
-                function ($view, $di) {
+                function (
+                    PhalconView $view,
+                    \Phalcon\Di\FactoryDefault $di
+                ) {
                     $volt = new PhalconVoltEngine($view, $di);
 
                     $volt->setOptions([
@@ -31,7 +34,9 @@ class View extends ServiceProvider
 
                     $compiler = $volt->getCompiler();
 
-                    # others
+
+                    # - others
+
                     $compiler->addFunction('di', 'di');
                     $compiler->addFunction('env', 'env');
                     $compiler->addFunction('echo_pre', 'echo_pre');
@@ -39,7 +44,9 @@ class View extends ServiceProvider
                     $compiler->addFunction('dd', 'dd');
                     $compiler->addFunction('config', 'config');
 
-                    # facade
+
+                    # - facade
+
                     $compiler->addFunction('security', 'security');
                     $compiler->addFunction('tag', 'tag');
                     $compiler->addFunction('route', 'route');
@@ -49,8 +56,11 @@ class View extends ServiceProvider
                     $compiler->addFunction('url', 'url');
                     $compiler->addFunction('request', 'request');
 
-                    # paths
+
+                    # - paths
+
                     $compiler->addFunction('base_uri', 'base_uri');
+
 
                     return $volt;
                 },
@@ -59,19 +69,29 @@ class View extends ServiceProvider
             '.blade.php' => BladeAdapter::class,
         ]);
 
-        # ---- instatiate a new event manager
+
+        # - instantiate a new event manager
+
         $event_manager = new EventsManager;
 
-        # ---- after rendering the view
+
+        # - after rendering the view
         # by default, we should destroy the flash
+
         $event_manager->attach("view:afterRender",
-            function ($event, $dispatcher, $exception) {
+            function (
+                \Phalcon\Events\Event $event,
+                PhalconView $dispatcher,
+                \Components\Providers\Slayer\View $exception
+            ) {
 
                 # - this should destroy the flash
+
                 $flash = $dispatcher->getDI()->get('flash');
                 $flash->destroy();
             }
         );
+
 
         $view->setEventsManager($event_manager);
 

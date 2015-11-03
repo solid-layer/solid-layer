@@ -13,7 +13,7 @@ class User extends Model
     public $password;
     public $token;
     protected $name;
-    protected $is_activated;
+    protected $activated;
 
     /**
      * By every request, phalcon will always pull this function
@@ -42,14 +42,14 @@ class User extends Model
 
 
     /**
-     * Set the column is_activated in the table as boolean
+     * Set the column activated in the table as boolean
      *
      * @param boolean $bool a boolean value to be based if activated or not
      * @return mixed
      */
-    public function setIsActivated($bool)
+    public function setActivated($bool)
     {
-        $this->is_activated = (int) $bool;
+        $this->activated = (int) $bool;
 
         return $this;
     }

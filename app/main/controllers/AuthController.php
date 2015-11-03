@@ -142,7 +142,8 @@ class AuthController extends Controller
 
 
             Mail::send('emails.registered-inligned', ['url' => $url],
-                function ($mail) use ($inputs) {
+                function(\Bootstrap\Adapters\Mail\SwiftMailerAdapter $mail)
+                use ($inputs) {
 
                     $mail->to([
                         $inputs['email'],
@@ -203,7 +204,7 @@ class AuthController extends Controller
         $credentials = [
             'email'        => Request::get('email'),
             'password'     => Request::get('password'),
-            'is_activated' => true,
+            'activated' => true,
         ];
 
         if (Auth::attempt($credentials)) {
@@ -246,10 +247,10 @@ class AuthController extends Controller
     public function activateUserAction($token)
     {
         $user = User::find([
-            'token = :token: AND is_activated = :is_activated:',
+            'token = :token: AND activated = :activated:',
             'bind' => [
-                'token'        => $token,
-                'is_activated' => false,
+                'token'     => $token,
+                'activated' => false,
             ],
         ])->getFirst();
 
@@ -268,7 +269,7 @@ class AuthController extends Controller
 
         # - activate the user
 
-        $user->setIsActivated(true);
+        $user->setActivated(true);
 
 
         # - if user fails to save, show an error

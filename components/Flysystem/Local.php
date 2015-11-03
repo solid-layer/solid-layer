@@ -1,7 +1,8 @@
 <?php
 namespace Components\Flysystem;
 
-use League\Flysystem\Adapter\Local as LeagueFlysystemAdapterLocal;
+use League\Flysystem\Adapter\Local as FlyLocal;
+use Bootstrap\Contracts\Flysystem\FlysystemAdapterInterface;
 
 class Local implements FlysystemAdapterInterface
 {
@@ -18,6 +19,6 @@ class Local implements FlysystemAdapterInterface
 
     public function adapter()
     {
-        return new LeagueFlysystemAdapterLocal($this->config['path'], 0);
+        return new FlyLocal($this->config['path'], 0);
     }
 }

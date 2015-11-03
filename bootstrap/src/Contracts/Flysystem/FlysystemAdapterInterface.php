@@ -1,5 +1,5 @@
 <?php
-namespace Components\Flysystem;
+namespace Bootstrap\Contracts\Flysystem;
 
 interface FlysystemAdapterInterface
 {

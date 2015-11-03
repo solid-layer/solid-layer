@@ -51,8 +51,7 @@ class DB extends ServiceProvider
         $event_manager = new EventsManager;
         $event_manager->attach(
             $this->alias,
-            function ($event, $conn) {
-
+            function (\Phalcon\Events\Event $event, \Phalcon\Db\Adapter\Pdo\Mysql $conn) {
                 if ( $event->getType() == 'beforeQuery' ) {
                     $logger = new Logger('DB');
                     $logger->pushHandler(
