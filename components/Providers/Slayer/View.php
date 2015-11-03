@@ -7,7 +7,6 @@ use Phalcon\Events\Manager as EventsManager;
 use Bootstrap\Services\Service\ServiceProvider;
 use Phalcon\Mvc\View\Engine\Php as PhalconEnginePhp;
 use Bootstrap\Support\Phalcon\Mvc\View as PhalconView;
-use Phalcon\Mvc\View\Engine\Volt as PhalconVoltEngine;
 
 class View extends ServiceProvider
 {
