@@ -1,13 +1,13 @@
 <?php
 namespace Bootstrap\Adapters\Volt;
 
-use Phalcon\Di\FactoryDefault;
-use Bootstrap\Support\Phalcon\Mvc\View;
+use Phalcon\DiInterface;
+use Phalcon\Mvc\ViewBaseInterface;
 use Phalcon\Mvc\View\Engine\Volt as PhalconVoltEngine;
 
 class VoltAdapter extends PhalconVoltEngine
 {
-    public function __construct(View $view, FactoryDefault $di)
+    public function __construct(ViewBaseInterface $view, DiInterface $di = NULL)
     {
         parent::__construct($view, $di);
 

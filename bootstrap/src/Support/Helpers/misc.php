@@ -12,7 +12,7 @@ if (!function_exists('echo_pre')) {
     {
         echo '<pre>';
         print_r($var);
-        exit;
+        exit(1);
     }
 }
 
