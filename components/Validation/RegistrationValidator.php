@@ -12,16 +12,16 @@ class RegistrationValidator extends Validation
     public function initialize()
     {
         $this->add('email', new PresenceOf([
-            'message' => 'The email is required',
+            'message' => 'Email is required',
         ]));
 
         $this->add('email', new Email([
-            'message' => 'The email is not valid',
+            'message' => 'Email is not valid',
         ]));
 
         $this->add('email', new Uniqueness([
             'model' => User::class,
-            'message' => 'The email already exists'
+            'message' => 'Email already exist'
         ]));
     }
 }
