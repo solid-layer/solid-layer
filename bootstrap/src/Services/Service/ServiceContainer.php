@@ -1,6 +1,8 @@
 <?php
 namespace Bootstrap\Services\Service;
 
+use Bootstrap\Providers\ServiceProvider;
+
 class ServiceContainer
 {
     private $providers;

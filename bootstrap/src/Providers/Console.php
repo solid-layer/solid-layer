@@ -2,7 +2,6 @@
 namespace Bootstrap\Providers;
 
 use Symfony\Component\Console\Application;
-use Bootstrap\Services\Service\ServiceProvider;
 
 class Console extends ServiceProvider
 {
