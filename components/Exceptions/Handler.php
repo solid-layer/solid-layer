@@ -23,7 +23,7 @@ class Handler extends BaseHandler
         parent::render($exception);
 
 
-        # - the code below will be your custom whoops view
+        # - the code below will be your custom error view
 
         // echo View::take('errors.whoops', [
         //     'exception' => $exception,
