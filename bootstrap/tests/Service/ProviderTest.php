@@ -2,7 +2,7 @@
 
 use Mockery as m;
 use Bootstrap\Services\Service\ServiceContainer;
-use Bootstrap\Services\Service\ServiceProvider;
+use Bootstrap\Providers\ServiceProvider;
 
 class ProviderTest extends PHPUnit_Framework_TestCase
 {
