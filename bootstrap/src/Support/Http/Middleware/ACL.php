@@ -3,7 +3,6 @@ namespace Bootstrap\Support\Http\Middleware;
 
 use Phalcon\Acl\Resource;
 use League\Tactician\Middleware;
-use Bootstrap\Support\Phalcon\Mvc\AclLoader;
 use Bootstrap\Exceptions\AccessNotAllowedException;
 
 class ACL implements Middleware
@@ -40,7 +39,7 @@ class ACL implements Middleware
     {
         $allowed_roles = [];
 
-        foreach ($roles as $role_name => $role) {
+        foreach ( $roles as $role_name => $role ) {
             $allowed_roles[] = $role_name;
         }
 
@@ -51,8 +50,8 @@ class ACL implements Middleware
     {
         $normalized_roles = [];
 
-        foreach ($roles as $role_name => $role) {
-            foreach ($role as $controller) {
+        foreach ( $roles as $role_name => $role ) {
+            foreach ( $role as $controller ) {
 
                 $attr = explode('::', $controller);
 
@@ -61,13 +60,13 @@ class ACL implements Middleware
 
                 $role_found = false;
 
-                foreach ($this->di->get('acl')->getRoles() as $role) {
+                foreach ( $this->di->get('acl')->getRoles() as $role ) {
                     if ($role->getName() == $role_name) {
                         $role_found = true;
                     }
                 }
 
-                if ($role_found == false) {
+                if ( $role_found === false ) {
                     continue;
                 }
 
@@ -82,9 +81,9 @@ class ACL implements Middleware
 
     protected function callResourceManager($normalized_roles)
     {
-        foreach ($normalized_roles as $role_name => $idx) {
-            foreach ($idx as $controllers) {
-                foreach ($controllers as $controller_name => $actions) {
+        foreach ( $normalized_roles as $role_name => $idx ) {
+            foreach ( $idx as $controllers ) {
+                foreach ( $controllers as $controller_name => $actions ) {
 
                     $this->di->get('acl')->addResource(
                         new Resource($controller_name),
