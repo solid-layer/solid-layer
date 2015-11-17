@@ -20,11 +20,6 @@ class Controller extends \Phalcon\Mvc\Controller
         $instance = new $class;
 
 
-        # - call the ACL loader
-
-        (new AclLoader)->load();
-
-
         $command_bus = new CommandBus([$instance]);
         $command_bus->handle( $this );
     }

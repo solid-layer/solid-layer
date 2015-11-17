@@ -2,7 +2,7 @@
 namespace Components\Command\Middleware;
 
 use League\Tactician\Middleware;
-use Bootstrap\Exceptions\AccessNotAllowedException;
+use Bootstrap\Exceptions\CsrfException;
 
 class CSRF implements Middleware
 {
@@ -20,7 +20,7 @@ class CSRF implements Middleware
                 # or render a content using
                 # View::take(<resources.view>);exit;
 
-                throw new AccessNotAllowedException('What are you doing?');
+                throw new CsrfException('What are you doing?');
             }
         }
 

@@ -1,7 +1,9 @@
 <?php
 namespace Components\Exceptions;
 
+use Exception;
 use Bootstrap\Exceptions\Handler as BaseHandler;
+use Bootstrap\Exceptions\AccessNotAllowedException;
 
 class Handler extends BaseHandler
 {
@@ -20,7 +22,24 @@ class Handler extends BaseHandler
 
         # - the code below will print a symfony debugging ui
 
-        parent::render($exception);
+        try {
+            if ( $exception instanceof Exception ) {
+                throw $exception;
+            }
+        }
+
+        catch (AccessNotAllowedException $e) {
+            # - errors coming from ACL or anything that throws from
+            # this class.
+            # - handle it by providing a page that there is no privilege
+            # to access the website.
+
+            dd($e->getMessage());
+        }
+
+        catch(Exception $e) {
+            parent::render($e);
+        }
 
 
         # - the code below will be your custom error view
