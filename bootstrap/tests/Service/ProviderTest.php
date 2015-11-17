@@ -18,7 +18,7 @@ class ProviderTest extends PHPUnit_Framework_TestCase
 
     public function testService()
     {
-        $provider = m::mock('Components\Providers\Slayer\ACL');
+        $provider = m::mock('Bootstrap\Providers\ACL');
         $provider
             ->shouldReceive(
                 'register'
