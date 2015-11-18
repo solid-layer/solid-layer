@@ -9,7 +9,7 @@ return [
     # - To easily track your bugs, by defining it to true, you
     # can get a full error response
 
-    'debug'    => false,
+    'debug' => false,
 
 
     # ----------------------------------------------------------------
@@ -18,7 +18,7 @@ return [
     # - The place where you should supposed to assign which
     # language folder will be used.
 
-    'lang'     => 'en',
+    'lang' => 'en',
 
 
     # ----------------------------------------------------------------
@@ -27,7 +27,7 @@ return [
     # - The system time to be, useful for CRUD records that will
     # based on the timezone
 
-    'timezone'     => 'UTC',
+    'timezone' => 'UTC',
 
 
     # ----------------------------------------------------------------
@@ -36,7 +36,7 @@ return [
     # - Mark true if your domain supports ssl, and to force
     # re-write every url to ssl
 
-    'ssl'      => false,
+    'ssl' => false,
 
 
     # ----------------------------------------------------------------
@@ -45,6 +45,18 @@ return [
     # - Define your own base uri
 
     'base_uri' => 'localhost',
+
+
+    # ----------------------------------------------------------------
+    # Session Name
+    # ----------------------------------------------------------------
+    # - This will be the name of your session located in the browsers
+    # rename it into your own
+    #
+    # - Provide an alphanumeric character without any special
+    # character
+
+    'session' => 'slayer',
 
 
     # ----------------------------------------------------------------
@@ -70,7 +82,7 @@ return [
     # - To be able to send an email, provide your email
     # settings, such as adapters and the like
 
-    'mailer'   => [
+    'mailer' => [
         'adapter'    => env('MAILER_ADAPTER', 'swift'),
         'host'       => env('MAILER_HOST'),
         'port'       => env('MAILER_PORT'),
