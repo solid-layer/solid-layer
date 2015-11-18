@@ -55,7 +55,11 @@ class Auth
         # - now check if the password given is matched with the
         # existing password recorded.
 
-        if (di()->get('security')->checkHash($password, $records->{$password_field})) {
+        if (
+            di()
+                ->get('security')
+                ->checkHash($password, $records->{$password_field})
+        ) {
             di()->get('session')->set('isAuthenticated', true);
             di()->get('session')->set('user', $records);
 
@@ -67,9 +71,14 @@ class Auth
 
     public function redirectIntended()
     {
-        $redirect_to = config()->app->auth->auth_redirect;
+        $redirect_key = config()->app->auth->redirect_key;
+        $redirect_to = di()->get('request')->get($redirect_key);
 
-        return di()->get('response')->redirect($redirect_to);
+        if ( $redirect_to ) {
+            return di()->get('response')->redirect($redirect_to);
+        }
+
+        return false;
     }
 
     public function check()
