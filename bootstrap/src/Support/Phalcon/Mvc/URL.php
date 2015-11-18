@@ -12,7 +12,7 @@ class URL extends PhalconMvcUrl
 
     public function getScheme()
     {
-        if (config()->app->ssl) {
+        if ( config()->app->ssl ) {
             return 'https://';
         }
 
@@ -30,12 +30,12 @@ class URL extends PhalconMvcUrl
 
     public function getRequestUri()
     {
-        return $_SERVER[ 'REQUEST_URI' ];
+        return url_trimmer($_SERVER[ 'REQUEST_URI' ]);
     }
 
     public function previous()
     {
-        return $_SERVER[ 'HTTP_REFERER' ];
+        return url_trimmer($_SERVER[ 'HTTP_REFERER' ]);
     }
 
     public function route($for, $params = [], $pres = [])
@@ -47,9 +47,11 @@ class URL extends PhalconMvcUrl
 
     public function current()
     {
-        $actual_link =
-            $this->getScheme() . $this->getHost() . $this->getRequestUri();
+        return url_trimmer($this->getBaseUri() . $this->getRequestUri());
+    }
 
-        return $actual_link;
+    public function to($path)
+    {
+        return url_trimmer($this->getBaseUri() . '/' . $path);
     }
 }
