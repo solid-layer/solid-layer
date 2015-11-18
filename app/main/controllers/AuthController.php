@@ -75,7 +75,7 @@ class AuthController extends Controller
             # - if there is an error, let's map all the errors
             # into one message
 
-            foreach ($messages as $m) {
+            foreach ( $messages as $m ) {
                 $error_messages .=
                     '<li>' . $m->getMessage() . '</li>';
             }
@@ -129,7 +129,7 @@ class AuthController extends Controller
                 'token'    => $token,
             ]);
 
-            if ($success === false) {
+            if ( $success === false ) {
                 throw new Exception('Cant create an account!');
             }
 
@@ -202,12 +202,12 @@ class AuthController extends Controller
         $this->middleware('csrf');
 
         $credentials = [
-            'email'        => Request::get('email'),
-            'password'     => Request::get('password'),
+            'email'     => Request::get('email'),
+            'password'  => Request::get('password'),
             'activated' => true,
         ];
 
-        if (Auth::attempt($credentials)) {
+        if ( Auth::attempt($credentials) ) {
 
             if ( $redirect = Auth::redirectIntended() ) {
                 return $redirect;
@@ -257,7 +257,7 @@ class AuthController extends Controller
 
         # - return 404, if the condition not found
 
-        if (!$user) {
+        if ( ! $user ) {
             FlashBag::warning(
                 'We cant find your request, please ' .
                 'try again, or contact us.'
@@ -274,9 +274,9 @@ class AuthController extends Controller
 
         # - if user fails to save, show an error
 
-        if ($user->save() === false) {
+        if ( $user->save() === false ) {
 
-            foreach ($user->getMessages() as $message) {
+            foreach ( $user->getMessages() as $message ) {
 
                 FlashBag::error($message);
             }
