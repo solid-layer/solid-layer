@@ -107,7 +107,7 @@ return [
     'auth'     => [
         'model'          => Components\Model\User::class,
         'password_field' => 'password',
-        'auth_redirect'  => '/newsfeed',
+        'redirect_key'   => 'ref',
     ],
 
 
