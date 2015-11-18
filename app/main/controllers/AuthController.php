@@ -209,11 +209,11 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
 
-            if (Request::has('ref') && strlen(Request::get('ref')) != 0) {
-                return Redirect::to(Request::get('ref'));
+            if ( $redirect = Auth::redirectIntended() ) {
+                return $redirect;
             }
 
-            return Auth::redirectIntended();
+            return Redirect::to(URL::to('newsfeed'));
         }
 
         // FlashBag::error(
