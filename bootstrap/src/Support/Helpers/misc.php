@@ -127,3 +127,10 @@ if (!function_exists('path_to_namespace')) {
         return studly_case(implode('\\', $ret));
     }
 }
+
+if (!function_exists('url_trimmer')) {
+    function url_trimmer($url)
+    {
+        return preg_replace('/([^:])(\/{2,})/', '$1/', $url);
+    }
+}
