@@ -20,6 +20,12 @@ env:
 
 before_script:
 
+  # install  phalcon/cphalcon
+  - git clone -q --depth=1 https://github.com/phalcon/cphalcon.git -b ${PHALCON_VERSION}
+  - cd cphalcon/ext; export CFLAGS="-g3 -O1 -fno-delete-null-pointer-checks -Wall"; phpize && ./configure --enable-phalcon && make -j4 && make install && phpenv config-add ../unit-tests/ci/phalcon.ini
+  - php -r 'echo \Phalcon\Version::get()."\n";'
+  - cd ../..
+
   # create 'slayer' database
   - mysql -e 'create database slayer charset=utf8mb4 collate=utf8mb4_unicode_ci;'
 
@@ -31,12 +37,6 @@ before_script:
 
   # copy .env.travis as .env file
   - cp ./vendor/phalconslayer/framework/tests/.env.travis ./.env
-
-  # install  phalcon/cphalcon
-  - git clone -q --depth=1 https://github.com/phalcon/cphalcon.git -b ${PHALCON_VERSION}
-  - cd cphalcon/ext; export CFLAGS="-g3 -O1 -fno-delete-null-pointer-checks -Wall"; phpize && ./configure --enable-phalcon && make -j4 && make install && phpenv config-add ../unit-tests/ci/phalcon.ini
-  - php -r 'echo \Phalcon\Version::get()."\n";'
-  - cd ../..
 
   # run the migration and seeder
   - php brood db:migrate
