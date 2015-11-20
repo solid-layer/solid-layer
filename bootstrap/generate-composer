@@ -80,7 +80,11 @@ $props = [
 
 file_put_contents(
     dirname(__DIR__) . '/composer.json',
-    json_encode($props, JSON_PRETTY_PRINT) . "\n"
+    str_replace(
+        '\/',
+        '/',
+        json_encode($props, JSON_PRETTY_PRINT)."\n"
+    )
 );
 
 print "Running (composer validate):\n";
