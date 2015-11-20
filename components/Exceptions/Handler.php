@@ -2,8 +2,8 @@
 namespace Components\Exceptions;
 
 use Exception;
-use Bootstrap\Exceptions\Handler as BaseHandler;
-use Bootstrap\Exceptions\AccessNotAllowedException;
+use Clarity\Exceptions\Handler as BaseHandler;
+use Clarity\Exceptions\AccessNotAllowedException;
 
 class Handler extends BaseHandler
 {

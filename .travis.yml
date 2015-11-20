@@ -24,7 +24,7 @@ before_script:
   - mysql -e 'create database slayer charset=utf8mb4 collate=utf8mb4_unicode_ci;'
 
   # copy .env.travis as .env file
-  - cp ./bootstrap/tests/.env.travis ./.env
+  - cp ./vendor/phalconslayer/framework/tests/.env.travis ./.env
 
   # run the composer update
   - travis_retry composer self-update
@@ -44,6 +44,6 @@ before_script:
 
 script:
   - chmod a+x ./vendor/bin/phpunit
-  - chmod a+x ./bootstrap/phpunit.xml
-  - ./vendor/bin/phpunit -c ./bootstrap/phpunit.xml
+  - chmod a+x ./vendor/phalconslayer/framework/phpunit.xml
+  - ./vendor/bin/phpunit -c ./vendor/phalconslayer/framework/phpunit.xml
   - php brood db:rollback

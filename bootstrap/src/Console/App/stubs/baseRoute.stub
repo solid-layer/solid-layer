@@ -1,8 +1,0 @@
-<?php
-namespace {namespace};
-
-use Phalcon\Mvc\Router\Group as BaseRouteGroup;
-
-class RouteGroup extends BaseRouteGroup
-{
-}

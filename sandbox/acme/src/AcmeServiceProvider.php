@@ -2,7 +2,7 @@
 namespace Acme\Acme;
 
 use Acme\Acme\App\Console\AcmeConsoleCommand;
-use Bootstrap\Providers\ServiceProvider;
+use Clarity\Providers\ServiceProvider;
 
 class AcmeServiceProvider extends ServiceProvider
 {

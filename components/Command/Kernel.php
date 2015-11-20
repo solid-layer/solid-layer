@@ -2,8 +2,8 @@
 namespace Components\Command;
 
 use Phalcon\Acl\Role as PhalconRole;
-use Bootstrap\Support\Http\Middleware\ACL as HttpACL;
-use Bootstrap\Support\Http\Middleware\Kernel as HttpKernel;
+use Clarity\Support\Http\Middleware\ACL as HttpACL;
+use Clarity\Support\Http\Middleware\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
 {

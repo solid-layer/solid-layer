@@ -3,12 +3,11 @@
 use Dotenv\Dotenv;
 use Phalcon\Config;
 use Phalcon\Mvc\Application;
-use Bootstrap\Facades\Facade;
+use Clarity\Facades\Facade;
 use Phalcon\Di\FactoryDefault;
-use Bootstrap\Services\Service\ServiceContainer;
-use Components\Exceptions\Handler as ErrorHandler;
+use Clarity\Services\Service\ServiceContainer;
 
-class Kernel
+class App
 {
     private $app;
     private $base;
@@ -84,14 +83,6 @@ class Kernel
         $this->di->get('config')->merge( new Config(['path' => $this->path]) );
     }
 
-    protected function loadHelpers()
-    {
-        # - require our collection of helpers before we proceed
-        # to merging all the config files.
-
-        require __DIR__ . '/Support/Helpers/init.php';
-    }
-
     protected function loadConfigFolder()
     {
         # - iterate all the base config files and require
@@ -153,7 +144,6 @@ class Kernel
         # application
 
         $this->app->registerModules(
-            // require $this->base . '/bootstrap/modules.php'
             require config()->path->app . '/modules.php'
         );
     }
@@ -162,7 +152,9 @@ class Kernel
     {
         # - handle errors and exceptions
 
-        (new ErrorHandler)->report();
+        $handler = config()->app->error_handler;
+
+        (new $handler)->report();
     }
 
     /**
@@ -183,8 +175,6 @@ class Kernel
         $this->initializeConfig();
 
         $this->loadConfigPath();
-
-        $this->loadHelpers();
 
         $this->loadConfigFolder();
 

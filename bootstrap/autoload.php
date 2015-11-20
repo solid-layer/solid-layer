@@ -11,6 +11,6 @@ if ( ! extension_loaded('phalcon')) {
 define('BASE_PATH', dirname(__DIR__));
 define('SLAYER_START', microtime(true));
 
-require __DIR__ . '/src/Kernel.php';
+require __DIR__ . '/app.php';
 
-$kernel = (new Kernel(BASE_PATH))->bootstrap();
+$kernel = (new App(BASE_PATH))->bootstrap();

@@ -2,7 +2,7 @@
 namespace Components\Flysystem;
 
 use League\Flysystem\Adapter\Local as FlyLocal;
-use Bootstrap\Contracts\Flysystem\FlysystemAdapterInterface;
+use Clarity\Contracts\Flysystem\FlysystemAdapterInterface;
 
 class Local implements FlysystemAdapterInterface
 {

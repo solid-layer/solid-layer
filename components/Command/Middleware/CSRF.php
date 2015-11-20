@@ -2,7 +2,7 @@
 namespace Components\Command\Middleware;
 
 use League\Tactician\Middleware;
-use Bootstrap\Exceptions\CsrfException;
+use Clarity\Exceptions\CsrfException;
 
 class CSRF implements Middleware
 {

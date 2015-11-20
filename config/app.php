@@ -77,6 +77,14 @@ return [
 
 
     # ----------------------------------------------------------------
+    # Default Error Handler
+    # ----------------------------------------------------------------
+    # - The error handler class that we will be using
+
+    'error_handler' => Components\Exceptions\Handler::class,
+
+
+    # ----------------------------------------------------------------
     # Mailer Settings
     # ----------------------------------------------------------------
     # - To be able to send an email, provide your email
@@ -93,9 +101,9 @@ return [
 
         'classes'    => [
             'swift'   =>
-                Bootstrap\Adapters\Mail\SwiftMailerAdapter::class,
+                Clarity\Adapters\Mail\SwiftMailerAdapter::class,
             'mailgun' =>
-                Bootstrap\Adapters\Mail\MailgunAdapter::class,
+                Clarity\Adapters\Mail\MailgunAdapter::class,
         ],
     ],
 
@@ -116,29 +124,29 @@ return [
     # ----------------------------------------------------------------
 
     'services' => [
-        Bootstrap\Providers\Console::class,
-        Bootstrap\Providers\ACL::class,
-        Bootstrap\Providers\Aliaser::class,
-        Bootstrap\Providers\Auth::class,
-        Bootstrap\Providers\Cache::class,
-        Bootstrap\Providers\DB::class,
-        Bootstrap\Providers\Dispatcher::class,
-        Bootstrap\Providers\Filter::class,
-        Bootstrap\Providers\Flash::class,
-        Bootstrap\Providers\FlashBag::class,
-        Bootstrap\Providers\Lang::class,
-        Bootstrap\Providers\Log::class,
-        Bootstrap\Providers\Mail::class,
-        Bootstrap\Providers\MetadataAdapter::class,
-        Bootstrap\Providers\Mongo::class,
-        Bootstrap\Providers\Redirect::class,
-        Bootstrap\Providers\Request::class,
-        Bootstrap\Providers\Response::class,
-        Bootstrap\Providers\Router::class,
-        Bootstrap\Providers\Session::class,
-        Bootstrap\Providers\URL::class,
-        Bootstrap\Providers\View::class,
-        Bootstrap\Providers\Flysystem::class,
+        Clarity\Providers\Console::class,
+        Clarity\Providers\ACL::class,
+        Clarity\Providers\Aliaser::class,
+        Clarity\Providers\Auth::class,
+        Clarity\Providers\Cache::class,
+        Clarity\Providers\DB::class,
+        Clarity\Providers\Dispatcher::class,
+        Clarity\Providers\Filter::class,
+        Clarity\Providers\Flash::class,
+        Clarity\Providers\FlashBag::class,
+        Clarity\Providers\Lang::class,
+        Clarity\Providers\Log::class,
+        Clarity\Providers\Mail::class,
+        Clarity\Providers\MetadataAdapter::class,
+        Clarity\Providers\Mongo::class,
+        Clarity\Providers\Redirect::class,
+        Clarity\Providers\Request::class,
+        Clarity\Providers\Response::class,
+        Clarity\Providers\Router::class,
+        Clarity\Providers\Session::class,
+        Clarity\Providers\URL::class,
+        Clarity\Providers\View::class,
+        Clarity\Providers\Flysystem::class,
 
 
         # - register your classes below.
@@ -148,27 +156,27 @@ return [
 
 
     'aliases'  => [
-        'ACL'         => Bootstrap\Facades\ACL::class,
-        'Auth'        => Bootstrap\Facades\Auth::class,
-        'Config'      => Bootstrap\Facades\Config::class,
-        'DB'          => Bootstrap\Facades\DB::class,
-        'Filter'      => Bootstrap\Facades\Filter::class,
-        'Flash'       => Bootstrap\Facades\Flash::class,
-        'FlashBag'    => Bootstrap\Facades\FlashBag::class,
-        'Lang'        => Bootstrap\Facades\Lang::class,
-        'Log'         => Bootstrap\Facades\Log::class,
-        'Mail'        => Bootstrap\Facades\Mail::class,
-        'Redirect'    => Bootstrap\Facades\Redirect::class,
-        'Request'     => Bootstrap\Facades\Request::class,
-        'Response'    => Bootstrap\Facades\Response::class,
-        'Route'       => Bootstrap\Facades\Route::class,
-        'Security'    => Bootstrap\Facades\Security::class,
-        'Session'     => Bootstrap\Facades\Session::class,
-        'Tag'         => Bootstrap\Facades\Tag::class,
-        'URL'         => Bootstrap\Facades\URL::class,
-        'View'        => Bootstrap\Facades\View::class,
-        'File'        => Bootstrap\Facades\Flysystem::class,
-        'FileManager' => Bootstrap\Facades\FlysystemManager::class,
+        'ACL'         => Clarity\Facades\ACL::class,
+        'Auth'        => Clarity\Facades\Auth::class,
+        'Config'      => Clarity\Facades\Config::class,
+        'DB'          => Clarity\Facades\DB::class,
+        'Filter'      => Clarity\Facades\Filter::class,
+        'Flash'       => Clarity\Facades\Flash::class,
+        'FlashBag'    => Clarity\Facades\FlashBag::class,
+        'Lang'        => Clarity\Facades\Lang::class,
+        'Log'         => Clarity\Facades\Log::class,
+        'Mail'        => Clarity\Facades\Mail::class,
+        'Redirect'    => Clarity\Facades\Redirect::class,
+        'Request'     => Clarity\Facades\Request::class,
+        'Response'    => Clarity\Facades\Response::class,
+        'Route'       => Clarity\Facades\Route::class,
+        'Security'    => Clarity\Facades\Security::class,
+        'Session'     => Clarity\Facades\Session::class,
+        'Tag'         => Clarity\Facades\Tag::class,
+        'URL'         => Clarity\Facades\URL::class,
+        'View'        => Clarity\Facades\View::class,
+        'File'        => Clarity\Facades\Flysystem::class,
+        'FileManager' => Clarity\Facades\FlysystemManager::class,
 
 
         # register class aliases below.

@@ -1,7 +1,7 @@
 <?php
 namespace Components\Console;
 
-use Bootstrap\Console\SlayerCommand;
+use Clarity\Console\SlayerCommand;
 
 class Console extends SlayerCommand
 {

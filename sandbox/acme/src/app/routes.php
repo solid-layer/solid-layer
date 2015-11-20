@@ -1,6 +1,6 @@
 <?php
 
-use Bootstrap\Facades\Route;
+use Clarity\Facades\Route;
 
 Route::add('/acme/test', [
     'module'     => 'acme',
