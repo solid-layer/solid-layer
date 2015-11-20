@@ -26,9 +26,6 @@ before_script:
   - php -r 'echo \Phalcon\Version::get()."\n";'
   - cd ../..
 
-  # create 'slayer' database
-  - mysql -e 'create database slayer charset=utf8mb4 collate=utf8mb4_unicode_ci;'
-
   # run the composer update
   - travis_retry composer self-update
   - travis_retry composer require phpunit/phpunit=^4.7
@@ -37,6 +34,9 @@ before_script:
 
   # copy .env.travis as .env file
   - cp ./vendor/phalconslayer/framework/tests/.env.travis ./.env
+
+  # create 'slayer' database
+  - mysql -e 'create database slayer charset=utf8mb4 collate=utf8mb4_unicode_ci;'
 
   # run the migration and seeder
   - php brood db:migrate
