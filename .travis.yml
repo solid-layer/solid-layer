@@ -23,14 +23,14 @@ before_script:
   # create 'slayer' database
   - mysql -e 'create database slayer charset=utf8mb4 collate=utf8mb4_unicode_ci;'
 
-  # copy .env.travis as .env file
-  - cp ./vendor/phalconslayer/framework/tests/.env.travis ./.env
-
   # run the composer update
   - travis_retry composer self-update
   - travis_retry composer require phpunit/phpunit=^4.7
   - travis_retry composer require mockery/mockery=^0.9.4
   - travis_retry composer update --prefer-source --no-interaction --prefer-stable
+
+  # copy .env.travis as .env file
+  - cp ./vendor/phalconslayer/framework/tests/.env.travis ./.env
 
   # install  phalcon/cphalcon
   - git clone -q --depth=1 https://github.com/phalcon/cphalcon.git -b ${PHALCON_VERSION}
