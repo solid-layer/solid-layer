@@ -1,6 +1,6 @@
 <?php
 
-use Bootstrap\Support\Phinx\Migration\AbstractMigration;
+use Clarity\Support\Phinx\Migration\AbstractMigration;
 
 class PasswordResets extends AbstractMigration
 {
