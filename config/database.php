@@ -20,7 +20,7 @@ return [
             'username' => env('DB_USERNAME'),
             'password' => env('DB_PASSWORD'),
             'dbname'   => env('DB_DATABASE', 'slayer'),
-            'charset'  => env('DB_CHARSET' , 'utf8'),
+            'charset'  => env('DB_CHARSET', 'utf8'),
             'class'    => Phalcon\Db\Adapter\Pdo\Mysql::class,
         ],
 
@@ -29,7 +29,7 @@ return [
             'username' => env('DB_USERNAME'),
             'password' => env('DB_PASSWORD'),
             'dbname'   => env('DB_DATABASE', 'slayer'),
-            'charset'  => env('DB_CHARSET' , 'utf8'),
+            'charset'  => env('DB_CHARSET', 'utf8'),
             'class'    => Phalcon\Db\Adapter\Pdo\Postgresql::class,
         ],
 
