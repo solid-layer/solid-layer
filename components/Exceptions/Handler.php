@@ -20,7 +20,6 @@ class Handler extends BaseHandler
         // ... notifications | bugsnag | etc...
 
 
-        # - the code below will print a symfony debugging ui
 
         try {
             if ( $exception instanceof Exception ) {
@@ -29,8 +28,10 @@ class Handler extends BaseHandler
         }
 
         catch (AccessNotAllowedException $e) {
+
             # - errors coming from ACL or anything that throws from
             # this class.
+            #
             # - handle it by providing a page that there is no privilege
             # to access the website.
 
@@ -38,6 +39,9 @@ class Handler extends BaseHandler
         }
 
         catch(Exception $e) {
+
+            # - the code below will print a symfony debugging ui
+
             parent::render($e);
         }
 
