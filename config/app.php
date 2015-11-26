@@ -65,7 +65,7 @@ return [
     # - Define your database adapter base it on database.php,
     # the default adapter is mysql
 
-    'db_adapter' => env('DB_ADAPTER'),
+    'db_adapter' => env('DB_ADAPTER', 'mysql'),
 
 
     # ----------------------------------------------------------------
