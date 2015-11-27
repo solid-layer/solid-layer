@@ -1,8 +1,7 @@
 <?php
-
 namespace Acme\Acme\App\Console;
 
-use Bootstrap\Console\SlayerCommand;
+use Clarity\Console\SlayerCommand;
 
 class AcmeConsoleCommand extends SlayerCommand
 {

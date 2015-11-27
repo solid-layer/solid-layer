@@ -2,7 +2,7 @@ server {
     listen 80;
     listen 443 ssl;
     server_name slayer.app;
-    root "/var/www/phalconslayer/public";
+    root "/var/www/phalconslayer/slayer/public";
 
     index index.html index.htm index.php;
 

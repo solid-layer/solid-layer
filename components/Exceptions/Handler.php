@@ -1,10 +1,8 @@
 <?php
-
 namespace Components\Exceptions;
 
-use Bootstrap\Exceptions\Handler as BaseHandler;
-use Phalcon\Mvc\Dispatcher as MvcDispatcher;
-use View;
+use Exception;
+use Clarity\Exceptions\Handler as BaseHandler;
 
 class Handler extends BaseHandler
 {
@@ -15,6 +13,11 @@ class Handler extends BaseHandler
 
     public function render($exception)
     {
+        if ( !($exception instanceof Exception) ) {
+            return;
+        }
+
+
         # - you may also want to extract the error for other purpose
         # such as logging it to your slack notification or bugsnag
 
@@ -26,7 +29,7 @@ class Handler extends BaseHandler
         parent::render($exception);
 
 
-        # - the code below will be your custom whoops view
+        # - the code below will be your custom error view
 
         // echo View::take('errors.whoops', [
         //     'exception' => $exception,

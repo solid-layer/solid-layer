@@ -1,9 +1,8 @@
 <?php
-
 namespace Acme\Acme\App\Controllers;
 
-use Bootstrap\Support\Phalcon\Mvc\Controller as BaseController;
-use Bootstrap\Facades\View;
+use Clarity\Facades\View;
+use Clarity\Support\Phalcon\Mvc\Controller as BaseController;
 
 class AcmeController extends BaseController
 {

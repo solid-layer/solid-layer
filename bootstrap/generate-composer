@@ -3,7 +3,7 @@
 
 $props = [
     'name'     => 'phalconslayer/slayer',
-    "keywords" => [
+    'keywords' => [
         'skeleton', 'boilerplate', 'framework', 'phalcon', 'slayer',
         'bootstrap',
     ],
@@ -11,25 +11,14 @@ $props = [
     'license'     => 'MIT',
 
     'require' => [
-        'classpreloader/classpreloader'     => '^2.0',
-        'classpreloader/console'            => '^1.0',
-        'illuminate/view'                   => '^5.1',
-        'illuminate/support'                => '^5.1',
-        'league/flysystem'                  => '^1.0',
-        'mailgun/mailgun-php'               => '~1.7.2',
-        'monolog/monolog'                   => '^1.15',
-        'robmorgan/phinx'                   => '^0.4.4',
-        'symfony/console'                   => '^2.7',
-        'swiftmailer/swiftmailer'           => '^5.4',
-        'symfony/debug'                     => '^2.7',
-        'symfony/var-dumper'                => '^2.7',
-        'tijsverkoyen/css-to-inline-styles' => '^1.5',
-        'vlucas/phpdotenv'                  => '^2.0',
+        'php'                     => '>=5.5.9',
+        'phalconslayer/framework' => '1.0.*',
     ],
 
     'require-dev' => [
-        "phpunit/phpunit" => "^4.7",
-        "mockery/mockery" => "^0.9.4",
+        'phpunit/phpunit'  => '^4.7',
+        'mockery/mockery'  => '^0.9.4',
+        'fzaninotto/faker' => '~1.4',
     ],
 
 
@@ -40,21 +29,62 @@ $props = [
     # classes listed
 
     'autoload' => [
+
+        # - classmaps are loaded on an array, and it is much more faster
+        # than psr-4, however classmap's should only be applied
+        # for command-based generated class files
+        #
+        # - or else, you should always run "composer dumpautoload"
+        # to refresh the map
+
         'classmap' => [
             'app/',
             'sandbox/',
         ],
+
+
+        # - psr-4 has a different way of process when composer autoloader analyze
+        # the location of the class, it will base on the class 'use' by reverse
+        # engineering the 'use' class to get the full php file path
+        #
+        # - this is why psr-4 is much more slower than classmap, however
+        # if you're focusing on a development part, you should apply psr-4
+        # instead of classmap.
+        #
+        # - and always run "composer dumpautoload --optimize" to convert
+        # psr-4 to classmap in the vendor/composer/autoload_classmap.php
+
         'psr-4' => [
             'Components\\' => 'components/',
-            'Bootstrap\\'  => 'bootstrap/src/',
         ]
+    ],
+    'scripts' => [
+        'post-install-cmd' => [
+            'php brood optimize',
+        ],
+        'post-update-cmd' => [
+            'php brood optimize',
+        ],
+        'post-root-package-install' => [
+            "php -r \"copy('.env.example', '.env');\""
+        ],
+    ],
+    'config' => [
+        'preferred-install' => 'dist',
     ],
 ];
 
 
+
+
+
 file_put_contents(
     dirname(__DIR__) . '/composer.json',
-    json_encode($props, JSON_PRETTY_PRINT)
+    str_replace(
+        '\/',
+        '/',
+        json_encode($props, JSON_PRETTY_PRINT)."\n"
+    )
 );
 
 print "Running (composer validate):\n";

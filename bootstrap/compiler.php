@@ -1,21 +1,40 @@
 <?php
 
-define('BASE_PATH', dirname(__DIR__));
+require dirname(__DIR__) . '/vendor/classpreloader/classpreloader/src/ClassLoader.php';
 
-use ClassPreloader\ClassLoader;
+$config = new \ClassPreloader\Config;
+$loader = new \ClassPreloader\ClassLoader;
 
-require_once BASE_PATH . '/vendor/classpreloader/classpreloader/src/ClassLoader.php';
 
-$config = ClassLoader::getIncludes(function (ClassLoader $loader) {
-    $loader->register();
-});
+# - by calling the register(), this acts as a buffer to get all the
+# php files loaded when calling the file autoload.php
 
-$files = include BASE_PATH . '/config/compile.php';
+$loader->register();
+require dirname(__DIR__) . '/bootstrap/autoload.php';
+$loader->unregister();
 
-foreach ($files as $file) {
-    if ( file_exists($file) ) {
-        $config->addFile($file);
+
+# - the listed php files below are ignored upon running the optimize
+# command.
+#
+# - this refers a namespace closure issues, to make your optimize command
+# work
+
+$ignored = [
+    'symfony/debug/Exception/FlattenException.php',
+    'swiftmailer/swiftmailer/lib/classes/Swift/Mime/SimpleMimeEntity.php',
+];
+
+foreach ( $loader->getFilenames() as $file ) {
+
+    foreach ( $ignored as $ignored_file ) {
+        if ( strpos($file, url_trimmer($ignored_file)) !== false ) {
+            continue 2;
+        }
     }
+
+    $config->addFile($file);
 }
+
 
 return $config;

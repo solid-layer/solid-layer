@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Main\Routes;
 
 class NewsfeedRoutes extends RouteGroup

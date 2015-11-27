@@ -1,14 +1,13 @@
 <?php
-
 namespace Acme\Acme;
 
-use Bootstrap\Services\Service\ServiceProvider;
 use Acme\Acme\App\Console\AcmeConsoleCommand;
+use Clarity\Providers\ServiceProvider;
 
 class AcmeServiceProvider extends ServiceProvider
 {
-    protected $_alias = 'acme';
-    protected $_shared = false;
+    protected $alias  = 'acme';
+    protected $shared = false;
 
     public function getViewsDir()
     {

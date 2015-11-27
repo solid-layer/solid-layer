@@ -5,7 +5,7 @@ return [
     'local' => [
         'class'  => Components\Flysystem\Local::class,
         'config' => [
-            'path' => public_path(),
+            'path' => BASE_PATH,
         ],
     ],
 

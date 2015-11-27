@@ -2,27 +2,12 @@
 
 return [
 
-    # ----------------------------------------------------------------
-    # Register all the roles you have
-    # ----------------------------------------------------------------
-    # - By default we're using 'administrator' and 'user'
+    'default_action' => \Phalcon\Acl::DENY,
 
-    'roles'   => [
-        'administrator',
-        'user',
-    ],
-
-
-
-    # ----------------------------------------------------------------
-    # Filter Classes
-    # ----------------------------------------------------------------
-    # - Register your class to load
-
-    'classes' => [
-        'default' => Components\Filters\Access::class,
-        'csrf'    => Components\Filters\CSRF::class,
-        'auth'    => Components\Filters\Auth::class,
+    'access' => [
+        'guest' => [
+            'Welcome::showSignature',
+        ],
     ],
 
 ]; # - end of return
