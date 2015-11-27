@@ -12,7 +12,7 @@ $props = [
 
     'require' => [
         'php'                     => '>=5.5.9',
-        'phalconslayer/framework' => '^1.0',
+        'phalconslayer/framework' => '1.0.*',
     ],
 
     'require-dev' => [
@@ -68,6 +68,9 @@ $props = [
         'post-root-package-install' => [
             "php -r \"copy('.env.example', '.env');\""
         ],
+    ],
+    'config' => [
+        'preferred-install' => 'dist',
     ],
 ];
 
