@@ -69,6 +69,15 @@ return [
 
 
     # ----------------------------------------------------------------
+    # Default Cache Adapter
+    # ----------------------------------------------------------------
+    # - Define your cache adapter base it on cache.php,
+    # the default adapter is file
+
+    'cache_adapter' => env('CACHE_ADAPTER', 'file'),
+
+
+    # ----------------------------------------------------------------
     # Flysystem
     # ----------------------------------------------------------------
     # - Define your default flysystem
@@ -158,6 +167,7 @@ return [
     'aliases'  => [
         'ACL'         => Clarity\Facades\ACL::class,
         'Auth'        => Clarity\Facades\Auth::class,
+        'Cache'       => Clarity\Facades\Cache::class,
         'Config'      => Clarity\Facades\Config::class,
         'DB'          => Clarity\Facades\DB::class,
         'Filter'      => Clarity\Facades\Filter::class,
