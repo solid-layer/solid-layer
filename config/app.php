@@ -88,9 +88,12 @@ return [
     # ----------------------------------------------------------------
     # Default Error Handler
     # ----------------------------------------------------------------
-    # - The error handler class that we will be using
+    # - This will be our basis to handle mostly our errors
 
-    'error_handler' => Components\Exceptions\Handler::class,
+    'error_handlers' => [
+        Components\Exceptions\Handler::class,
+        Components\Exceptions\CsrfHandler::class,
+    ],
 
 
     # ----------------------------------------------------------------
