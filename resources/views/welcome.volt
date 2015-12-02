@@ -28,6 +28,9 @@
         <a class="btn btn-link" href="http://slayer.readthedocs.org" target="_blank">Let's get Started!</a>
 
         <a class="btn btn-primary btn-xs" href="{{ route('showLoginForm') }}"><span class="glyphicon glyphicon-bookmark"></span> Try sample forms</a>
+
+        <hr>
+        <p>Processing Time: <?php echo slayer_process_time() ?></p>
       </div>
     </body>
 </html>

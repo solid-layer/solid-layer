@@ -2,55 +2,97 @@
 
 return [
 
-    # ------------------------------------------------------------
-    # Application Cache
-    # ------------------------------------------------------------
-    # ---- We need to cache our views and config for 
-    # efficiency, this will never affect user's cache
-    'cache' => true,
 
-
-
-    # ------------------------------------------------------------
+    # ----------------------------------------------------------------
     # Application Debugging
-    # ------------------------------------------------------------
-    # ---- To easily track your bugs using pretty errors (whoops)
+    # ----------------------------------------------------------------
+    # - To easily track your bugs, by defining it to true, you
+    # can get a full error response
+
     'debug' => false,
 
 
-
-    # ------------------------------------------------------------
+    # ----------------------------------------------------------------
     # Language Settings
-    # ------------------------------------------------------------
-    # ---- The place where you should supposed to assign which 
+    # ----------------------------------------------------------------
+    # - The place where you should supposed to assign which
     # language folder will be used.
+
     'lang' => 'en',
 
 
+    # ----------------------------------------------------------------
+    # Default Timezone
+    # ----------------------------------------------------------------
+    # - The system time to be, useful for CRUD records that will
+    # based on the timezone
 
-    # ------------------------------------------------------------
+    'timezone' => 'UTC',
+
+
+    # ----------------------------------------------------------------
     # SSL Support
-    # ------------------------------------------------------------
-    # ---- Mark true if your domain supports ssl, and to force 
+    # ----------------------------------------------------------------
+    # - Mark true if your domain supports ssl, and to force
     # re-write every url to ssl
+
     'ssl' => false,
 
 
-
-    # ------------------------------------------------------------
+    # ----------------------------------------------------------------
     # Base URI
-    # ------------------------------------------------------------
-    # ---- Define your own base uri, using console the default
-    # will be below
+    # ----------------------------------------------------------------
+    # - Define your own base uri
+
     'base_uri' => 'localhost',
 
 
+    # ----------------------------------------------------------------
+    # Session Name
+    # ----------------------------------------------------------------
+    # - This will be the name of your session located in the browsers
+    # rename it into your own
+    #
+    # - Provide an alphanumeric character without any special
+    # character
 
-    # ------------------------------------------------------------
+    'session' => 'slayer',
+
+
+    # ----------------------------------------------------------------
+    # Default Database Adapter
+    # ----------------------------------------------------------------
+    # - Define your database adapter base it on database.php,
+    # the default adapter is mysql
+
+    'db_adapter' => env('DB_ADAPTER', 'mysql'),
+
+
+    # ----------------------------------------------------------------
+    # Flysystem
+    # ----------------------------------------------------------------
+    # - Define your default flysystem
+
+    'flysystem' => 'local',
+
+
+    # ----------------------------------------------------------------
+    # Default Error Handler
+    # ----------------------------------------------------------------
+    # - This will be our basis to handle mostly our errors
+
+    'error_handlers' => [
+        Components\Exceptions\Handler::class,
+        Components\Exceptions\CsrfHandler::class,
+    ],
+
+
+    # ----------------------------------------------------------------
     # Mailer Settings
-    # ------------------------------------------------------------
-    # ---- To be able to send an email, provide your email setting
-    # mailer adapter should be
+    # ----------------------------------------------------------------
+    # - To be able to send an email, provide your email
+    # settings, such as adapters and the like
+
     'mailer' => [
         'adapter'    => env('MAILER_ADAPTER', 'swift'),
         'host'       => env('MAILER_HOST'),
@@ -60,82 +102,88 @@ return [
         'encryption' => env('MAILER_ENCRYPTION'),
         'from'       => env('MAILER_MAIL_FROM'),
 
-        'classes' => [
-            'swift'   => 
-                Bootstrap\Support\Mail\SwiftMailerAdapter::class,
-            'mailgun' => 
-                Bootstrap\Support\Mail\MailgunAdapter::class,
-        ]
+        'classes'    => [
+            'swift'   =>
+                Clarity\Adapters\Mail\SwiftMailerAdapter::class,
+            'mailgun' =>
+                Clarity\Adapters\Mail\MailgunAdapter::class,
+        ],
     ],
 
 
-
-    # ------------------------------------------------------------
+    # ----------------------------------------------------------------
     # Authentication Settings
-    # ------------------------------------------------------------
-    # ---- So, we want to use slayer's model to process auto auth
-    'auth' => [
+    # ----------------------------------------------------------------
 
-        # - pass in your user model
-        'model'          => 'App\Models\User',
-
-        # - on what field will be used for the password
+    'auth'     => [
+        'model'          => Components\Model\User::class,
         'password_field' => 'password',
-
-        # - When calling $this->auth->redirectIntended()
-        'auth_redirect'  => '/newsfeed',
+        'redirect_key'   => 'ref',
     ],
 
 
-
-    # ------------------------------------------------------------
+    # ----------------------------------------------------------------
     # Service Providers
-    # ------------------------------------------------------------
-    'services' => [
-        App\Providers\Slayer\URL::class,
-        App\Providers\Slayer\Console::class,
-        App\Providers\Slayer\Aliaser::class,
-        App\Providers\Slayer\Log::class,
-        App\Providers\Slayer\Cache::class,
-        App\Providers\Slayer\Lang::class,
-        App\Providers\Slayer\Mail::class,
-        App\Providers\Slayer\Flash::class,
-        App\Providers\Slayer\FlashBag::class,
-        App\Providers\Slayer\Redirect::class,
-        App\Providers\Slayer\Auth::class,
-        App\Providers\Slayer\DB::class,
-        App\Providers\Slayer\MetadataAdapter::class,
-        App\Providers\Slayer\Session::class,
-        App\Providers\Slayer\Router::class,
-        App\Providers\Slayer\Response::class,
-        App\Providers\Slayer\Request::class,
-        App\Providers\Slayer\Filter::class,
-        App\Providers\Slayer\ACL::class,
-        App\Providers\Slayer\View::class,
-        App\Providers\Slayer\Dispatcher::class,
+    # ----------------------------------------------------------------
 
-        # - Register your own provider below.
-        Sandbox\MySandBoxServiceProvider::class,
-        App\Providers\AwsServiceProvider::class,
+    'services' => [
+        Clarity\Providers\Console::class,
+        Clarity\Providers\ACL::class,
+        Clarity\Providers\Aliaser::class,
+        Clarity\Providers\Auth::class,
+        Clarity\Providers\Cache::class,
+        Clarity\Providers\DB::class,
+        Clarity\Providers\Dispatcher::class,
+        Clarity\Providers\Filter::class,
+        Clarity\Providers\Flash::class,
+        Clarity\Providers\FlashBag::class,
+        Clarity\Providers\Lang::class,
+        Clarity\Providers\Log::class,
+        Clarity\Providers\Mail::class,
+        Clarity\Providers\MetadataAdapter::class,
+        Clarity\Providers\Mongo::class,
+        Clarity\Providers\Redirect::class,
+        Clarity\Providers\Request::class,
+        Clarity\Providers\Response::class,
+        Clarity\Providers\Router::class,
+        Clarity\Providers\Session::class,
+        Clarity\Providers\URL::class,
+        Clarity\Providers\View::class,
+        Clarity\Providers\Flysystem::class,
+
+
+        # - register your classes below.
+
+        Acme\Acme\AcmeServiceProvider::class,
     ],
 
-    'aliases' => [
-        'ACL'          => Bootstrap\Facades\ACL::class,
-        'Auth'         => Bootstrap\Facades\Auth::class,
-        'Filter'       => Bootstrap\Facades\Filter::class,
-        'Flash'        => Bootstrap\Facades\Flash::class,
-        'FlashBag'     => Bootstrap\Facades\FlashBag::class,
-        'Lang'         => Bootstrap\Facades\Lang::class,
-        'Mail'         => Bootstrap\Facades\Mail::class,
-        'Redirect'     => Bootstrap\Facades\Redirect::class,
-        'Request'      => Bootstrap\Facades\Request::class,
-        'Route'        => Bootstrap\Facades\Route::class,
-        'Security'     => Bootstrap\Facades\Security::class,
-        'Session'      => Bootstrap\Facades\Session::class,
-        'Tag'          => Bootstrap\Facades\Tag::class,
-        'URL'          => Bootstrap\Facades\URL::class,
-        'View'         => Bootstrap\Facades\View::class,
-        'AWS'          => App\Facade\AwsFacade::class,
+
+    'aliases'  => [
+        'ACL'         => Clarity\Facades\ACL::class,
+        'Auth'        => Clarity\Facades\Auth::class,
+        'Config'      => Clarity\Facades\Config::class,
+        'DB'          => Clarity\Facades\DB::class,
+        'Filter'      => Clarity\Facades\Filter::class,
+        'Flash'       => Clarity\Facades\Flash::class,
+        'FlashBag'    => Clarity\Facades\FlashBag::class,
+        'Lang'        => Clarity\Facades\Lang::class,
+        'Log'         => Clarity\Facades\Log::class,
+        'Mail'        => Clarity\Facades\Mail::class,
+        'Redirect'    => Clarity\Facades\Redirect::class,
+        'Request'     => Clarity\Facades\Request::class,
+        'Response'    => Clarity\Facades\Response::class,
+        'Route'       => Clarity\Facades\Route::class,
+        'Security'    => Clarity\Facades\Security::class,
+        'Session'     => Clarity\Facades\Session::class,
+        'Tag'         => Clarity\Facades\Tag::class,
+        'URL'         => Clarity\Facades\URL::class,
+        'View'        => Clarity\Facades\View::class,
+        'File'        => Clarity\Facades\Flysystem::class,
+        'FileManager' => Clarity\Facades\FlysystemManager::class,
+
+
+        # register class aliases below.
+
     ],
 
 ]; # - end of return

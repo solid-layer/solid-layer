@@ -2,25 +2,12 @@
 
 return [
 
-    # ------------------------------------------------------------
-    # Register all the roles you have
-    # ------------------------------------------------------------
-    # ---- By default we're using 'administrator' and 'user'
-    'roles' => [
-        'administrator',
-        'user',
-    ],
+    'default_action' => \Phalcon\Acl::DENY,
 
-
-    
-    # ------------------------------------------------------------
-    # Acl Classes
-    # ------------------------------------------------------------
-    # ---- Register your class to load
-    'classes' => [
-        'default' => App\Acl\Access::class,
-        'csrf'    => App\Acl\CSRF::class,
-        'auth'    => App\Acl\Auth::class,
+    'access' => [
+        'guest' => [
+            'Welcome::showSignature',
+        ],
     ],
 
 ]; # - end of return

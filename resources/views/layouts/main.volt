@@ -11,12 +11,12 @@
         <link rel="stylesheet" type="text/css" href="{{ base_uri('css/bootstrap.min.css') }}">
         <style type="text/css">
             body {
-              background-color: #fefbf9 !important;
+              background-color: #f7f7f7 !important;
             }
         </style>
 
         {% block header %}
-        {% endblock %} 
+        {% endblock %}
     </head>
     <body>
         <div class="container-fluid">
@@ -24,6 +24,6 @@
         </div>
 
         <script type="text/javascript" src="{{ base_uri('js/bootstrap.min.js') }}"></script>
-        {% block footer %}{% endblock %} 
+        {% block footer %}{% endblock %}
     </body>
 </html>

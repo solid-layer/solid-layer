@@ -1,50 +1,33 @@
 <?php
 
-if (! defined('APP_ROOT')) {
-    define('APP_ROOT', dirname(__DIR__));
+define('SLAYER_START', microtime(true));
+define('BASE_PATH', dirname(__DIR__));
 
-    $di = new \Phalcon\Di\FactoryDefault();
-    $app = new \Phalcon\Mvc\Application($di);
+error_reporting(-1);
+
+if ( !extension_loaded('phalcon') ) {
+    echo 'Phalcon extension required.'.PHP_EOL;
+    exit;
 }
 
-# Load all the dependencies via composer
-require_once APP_ROOT . '/vendor/autoload.php';
 
-# Pre-Load the dotenv, to access all .env files
-$dotenv = new Dotenv\Dotenv(APP_ROOT);
-$dotenv->load();
+# - call composer autoload to load all the dependencies
 
-# Injecting config
-$main_config     = APP_ROOT . '/config/.init.php';
-$env_config_file = APP_ROOT . '/config/' . getenv('APP_ENV') . '/.init.php';
+require BASE_PATH . '/vendor/autoload.php';
 
-$di->set('config', function() use ($main_config, $env_config_file) {
-    $config = new \Phalcon\Config( require_once $main_config );
 
-    if (file_exists($env_config_file)) {
-        $env_config = new \Phalcon\Config( require_once $env_config_file );
+# - check if there is existing compiled class
+# then require the file.
 
-        $config->merge( $env_config );
-    }
+$compiled = BASE_PATH .'/storage/slayer/compiled.php';
+if ( file_exists($compiled) && php_sapi_name() != 'cli' ) {
+    require $compiled;
+}
 
-    return $config;
 
-}, true);
+# - instantiate the kernel class and start loading the configurations
+# and the services.
 
-# Phalcon autoloader
-require_once APP_ROOT . '/bootstrap/src/loader.php';
+require BASE_PATH . '/vendor/phalconslayer/framework/src/Kernel.php';
 
-# Load the facade class
-Bootstrap\Facades\Facade::setFacadeApplication($app);
-
-# Get all the helpers
-require_once APP_ROOT . '/bootstrap/src/helpers.php';
-
-# Load all the services
-require_once APP_ROOT . '/bootstrap/src/services.php';
-
-# Get all the routes
-require_once APP_ROOT . '/app/routes.php';
-
-# Register all the modules
-$app->registerModules(config()->modules->toArray());
+$kernel = (new \Clarity\Kernel(BASE_PATH))->bootstrap();

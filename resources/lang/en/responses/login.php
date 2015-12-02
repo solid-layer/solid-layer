@@ -5,5 +5,5 @@ return [
         <h4>Nice!</h4>
         <p>Let\'s try this simple login form.</p>
     ',
-    'no_user' => 'Username or password not found!',
+    'no_user' => 'Email or password not found, please try again!',
 ];

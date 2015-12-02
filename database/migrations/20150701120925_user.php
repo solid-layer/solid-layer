@@ -1,7 +1,6 @@
 <?php
 
-// use Phinx\Migration\AbstractMigration;
-use Bootstrap\Support\Phinx\Migration\AbstractMigration;
+use Clarity\Support\Phinx\Migration\AbstractMigration;
 
 class User extends AbstractMigration
 {
@@ -9,23 +8,28 @@ class User extends AbstractMigration
     {
         $users = $this->table('users');
         $users
+            # columns
             ->addColumn('email', 'string')
-            ->addColumn('username', 'string')
             ->addColumn('password', 'string')
-            ->addColumn('first_name', 'string', ['null' => true])
-            ->addColumn('last_name', 'string', ['null' => true])
+            ->addColumn('name', 'string', ['null' => true])
             ->addColumn('token', 'string')
-            ->addColumn('is_activated', 'boolean', ['default' => false])
+            ->addColumn('activated', 'boolean', ['default' => false])
+
+            # indexes
             ->addIndex(['email'], ['unique' => true])
-            ->addIndex(['username'], ['unique' => true])
-            ->addIndex(['first_name'])
-            ->addIndex(['last_name'])
+            ->addIndex(['name'])
+            ->addIndex(['password'])
             ->addIndex(['token'])
+
+            # created_at and updated_at
             ->addTimestamps()
+
+            # deleted_at
             ->addSoftDeletes()
+
+            # build the entire table
             ->create();
     }
-
 
     public function down()
     {
