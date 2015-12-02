@@ -5,7 +5,7 @@ define('BASE_PATH', dirname(__DIR__));
 
 error_reporting(-1);
 
-if ( !extension_loaded('phalcon') ) {
+if (!extension_loaded('phalcon')) {
     echo 'Phalcon extension required.'.PHP_EOL;
     exit;
 }
@@ -20,7 +20,7 @@ require BASE_PATH . '/vendor/autoload.php';
 # then require the file.
 
 $compiled = BASE_PATH .'/storage/slayer/compiled.php';
-if ( file_exists($compiled) && php_sapi_name() != 'cli' ) {
+if (file_exists($compiled) && php_sapi_name() != 'cli') {
     require $compiled;
 }
 

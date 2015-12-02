@@ -25,10 +25,9 @@ $ignored = [
     'swiftmailer/swiftmailer/lib/classes/Swift/Mime/SimpleMimeEntity.php',
 ];
 
-foreach ( $loader->getFilenames() as $file ) {
-
-    foreach ( $ignored as $ignored_file ) {
-        if ( strpos($file, url_trimmer($ignored_file)) !== false ) {
+foreach ($loader->getFilenames() as $file) {
+    foreach ($ignored as $ignored_file) {
+        if (strpos($file, url_trimmer($ignored_file)) !== false) {
             continue 2;
         }
     }

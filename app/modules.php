@@ -2,14 +2,14 @@
 
 return [
 
-    'main'  => function(Phalcon\Di\FactoryDefault $di) {
+    'main'  => function (Phalcon\Di\FactoryDefault $di) {
 
         $di
             ->get('dispatcher')
             ->setDefaultNamespace('App\Main\Controllers');
     },
 
-    'acme' => function(Phalcon\Di\FactoryDefault $di) {
+    'acme' => function (Phalcon\Di\FactoryDefault $di) {
 
         $acme = $di->get('acme');
 

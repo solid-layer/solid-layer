@@ -13,7 +13,7 @@ class CsrfHandler extends BaseHandler
 
     public function render($exception)
     {
-        if ( !($exception instanceof AccessNotAllowedException) ) {
+        if (!($exception instanceof AccessNotAllowedException)) {
             return;
         }
 
