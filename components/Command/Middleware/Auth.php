@@ -13,8 +13,7 @@ class Auth implements Middleware
         $flash_bag = $di->get('flash_bag');
         $redirect  = $di->get('redirect');
 
-        if ( $auth->check() === false ) {
-
+        if ($auth->check() === false) {
             $flash_bag->error('Please login to access this page.');
 
             $redirect->to(

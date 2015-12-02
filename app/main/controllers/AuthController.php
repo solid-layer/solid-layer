@@ -33,8 +33,7 @@ class AuthController extends Controller
         # or else we need to persists the form by
         # assigning a default value
 
-        if ( Session::has('input') ) {
-
+        if (Session::has('input')) {
             $input = Session::get('input');
 
             Tag::setDefault('email', $input[ 'email' ]);
@@ -64,7 +63,7 @@ class AuthController extends Controller
 
         # - if a message found, then let's process the redirection
 
-        if ( count($messages) ) {
+        if (count($messages)) {
 
             # - let's store the request to session[input]
             # for persistence
@@ -75,7 +74,7 @@ class AuthController extends Controller
             # - if there is an error, let's map all the errors
             # into one message
 
-            foreach ( $messages as $m ) {
+            foreach ($messages as $m) {
                 $error_messages .=
                     '<li>' . $m->getMessage() . '</li>';
             }
@@ -83,13 +82,13 @@ class AuthController extends Controller
 
         # - validate password and repeat password mismatch
 
-        if ( $inputs[ 'password' ] != $inputs[ 'repassword' ] ) {
+        if ($inputs[ 'password' ] != $inputs[ 'repassword' ]) {
             $error_messages .=
                 '<li>Password and Repeat mismatch</li>';
         }
 
 
-        if ( strlen($error_messages) != 0 ) {
+        if (strlen($error_messages) != 0) {
             $error_messages = sprintf('
                 Please check the error below:<br>
                     <ul>%s</ul>',
@@ -119,7 +118,6 @@ class AuthController extends Controller
 
 
         try {
-
             DB::begin();
 
             $user = new User;
@@ -129,7 +127,7 @@ class AuthController extends Controller
                 'token'    => $token,
             ]);
 
-            if ( $success === false ) {
+            if ($success === false) {
                 throw new Exception('Cant create an account!');
             }
 
@@ -142,8 +140,7 @@ class AuthController extends Controller
 
 
             Mail::send('emails.registered-inligned', ['url' => $url],
-                function(\Clarity\Adapters\Mail\SwiftMailerAdapter $mail)
-                use ($inputs) {
+                function (\Clarity\Adapters\Mail\SwiftMailerAdapter $mail) use ($inputs) {
 
                     $mail->to([
                         $inputs['email'],
@@ -156,7 +153,6 @@ class AuthController extends Controller
             );
 
             DB::commit();
-
         } catch (TransactionFailed $e) {
             DB::rollback();
 
@@ -207,9 +203,8 @@ class AuthController extends Controller
             'activated' => true,
         ];
 
-        if ( Auth::attempt($credentials) ) {
-
-            if ( $redirect = Auth::redirectIntended() ) {
+        if (Auth::attempt($credentials)) {
+            if ($redirect = Auth::redirectIntended()) {
                 return $redirect;
             }
 
@@ -257,7 +252,7 @@ class AuthController extends Controller
 
         # - return 404, if the condition not found
 
-        if ( ! $user ) {
+        if (! $user) {
             FlashBag::warning(
                 'We cant find your request, please ' .
                 'try again, or contact us.'
@@ -274,14 +269,11 @@ class AuthController extends Controller
 
         # - if user fails to save, show an error
 
-        if ( $user->save() === false ) {
-
-            foreach ( $user->getMessages() as $message ) {
-
+        if ($user->save() === false) {
+            foreach ($user->getMessages() as $message) {
                 FlashBag::error($message);
             }
         } else {
-
             FlashBag::success(
                 'You have successfully activated your account, ' .
                 'you are now allowed to login.'

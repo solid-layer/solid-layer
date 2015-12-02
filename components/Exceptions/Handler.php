@@ -13,7 +13,7 @@ class Handler extends BaseHandler
 
     public function render($exception)
     {
-        if ( !($exception instanceof Exception) ) {
+        if (!($exception instanceof Exception)) {
             return;
         }
 

@@ -3,7 +3,7 @@ namespace App\Main\Controllers;
 
 use View;
 
-class ErrorController Extends Controller
+class ErrorController extends Controller
 {
     public function whoopsAction()
     {
