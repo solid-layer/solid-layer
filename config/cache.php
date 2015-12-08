@@ -1,6 +1,6 @@
 <?php
 
-# Documentation for Frontend Adapters can found here:
+# Documentation for Frontend Adapters found here:
 # - https://docs.phalconphp.com/en/latest/reference/cache.html#frontend-adapters
 #
 # For Backend Adapters
