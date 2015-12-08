@@ -40,7 +40,7 @@ before_script:
 
   # run the migration and seeder
   - php brood db:migrate
-  - php brood db:seed
+  - php brood db:factory
 
 script:
   - chmod a+x ./vendor/bin/phpunit
