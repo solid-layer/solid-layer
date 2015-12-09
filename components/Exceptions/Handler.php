@@ -1,8 +1,6 @@
 <?php
 namespace Components\Exceptions;
 
-use Exception;
-use ErrorException;
 use Clarity\Exceptions\Handler as BaseHandler;
 
 class Handler extends BaseHandler
