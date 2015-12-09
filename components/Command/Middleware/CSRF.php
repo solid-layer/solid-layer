@@ -2,7 +2,7 @@
 namespace Components\Command\Middleware;
 
 use League\Tactician\Middleware;
-use Clarity\Exceptions\CsrfException;
+use Clarity\Exceptions\AccessNotAllowedException;
 
 class CSRF implements Middleware
 {
@@ -19,7 +19,7 @@ class CSRF implements Middleware
                 # or render a content using
                 # View::take(<resources.view>);exit;
 
-                throw new CsrfException('What are you doing?');
+                throw new AccessNotAllowedException('Token mismatch, what are you doing?');
             }
         }
 
