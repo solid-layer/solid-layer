@@ -13,7 +13,7 @@ class CsrfHandler extends BaseHandler
 
     public function render($exception)
     {
-        if (!($exception instanceof AccessNotAllowedException)) {
+        if ( ! ($exception instanceof AccessNotAllowedException) ) {
             return;
         }
 
@@ -23,7 +23,7 @@ class CsrfHandler extends BaseHandler
         # - handle it by providing a page that there is no privilege
         # to access the website.
         #
-        # - the code below die-dump your exception message,
+        # - the code below prints the exception message,
         # you can point it to your views folder or log the message
         # internally.
 
