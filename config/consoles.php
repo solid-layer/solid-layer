@@ -15,7 +15,7 @@ return [
     Clarity\Console\Clear\LogsCommand::class,
     Clarity\Console\Clear\SessionCommand::class,
     Clarity\Console\Clear\ViewsCommand::class,
-    Clarity\Console\DB\FactoryCommand::class,
+    Clarity\Console\DB\SeedFactory::class,
     Clarity\Console\Mail\InlinerCommand::class,
     Clarity\Console\Make\CollectionCommand::class,
     Clarity\Console\Make\ConsoleCommand::class,
