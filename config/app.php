@@ -86,14 +86,12 @@ return [
 
 
     # ----------------------------------------------------------------
-    # Default Error Handler
+    #  Error Handler
     # ----------------------------------------------------------------
-    # - This will be our basis to handle mostly our errors
+    # - An error handler that dispatches all errors for specific
+    # instance
 
-    'error_handlers' => [
-        Components\Exceptions\Handler::class,
-        Components\Exceptions\CsrfHandler::class,
-    ],
+    'error_handler' => Components\Exceptions\Handler::class,
 
 
     # ----------------------------------------------------------------
