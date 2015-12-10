@@ -10,8 +10,12 @@ class Handler extends BaseHandler
         parent::report();
     }
 
-    public function render($exception)
+    public function render($e)
     {
+        if ($e instanceof AccessNotAllowedException) {
+            (new CsrfHandler)->handle($e);
+        }
+
         # - you may also want to extract the error for other purpose
         # such as logging it to your slack notification or bugsnag
 
@@ -20,13 +24,13 @@ class Handler extends BaseHandler
 
         # - the code below will print a symfony debugging ui
 
-        parent::render($exception);
+        return parent::render($e);
 
 
         # - the code below will be your custom error view
 
         // echo di()->get('view')->take('errors.whoops', [
-        //     'exception' => $exception,
+        //     'e' => $e,
         // ]);
         // exit;
     }
