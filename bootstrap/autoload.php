@@ -3,7 +3,7 @@
 define('SLAYER_START', microtime(true));
 define('BASE_PATH', dirname(__DIR__));
 
-error_reporting(-1);
+error_reporting(0);
 
 if (!extension_loaded('phalcon')) {
     echo 'Phalcon extension required.'.PHP_EOL;
