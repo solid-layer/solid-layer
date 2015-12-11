@@ -2,6 +2,8 @@
 namespace Components\Exceptions;
 
 use Clarity\Exceptions\Handler as BaseHandler;
+use Clarity\Exceptions\ControllerNotFoundException;
+use Clarity\Exceptions\AccessNotAllowedException;
 
 class Handler extends BaseHandler
 {
@@ -13,7 +15,15 @@ class Handler extends BaseHandler
     public function render($e)
     {
         if ($e instanceof AccessNotAllowedException) {
-            (new CsrfHandler)->handle($e);
+            return (new CsrfHandler)->handle($e);
+        }
+
+        if ($e instanceof ControllerNotFoundException) {
+
+            if ( config()->app->debug === 'false' ) {
+
+                return (new PageNotFoundHandler)->handle($e);
+            }
         }
 
         # - you may also want to extract the error for other purpose
@@ -25,13 +35,5 @@ class Handler extends BaseHandler
         # - the code below will print a symfony debugging ui
 
         return parent::render($e);
-
-
-        # - the code below will be your custom error view
-
-        // echo di()->get('view')->take('errors.whoops', [
-        //     'e' => $e,
-        // ]);
-        // exit;
     }
 }
