@@ -26,13 +26,21 @@ class Handler extends BaseHandler
             }
         }
 
+
         # - you may also want to extract the error for other purpose
-        # such as logging it to your slack notification or bugsnag
+        # such as logging it to your slack bot notifier or using
+        # bugsnag
 
         // ... notifications | bugsnag | etc...
 
 
-        # - the code below will print a symfony debugging ui
+
+
+
+        if ( config()->app->debug === 'false' ) {
+
+            return (new FatalHandler)->handle($e);
+        }
 
         return parent::render($e);
     }
