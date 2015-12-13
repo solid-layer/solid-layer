@@ -140,7 +140,7 @@ class AuthController extends Controller
 
 
             Mail::send('emails.registered-inligned', ['url' => $url],
-                function (\Clarity\Adapters\Mail\SwiftMailerAdapter $mail) use ($inputs) {
+                function (\Clarity\Contracts\Mail\MailInterface $mail) use ($inputs) {
 
                     $mail->to([
                         $inputs['email'],

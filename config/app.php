@@ -3,124 +3,165 @@
 return [
 
 
-    # ----------------------------------------------------------------
-    # Application Debugging
-    # ----------------------------------------------------------------
-    # - To easily track your bugs, by defining it to true, you
-    # can get a full error response
+    /*
+    +----------------------------------------------------------------+
+    |\ Application Debugging                                        /|
+    +----------------------------------------------------------------+
+    |
+    | To easily track your bugs, by defining it to true, you
+    | can get a full error response
+    |
+    */
 
     'debug' => false,
 
 
-    # ----------------------------------------------------------------
-    # Language Settings
-    # ----------------------------------------------------------------
-    # - The place where you should supposed to assign which
-    # language folder will be used.
+    /*
+    +----------------------------------------------------------------+
+    |\ Language Settings                                            /|
+    +----------------------------------------------------------------+
+    |
+    | The place where you should supposed to assign which
+    | language folder will be used.
+    |
+    */
 
     'lang' => 'en',
 
 
-    # ----------------------------------------------------------------
-    # Default Timezone
-    # ----------------------------------------------------------------
-    # - The system time to be, useful for CRUD records that will
-    # based on the timezone
+    /*
+    +----------------------------------------------------------------+
+    |\ Default Timezone                                             /|
+    +----------------------------------------------------------------+
+    |
+    | The system time to be, useful for CRUD records that will be
+    | based on the timezone for created, updated, and deleted
+    | timestamps
+    |
+    */
 
     'timezone' => 'UTC',
 
 
-    # ----------------------------------------------------------------
-    # SSL Support
-    # ----------------------------------------------------------------
-    # - Mark true if your domain supports ssl, and to force
-    # re-write every url to ssl
+    /*
+    +----------------------------------------------------------------+
+    |\ SSL Support                                                  /|
+    +----------------------------------------------------------------+
+    |
+    | Mark true if your domain supports ssl, and to force
+    | re-write every url to ssl
+    |
+    */
 
     'ssl' => false,
 
 
-    # ----------------------------------------------------------------
-    # Base URI
-    # ----------------------------------------------------------------
-    # - Define your own base uri
+    /*
+    +----------------------------------------------------------------+
+    |\ Base URI                                                     /|
+    +----------------------------------------------------------------+
+    |
+    | We are defining our base uri, while some of our components
+    | can catch the server defined url, this thing helps our command
+    | line interface (cli)
+    |
+    */
 
     'base_uri' => 'localhost',
 
 
-    # ----------------------------------------------------------------
-    # Session Name
-    # ----------------------------------------------------------------
-    # - This will be the name of your session located in the browsers
-    # rename it into your own
-    #
-    # - Provide an alphanumeric character without any special
-    # character
+    /*
+    +----------------------------------------------------------------+
+    |\ Session Name                                                 /|
+    +----------------------------------------------------------------+
+    |
+    | It will be the name of your session located in the browsers'
+    | cache, rename it to change your session name
+    |
+    | Note: Provide an alphanumeric character without any special
+    | character
+    |
+    */
 
     'session' => 'slayer',
 
 
-    # ----------------------------------------------------------------
-    # Default Database Adapter
-    # ----------------------------------------------------------------
-    # - Define your database adapter base it on database.php,
-    # the default adapter is mysql
+    /*
+    +----------------------------------------------------------------+
+    |\ Database Adapter                                             /|
+    +----------------------------------------------------------------+
+    |
+    | Define your database adapter, base it on database.php config
+    | file, the default adapter is "mysql"
+    |
+    */
 
     'db_adapter' => env('DB_ADAPTER', 'mysql'),
 
 
-    # ----------------------------------------------------------------
-    # Default Cache Adapter
-    # ----------------------------------------------------------------
-    # - Define your cache adapter base it on cache.php,
-    # the default adapter is file
+    /*
+    +----------------------------------------------------------------+
+    |\ Cache Adapter                                                /|
+    +----------------------------------------------------------------+
+    |
+    | Define your cache adapter, base it on cache.php config file,
+    | the default adapter is "file"
+    |
+    */
 
     'cache_adapter' => env('CACHE_ADAPTER', 'file'),
 
 
-    # ----------------------------------------------------------------
-    # Flysystem
-    # ----------------------------------------------------------------
-    # - Define your default flysystem
+    /*
+    +----------------------------------------------------------------+
+    | Flysystem                                                     /|
+    +----------------------------------------------------------------+
+    |
+    | Define your default flysystem
+    |
+    */
 
     'flysystem' => 'local',
 
 
-    # ----------------------------------------------------------------
-    #  Error Handler
-    # ----------------------------------------------------------------
-    # - An error handler that dispatches all errors for specific
-    # instance
+    /*
+    +----------------------------------------------------------------+
+    |\ Error Handler                                                /|
+    +----------------------------------------------------------------+
+    |
+    | An error handler that dispatches all errors for specific
+    | instance
+    |
+    */
 
     'error_handler' => Components\Exceptions\Handler::class,
 
 
-    # ----------------------------------------------------------------
-    # Mailer Settings
-    # ----------------------------------------------------------------
-    # - To be able to send an email, provide your email
-    # settings, such as adapters and the like
+    /*
+    +----------------------------------------------------------------+
+    |\ Mailer Settings                                              /|
+    +----------------------------------------------------------------+
+    |
+    | To be able to send an email, provide your email
+    | settings, such as adapters and the like
+    |
+    */
 
-    'mailer' => [
-        'adapter'    => env('MAILER_ADAPTER', 'swift'),
-        'host'       => env('MAILER_HOST'),
-        'port'       => env('MAILER_PORT'),
-        'username'   => env('MAILER_USERNAME'),
-        'password'   => env('MAILER_PASSWORD'),
-        'encryption' => env('MAILER_ENCRYPTION'),
-        'from'       => env('MAILER_MAIL_FROM'),
-
-        'classes'    => [
-            'swift'   =>
-                Clarity\Adapters\Mail\SwiftMailerAdapter::class,
-            'mailgun' =>
-                Clarity\Adapters\Mail\MailgunAdapter::class,
-        ],
-    ],
+    'mail_adapter' => env('MAIL_ADAPTER', 'swift'),
 
 
-    # ----------------------------------------------------------------
-    # Authentication Settings
-    # ----------------------------------------------------------------
+    /*
+    +----------------------------------------------------------------+
+    |\ Authentication Settings                                      /|
+    +----------------------------------------------------------------+
+    |
+    | This auth settings will help you to easily authenticate your
+    | users from your form inputs.
+    |
+    | Reference:
+    |    AuthController->attemptToLoginAction()
+    |
+    */
 
     'auth'     => [
         'model'          => Components\Model\User::class,
@@ -129,9 +170,20 @@ return [
     ],
 
 
-    # ----------------------------------------------------------------
-    # Service Providers
-    # ----------------------------------------------------------------
+    /*
+    +----------------------------------------------------------------+
+    |\ Service Providers                                            /|
+    +----------------------------------------------------------------+
+    |
+    | A service provider will be stored as a dependency injection (di)
+    | and available to call using the di() function
+    |
+    | e.g:
+    |     di()->get('router')->get(..., [...]);
+    |
+    | or you can use the Facade Class
+    |      Clarity\Facades\Route::get(..., [...]);
+    */
 
     'services' => [
         Clarity\Providers\Console::class,
@@ -164,6 +216,16 @@ return [
         Acme\Acme\AcmeServiceProvider::class,
     ],
 
+
+    /*
+    +----------------------------------------------------------------+
+    |\ Class Aliases                                                /|
+    +----------------------------------------------------------------+
+    |
+    | Instead of using a full class namespace, you could defined
+    | below an alias of your class.
+    |
+    */
 
     'aliases'  => [
         'ACL'         => Clarity\Facades\ACL::class,
