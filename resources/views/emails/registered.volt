@@ -3,12 +3,12 @@
         <title>New Registered User</title>
     </head>
     <body>
-        Hi!<br>
+        Hi!<br><br>
 
         <div clas="well">
             You have successfully registered, to activate your account please click the link below.<br>
             <a href="{{ url }}">{{ url }}</a>
-        </div>
+        </div><br><br>
 
         <p>
         Sincerely Yours,<br>
