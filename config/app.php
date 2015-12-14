@@ -186,6 +186,8 @@ return [
     */
 
     'services' => [
+        Clarity\Providers\Log::class,
+        Clarity\Providers\ErrorHandler::class,
         Clarity\Providers\Console::class,
         Clarity\Providers\ACL::class,
         Clarity\Providers\Aliaser::class,
@@ -197,7 +199,6 @@ return [
         Clarity\Providers\Flash::class,
         Clarity\Providers\FlashBag::class,
         Clarity\Providers\Lang::class,
-        Clarity\Providers\Log::class,
         Clarity\Providers\Mail::class,
         Clarity\Providers\MetadataAdapter::class,
         Clarity\Providers\Mongo::class,
