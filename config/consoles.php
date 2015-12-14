@@ -2,10 +2,16 @@
 
 return [
 
-    # ----------------------------------------------------------------
-    # PhalconSlayer Registered Commands
-    # ----------------------------------------------------------------
-    # - Pre-registered commands
+
+    /*
+    +----------------------------------------------------------------+
+    |\ PhalconSlayer Registered Commands                            /|
+    +----------------------------------------------------------------+
+    |
+    | Register your slayer commands to lists up upon running
+    | `php brood` to your terminal
+    |
+    */
 
     Clarity\Console\App\ControllerCommand::class,
     Clarity\Console\App\ModuleCommand::class,
