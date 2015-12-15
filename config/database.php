@@ -59,9 +59,12 @@ return [
 
     'nosql_adapters' => [
 
-        'mongo_slayer' => [
-            'host'   => 'mongodb:///tmp/mongodb-27017.sock,localhost:27017',
-            'dbname' => 'slayer',
+        'mongo1' => [
+            'host'     => 'localhost',
+            'port'     => '27017',
+            'username' => '',
+            'password' => '',
+            'dbname'   => 'mongo1',
         ],
     ],
 

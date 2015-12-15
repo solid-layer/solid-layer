@@ -105,11 +105,11 @@ return [
     +----------------------------------------------------------------+
     |
     | Define your nosql adapter, base it on database.php config
-    | file, the default adapter is "mongo_slayer"
+    | file, the default adapter is "mongo1"
     |
     */
 
-    'nosql_adapter' => 'mongo_slayer',
+    'nosql_adapter' => 'mongo1',
 
     /*
     +----------------------------------------------------------------+
