@@ -22,6 +22,6 @@ class S3 implements AdapterInterface, ClientInterface
 
     public function getAdapter()
     {
-        return new AwsS3Adapter($this->client(), $this->config['bucket']);
+        return new AwsS3Adapter($this->getClient(), $this->config['bucket']);
     }
 }
