@@ -15,6 +15,11 @@ class CsrfHandler
         # you can point it to your views folder or log the message
         # internally.
 
-        echo $e->getMessage();
+        // echo $e->getMessage();
+
+        echo di()->get('view')->take('errors.whoops', [
+            'e' => $e,
+        ]);
+        exit;
     }
 }
