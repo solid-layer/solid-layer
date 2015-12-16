@@ -10,6 +10,6 @@ class FatalHandler
         echo di()->get('view')->take('errors.whoops', [
             'e' => $e,
         ]);
-        exit;
+        return;
     }
 }

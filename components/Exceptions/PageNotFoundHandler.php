@@ -10,6 +10,6 @@ class PageNotFoundHandler
         echo di()->get('view')->take('errors.404', [
             'e' => $e,
         ]);
-        exit;
+        return;
     }
 }
