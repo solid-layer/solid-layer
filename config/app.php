@@ -222,6 +222,7 @@ return [
         Clarity\Providers\URL::class,
         Clarity\Providers\View::class,
         Clarity\Providers\Flysystem::class,
+        Clarity\Providers\CollectionManager::class,
 
 
         # - register your classes below.
