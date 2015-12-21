@@ -111,6 +111,20 @@ return [
 
     'nosql_adapter' => 'mongo1',
 
+
+    /*
+    +----------------------------------------------------------------+
+    |\ Session Adapter                                              /|
+    +----------------------------------------------------------------+
+    |
+    | Define your session adapter, base it on session.php config file,
+    | the default adapter is "file"
+    |
+    */
+
+    'session_adapter' => env('SESSION_ADAPTER', 'file'),
+
+
     /*
     +----------------------------------------------------------------+
     |\ Cache Adapter                                                /|
