@@ -92,11 +92,11 @@ return [
     +----------------------------------------------------------------+
     |
     | Define your database adapter, base it on database.php config
-    | file, the default adapter is "mysql"
+    | file
     |
     */
 
-    'db_adapter' => env('DB_ADAPTER', 'mysql'),
+    'db_adapter' => env('DB_ADAPTER'),
 
 
     /*
