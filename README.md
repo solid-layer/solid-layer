@@ -1,9 +1,10 @@
 Slayer - Structured Phalcon Framework
 =====================================
 
-<img src="http://phalconist.com/phalconslayer/slayer/default.svg"> [![Build Status](https://travis-ci.org/phalconslayer/slayer.svg?branch=master)](https://travis-ci.org/phalconslayer/slayer)
-
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/5d5e8a5c-62e6-43cf-9d36-39f62cefdcd2/big.png)](https://insight.sensiolabs.com/projects/5d5e8a5c-62e6-43cf-9d36-39f62cefdcd2)
+Rank: <img src="http://phalconist.com/phalconslayer/slayer/default.svg">
+Code Standard: [![SensioLabsInsight](https://insight.sensiolabs.com/projects/5d5e8a5c-62e6-43cf-9d36-39f62cefdcd2/small.png)](https://insight.sensiolabs.com/projects/5d5e8a5c-62e6-43cf-9d36-39f62cefdcd2)
+CI [Master]: [![Build Status](https://travis-ci.org/phalconslayer/slayer.svg?branch=master)](https://travis-ci.org/phalconslayer/slayer)
+CI [Dev]: [![Build Status](https://travis-ci.org/phalconslayer/slayer.svg?branch=dev)](https://travis-ci.org/phalconslayer/slayer)
 
 Slayer is made to support dependencies while still reaching the speed of Phalcon Framework, it is built with extensive packages such as flysystem, symfony components, swiftmailer, phinx and many more (refer to composer.json)
 
