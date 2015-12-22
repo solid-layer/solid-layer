@@ -32,11 +32,6 @@ class QueueWorker extends Console
                     (new $exploded_class[0])->{$method}($this, $job, $body['data']);
                 }
             }
-
-
-            # How many seconds should we stop if there is no job in the queue.
-
-            sleep(5);
         }
     }
 }
