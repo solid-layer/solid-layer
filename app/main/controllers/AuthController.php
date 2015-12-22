@@ -6,7 +6,6 @@ use URL;
 use Tag;
 use Auth;
 use View;
-use Mail;
 use Lang;
 use Queue;
 use Session;
