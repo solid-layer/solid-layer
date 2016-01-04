@@ -6,8 +6,8 @@ use URL;
 use Tag;
 use Auth;
 use View;
-use Mail;
 use Lang;
+use Queue;
 use Session;
 use Request;
 use Redirect;
@@ -138,19 +138,15 @@ class AuthController extends Controller
                 'token' => $token,
             ]);
 
-
-            Mail::send('emails.registered-inligned', ['url' => $url],
-                function (\Clarity\Adapters\Mail\SwiftMailerAdapter $mail) use ($inputs) {
-
-                    $mail->to([
-                        $inputs['email'],
-                    ]);
-
-                    $mail->subject(
-                        'You are now registered successfully.'
-                    );
-                }
-            );
+            Queue::put([
+                'class' => 'Components\Queue\Email@registeredSender',
+                'data'  => [
+                    'template' => 'emails.registered-inligned',
+                    'to'       => $inputs['email'],
+                    'url'      => $url,
+                    'subject'  => 'You are now registered, activation is required.'
+                ],
+            ]);
 
             DB::commit();
         } catch (TransactionFailed $e) {

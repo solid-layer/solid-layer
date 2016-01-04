@@ -1,17 +1,19 @@
 Slayer - Structured Phalcon Framework
 =====================================
 
-<img src="http://phalconist.com/phalconslayer/slayer/default.svg"> [![Build Status](https://travis-ci.org/phalconslayer/slayer.svg?branch=master)](https://travis-ci.org/phalconslayer/slayer)
+#####Phalcon Rank
+<img src="http://phalconist.com/phalconslayer/slayer/default.svg">
 
+#####Code Standard
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/5d5e8a5c-62e6-43cf-9d36-39f62cefdcd2/big.png)](https://insight.sensiolabs.com/projects/5d5e8a5c-62e6-43cf-9d36-39f62cefdcd2)
 
+#####Master Status:
+[![Build Status](https://travis-ci.org/phalconslayer/slayer.svg?branch=master)](https://travis-ci.org/phalconslayer/slayer)
+
+#####Dev Status:
+[![Build Status](https://travis-ci.org/phalconslayer/slayer.svg?branch=dev)](https://travis-ci.org/phalconslayer/slayer)
+
 Slayer is made to support dependencies while still reaching the speed of Phalcon Framework, it is built with extensive packages such as flysystem, symfony components, swiftmailer, phinx and many more (refer to composer.json)
-
-## Base Framework - Phalcon Framework
-
-Phalcon is an open source, full stack framework for PHP written as a C-extension, optimized for high performance. You don’t need to learn or use the C language, since the functionality is exposed as PHP classes ready for you to use. Phalcon also is loosely coupled, allowing you to use its objects as glue components based on the needs of your application.
-
-Phalcon is not only about performance, our goal is to make it robust, rich in features and easy to use!
 
 ## Contributing
 

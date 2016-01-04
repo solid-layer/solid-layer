@@ -4,9 +4,9 @@ return [
 
     'deploy' => [
         'ssh root@website.org',
-        'cd /var/www/slayer/',
+        'cd /var/www/phalconslayer/slayer/',
         'git pull origin master',
-        'php slayer db:migrate',
+        'php brood db:migrate',
         'composer update',
         'composer dumpautoload --optimize',
     ],
@@ -14,11 +14,11 @@ return [
     'pull' => [
         'cd ' . BASE_PATH,
         'git pull origin master',
-        'php slayer clear:cache',
-        'php slayer clear:logs',
-        'php slayer clear:session',
-        'php slayer clear:views',
-        'php slayer db:migrate',
+        'php brood clear:cache',
+        'php brood clear:logs',
+        'php brood clear:session',
+        'php brood clear:views',
+        'php brood db:migrate',
         'composer update',
         'composer dumpautoload',
     ],

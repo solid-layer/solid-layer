@@ -9,6 +9,7 @@ $env = env('APP_ENV');
 return [
     'paths'        => [
         'migrations' => '%%PHINX_CONFIG_DIR%%/database/migrations',
+        'seeds'      => '%%PHINX_CONFIG_DIR%%/database/seeders',
     ],
     'environments' => [
         'default_migration_table' => 'migrations',

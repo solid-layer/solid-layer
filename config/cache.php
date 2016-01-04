@@ -1,6 +1,6 @@
 <?php
 
-# Documentation for Frontend Adapters can found here:
+# Documentation for Frontend Adapters found here:
 # - https://docs.phalconphp.com/en/latest/reference/cache.html#frontend-adapters
 #
 # For Backend Adapters
@@ -14,8 +14,8 @@ return [
             'frontend' => Phalcon\Cache\Frontend\Data::class,
             'lifetime' => 172800,
             'options'  => [
-                'prefix'   => '',
                 'cacheDir' => BASE_PATH . '/storage/cache/',
+                'prefix'   => '_slayer_',
             ],
         ],
 
@@ -24,12 +24,10 @@ return [
             'frontend' => Phalcon\Cache\Frontend\Data::class,
             'lifetime' => 172800,
             'options'  => [
-                'prefix'     => '',
-                'host'       => '',
-                'port'       => '',
-                'auth'       => '',
+                'host'       => '127.0.0.1',
+                'port'       => '6379',
                 'persistent' => false,
-                'index'      => '',
+                'prefix'     => '_slayer_',
             ],
         ],
 
@@ -38,10 +36,10 @@ return [
             'frontend' => Phalcon\Cache\Frontend\Data::class,
             'lifetime' => 172800,
             'options'  => [
-                'prefix'     => '',
-                'host'       => '',
-                'port'       => '',
+                'host'       => '127.0.0.1',
+                'port'       => '11211',
                 'persistent' => false,
+                'prefix'     => '_slayer_',
             ],
         ],
 
@@ -50,10 +48,10 @@ return [
             'frontend' => Phalcon\Cache\Frontend\Data::class,
             'lifetime' => 172800,
             'options'  => [
-                'prefix'     => '',
                 'server'     => '',
                 'db'         => '',
                 'collection' => '',
+                'prefix'     => '_slayer_',
             ],
         ],
 
@@ -62,7 +60,7 @@ return [
             'frontend' => Phalcon\Cache\Frontend\Data::class,
             'lifetime' => 172800,
             'options'  => [
-                'prefix' => '',
+                'prefix' => '_slayer_',
             ],
         ],
 
@@ -71,7 +69,7 @@ return [
             'frontend' => Phalcon\Cache\Frontend\Data::class,
             'lifetime' => 172800,
             'options'  => [
-                'prefix' => '',
+                'prefix' => '_slayer_',
             ],
         ],
 

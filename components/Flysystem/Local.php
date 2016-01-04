@@ -2,9 +2,9 @@
 namespace Components\Flysystem;
 
 use League\Flysystem\Adapter\Local as FlyLocal;
-use Clarity\Contracts\Flysystem\FlysystemAdapterInterface;
+use Clarity\Contracts\Flysystem\AdapterInterface;
 
-class Local implements FlysystemAdapterInterface
+class Local implements AdapterInterface
 {
     private $config;
 
@@ -13,11 +13,7 @@ class Local implements FlysystemAdapterInterface
         $this->config = $config;
     }
 
-    public function client()
-    {
-    }
-
-    public function adapter()
+    public function getAdapter()
     {
         return new FlyLocal($this->config['path'], 0);
     }
