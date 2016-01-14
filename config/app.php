@@ -92,11 +92,11 @@ return [
     +----------------------------------------------------------------+
     |
     | Define your database adapter, base it on database.php config
-    | file, the default adapter is "mysql"
+    | file
     |
     */
 
-    'db_adapter' => env('DB_ADAPTER', 'mysql'),
+    'db_adapter' => env('DB_ADAPTER'),
 
 
     /*
@@ -111,6 +111,7 @@ return [
 
     'nosql_adapter' => 'mongo1',
 
+
     /*
     +----------------------------------------------------------------+
     |\ Cache Adapter                                                /|
@@ -122,6 +123,32 @@ return [
     */
 
     'cache_adapter' => env('CACHE_ADAPTER', 'file'),
+
+
+    /*
+    +----------------------------------------------------------------+
+    |\ Queue Adapter                                                /|
+    +----------------------------------------------------------------+
+    |
+    | Define your queue adapter, base it on queue.php config file,
+    | the default adapter is "beanstalk"
+    |
+    */
+
+    'queue_adapter' => env('QUEUE_ADAPTER', 'beanstalk'),
+
+
+    /*
+    +----------------------------------------------------------------+
+    |\ Session Adapter                                              /|
+    +----------------------------------------------------------------+
+    |
+    | Define your session adapter, base it on session.php config file,
+    | the default adapter is "file"
+    |
+    */
+
+    'session_adapter' => env('SESSION_ADAPTER', 'file'),
 
 
     /*
@@ -160,6 +187,19 @@ return [
     */
 
     'mail_adapter' => env('MAIL_ADAPTER', 'swift'),
+
+
+    /*
+    +----------------------------------------------------------------+
+    |\ Logging Time                                                 /|
+    +----------------------------------------------------------------+
+    |
+    | Try to choose "monthly", "daily", "hourly" to log separate files
+    | else provide a boolean false to disable
+    |
+    */
+
+    'logging_time' => 'hourly',
 
 
     /*
@@ -219,6 +259,7 @@ return [
         Clarity\Providers\Response::class,
         Clarity\Providers\Router::class,
         Clarity\Providers\Session::class,
+        Clarity\Providers\Queue::class,
         Clarity\Providers\URL::class,
         Clarity\Providers\View::class,
         Clarity\Providers\Flysystem::class,
@@ -247,12 +288,15 @@ return [
         'Cache'       => Clarity\Facades\Cache::class,
         'Config'      => Clarity\Facades\Config::class,
         'DB'          => Clarity\Facades\DB::class,
+        'File'        => Clarity\Facades\Flysystem::class,
+        'FileManager' => Clarity\Facades\FlysystemManager::class,
         'Filter'      => Clarity\Facades\Filter::class,
         'Flash'       => Clarity\Facades\Flash::class,
         'FlashBag'    => Clarity\Facades\FlashBag::class,
         'Lang'        => Clarity\Facades\Lang::class,
         'Log'         => Clarity\Facades\Log::class,
         'Mail'        => Clarity\Facades\Mail::class,
+        'Queue'       => Clarity\Facades\Queue::class,
         'Redirect'    => Clarity\Facades\Redirect::class,
         'Request'     => Clarity\Facades\Request::class,
         'Response'    => Clarity\Facades\Response::class,
@@ -262,8 +306,6 @@ return [
         'Tag'         => Clarity\Facades\Tag::class,
         'URL'         => Clarity\Facades\URL::class,
         'View'        => Clarity\Facades\View::class,
-        'File'        => Clarity\Facades\Flysystem::class,
-        'FileManager' => Clarity\Facades\FlysystemManager::class,
 
 
         # register class aliases below.
