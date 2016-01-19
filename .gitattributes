@@ -5,6 +5,7 @@
 /README.md export-ignore
 /.travis.yml export-ignore
 * text=auto
-*.css linguist-vendored=false
-*.less linguist-vendored=false
-*.volt linguist-vendored=false
+*.css linguist-vendored
+*.js linguist-vendored
+*.less linguist-vendored
+*.volt linguist-vendored
