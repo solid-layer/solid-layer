@@ -30,4 +30,13 @@ if (file_exists($compiled) && php_sapi_name() != 'cli') {
 # - instantiate the kernel class and start loading the configurations
 # and the services.
 
-$kernel = new Clarity\Kernel(BASE_PATH);
+$kernel = new Clarity\Kernel;
+
+$path = require url_trimmer(BASE_PATH.'/config/path.php');
+$modules = require url_trimmer(BASE_PATH.'/app/modules.php');
+
+$kernel
+    ->setPath($path)
+    ->setModules($modules)
+    ->setDotEnvPath(url_trimmer(BASE_PATH.'/.env'))
+    ->initialize();
