@@ -22,29 +22,17 @@ class AuthController extends Controller
 {
     public function showRegistrationFormAction()
     {
-        # - just the info message
-
         FlashBag::warning(
             Lang::get('responses/register.pre_flash_message')
         );
 
-
-        # - by default there is no session[input] found
-        # or else we need to persists the form by
-        # assigning a default value
-
-        if (Session::has('input')) {
+        if ( Session::has('input') ) {
             $input = Session::get('input');
 
-            Tag::setDefault('email', $input[ 'email' ]);
+            Tag::setDefault('email', $input['email']);
 
             Session::remove('input');
         }
-
-
-        # - by default, phalcon is smart enough to get
-        # 'auth.showRegistrationForm' as
-        # '<controller>.<action>'
 
         return View::make('auth.showRegistrationForm');
     }
@@ -64,16 +52,16 @@ class AuthController extends Controller
 
             foreach ($messages as $m) {
                 $error_messages .=
-                    '<li>' . $m->getMessage() . '</li>';
+                    '<li>'.$m->getMessage().'</li>';
             }
         }
 
-        if ($inputs[ 'password' ] != $inputs[ 'repassword' ]) {
+        if ( $inputs[ 'password' ] !== $inputs[ 'repassword' ] ) {
             $error_messages .=
                 '<li>Password and Repeat mismatch</li>';
         }
 
-        if (strlen($error_messages) != 0) {
+        if ( strlen($error_messages) != 0 ) {
             $error_messages = sprintf('
                 Please check the error below:<br>
                     <ul>%s</ul>',
@@ -85,7 +73,7 @@ class AuthController extends Controller
             return Redirect::to(URL::previous());
         }
 
-        $token = sha1(uniqid() . md5(
+        $token = sha1(uniqid().md5(
                 str_random() .
                 date('Ymdhis') .
                 uniqid()
