@@ -53,7 +53,9 @@ return [
     |
     */
 
-    'ssl' => false,
+    'ssl' => [
+        'main' => false,
+    ],
 
 
     /*
@@ -67,7 +69,9 @@ return [
     |
     */
 
-    'base_uri' => 'localhost',
+    'base_uri' => [
+        'main' => 'localhost',
+    ],
 
 
     /*
