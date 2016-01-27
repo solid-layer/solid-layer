@@ -34,7 +34,7 @@
         <p>Structured Phalcon Framework</p>
         <a class="btn btn-danger btn-xs" href="http://www.github.com/phalconslayer/docs" target="_blank">Let's get Started!</a>
 
-        <a class="btn btn-default btn-xs" href="{{ route('showLoginForm') }}"><span class="glyphicon glyphicon-bookmark"></span> Try sample forms</a>
+        <a class="btn btn-default btn-xs" href="{{ route('trySampleForms') }}"><span class="glyphicon glyphicon-bookmark"></span> Try sample forms</a>
 
         <hr>
         <div class="footer">

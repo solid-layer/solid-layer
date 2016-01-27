@@ -20,18 +20,19 @@ use Phalcon\Mvc\Model\Transaction\Failed as TransactionFailed;
 
 class AuthController extends Controller
 {
+    public function initialize()
+    {
+        $this->middleware('acl');
+    }
+
     public function showRegistrationFormAction()
     {
-        FlashBag::warning(
-            Lang::get('responses/register.pre_flash_message')
-        );
-
         if ( Session::has('input') ) {
+
             $input = Session::get('input');
+            Session::remove('input');
 
             Tag::setDefault('email', $input['email']);
-
-            Session::remove('input');
         }
 
         return View::make('auth.showRegistrationForm');
@@ -40,9 +41,9 @@ class AuthController extends Controller
 
     public function storeRegistrationFormAction()
     {
+        $inputs = $this->request->get();
+        $validator = new RegistrationValidator;
         $error_messages = '';
-        $inputs         = $this->request->get();
-        $validator      = new RegistrationValidator;
 
         $messages = $validator->validate($inputs);
 
@@ -51,12 +52,11 @@ class AuthController extends Controller
             Session::set('input', $this->request->get());
 
             foreach ($messages as $m) {
-                $error_messages .=
-                    '<li>'.$m->getMessage().'</li>';
+                $error_messages .= '<li>'.$m->getMessage().'</li>';
             }
         }
 
-        if ( $inputs[ 'password' ] !== $inputs[ 'repassword' ] ) {
+        if ( $inputs['password'] !== $inputs['repassword'] ) {
             $error_messages .=
                 '<li>Password and Repeat mismatch</li>';
         }
@@ -85,8 +85,8 @@ class AuthController extends Controller
 
             $user = new User;
             $success = $user->create([
-                'email'    => $inputs[ 'email' ],
-                'password' => Security::hash($inputs[ 'password' ]),
+                'email'    => $inputs['email'],
+                'password' => Security::hash($inputs['password']),
                 'token'    => $token,
             ]);
 
@@ -132,13 +132,6 @@ class AuthController extends Controller
 
     public function showLoginFormAction()
     {
-        FlashBag::notice(
-
-            Lang::get(
-                'responses/login.pre_flash_message'
-            )
-        );
-
         return View::make('auth.showLoginForm');
     }
 

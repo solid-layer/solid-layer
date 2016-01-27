@@ -1,8 +1,6 @@
 <?php
 namespace App\Main\Controllers;
 
-use View;
-
 class NewsfeedController extends Controller
 {
     public function initialize()
@@ -12,6 +10,6 @@ class NewsfeedController extends Controller
 
     public function indexAction()
     {
-        return View::make('newsfeed.showLandingPage');
+        return $this->view->make('newsfeed.showLandingPage');
     }
 }
