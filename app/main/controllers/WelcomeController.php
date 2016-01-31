@@ -5,7 +5,6 @@ use URL;
 use Lang;
 use Redirect;
 use FlashBag;
-
 use Components\Model\User;
 
 class WelcomeController extends Controller
