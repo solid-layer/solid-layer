@@ -43,7 +43,7 @@ return [
             # Something Like:
             #       'Welcome|index,showSignature,showDashboard'
 
-            'Welcome|showSignature',
+            'Welcome|showSignature,trySampleForms',
         ],
     ],
 
