@@ -12,6 +12,7 @@
     "license": "MIT",
     "require": {
         "php": ">=5.5.9",
+        "vlucas/phpdotenv": "^2.0",
         "phalconslayer/framework": "dev-dev"
     },
     "require-dev": {

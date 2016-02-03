@@ -265,7 +265,7 @@ return [
         Clarity\Providers\Session::class,
         Clarity\Providers\Queue::class,
         Clarity\Providers\URL::class,
-        Clarity\Providers\View::class,
+        Clarity\View\ViewServiceProvider::class,
         Clarity\Providers\Flysystem::class,
         Clarity\Providers\CollectionManager::class,
 

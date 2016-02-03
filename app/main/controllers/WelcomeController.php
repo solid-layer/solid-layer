@@ -9,11 +9,6 @@ use Components\Model\User;
 
 class WelcomeController extends Controller
 {
-    public function initialize()
-    {
-        $this->middleware('acl');
-    }
-
     /**
      * Show the Slayer's introduction
      *

@@ -20,11 +20,6 @@ use Phalcon\Mvc\Model\Transaction\Failed as TransactionFailed;
 
 class AuthController extends Controller
 {
-    public function initialize()
-    {
-        $this->middleware('acl');
-    }
-
     public function showRegistrationFormAction()
     {
         if ( Session::has('input') ) {
