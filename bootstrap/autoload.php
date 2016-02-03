@@ -48,10 +48,13 @@ if (file_exists($compiled) && php_sapi_name() != 'cli') {
 |
 */
 
-$dotenv = new Dotenv\Dotenv(
-    dirname(url_trimmer(BASE_PATH.'/.env'))
-);
-$dotenv->load();
+if (file_exists(BASE_PATH.'/.env')) {
+    $dotenv = new Dotenv\Dotenv(
+        dirname(url_trimmer(BASE_PATH.'/.env'))
+    );
+
+    $dotenv->load();
+}
 
 
 /*

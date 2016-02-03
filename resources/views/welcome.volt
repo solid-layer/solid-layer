@@ -10,7 +10,7 @@
         body {
           font-family: 'Josefin Sans', sans-serif;
           color: #FC6A3B;
-          background-color: #F1F1F1;
+          background-color: #F7F7F7;
         }
         #frameworkTitle {
           font-family: 'Dancing Script', cursive;
