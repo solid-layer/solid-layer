@@ -5,12 +5,8 @@ use Clarity\Support\Http\Middleware\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
 {
-    protected $middlewares = [=
+    protected $middlewares = [
         'auth' => Middleware\Auth::class,
         'csrf' => Middleware\CSRF::class,
     ];
-
-    public function initialize()
-    {
-    }
 }
