@@ -9,7 +9,7 @@ return [
         'password'   => env('MAILER_PASSWORD'),
         'encryption' => env('MAILER_ENCRYPTION', 'tls'),
         'from'       => env('MAILER_MAIL_FROM'),
-        'class'      => Clarity\Adapters\Mail\SwiftMailerAdapter::class,
+        'class'      => Clarity\Mail\SwiftMailer\SwiftMailer::class,
     ],
 
     'mailgun' => [
@@ -19,7 +19,7 @@ return [
         'password'   => env('MAILER_PASSWORD'),
         'encryption' => env('MAILER_ENCRYPTION'),
         'from'       => env('MAILER_MAIL_FROM'),
-        'class'      => Clarity\Adapters\Mail\MailgunAdapter::class,
+        'class'      => Clarity\Mail\Mailgun\Mailgun::class,
     ],
 
 ];

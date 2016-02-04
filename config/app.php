@@ -245,7 +245,6 @@ return [
         Clarity\Providers\Log::class,
         Clarity\Providers\ErrorHandler::class,
         Clarity\Providers\Console::class,
-        Clarity\Providers\ACL::class,
         Clarity\Providers\Aliaser::class,
         Clarity\Providers\Auth::class,
         Clarity\Providers\Cache::class,
@@ -287,7 +286,6 @@ return [
     */
 
     'aliases'  => [
-        'ACL'         => Clarity\Facades\ACL::class,
         'Auth'        => Clarity\Facades\Auth::class,
         'Cache'       => Clarity\Facades\Cache::class,
         'Config'      => Clarity\Facades\Config::class,
