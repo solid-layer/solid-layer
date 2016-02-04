@@ -297,7 +297,7 @@ return [
         'FlashBag'    => Clarity\Facades\FlashBag::class,
         'Lang'        => Clarity\Lang\LangFacade::class,
         'Log'         => Clarity\Facades\Log::class,
-        'Mail'        => Clarity\Facades\Mail::class,
+        'Mail'        => Clarity\Mail\MailFacade::class,
         'Queue'       => Clarity\Facades\Queue::class,
         'Redirect'    => Clarity\Facades\Redirect::class,
         'Request'     => Clarity\Facades\Request::class,
