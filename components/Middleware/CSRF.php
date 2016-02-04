@@ -1,5 +1,5 @@
 <?php
-namespace Components\Command\Middleware;
+namespace Components\Middleware;
 
 use League\Tactician\Middleware;
 use Clarity\Exceptions\AccessNotAllowedException;

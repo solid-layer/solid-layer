@@ -253,8 +253,8 @@ return [
         Clarity\Providers\Filter::class,
         Clarity\Providers\Flash::class,
         Clarity\Providers\FlashBag::class,
-        Clarity\Providers\Lang::class,
-        Clarity\Providers\Mail::class,
+        Clarity\Lang\LangServiceProvider::class,
+        Clarity\Mail\MailServiceProvider::class,
         Clarity\Providers\MetadataAdapter::class,
         Clarity\Providers\Mongo::class,
         Clarity\Providers\Redirect::class,
@@ -295,7 +295,7 @@ return [
         'Filter'      => Clarity\Facades\Filter::class,
         'Flash'       => Clarity\Facades\Flash::class,
         'FlashBag'    => Clarity\Facades\FlashBag::class,
-        'Lang'        => Clarity\Facades\Lang::class,
+        'Lang'        => Clarity\Lang\LangFacade::class,
         'Log'         => Clarity\Facades\Log::class,
         'Mail'        => Clarity\Facades\Mail::class,
         'Queue'       => Clarity\Facades\Queue::class,
@@ -312,6 +312,12 @@ return [
 
         # register class aliases below.
 
+    ],
+
+
+    'middlewares' => [
+        'auth' => Components\Middleware\Auth::class,
+        'csrf' => Components\Middleware\CSRF::class,
     ],
 
 ]; # - end of return
