@@ -44,7 +44,8 @@ if (file_exists($compiled) && php_sapi_name() != 'cli') {
 |\ Environmental Configuration                                  /|
 +----------------------------------------------------------------+
 |
-| check if there is existing compiled class then require the file
+| a better way to configure specific server configuration
+| by creating  '.env' file in the root
 |
 */
 
