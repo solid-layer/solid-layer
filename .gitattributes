@@ -6,4 +6,6 @@
 /.travis.yml export-ignore
 * text=auto
 *.css linguist-vendored
+*.js linguist-vendored
 *.less linguist-vendored
+*.volt linguist-vendored

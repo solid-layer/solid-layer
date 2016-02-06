@@ -22,7 +22,7 @@ return [
     +----------------------------------------------------------------+
     |
     | The place where you should supposed to assign which
-    | language folder will be used.
+    | language folder will be used
     |
     */
 
@@ -48,12 +48,14 @@ return [
     |\ SSL Support                                                  /|
     +----------------------------------------------------------------+
     |
-    | Mark true if your domain supports ssl, and to force
-    | re-write every url to ssl
+    | Mark true if your domain supports ssl, and to enforce
+    | re-write for every module's url into https
     |
     */
 
-    'ssl' => false,
+    'ssl' => [
+        'main' => false,
+    ],
 
 
     /*
@@ -67,7 +69,9 @@ return [
     |
     */
 
-    'base_uri' => 'localhost',
+    'base_uri' => [
+        'main' => 'localhost',
+    ],
 
 
     /*
@@ -156,7 +160,8 @@ return [
     | Flysystem                                                     /|
     +----------------------------------------------------------------+
     |
-    | Define your default flysystem
+    | A file system handler that manages your files to an organizable
+    | or manageable storage area such as (AWS S3)
     |
     */
 
@@ -208,14 +213,11 @@ return [
     +----------------------------------------------------------------+
     |
     | This auth settings will help you to easily authenticate your
-    | users from your form inputs.
-    |
-    | Reference:
-    |    AuthController->attemptToLoginAction()
+    | users from your form inputs
     |
     */
 
-    'auth'     => [
+    'auth' => [
         'model'          => Components\Model\User::class,
         'password_field' => 'password',
         'redirect_key'   => 'ref',
@@ -227,21 +229,15 @@ return [
     |\ Service Providers                                            /|
     +----------------------------------------------------------------+
     |
-    | A service provider will be stored as a dependency injection (di)
-    | and available to call using the di() function
+    | A service will be stored and available to call using the
+    | di()->get(<alias>) function
     |
-    | e.g:
-    |     di()->get('router')->get(..., [...]);
-    |
-    | or you can use the Facade Class
-    |      Clarity\Facades\Route::get(..., [...]);
     */
 
     'services' => [
         Clarity\Providers\Log::class,
         Clarity\Providers\ErrorHandler::class,
         Clarity\Providers\Console::class,
-        Clarity\Providers\ACL::class,
         Clarity\Providers\Aliaser::class,
         Clarity\Providers\Auth::class,
         Clarity\Providers\Cache::class,
@@ -250,8 +246,8 @@ return [
         Clarity\Providers\Filter::class,
         Clarity\Providers\Flash::class,
         Clarity\Providers\FlashBag::class,
-        Clarity\Providers\Lang::class,
-        Clarity\Providers\Mail::class,
+        Clarity\Lang\LangServiceProvider::class,
+        Clarity\Mail\MailServiceProvider::class,
         Clarity\Providers\MetadataAdapter::class,
         Clarity\Providers\Mongo::class,
         Clarity\Providers\Redirect::class,
@@ -261,12 +257,12 @@ return [
         Clarity\Providers\Session::class,
         Clarity\Providers\Queue::class,
         Clarity\Providers\URL::class,
-        Clarity\Providers\View::class,
+        Clarity\View\ViewServiceProvider::class,
         Clarity\Providers\Flysystem::class,
         Clarity\Providers\CollectionManager::class,
 
 
-        # - register your classes below.
+        # register your classes below.
 
         Acme\Acme\AcmeServiceProvider::class,
     ],
@@ -278,12 +274,11 @@ return [
     +----------------------------------------------------------------+
     |
     | Instead of using a full class namespace, you could defined
-    | below an alias of your class.
+    | below an alias of your class
     |
     */
 
     'aliases'  => [
-        'ACL'         => Clarity\Facades\ACL::class,
         'Auth'        => Clarity\Facades\Auth::class,
         'Cache'       => Clarity\Facades\Cache::class,
         'Config'      => Clarity\Facades\Config::class,
@@ -293,9 +288,9 @@ return [
         'Filter'      => Clarity\Facades\Filter::class,
         'Flash'       => Clarity\Facades\Flash::class,
         'FlashBag'    => Clarity\Facades\FlashBag::class,
-        'Lang'        => Clarity\Facades\Lang::class,
+        'Lang'        => Clarity\Lang\LangFacade::class,
         'Log'         => Clarity\Facades\Log::class,
-        'Mail'        => Clarity\Facades\Mail::class,
+        'Mail'        => Clarity\Mail\MailFacade::class,
         'Queue'       => Clarity\Facades\Queue::class,
         'Redirect'    => Clarity\Facades\Redirect::class,
         'Request'     => Clarity\Facades\Request::class,
@@ -307,9 +302,22 @@ return [
         'URL'         => Clarity\Facades\URL::class,
         'View'        => Clarity\Facades\View::class,
 
+    ],
 
-        # register class aliases below.
 
+    /*
+    +----------------------------------------------------------------+
+    |\ Middlewares                                                  /|
+    +----------------------------------------------------------------+
+    |
+    | Callable key classes on before route is called, this helps
+    | to filter every request on a nicer way
+    |
+    */
+
+    'middlewares' => [
+        'auth' => Components\Middleware\Auth::class,
+        'csrf' => Components\Middleware\CSRF::class,
     ],
 
 ]; # - end of return
