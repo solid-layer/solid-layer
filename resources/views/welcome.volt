@@ -38,7 +38,7 @@
 
         <hr>
         <div class="footer">
-          <p>Processing Time: <?php echo slayer_process_time() ?></p>
+          <p>Processing Time: <?php echo process_time(SLAYER_START) ?></p>
         </div>
       </div>
     </body>
