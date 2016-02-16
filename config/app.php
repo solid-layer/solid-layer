@@ -242,7 +242,7 @@ return [
         Clarity\Providers\Auth::class,
         Clarity\Providers\Cache::class,
         Clarity\Providers\DB::class,
-        Clarity\Providers\Dispatcher::class,
+        Components\Providers\Dispatcher::class,
         Clarity\Providers\Filter::class,
         Clarity\Providers\Flash::class,
         Clarity\Providers\FlashBag::class,
