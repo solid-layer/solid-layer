@@ -35,7 +35,11 @@ before_script:
   # create 'slayer' database
   - mysql -e 'create database slayer charset=utf8mb4 collate=utf8mb4_unicode_ci;'
 
-  # run the migration and seeder
+  # +-----------------------------------+
+  # | Run the db migrations and seeders |
+  # +-----------------------------------+
+
+  # db
   - php brood db:migrate
   - php brood db:seed:factory
 
@@ -43,4 +47,34 @@ script:
   - chmod a+x ./vendor/bin/phpunit
   - chmod a+x ./vendor/phalconslayer/framework/phpunit.xml
   - ./vendor/bin/phpunit -c ./vendor/phalconslayer/framework/phpunit.xml
+
+  # +--------------------------+
+  # | Run other brood commands |
+  # +--------------------------+
+
+  # db
   - php brood db:rollback
+  - php brood db:create Test
+  - php brood db:seed:create Test
+  - php brood db:seed:run
+  - php brood db:status
+
+  # app
+  - php brood app:controller Test main
+  - php brood app:module test
+  - php brood app:route Test test
+
+  # clear
+  - php brood clear:cache
+  - php brood clear:cache
+  - php brood clear:logs
+  - php brood clear:session
+  - php brood clear:views
+
+  # mail
+  - php brood mail:inliner
+
+  # make
+  - php brood make:collection Test
+  - php brood make:console Test
+  - php brood make:model Test
