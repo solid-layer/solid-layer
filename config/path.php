@@ -10,6 +10,7 @@ return [
     'config'        => BASE_PATH . '/config/',
     'database'      => BASE_PATH . '/database/',
     'migrations'    => BASE_PATH . '/database/migrations/',
+    'seeders'       => BASE_PATH . '/database/seeders/',
     'public'        => BASE_PATH . '/public/',
     'resources'     => BASE_PATH . '/resources/',
     'views'         => BASE_PATH . '/resources/views/',
