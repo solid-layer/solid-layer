@@ -53,11 +53,11 @@ script:
   # +--------------------------+
 
   # db
+  - php brood db:status
   - php brood db:rollback
   - php brood db:create Test
   - php brood db:seed:create Test
   - php brood db:seed:run
-  - php brood db:status
 
   # app
   - php brood app:controller Test main
