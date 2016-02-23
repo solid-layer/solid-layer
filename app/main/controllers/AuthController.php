@@ -20,7 +20,16 @@ use Phalcon\Mvc\Model\Transaction\Failed as TransactionFailed;
 
 class AuthController extends Controller
 {
-    public function showRegistrationFormAction()
+    public function initialize()
+    {
+        $this->middleware('csrf', [
+            'only' => [
+                'attemptToLogin',
+            ],
+        ]);
+    }
+
+    public function showRegistrationForm()
     {
         if ( Session::has('input') ) {
 
@@ -33,8 +42,7 @@ class AuthController extends Controller
         return View::make('auth.showRegistrationForm');
     }
 
-
-    public function storeRegistrationFormAction()
+    public function storeRegistrationForm()
     {
         $inputs = $this->request->get();
         $validator = new RegistrationValidator;
@@ -125,16 +133,14 @@ class AuthController extends Controller
     }
 
 
-    public function showLoginFormAction()
+    public function showLoginForm()
     {
         return View::make('auth.showLoginForm');
     }
 
 
-    public function attemptToLoginAction()
+    public function attemptToLogin()
     {
-        $this->middleware('csrf');
-
         $credentials = [
             'email'     => Request::get('email'),
             'password'  => Request::get('password'),
@@ -154,7 +160,7 @@ class AuthController extends Controller
     }
 
 
-    public function logoutAction()
+    public function logout()
     {
         Auth::destroy();
 
@@ -165,7 +171,7 @@ class AuthController extends Controller
     }
 
 
-    public function activateUserAction($token)
+    public function activateUser($token)
     {
         $user = User::find([
             'token = :token: AND activated = :activated:',
