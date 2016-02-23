@@ -3,7 +3,7 @@ namespace Components\Middleware;
 
 class Auth implements \League\Tactician\Middleware
 {
-    public function execute($command, callable $next)
+    public function execute($request, callable $next)
     {
         if ( auth()->check() === false ) {
 
@@ -20,6 +20,6 @@ class Auth implements \League\Tactician\Middleware
             );
         }
 
-        return $next($command);
+        return $next($request);
     }
 }

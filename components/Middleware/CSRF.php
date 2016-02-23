@@ -5,9 +5,9 @@ use Clarity\Exceptions\AccessNotAllowedException;
 
 class CSRF implements \League\Tactician\Middleware
 {
-    public function execute($command, callable $next)
+    public function execute($request, callable $next)
     {
-        if ( request()->isPost() ) {
+        if ( $request->isPost() ) {
 
             if ( security()->checkToken() === false ) {
 
@@ -19,6 +19,6 @@ class CSRF implements \League\Tactician\Middleware
             }
         }
 
-        return $next($command);
+        return $next($request);
     }
 }
