@@ -79,6 +79,7 @@ $kernel
     ->setEnvironment(env('APP_ENV'))
     ->initialize();
 
+
 /*
 +----------------------------------------------------------------+
 |\ Removing action suffix                                       /|
