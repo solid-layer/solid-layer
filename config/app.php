@@ -70,7 +70,7 @@ return [
     */
 
     'base_uri' => [
-        'main' => 'localhost',
+        'main' => 'slayer.app',
     ],
 
 
@@ -255,6 +255,7 @@ return [
         Clarity\Providers\Request::class,
         Clarity\Providers\Response::class,
         Clarity\Providers\Router::class,
+        Clarity\Providers\RouterAnnotations::class,
         Clarity\Providers\Session::class,
         Clarity\Providers\Queue::class,
         Clarity\Providers\URL::class,
