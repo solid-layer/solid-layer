@@ -15,8 +15,8 @@ env:
   - PHALCON_VERSION="phalcon-v2.0.9"
   - PHALCON_VERSION="phalcon-v2.0.8"
 
-before_script:
 
+before_script:
   # install  phalcon/cphalcon
   - git clone -q --depth=1 https://github.com/phalcon/cphalcon.git -b ${PHALCON_VERSION}
   - cd cphalcon/ext; export CFLAGS="-g3 -O1 -fno-delete-null-pointer-checks -Wall"; phpize && ./configure --enable-phalcon && make -j4 && make install && phpenv config-add ../unit-tests/ci/phalcon.ini
@@ -38,12 +38,14 @@ before_script:
   # +-----------------------------------+
   # | Run the db migrations and seeders |
   # +-----------------------------------+
-
   # db
   - php brood db:migrate
   - php brood db:seed:factory
 
 script:
+  # +--------------------------+
+  # | Run PHPUnit              |
+  # +--------------------------+
   - chmod a+x ./vendor/bin/phpunit
   - chmod a+x ./vendor/phalconslayer/framework/phpunit.xml
   - ./vendor/bin/phpunit -c ./vendor/phalconslayer/framework/phpunit.xml
@@ -51,7 +53,6 @@ script:
   # +--------------------------+
   # | Run other brood commands |
   # +--------------------------+
-
   # db
   - php brood db:status
   - php brood db:rollback
