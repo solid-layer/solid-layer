@@ -13,7 +13,7 @@
           background-color: #F7F7F7;
         }
         #frameworkTitle {
-          font-family: 'Dancing Script', cursive;
+          font-family: 'Dancing Script', monospace;
           font-size: 15em;
           margin-bottom: 0.1em;
         }
