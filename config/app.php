@@ -63,9 +63,12 @@ return [
     |\ Base URI                                                     /|
     +----------------------------------------------------------------+
     |
-    | We are defining our base uri, while some of our components
-    | can catch the server defined url, this thing helps our command
-    | line interface (cli)
+    | It is not an accurate way to use server catched base uri,
+    | this options helps our command line interface (cli) to use
+    | the defined module's base uri.
+    |
+    | This is also helpful when using the request()->module(...), it
+    | builds the guzzle/guzzle package
     |
     */
 
@@ -79,8 +82,8 @@ return [
     |\ Session Name                                                 /|
     +----------------------------------------------------------------+
     |
-    | It will be the name of your session located in the browsers'
-    | cache, rename it to change your session name
+    | It will be the name of your session located in the browser's
+    | console, rename it to change your session name
     |
     | Note: Provide an alphanumeric character without any special
     | character
