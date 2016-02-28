@@ -1,19 +1,15 @@
 <?php
 namespace Components\Middleware;
 
-use League\Tactician\Middleware;
 use Clarity\Exceptions\AccessNotAllowedException;
 
-class CSRF implements Middleware
+class CSRF implements \League\Tactician\Middleware
 {
-    public function execute($command, callable $next)
+    public function execute($request, callable $next)
     {
-        $di       = $command->getDI();
-        $request  = $di->get('request');
-        $security = $di->get('security');
+        if ( $request->isPost() ) {
 
-        if ($request->isPost()) {
-            if ($security->checkToken() === false) {
+            if ( security()->checkToken() === false ) {
 
                 # - throw exception or redirect the user
                 # or render a content using
@@ -23,6 +19,6 @@ class CSRF implements Middleware
             }
         }
 
-        return $next($command);
+        return $next($request);
     }
 }

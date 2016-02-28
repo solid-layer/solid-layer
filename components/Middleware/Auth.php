@@ -1,29 +1,25 @@
 <?php
 namespace Components\Middleware;
 
-use League\Tactician\Middleware;
-
-class Auth implements Middleware
+class Auth implements \League\Tactician\Middleware
 {
-    public function execute($command, callable $next)
+    public function execute($request, callable $next)
     {
-        $di        = $command->getDI();
-        $url       = $di->get('url');
-        $auth      = $di->get('auth');
-        $flash_bag = $di->get('flash_bag');
-        $redirect  = $di->get('redirect');
+        if ( auth()->check() === false ) {
 
-        if ($auth->check() === false) {
-            $flash_bag->error('Please login to access this page.');
+            flash_bag()->error('Please login to access this page.');
 
-            $redirect->to(
-                $url->get(
-                    $url->route('showLoginForm'),
-                    ['ref' => $url->current()]
+            redirect(
+
+                url(
+                    route('showLoginForm'),
+                    [
+                        'ref' => url()->current()
+                    ]
                 )
             );
         }
 
-        return $next($command);
+        return $next($request);
     }
 }

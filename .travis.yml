@@ -15,8 +15,8 @@ env:
   - PHALCON_VERSION="phalcon-v2.0.9"
   - PHALCON_VERSION="phalcon-v2.0.8"
 
-before_script:
 
+before_script:
   # install  phalcon/cphalcon
   - git clone -q --depth=1 https://github.com/phalcon/cphalcon.git -b ${PHALCON_VERSION}
   - cd cphalcon/ext; export CFLAGS="-g3 -O1 -fno-delete-null-pointer-checks -Wall"; phpize && ./configure --enable-phalcon && make -j4 && make install && phpenv config-add ../unit-tests/ci/phalcon.ini
@@ -35,12 +35,47 @@ before_script:
   # create 'slayer' database
   - mysql -e 'create database slayer charset=utf8mb4 collate=utf8mb4_unicode_ci;'
 
-  # run the migration and seeder
+  # +-----------------------------------+
+  # | Run the db migrations and seeders |
+  # +-----------------------------------+
+  # db
   - php brood db:migrate
   - php brood db:seed:factory
 
 script:
+  # +--------------------------+
+  # | Run PHPUnit              |
+  # +--------------------------+
   - chmod a+x ./vendor/bin/phpunit
   - chmod a+x ./vendor/phalconslayer/framework/phpunit.xml
   - ./vendor/bin/phpunit -c ./vendor/phalconslayer/framework/phpunit.xml
+
+  # +--------------------------+
+  # | Run other brood commands |
+  # +--------------------------+
+  # db
+  - php brood db:status
   - php brood db:rollback
+  - php brood db:create Test
+  - php brood db:seed:create Test
+  - php brood db:seed:run
+
+  # app
+  - php brood app:controller Test main
+  - php brood app:module test
+  - php brood app:route Test test
+
+  # clear
+  - php brood clear:cache
+  - php brood clear:cache
+  - php brood clear:logs
+  - php brood clear:session
+  - php brood clear:views
+
+  # mail
+  - php brood mail:inliner
+
+  # make
+  - php brood make:collection Test
+  - php brood make:console Test
+  - php brood make:model Test

@@ -26,7 +26,6 @@ class User extends Model
         return 'users';
     }
 
-
     /**
      * Set the name field
      *
@@ -40,6 +39,37 @@ class User extends Model
         return $this;
     }
 
+    /**
+     * Get the user's name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set the email
+     *
+     * @param string $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get the user's email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
 
     /**
      * Set the column activated in the table as boolean
@@ -53,4 +83,15 @@ class User extends Model
 
         return $this;
     }
+
+    /**
+     * To know if the account is activated
+     *
+     * @return bool
+     */
+    public function getActivated()
+    {
+        return (bool) $this->activated;
+    }
+
 }

@@ -63,14 +63,17 @@ return [
     |\ Base URI                                                     /|
     +----------------------------------------------------------------+
     |
-    | We are defining our base uri, while some of our components
-    | can catch the server defined url, this thing helps our command
-    | line interface (cli)
+    | It is not an accurate way to use server catched base uri,
+    | this options helps our command line interface (cli) to use
+    | the defined module's base uri.
+    |
+    | This is also helpful when using the request()->module(...), it
+    | builds the guzzle/guzzle package
     |
     */
 
     'base_uri' => [
-        'main' => 'localhost',
+        'main' => 'slayer.app',
     ],
 
 
@@ -79,8 +82,8 @@ return [
     |\ Session Name                                                 /|
     +----------------------------------------------------------------+
     |
-    | It will be the name of your session located in the browsers'
-    | cache, rename it to change your session name
+    | It will be the name of your session located in the browser's
+    | console, rename it to change your session name
     |
     | Note: Provide an alphanumeric character without any special
     | character
@@ -235,6 +238,7 @@ return [
     */
 
     'services' => [
+        Components\Providers\Application::class,
         Clarity\Providers\Log::class,
         Clarity\Providers\ErrorHandler::class,
         Clarity\Providers\Console::class,
@@ -242,7 +246,7 @@ return [
         Clarity\Providers\Auth::class,
         Clarity\Providers\Cache::class,
         Clarity\Providers\DB::class,
-        Clarity\Providers\Dispatcher::class,
+        Components\Providers\Dispatcher::class,
         Clarity\Providers\Filter::class,
         Clarity\Providers\Flash::class,
         Clarity\Providers\FlashBag::class,
@@ -254,6 +258,7 @@ return [
         Clarity\Providers\Request::class,
         Clarity\Providers\Response::class,
         Clarity\Providers\Router::class,
+        Clarity\Providers\RouterAnnotations::class,
         Clarity\Providers\Session::class,
         Clarity\Providers\Queue::class,
         Clarity\Providers\URL::class,

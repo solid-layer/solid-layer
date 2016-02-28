@@ -14,7 +14,7 @@ class WelcomeController extends Controller
      *
      * @return mixed
      */
-    public function showSignatureAction()
+    public function showSignature()
     {
         return $this->view->make('welcome');
     }
@@ -25,7 +25,7 @@ class WelcomeController extends Controller
      *
      * @return mixed
      */
-    public function trySampleFormsAction()
+    public function trySampleForms()
     {
         if ( User::count() ) {
 
