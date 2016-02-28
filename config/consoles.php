@@ -19,6 +19,7 @@ return [
     Clarity\Console\App\RouteCommand::class,
     Clarity\Console\Clear\AllCommand::class,
     Clarity\Console\Clear\CacheCommand::class,
+    Clarity\Console\Clear\CompiledCommand::class,
     Clarity\Console\Clear\LogsCommand::class,
     Clarity\Console\Clear\SessionCommand::class,
     Clarity\Console\Clear\ViewsCommand::class,
