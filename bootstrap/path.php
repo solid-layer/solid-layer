@@ -17,9 +17,5 @@ return [
     'lang'          => BASE_PATH . '/resources/lang/',
     'sandbox'       => BASE_PATH . '/sandbox/',
     'storage'       => BASE_PATH . '/storage/',
-    'cache'         => BASE_PATH . '/storage/cache/',
-    'logs'          => BASE_PATH . '/storage/logs/',
-    'session'       => BASE_PATH . '/storage/session/',
-    'storage_views' => BASE_PATH . '/storage/views/',
 
 ]; # - end of return
