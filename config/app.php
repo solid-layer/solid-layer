@@ -239,6 +239,7 @@ return [
 
     'services' => [
         Components\Providers\Application::class,
+        Clarity\Providers\Module::class,
         Clarity\Providers\Log::class,
         Clarity\Providers\ErrorHandler::class,
         Clarity\Providers\Console::class,
