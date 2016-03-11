@@ -4,6 +4,15 @@ return [
 
     'file' => [
         'class' => Phalcon\Session\Adapter\Files::class,
+
+        # http://php.net/manual/en/function.session-set-cookie-params.php
+        'config' => [
+            'lifetime' => 3600,
+            'path'     => '/',
+            'domain'   => '',
+            'secure'   => false,
+            'httponly' => true,
+        ],
     ],
 
     'memcache' => [
