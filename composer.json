@@ -18,7 +18,7 @@
     "require-dev": {
         "behat/mink": "^1.7",
         "behat/mink-goutte-driver": "^1.2",
-        "phpunit/phpunit": "^5.2",
+        "phpunit/phpunit": "^4.8",
         "mockery/mockery": "^0.9",
         "fzaninotto/faker": "^1.4"
     },
