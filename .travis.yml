@@ -35,13 +35,10 @@ before_script:
   # create 'slayer' database
   - mysql -e 'create database slayer charset=utf8mb4 collate=utf8mb4_unicode_ci;'
 
-  # +-----------------------------------+
-  # | Run the db migrations and seeders |
-  # +-----------------------------------+
-  # db
+  # db migrations
   - php brood db:migrate
-  - php brood db:seed:factory
 
+  # built-in web
   - php brood serve --host=localhost --port=8080 --file=index.php &
   - sleep 5
 
@@ -57,6 +54,7 @@ script:
   # | Run other brood commands |
   # +--------------------------+
   # db
+  - php brood db:seed:factory
   - php brood db:status
   - php brood db:rollback
   - php brood db:create Test
