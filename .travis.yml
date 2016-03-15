@@ -27,7 +27,7 @@ before_script:
   #- travis_retry composer self-update
   #- travis_retry composer require phpunit/phpunit=^4.7
   #- travis_retry composer require mockery/mockery=^0.9.4
-  - travis_retry composer install
+  - travis_retry composer install --dev
 
   # copy .env.travis as .env file
   - cp ./vendor/phalconslayer/framework/tests/.env.travis ./.env
