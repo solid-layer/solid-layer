@@ -42,6 +42,9 @@ before_script:
   - php brood db:migrate
   - php brood db:seed:factory
 
+  - php brood serve --host=192.168.10.10 --port=8088 --file=index.php &
+  - sleep 5
+
 script:
   # +--------------------------+
   # | Run PHPUnit              |
