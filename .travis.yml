@@ -24,10 +24,9 @@ before_script:
   - cd ../..
 
   # run the composer update
-  #- travis_retry composer self-update
-  #- travis_retry composer require phpunit/phpunit=^4.7
-  #- travis_retry composer require mockery/mockery=^0.9.4
-  - travis_retry composer install --dev
+  - composer self-update
+  - php -m
+  - travis_retry composer install --prefer-source --dev
 
   # copy .env.travis as .env file
   - cp ./vendor/phalconslayer/framework/tests/.env.travis ./.env
@@ -68,10 +67,11 @@ script:
 
   # clear
   - php brood clear:cache
-  - php brood clear:cache
+  - php brood clear:compiled
   - php brood clear:logs
   - php brood clear:session
   - php brood clear:views
+  - php brood clear:all
 
   # mail
   - php brood mail:inliner
