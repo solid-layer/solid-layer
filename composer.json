@@ -16,9 +16,11 @@
         "phalconslayer/framework": "dev-dev"
     },
     "require-dev": {
+        "behat/mink": "^1.7",
+        "behat/mink-goutte-driver": "^1.2",
         "phpunit/phpunit": "^4.7",
-        "mockery/mockery": "^0.9.4",
-        "fzaninotto/faker": "~1.4"
+        "mockery/mockery": "^0.9",
+        "fzaninotto/faker": "^1.4"
     },
     "autoload": {
         "classmap": [
