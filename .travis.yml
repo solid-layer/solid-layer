@@ -26,7 +26,7 @@ before_script:
   # run the composer update
   - composer self-update
   - php -m
-  - travis_retry composer install --prefer-source --dev
+  - travis_retry composer install --prefer-source
 
   # copy .env.travis as .env file
   - cp ./vendor/phalconslayer/framework/tests/.env.travis ./.env
