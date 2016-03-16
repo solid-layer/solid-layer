@@ -38,7 +38,7 @@ before_script:
   - php brood db:migrate
 
   # built-in web
-  - php brood serve --host=localhost --port=8080 --file=index.php &
+  - php brood serve --host=localhost --port=8080 --file=index.php
   - sleep 5
 
 script:
