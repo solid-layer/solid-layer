@@ -12,9 +12,14 @@ sudo: false
 env:
   # - PHALCON_VERSION="2.1.x"
   - PHALCON_VERSION="2.0.x"
+  - PHALCON_VERSION="phalcon-v2.0.10"
   - PHALCON_VERSION="phalcon-v2.0.9"
   - PHALCON_VERSION="phalcon-v2.0.8"
 
+cache:
+  directories:
+    - vendor
+    - $HOME/.composer/cache
 
 before_script:
   # install  phalcon/cphalcon
@@ -38,7 +43,7 @@ before_script:
   - php brood db:migrate
 
   # built-in web
-  - php brood serve --host=0.0.0.0 --port=8080 --file=index.php &
+  - php -S 0.0.0.0:8080 -t public/ >/dev/null 2>&1 &
   - sleep 5
 
 script:
