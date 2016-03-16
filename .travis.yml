@@ -26,7 +26,7 @@ before_script:
   # run the composer update
   - composer self-update
   - php -m
-  - travis_retry composer install --prefer-source
+  - travis_retry composer install --no-interaction
 
   # copy .env.travis as .env file
   - cp ./vendor/phalconslayer/framework/tests/.env.travis ./.env
@@ -38,7 +38,7 @@ before_script:
   - php brood db:migrate
 
   # built-in web
-  - php brood serve --host=localhost --port=8080 --file=index.php &
+  - php brood serve --host=0.0.0.0 --port=8080 --file=index.php &
   - sleep 5
 
 script:
