@@ -68,12 +68,26 @@ if (file_exists(BASE_PATH.'/.env')) {
 |
 */
 
-$kernel = new Clarity\Kernel;
+$kernel = new Clarity\Kernel\Kernel;
 
-$path = require url_trimmer(BASE_PATH.'/config/path.php');
+$path = require url_trimmer(__DIR__.'/path.php');
 $modules = require url_trimmer(BASE_PATH.'/app/modules.php');
 
 $kernel
     ->setPath($path)
     ->setModules($modules)
+    ->setEnvironment(env('APP_ENV'))
     ->initialize();
+
+
+/*
++----------------------------------------------------------------+
+|\ Removing action suffix                                       /|
++----------------------------------------------------------------+
+|
+| by default, phalcon has a suffix of <method>Action() on every
+| controller to get rid with this, we must apply an empty on it
+|
+*/
+
+di()->get('dispatcher')->setActionSuffix('');

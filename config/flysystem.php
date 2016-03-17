@@ -9,6 +9,10 @@ return [
         ],
     ],
 
+
+    # before using this, install the package first
+    # composer require league/flysystem-aws-s3-v3
+
     // 's3' => [
     //     'class'  => Components\Flysystem\S3::class,
     //     'config' => [
@@ -19,6 +23,20 @@ return [
     //         'region'  => 'us-east-1',
     //         'version' => 'latest',
     //         'bucket'  => 'your bucket',
+    //     ],
+    // ],
+
+
+    # before using this, install the package first
+    # composer require league/flysystem-copy
+
+    // 'copy' => [
+    //     'class' => Components\Flysystem\Copy::class,
+    //     'config' => [
+    //         'consumer_key' => '',
+    //         'consumer_secret' => '',
+    //         'access_token' => '',
+    //         'token_secret' => '',
     //     ],
     // ],
 

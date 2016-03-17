@@ -68,4 +68,34 @@ return [
         ],
     ],
 
+
+    /*
+    +----------------------------------------------------------------+
+    |\ Phinx Migration                                              /|
+    +----------------------------------------------------------------+
+    |
+    | Migration has a different configuration than using the current
+    | database adapters.
+    |
+    | In which, phinx currently supports most of the adapters that
+    | phalcon also supported.
+    |
+    | Reference:
+    | http://docs.phinx.org/en/latest/configuration.html#supported-adapters
+    |
+    */
+
+    'phinx_migrations' => [
+
+        'mysql' => [
+            'adapter'  => 'mysql',
+            'host'     => env('DB_HOST', 'localhost'),
+            'name'     => env('DB_DATABASE', 'slayer'),
+            'user'     => env('DB_USERNAME'),
+            'pass'     => env('DB_PASSWORD'),
+            'port'     => env('DB_PORT', 3306),
+            'charset'  => env('DB_CHARSET', 'utf8'),
+        ],
+    ],
+
 ]; # - end of return

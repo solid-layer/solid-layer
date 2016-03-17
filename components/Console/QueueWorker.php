@@ -2,6 +2,7 @@
 namespace Components\Console;
 
 use Queue;
+use Exception;
 
 class QueueWorker extends Console
 {
@@ -14,23 +15,30 @@ class QueueWorker extends Console
 
         while (true) {
 
-            while ( ($job = Queue::peekReady()) !== false ) {
+            try {
 
-                $body = $job->getBody();
+                while ( ($job = Queue::peekReady()) !== false ) {
 
-                # This worker only focuses.
+                    $body = $job->getBody();
 
-                if ( isset($body['class']) ) {
+                    # This worker only focuses that has a class on it
+                    # which refers to the components/Queue/<class>
+                    if ( isset($body['class']) ) {
 
-                    $exploded_class = explode('@', $body['class']);
-                    $method = 'fire';
+                        $exploded_class = explode('@', $body['class']);
+                        $method = 'fire';
 
-                    if ( isset($exploded_class[1]) ) {
-                        $method = $exploded_class[1];
+                        if ( isset($exploded_class[1]) ) {
+                            $method = $exploded_class[1];
+                        }
+
+                        (new $exploded_class[0])->{$method}($this, $job, $body['data']);
                     }
-
-                    (new $exploded_class[0])->{$method}($this, $job, $body['data']);
                 }
+
+            } catch (Exception $e) {
+
+                $this->exception($e);
             }
         }
     }

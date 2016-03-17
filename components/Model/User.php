@@ -50,6 +50,18 @@ class User extends Model
     }
 
     /**
+     * Set the email
+     *
+     * @param string $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
      * Get the user's email
      *
      * @return string
@@ -70,6 +82,16 @@ class User extends Model
         $this->activated = (int) $bool;
 
         return $this;
+    }
+
+    /**
+     * To know if the account is activated
+     *
+     * @return bool
+     */
+    public function getActivated()
+    {
+        return (bool) $this->activated;
     }
 
 }

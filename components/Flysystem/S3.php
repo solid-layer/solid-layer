@@ -4,9 +4,8 @@ namespace Components\Flysystem;
 use Aws\S3\S3Client;
 use League\Flysystem\AwsS3v3\AwsS3Adapter;
 use Clarity\Contracts\Flysystem\AdapterInterface;
-use Clarity\Contracts\Flysystem\ClientInterface;
 
-class S3 implements AdapterInterface, ClientInterface
+class S3 implements AdapterInterface
 {
     private $config;
 
@@ -15,13 +14,11 @@ class S3 implements AdapterInterface, ClientInterface
         $this->config = $config;
     }
 
-    public function getClient()
-    {
-        return new S3Client($this->config);
-    }
-
     public function getAdapter()
     {
-        return new AwsS3Adapter($this->getClient(), $this->config['bucket']);
+        return new AwsS3Adapter(
+            new S3Client($this->config),
+            $this->config['bucket']
+        );
     }
 }

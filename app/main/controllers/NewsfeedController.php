@@ -8,7 +8,7 @@ class NewsfeedController extends Controller
         $this->middleware('auth');
     }
 
-    public function indexAction()
+    public function index()
     {
         return $this->view->make('newsfeed.showLandingPage');
     }
