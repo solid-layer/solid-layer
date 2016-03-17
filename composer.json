@@ -13,7 +13,7 @@
     "require": {
         "php": ">=5.5.9",
         "vlucas/phpdotenv": "^2.0",
-        "phalconslayer/framework": "dev-dev"
+        "phalconslayer/framework": "1.4.*"
     },
     "require-dev": {
         "behat/mink": "^1.7",
