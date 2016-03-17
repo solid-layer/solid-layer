@@ -2,7 +2,7 @@
 
 We priorities your concerns, you could also contribute to us, you may
 - [create an issue](https://github.com/phalconslayer/framework/issues/new)
-- [discuss some new features](/discuss-new)
+- [discuss some new features](https://phalconslayer.readme.io/discuss-new)
 - [do pull request or merge request](https://github.com/phalconslayer/framework/pulls)
 
 Automated testing is just our first way to automate every area of our code. Everytime we add/change a code, their might be possibilities that affects other relying code.
