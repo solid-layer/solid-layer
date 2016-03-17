@@ -91,3 +91,21 @@ $kernel
 */
 
 di()->get('dispatcher')->setActionSuffix('');
+
+
+/*
++----------------------------------------------------------------+
+|\ Public File Checker                                          /|
++----------------------------------------------------------------+
+|
+| Check the public folder if the file exists, it should not
+| be interpreted as a route
+|
+*/
+
+if (
+    php_sapi_name() !== 'cli' &&
+    !file_exists(public_path($_SERVER[ 'REQUEST_URI' ]))
+) {
+    $_GET[ '_url' ] = $_SERVER[ 'REQUEST_URI' ];
+}

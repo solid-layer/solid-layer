@@ -12,9 +12,13 @@ sudo: false
 env:
   # - PHALCON_VERSION="2.1.x"
   - PHALCON_VERSION="2.0.x"
+  - PHALCON_VERSION="phalcon-v2.0.10"
   - PHALCON_VERSION="phalcon-v2.0.9"
   - PHALCON_VERSION="phalcon-v2.0.8"
 
+cache:
+  directories:
+    - $HOME/.composer/cache
 
 before_script:
   # install  phalcon/cphalcon
@@ -24,10 +28,9 @@ before_script:
   - cd ../..
 
   # run the composer update
-  - travis_retry composer self-update
-  - travis_retry composer require phpunit/phpunit=^4.7
-  - travis_retry composer require mockery/mockery=^0.9.4
-  - travis_retry composer update --prefer-source --no-interaction --prefer-stable
+  - composer self-update
+  - php -m
+  - travis_retry composer install --no-interaction
 
   # copy .env.travis as .env file
   - cp ./vendor/phalconslayer/framework/tests/.env.travis ./.env
@@ -35,12 +38,12 @@ before_script:
   # create 'slayer' database
   - mysql -e 'create database slayer charset=utf8mb4 collate=utf8mb4_unicode_ci;'
 
-  # +-----------------------------------+
-  # | Run the db migrations and seeders |
-  # +-----------------------------------+
-  # db
+  # db migrations
   - php brood db:migrate
-  - php brood db:seed:factory
+
+  # built-in web
+  - php -S 0.0.0.0:8080 -t public/ >/dev/null 2>&1 &
+  - sleep 5
 
 script:
   # +--------------------------+
@@ -54,6 +57,7 @@ script:
   # | Run other brood commands |
   # +--------------------------+
   # db
+  - php brood db:seed:factory
   - php brood db:status
   - php brood db:rollback
   - php brood db:create Test
@@ -67,10 +71,11 @@ script:
 
   # clear
   - php brood clear:cache
-  - php brood clear:cache
+  - php brood clear:compiled
   - php brood clear:logs
   - php brood clear:session
   - php brood clear:views
+  - php brood clear:all
 
   # mail
   - php brood mail:inliner
