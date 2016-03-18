@@ -2,7 +2,7 @@ Slayer - Structured Phalcon Framework
 =====================================
 
 #####Phalcon Rank
-<img src="http://phalconist.com/phalconslayer/slayer/default.svg">
+[![Phalconist](https://phalconist.com/phalconslayer/slayer/default.svg)](https://phalconist.com/phalconslayer/slayer)
 
 #####Code Standard
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/5d5e8a5c-62e6-43cf-9d36-39f62cefdcd2/big.png)](https://insight.sensiolabs.com/projects/5d5e8a5c-62e6-43cf-9d36-39f62cefdcd2)
