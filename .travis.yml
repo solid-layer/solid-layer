@@ -28,7 +28,8 @@ before_script:
 
   # install beanstalk
   - (sudo apt-get install -y beanstalkd;sudo service beanstalkd start;beanstalkd -h)
-  #- beanstalkd -l 0.0.0.0 -p 11300 &
+  - sudo bash -c 'echo "START=yes" >> /etc/default/beanstalkd'
+  - sudo service beanstalkd restart
 
   # run the composer update
   - composer self-update
