@@ -7,7 +7,7 @@ php:
 services:
   - mysql
 
-sudo: false
+sudo: true
 
 env:
   # - PHALCON_VERSION="2.1.x"
@@ -43,7 +43,7 @@ before_script:
   - php brood db:migrate
 
   # built-in web
-  #- php -S 0.0.0.0:8080 -t public/ >/dev/null 2>&1 &
+  - php -S 0.0.0.0:8080 -t public/ >/dev/null 2>&1 &
   - sleep 5
 
 script:
