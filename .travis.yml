@@ -27,8 +27,10 @@ before_script:
   - php -r 'echo \Phalcon\Version::get()."\n";'
 
   # install beanstalk
-  - git clone https://github.com/kr/beanstalkd
-  - (cd beanstalkd; sudo make; sudo make install; sudo service beanstalkd start)
+  #- git clone https://github.com/kr/beanstalkd
+  #- (cd beanstalkd; sudo make; sudo make install; beanstalkd -h; sudo service beanstalkd start)
+  - sudo apt-get clone -y beanstalkd
+  - sudo service beanstalkd start
 
   # run the composer update
   - composer self-update
