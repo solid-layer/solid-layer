@@ -29,7 +29,7 @@ before_script:
   # install beanstalk
   #- git clone https://github.com/kr/beanstalkd
   #- (cd beanstalkd; sudo make; sudo make install; beanstalkd -h; sudo service beanstalkd start)
-  - sudo apt-get clone -y beanstalkd
+  - sudo apt-get install -y beanstalkd
   - sudo service beanstalkd start
 
   # run the composer update
