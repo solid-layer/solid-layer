@@ -7,7 +7,7 @@ php:
 services:
   - mysql
 
-sudo: false
+sudo: true
 
 env:
   # - PHALCON_VERSION="2.1.x"
@@ -28,7 +28,7 @@ before_script:
 
   # install beanstalk
   - git clone https://github.com/kr/beanstalkd
-  - (cd beanstalkd; make; make install)
+  - (cd beanstalkd; sudo make; sudo make install)
 
   # run the composer update
   - composer self-update
