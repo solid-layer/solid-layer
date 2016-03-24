@@ -30,10 +30,10 @@ before_script:
   # run the composer update
   - composer self-update
   - php -m
-  - travis_retry composer install --no-interaction
+  - travis_retry composer install --no-interaction --no-scripts
 
   # copy .env.travis as .env file
-  - cp ./vendor/phalconslayer/framework/tests/.env.travis ./.env
+  - cp vendor/phalconslayer/framework/tests/.env.travis .env
 
   # create 'slayer' database
   - mysql -e 'create database slayer charset=utf8mb4 collate=utf8mb4_unicode_ci;'
