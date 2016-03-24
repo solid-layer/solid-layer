@@ -7,7 +7,7 @@ php:
 services:
   - mysql
 
-sudo: true
+sudo: false
 
 env:
   # - PHALCON_VERSION="2.1.x"
@@ -43,7 +43,7 @@ before_script:
   - php brood db:migrate
 
   # built-in web
-  - php -S 0.0.0.0:8080 -t public/ >/dev/null 2>&1 &
+  - php -S 0.0.0.0:8080 -t public/ > built-in.log 2>&1 &
   - sleep 5
 
 script:
@@ -53,6 +53,7 @@ script:
   - chmod a+x ./vendor/bin/phpunit
   - chmod a+x ./vendor/phalconslayer/framework/phpunit.xml
   - ./vendor/bin/phpunit -c ./vendor/phalconslayer/framework/phpunit.xml
+  - cat built-in.log
 
   # +--------------------------+
   # | Run other brood commands |
