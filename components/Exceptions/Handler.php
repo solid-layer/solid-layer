@@ -12,7 +12,7 @@ class Handler extends BaseHandler
         parent::report();
     }
 
-    public function render($e)
+    public function render($e, $status_code = null)
     {
         if ($e instanceof AccessNotAllowedException) {
             return (new CsrfHandler)->handle($e);
