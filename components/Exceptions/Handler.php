@@ -20,10 +20,11 @@ class Handler extends BaseHandler
 
         if ($e instanceof ControllerNotFoundException) {
 
-            if ( config()->app->debug === 'false' ) {
-
-                return (new PageNotFoundHandler)->handle($e);
+            if (config()->app->debug) {
+                return parent::render($e, PageNotFoundHandler::STATUS_CODE);
             }
+
+            return (new PageNotFoundHandler)->handle($e);
         }
 
 
@@ -34,11 +35,7 @@ class Handler extends BaseHandler
         // ... notifications | bugsnag | etc...
 
 
-
-
-
-        if ( config()->app->debug === 'false' ) {
-
+        if (!config()->app->debug) {
             return (new FatalHandler)->handle($e);
         }
 

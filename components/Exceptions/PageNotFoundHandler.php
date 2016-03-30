@@ -3,13 +3,16 @@ namespace Components\Exceptions;
 
 class PageNotFoundHandler
 {
+    const STATUS_CODE = 404;
+
     public function handle($e)
     {
-        # - the code below will be your custom error view
+        $content = di('view')->take('errors.404', ['e' => $e]);
 
-        echo di()->get('view')->take('errors.404', [
-            'e' => $e,
-        ]);
-        return;
+        $response = di('response');
+        $response->setContent($content);
+        $response->setStatusCode(self::STATUS_CODE);
+
+        return $response->send();
     }
 }
