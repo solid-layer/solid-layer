@@ -17,7 +17,7 @@ We follow [semver.org](http://semver.org), there is major.minor.patch
 
 Each release we have a branch that follows until the **minor** something like ``1.2`` branch
 
-### The patch
+### patch
 
 The **patch** should be interpreted as a ***bug fix*** only for each branch. There will be no new/removed features or added/removed files.
 
@@ -28,13 +28,13 @@ Inshort: we must checkout to branch ``1.2`` to create a fix release.
 If a fixed merged to branch ``1.2`` the owner must release a new patch version.
 Scenario, if the previous version was ``1.2.0`` the owner must release ``1.2.1`` pointing to branch ``1.2``
 
-### The minor
+### minor
 
 The **minor** should be able to add/remove features.
 Scenario, if the previous version was ``1.2.8`` tag, the owner must create a new branch ``1.3`` and should release ``1.3.0`` pointing to branch ``1.3``
 
 Inshort: we must checkout to branch ``master`` as it aliases the **framework** master branch as ``1.3-dev`` to be able to add/remove new features.
 
-### The major
+### major
 
-The **major** release will affect all the relying trees such as **documentations**, **framework** repo, **configurations**, **structure**.
+The **major** release will affect all the relying trees such as **documentations**, **framework** repo, **configurations**, **folder structure**.
