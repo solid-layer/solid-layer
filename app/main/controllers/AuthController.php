@@ -90,7 +90,7 @@ class AuthController extends Controller
             queue()->put([
                 'class' => 'Components\Queue\Email@registeredSender',
                 'data'  => [
-                    'template' => 'emails.registered-inligned',
+                    'template' => 'emails.registered-inlined',
                     'to'       => $inputs['email'],
                     'url'      => route('activateUser', ['token' => $token]),
                     'subject'  => 'You are now registered, activation is required.'
