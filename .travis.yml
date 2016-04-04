@@ -65,7 +65,7 @@ before_script:
 script:
 
   # call queue:worker
-  - php brood queue:worker > built-in.log 2>&1
+  - php brood queue:worker > built-in.log 2>&1 &
 
   # +--------------------------+
   # | Run PHPUnit              |
