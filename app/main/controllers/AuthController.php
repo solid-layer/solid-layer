@@ -1,25 +1,17 @@
 <?php
 namespace App\Main\Controllers;
 
-use DB;
-use URL;
-use Tag;
-use Auth;
-use View;
-use Lang;
-use Queue;
-use Session;
-use Request;
-use Redirect;
-use FlashBag;
-use Security;
 use Exception;
 use Components\Model\User;
+use Components\Validation\LoginValidator;
 use Components\Validation\RegistrationValidator;
 use Phalcon\Mvc\Model\Transaction\Failed as TransactionFailed;
 
 class AuthController extends Controller
 {
+    /**
+     * {@inheritdoc}
+     */
     public function initialize()
     {
         $this->middleware('csrf', [
@@ -29,148 +21,170 @@ class AuthController extends Controller
         ]);
     }
 
+    /**
+     * GET | This shows the form to register
+     *
+     * @return mixed
+     */
     public function showRegistrationForm()
     {
-        if ( Session::has('input') ) {
+        # find session if it has an 'input'
+        if (session()->has('input')) {
 
-            $input = Session::get('input');
-            Session::remove('input');
+            # get the session 'input' then remove it
+            $input = session()->get('input');
+            session()->remove('input');
 
-            Tag::setDefault('email', $input['email']);
+            # set the tag 'email' to rollback the value inputted
+            tag()->setDefault('email', $input['email']);
         }
 
-        return View::make('auth.showRegistrationForm');
+        return view('auth.showRegistrationForm');
     }
 
+    /**
+     * POST | This handles the registration with validation
+     *
+     * @return mixed
+     */
     public function storeRegistrationForm()
     {
-        $inputs = $this->request->get();
+        $inputs = request()->get();
+
         $validator = new RegistrationValidator;
-        $error_messages = '';
+        $validation = $validator->validate($inputs);
 
-        $messages = $validator->validate($inputs);
+        if (count($validation)) {
 
-        if ( count($messages) ) {
+            session()->set('input', $inputs);
 
-            Session::set('input', $this->request->get());
+            # alternative when using flash_bag().output()
+            // flash_bag()->error(
+            //     RegistrationValidator::toHtml($validation)
+            // );
 
-            foreach ($messages as $m) {
-                $error_messages .= '<li>'.$m->getMessage().'</li>';
-            }
+            return redirect()->to(url()->previous())
+                ->withError(RegistrationValidator::toHtml($validation));
         }
 
-        if ( $inputs['password'] !== $inputs['repassword'] ) {
-            $error_messages .=
-                '<li>Password and Repeat mismatch</li>';
-        }
-
-        if ( strlen($error_messages) != 0 ) {
-            $error_messages = sprintf('
-                Please check the error below:<br>
-                    <ul>%s</ul>',
-                $error_messages
-            );
-
-            FlashBag::error($error_messages);
-
-            return Redirect::to(URL::previous());
-        }
-
-        $token = sha1(uniqid().md5(
-                str_random() .
-                date('Ymdhis') .
-                uniqid()
-            )
-        );
+        $token = bin2hex(random_bytes(100));
 
         try {
-            DB::begin();
+            db()->begin();
 
             $user = new User;
+
             $success = $user->create([
                 'email'    => $inputs['email'],
-                'password' => Security::hash($inputs['password']),
+                'password' => security()->hash($inputs['password']),
                 'token'    => $token,
             ]);
 
             if ($success === false) {
-                throw new Exception('Cant create an account!');
+                throw new Exception(
+                    'It seems we can\'t create an account, '.
+                    'please check your access credentials!'
+                );
             }
 
-            $url = URL::route('activateUser', [
-                'token' => $token,
-            ]);
-
-            Queue::put([
+            queue()->put([
                 'class' => 'Components\Queue\Email@registeredSender',
                 'data'  => [
                     'template' => 'emails.registered-inligned',
                     'to'       => $inputs['email'],
-                    'url'      => $url,
+                    'url'      => route('activateUser', ['token' => $token]),
                     'subject'  => 'You are now registered, activation is required.'
                 ],
             ]);
 
-            DB::commit();
+            db()->commit();
+
         } catch (TransactionFailed $e) {
-            DB::rollback();
 
+            db()->rollback();
             throw $e;
+
         } catch (Exception $e) {
-            DB::rollback();
 
+            db()->rollback();
             throw $e;
+
         }
 
-
-        # Alternative is to store it using flash bag
-        // FlashBag::success(
-        //     Lang::get('responses/register.creation_success')
+        # alternative is to store it using flash bag
+        // flash_bag()->success(
+        //     lang()->get('responses/register.creation_success')
         // );
 
-        return Redirect::to(URL::route('showLoginForm'))
-            ->withSuccess(Lang::get('responses/register.creation_success'));
+        return redirect()->to(route('showLoginForm'))
+            ->withSuccess(lang()->get('responses/register.creation_success'));
     }
 
-
+    /**
+     * GET | This shows the login form
+     *
+     * @return mixed
+     */
     public function showLoginForm()
     {
-        return View::make('auth.showLoginForm');
+        return view('auth.showLoginForm');
     }
 
-
+    /**
+     * POST | This handles the loging
+     *
+     * @return mixed
+     */
     public function attemptToLogin()
     {
+        $inputs = request()->get();
+
+        $validator = new LoginValidator;
+        $validation = $validator->validate($inputs);
+
+        if (count($validation)) {
+            session()->set('input', $inputs);
+
+            return redirect()->to(url()->previous())
+                ->withError(LoginValidator::toHtml($validation));
+        }
+
         $credentials = [
-            'email'     => Request::get('email'),
-            'password'  => Request::get('password'),
+            'email'     => $inputs['email'],
+            'password'  => $inputs['password'],
             'activated' => true,
         ];
 
-        if (Auth::attempt($credentials)) {
-            if ($redirect = Auth::redirectIntended()) {
+        if (auth()->attempt($credentials)) {
+
+            if ($redirect = auth()->redirectIntended()) {
                 return $redirect;
             }
 
-            return Redirect::to(URL::to('newsfeed'));
+            return redirect()->to(url()->to('newsfeed'));
         }
 
-        return Redirect::to(URL::previous())
-            ->withError(Lang::get('responses/login.no_user'));
+        return redirect()->to(url()->previous())
+            ->withError(lang()->get('responses/login.no_user'));
     }
 
-
+    /**
+     * GET, POST | This logouts the current session logged-in
+     *
+     * @return mixed
+     */
     public function logout()
     {
-        Auth::destroy();
+        auth()->destroy();
 
-        return Redirect::to(
-
-            URL::route('showLoginForm')
-        );
+        return redirect()->to(route('showLoginForm'));
     }
 
-
+    /**
+     * GET | This activates a user record to be able to login
+     *
+     * @return mixed
+     */
     public function activateUser($token)
     {
         $user = User::find([
@@ -182,27 +196,27 @@ class AuthController extends Controller
         ])->getFirst();
 
         if (! $user) {
-            FlashBag::warning(
+            flash_bag()->warning(
                 'We cant find your request, please ' .
                 'try again, or contact us.'
             );
 
-            return View::make('errors.404');
+            return view('errors.404');
         }
 
         $user->setActivated(true);
 
         if ($user->save() === false) {
             foreach ($user->getMessages() as $message) {
-                FlashBag::error($message);
+                flash_bag()->error($message);
             }
         } else {
-            FlashBag::success(
+            flash_bag()->success(
                 'You have successfully activated your account, ' .
                 'you are now allowed to login.'
             );
         }
 
-        return Redirect::to(URL::route('showLoginForm'));
+        return redirect()->to(route('showLoginForm'));
     }
 }
