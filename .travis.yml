@@ -16,6 +16,7 @@ env:
   - PHALCON_VERSION="phalcon-v2.0.9"
   - PHALCON_VERSION="phalcon-v2.0.8"
 
+
   global:
     - MAILER_HOST="smtp.mandrillapp.com"
     - MAILER_PORT=587
