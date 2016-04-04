@@ -60,6 +60,10 @@ before_script:
   - sleep 5
 
 script:
+
+  # call queue:worker
+  - php brood queue:worker &
+
   # +--------------------------+
   # | Run PHPUnit              |
   # +--------------------------+
