@@ -11,11 +11,11 @@ sudo: true
 
 env:
   # - PHALCON_VERSION="2.1.x"
-  - PHALCON_VERSION="2.0.x"
-  - PHALCON_VERSION="phalcon-v2.0.10"
-  - PHALCON_VERSION="phalcon-v2.0.9"
-  - PHALCON_VERSION="phalcon-v2.0.8"
-
+  matrix:
+    - PHALCON_VERSION="2.0.x"
+    - PHALCON_VERSION="phalcon-v2.0.10"
+    - PHALCON_VERSION="phalcon-v2.0.9"
+    - PHALCON_VERSION="phalcon-v2.0.8"
 
   global:
     - MAILER_HOST="smtp.mandrillapp.com"
