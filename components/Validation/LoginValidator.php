@@ -3,7 +3,6 @@ namespace Components\Validation;
 
 use Phalcon\Validation\Validator\Email;
 use Phalcon\Validation\Validator\PresenceOf;
-use Phalcon\Validation\Validator\Confirmation;
 
 class LoginValidator extends Validation
 {
