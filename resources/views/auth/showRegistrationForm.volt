@@ -9,7 +9,19 @@
 {% block content %}
     <div class="marginTop"></div>
 
-    <div class="col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2">
+    <div class="col-md-4 col-md-offset-1">
+        <div class="well">
+            <h4>Registration Form</h4>
+            <hr>
+            <ul>
+                <li>At first, you must run <code>php brood queue:worker</code> in your console.</li>
+                <li>Check your mailer configuration if you can't send an email request.</li>
+                <li>Put your email, password and repeat password.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-md-6">
 
         {# Success Message #}
         {% if di().get('flash').has('success')  %}
@@ -50,6 +62,7 @@
             </form>
         </div>
     </div>
+
 {% endblock %}
 
 {% block footer %}
