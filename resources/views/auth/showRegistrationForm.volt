@@ -8,9 +8,25 @@
 
 {% block content %}
     <div class="marginTop"></div>
+
     <div class="col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2">
+
+        {# Success Message #}
+        {% if di().get('flash').has('success')  %}
+            <div class="alert alert-success">
+                {{ di().get('flash').get('success') }}
+            </div>
+        {% endif %}
+
+        {# Error Messages #}
+        {% if di().get('flash').has('error')  %}
+            <div class="alert alert-danger">
+                {{ di().get('flash').get('error') }}
+            </div>
+        {% endif %}
+
         {{ flash_bag.output() }}
-        <hr>
+
         <div class="well">
             <form class="form-vertical" method="POST" action="{{ route('storeRegistrationForm') }}" autocomplete="off">
                 <input type="hidden" name="{{ security.getTokenKey() }}" value="{{ security.getToken() }}"/>

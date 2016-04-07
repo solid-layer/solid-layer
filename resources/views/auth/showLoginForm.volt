@@ -28,7 +28,6 @@
         {# Any when using FlashBag #}
         {{ flash_bag.output() }}
 
-        <hr>
         <div class="well">
             <form class="form-vertical" method="POST" action="{{ route('attemptToLogin') }}" autocomplete="off">
                 {{ csrf_field() }}

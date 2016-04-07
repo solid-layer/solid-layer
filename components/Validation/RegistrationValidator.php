@@ -1,11 +1,11 @@
 <?php
 namespace Components\Validation;
 
-use Phalcon\Validation;
 use Components\Model\User;
 use Phalcon\Validation\Validator\Email;
 use Phalcon\Validation\Validator\PresenceOf;
 use Phalcon\Validation\Validator\Uniqueness;
+use Phalcon\Validation\Validator\Confirmation;
 
 class RegistrationValidator extends Validation
 {
@@ -20,8 +20,13 @@ class RegistrationValidator extends Validation
         ]));
 
         $this->add('email', new Uniqueness([
-            'model' => User::class,
+            'model'   => User::class,
             'message' => 'Email already exist'
+        ]));
+
+        $this->add('password', new Confirmation([
+            'with'    => 'repassword',
+            'message' => 'Password and Repeat Password must match',
         ]));
     }
 }

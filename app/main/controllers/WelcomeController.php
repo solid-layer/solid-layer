@@ -1,27 +1,23 @@
 <?php
 namespace App\Main\Controllers;
 
-use URL;
-use Lang;
-use Redirect;
-use FlashBag;
 use Components\Model\User;
 
 class WelcomeController extends Controller
 {
     /**
-     * Show the Slayer's introduction
+     * GET | This shows the slayer's introduction
      *
      * @return mixed
      */
     public function showSignature()
     {
-        return $this->view->make('welcome');
+        return view('welcome');
     }
 
     /**
-     * Redirect the user if the 'users' table will be
-     * determined as empty or not
+     * GET | Redirect the user if the 'users' table is empty or not
+     * then redirect it to either login or registration
      *
      * @return mixed
      */
@@ -29,19 +25,19 @@ class WelcomeController extends Controller
     {
         if ( User::count() ) {
 
-            FlashBag::notice(
-                Lang::get(
+            flash_bag()->notice(
+                lang()->get(
                     'responses/login.pre_flash_message'
                 )
             );
 
-            return Redirect::to(URL::route('showLoginForm'));
+            return redirect()->to(route('showLoginForm'));
         }
 
-        FlashBag::warning(
-            Lang::get('responses/register.pre_flash_message')
+        flash_bag()->warning(
+            lang()->get('responses/register.pre_flash_message')
         );
 
-        return Redirect::to(URL::route('showRegistrationForm'));
+        return redirect()->to(route('showRegistrationForm'));
     }
 }

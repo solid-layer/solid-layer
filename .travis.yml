@@ -10,11 +10,23 @@ services:
 sudo: true
 
 env:
-  # - PHALCON_VERSION="2.1.x"
-  - PHALCON_VERSION="2.0.x"
-  - PHALCON_VERSION="phalcon-v2.0.10"
-  - PHALCON_VERSION="phalcon-v2.0.9"
-  - PHALCON_VERSION="phalcon-v2.0.8"
+  matrix:
+    # - PHALCON_VERSION="2.1.x"
+    - PHALCON_VERSION="2.0.x"
+    - PHALCON_VERSION="phalcon-v2.0.10"
+    - PHALCON_VERSION="phalcon-v2.0.9"
+    - PHALCON_VERSION="phalcon-v2.0.8"
+
+  global:
+    - MAILER_HOST=smtp.mandrillapp.com
+    - MAILER_PORT=587
+    - MAILER_ENCRYPTION=tls
+    #sender
+    - secure: "AO+nsD2awcOH3b7ZtTlwuRa4/0ocRIlJ54MucCPIhftNa70GDlJZ7yvw0SFPfAEW/CfxI8tEXyRiSGHIxoSEzdoNhSId3QA761A6oPzD5hf269XtIWw7bQtz/vhrtIENZ9llNAokn5GqKl+XlpISB1aZ/zEr0H4/e17/Sd0sqa+fCPIYXD0d4vCJJJniyymieE2y2qP4OPoZrU4AFOhawzN0g6pGoA/BmP9oPV3rLwevDDKddKzQkK49CxE9Irx1/Y9dNRA78SscFQylUP5xIu+ira8UVdVvhqZMYU49uoQWQt1YpJ5A1hqhVICRoKyrypgMSpLBb3TeiAYF2uih84cDgLfiX8sHeruxhF5EZguNsU82B2Rn8aOR84HxdN0fiCQTTPuHm+jDa+vpWroc+pO9Rq+099zZBQXXQLCix5mZq5va660kh5aKzNeBJiBpTj3o8lucIjurysi2wSncLBEebeZVK7uB3cvdi8fdthGwKjvoW1pxUPCWRY1IJ+Fgi+7PUGXVVQodNKHN8yd9WmX9j1R0VQus5QIEOBEz2h/udcT9mBG5Jk1JP7n4qRJEsKhw/RZpjkjN5gVKjj5kyLvEcn9GNdJ6Bs1x0MK5CAtJck2HGUv08LWdTc4ovT70dRUgdDVOBI05iY39cDNDCJ3/lFM+i2kbWHX1wD0pVJo="
+    #username
+    - secure: "d2aovg+1OFFDC/VgE8+15PG70XveOiNKNwniWu4Uy5r6wUzwCvI6CObFSift+dD7ALmSNoqY1zdbo2h1C1BW6E362qVorQEBk9BwDaGwFGS5Z18B7T1FIoAkcMHW9Aq/5c4pMOp28bR4AoQ4vCUJ5pioI3/gpjfPQFAq+/ThC33PPhl52qUIYlRbN6ZqMxZW7BUcyhq1+a1EqPVZFFG7ByxzfrKCqfPJ8vuJmUphKyX8wO8DTjPejuKHGrcTXTGFNHUMJUR6gY0A7ULo0OtYVQpJWhGj2XeXzQgWZPf5OCvNbwDKEC6s0cyKrjNm4Nhl2i3bVQE8VOHQ/aHBfwZcIlkn2jijVC9axhjC7b0c2xSB/+n7oVwZsbJ4NnMYrBKOiKZdLfwZ/0wK16BBaNiwgBF3ObjuZ/KNRqGXyEZkLC6wQnzgcQT9pGtMzvHcIDZPr0jrHi1csSFxrSt7nrSenzTO8hNl8eVkU+YkoJvXFsSDaaf/G+HzmQiL7psFsKhqXDffOTqtQd0aZP+y3FxORfc3yEMRfQfDo9/afnFUpdtno6nPa6PX/OT+2tdLY7fQqqPZ9qIfdVBxDT0mKrjY/j1k35HHmTPgsPGWidwjKINZCgS1cD9aq/GyhNByPE5feE/VNW4FtmAqUayG6smPFW4MSL8EN+0Sd80t8HOlYSE="
+    #password
+    - secure: "b21Xpzj182il0MpHL/wHQzcATxrcets7TPjPoLLoxIB3AlGy7OiT4uUnl+KJ+IyYjBzBTu772DVWOzShINGF53dDzrpeJ3mMFuot3ojcB2NCL0BrCFOdyMqS6Om+NRcM5m2srMc3Zb3IVZdy1t7ih2K9U4Gkex45niOgBKTaZ+B7Wm4vyCor/TbY2Q6bqnEKEcfNJfquSh+oim5WmtGZYwblxkwjql9zYMED91YTmx9lmpS/313eIDXSkKyA78mIu1jV+cfWqAahZajdH+Nn+KVUqmTpPHAG4QF2UPzzxBWQlDFcmlvn+I8Tgxymogkkk2hP9HRxLsInB/YQUTDJTfQJEeAP+pVcPb+IAHXr9FAOLFCATMk8n9GUuS9YVTkbJRzzVArdMWNFLCthJuTffp2JGEjSiD6EJr5urLNbK5k99q8iz6Pe44wkSuFj1sKHMvB2WKSI1ou7uLa7T/AVGC4qwcUu93LAC4YWRmUD5wDJdc4amaVrKel5OmRunvWMw8fHf6jKu84tzxRUUf9MpWiZC7VxlyNlCBfmKqEFGcIPQkKQ9eI2/jdCdJVFgvyXyblzwQpaqcYHulOXT9W414Tmq64IuxyfHfgtySsIiPEUCQHTPZNqJ5833cc25LtXk0tnl/tOuAGwZtqpwYjGiVeJD/a3x28yfwYl3+38r+A="
 
 cache:
   directories:
@@ -51,6 +63,10 @@ before_script:
   - sleep 5
 
 script:
+
+  # call queue:worker
+  - php brood queue:worker > built-in.log 2>&1 &
+
   # +--------------------------+
   # | Run PHPUnit              |
   # +--------------------------+
