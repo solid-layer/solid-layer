@@ -24,9 +24,18 @@ class RegistrationValidator extends Validation
             'message' => 'Email already exist'
         ]));
 
+        $this->add('password', new PresenceOf([
+            'message' => 'Password is required',
+        ]));
+
         $this->add('password', new Confirmation([
             'with'    => 'repassword',
             'message' => 'Password and Repeat Password must match',
         ]));
+
+        $this->add('repassword', new PresenceOf([
+            'message' => 'Repeat Password is required',
+        ]));
+
     }
 }
