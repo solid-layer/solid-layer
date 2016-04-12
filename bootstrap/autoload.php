@@ -82,19 +82,6 @@ $kernel
 
 /*
 +----------------------------------------------------------------+
-|\ Removing action suffix                                       /|
-+----------------------------------------------------------------+
-|
-| by default, phalcon has a suffix of <method>Action() on every
-| controller to get rid with this, we must apply an empty on it
-|
-*/
-
-di()->get('dispatcher')->setActionSuffix('');
-
-
-/*
-+----------------------------------------------------------------+
 |\ Public File Checker                                          /|
 +----------------------------------------------------------------+
 |
