@@ -207,7 +207,7 @@ return [
     |
     */
 
-    'logging_time' => 'hourly',
+    'logging_time' => false,
 
 
     /*
@@ -238,38 +238,39 @@ return [
     */
 
     'services' => [
-        Components\Providers\Application::class,
-        Clarity\Providers\Module::class,
+        # This must be on top to log things to
+        # all supporting providers
         Clarity\Providers\Log::class,
-        Clarity\Providers\ErrorHandler::class,
-        Clarity\Providers\Console::class,
+
         Clarity\Providers\Aliaser::class,
+        Components\Providers\Application::class,
         Clarity\Providers\Auth::class,
         Clarity\Providers\Cache::class,
+        Clarity\Providers\CollectionManager::class,
+        Clarity\Providers\Console::class,
         Clarity\Providers\DB::class,
         Components\Providers\Dispatcher::class,
+        Clarity\Providers\ErrorHandler::class,
         Clarity\Providers\Filter::class,
         Clarity\Providers\Flash::class,
         Clarity\Providers\FlashBag::class,
+        Clarity\Providers\Flysystem::class,
         Clarity\Lang\LangServiceProvider::class,
         Clarity\Mail\MailServiceProvider::class,
         Clarity\Providers\MetadataAdapter::class,
+        Clarity\Providers\Module::class,
         Clarity\Providers\Mongo::class,
+        Clarity\Providers\Queue::class,
         Clarity\Providers\Redirect::class,
         Clarity\Providers\Request::class,
         Clarity\Providers\Response::class,
         Clarity\Providers\Router::class,
         Clarity\Providers\RouterAnnotations::class,
         Clarity\Providers\Session::class,
-        Clarity\Providers\Queue::class,
         Clarity\Providers\URL::class,
         Clarity\View\ViewServiceProvider::class,
-        Clarity\Providers\Flysystem::class,
-        Clarity\Providers\CollectionManager::class,
 
-
-        # register your classes below.
-
+        # register your provider below.
         Acme\Acme\AcmeServiceProvider::class,
     ],
 
@@ -307,7 +308,6 @@ return [
         'Tag'         => Clarity\Facades\Tag::class,
         'URL'         => Clarity\Facades\URL::class,
         'View'        => Clarity\Facades\View::class,
-
     ],
 
 
