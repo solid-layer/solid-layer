@@ -14,7 +14,8 @@
         "php": ">=5.5.9",
         "ext-phalcon": ">=2.0",
         "vlucas/phpdotenv": "^2.0",
-        "phalconslayer/framework": "1.4.*"
+        "phalconslayer/framework": "1.4.*",
+        "phalconslayer/acme": "*"
     },
     "require-dev": {
         "behat/mink": "^1.7",
@@ -25,8 +26,7 @@
     },
     "autoload": {
         "classmap": [
-            "app/",
-            "sandbox/"
+            "app/"
         ],
         "psr-4": {
             "Components\\": "components/"
@@ -47,5 +47,11 @@
         "preferred-install": "dist"
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "path",
+            "url": "sandbox/acme"
+        }
+    ]
 }

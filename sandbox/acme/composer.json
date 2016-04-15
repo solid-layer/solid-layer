@@ -1,4 +1,8 @@
 {
     "name": "phalconslayer/acme",
-    "require": {}
+    "autoload": {
+        "psr-4": {
+            "Acme\\Acme\\": "src/"
+        }
+    }
 }
