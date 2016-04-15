@@ -107,3 +107,8 @@ script:
   - php brood make:collection Test
   - php brood make:console Test
   - php brood make:model Test
+
+notifications:
+  email:
+    recipients:
+      - daison12006013@gmail.com
