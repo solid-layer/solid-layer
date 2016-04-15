@@ -271,7 +271,7 @@ return [
         Clarity\View\ViewServiceProvider::class,
 
         # register your provider below.
-        Acme\Acme\AcmeServiceProvider::class,
+        // Acme\Acme\AcmeServiceProvider::class,
     ],
 
 
