@@ -42,10 +42,10 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "repositories": [
-        {
+    "repositories": {
+        "sandbox/acme": {
             "type": "path",
             "url": "sandbox/acme"
         }
-    ]
+    }
 }
