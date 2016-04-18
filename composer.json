@@ -33,12 +33,6 @@
         }
     },
     "scripts": {
-        "post-install-cmd": [
-            "php brood optimize"
-        ],
-        "post-update-cmd": [
-            "php brood optimize"
-        ],
         "post-root-package-install": [
             "php -r \"copy('.env.example', '.env');\""
         ]
