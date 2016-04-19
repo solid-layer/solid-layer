@@ -3,7 +3,7 @@
 return [
 
     'file' => [
-        'class' => Phalcon\Session\Adapter\Files::class,
+        'class' => Clarity\Support\Phalcon\Session\Files::class,
 
         # http://php.net/manual/en/function.session-set-cookie-params.php
         'config' => [
