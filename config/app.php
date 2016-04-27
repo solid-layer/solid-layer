@@ -229,6 +229,23 @@ return [
 
     /*
     +----------------------------------------------------------------+
+    |\ Application Encryption                                       /|
+    +----------------------------------------------------------------+
+    |
+    | This handles the Phalcon\Crypt, in which you could encrypt
+    | or decrypt data.
+    |
+    */
+
+    'encryption' => [
+        'key'    => env('APP_KEY'),
+        'cipher' => 'rijndael-256',
+        'mode'   => 'cbc',
+    ],
+
+
+    /*
+    +----------------------------------------------------------------+
     |\ Service Providers                                            /|
     +----------------------------------------------------------------+
     |
@@ -248,6 +265,7 @@ return [
         Clarity\Providers\Cache::class,
         Clarity\Providers\CollectionManager::class,
         Clarity\Providers\Console::class,
+        Clarity\Providers\Crypt::class,
         Clarity\Providers\DB::class,
         Components\Providers\Dispatcher::class,
         Clarity\Providers\ErrorHandler::class,
