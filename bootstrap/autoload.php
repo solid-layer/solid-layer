@@ -3,24 +3,12 @@
 define('SLAYER_START', microtime(true));
 define('BASE_PATH', dirname(__DIR__));
 
-error_reporting(0);
+error_reporting(-1);
 
 if ( !extension_loaded('phalcon') ) {
     echo 'Phalcon extension required.'.PHP_EOL;
     exit;
 }
-
-
-/*
-+----------------------------------------------------------------+
-|\ Dependencies                                                 /|
-+----------------------------------------------------------------+
-|
-| call composer autoload to call all dependencies
-|
-*/
-
-require BASE_PATH.'/vendor/autoload.php';
 
 
 /*
@@ -37,6 +25,18 @@ $compiled = BASE_PATH .'/storage/slayer/compiled.php';
 if (file_exists($compiled) && php_sapi_name() != 'cli') {
     require $compiled;
 }
+
+
+/*
++----------------------------------------------------------------+
+|\ Dependencies                                                 /|
++----------------------------------------------------------------+
+|
+| call composer autoload to call all dependencies
+|
+*/
+
+require BASE_PATH.'/vendor/autoload.php';
 
 
 /*
