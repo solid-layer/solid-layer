@@ -22,7 +22,7 @@ if ( !extension_loaded('phalcon') ) {
 
 $compiled = BASE_PATH .'/storage/slayer/compiled.php';
 
-if (file_exists($compiled) && php_sapi_name() != 'cli') {
+if (file_exists($compiled)) {
     require $compiled;
 }
 
