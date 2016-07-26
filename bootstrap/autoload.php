@@ -5,7 +5,7 @@ define('BASE_PATH', dirname(__DIR__));
 
 error_reporting(-1);
 
-if ( !extension_loaded('phalcon') ) {
+if (!extension_loaded('phalcon')) {
     echo 'Phalcon extension required.'.PHP_EOL;
     exit;
 }

@@ -40,12 +40,12 @@ class AcmeServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        # - you can use $this->route to add new route
+        # you can use $this->route to add new route
 
         require __DIR__ . '/app/routes.php';
 
 
-        # - link a new console command
+        # link a new console command
 
         $this->console->add(new AcmeConsoleCommand);
 

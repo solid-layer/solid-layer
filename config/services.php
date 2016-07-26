@@ -7,4 +7,4 @@ return [
         'secret' => env('MAILER_MAILGUN_SECRET', ''),
     ],
 
-]; # - end of return
+]; # end of return

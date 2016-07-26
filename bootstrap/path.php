@@ -18,4 +18,4 @@ return [
     'sandbox'       => BASE_PATH . '/sandbox/',
     'storage'       => BASE_PATH . '/storage/',
 
-]; # - end of return
+]; # end of return

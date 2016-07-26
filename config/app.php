@@ -344,4 +344,4 @@ return [
         'csrf' => Components\Middleware\CSRF::class,
     ],
 
-]; # - end of return
+]; # end of return

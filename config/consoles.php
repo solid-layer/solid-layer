@@ -41,6 +41,6 @@ return [
     Clarity\Support\Phinx\Console\Command\SeedRun::class,
     Clarity\Support\Phinx\Console\Command\Status::class,
 
-    # - add your console commands below ...
+    # add your console commands below ...
 
-]; # - end of return
+]; # end of return

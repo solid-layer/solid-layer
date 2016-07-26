@@ -19,7 +19,6 @@ class Handler extends BaseHandler
         }
 
         if ($e instanceof ControllerNotFoundException) {
-
             if (config()->app->debug) {
                 return parent::render($e, PageNotFoundHandler::STATUS_CODE);
             }
@@ -28,7 +27,7 @@ class Handler extends BaseHandler
         }
 
 
-        # - you may also want to extract the error for other purpose
+        # you may also want to extract the error for other purpose
         # such as logging it to your slack bot notifier or using
         # bugsnag
 

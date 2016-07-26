@@ -36,6 +36,5 @@ class RegistrationValidator extends Validation
         $this->add('repassword', new PresenceOf([
             'message' => 'Repeat Password is required',
         ]));
-
     }
 }

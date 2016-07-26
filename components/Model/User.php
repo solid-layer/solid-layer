@@ -93,5 +93,4 @@ class User extends Model
     {
         return (bool) $this->activated;
     }
-
 }

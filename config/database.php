@@ -97,4 +97,4 @@ return [
         ],
     ],
 
-]; # - end of return
+]; # end of return
