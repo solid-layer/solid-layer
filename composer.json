@@ -12,7 +12,7 @@
     "license": "MIT",
     "require": {
         "php": ">=5.5.9",
-        "ext-phalcon": "^2.0",
+        "ext-phalcon": ">=2.0.8 <=2.1",
         "vlucas/phpdotenv": "^2.0",
         "phalconslayer/framework": "1.4.*",
         "phalconslayer/acme": "*"
