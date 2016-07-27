@@ -1,6 +1,7 @@
 <?php
 namespace Components\Validation;
 
+use Phalcon\Version;
 use Components\Model\User;
 use Phalcon\Validation\Validator\Email;
 use Phalcon\Validation\Validator\PresenceOf;
@@ -19,10 +20,17 @@ class RegistrationValidator extends Validation
             'message' => 'Email is not valid',
         ]));
 
-        $this->add('email', new Uniqueness([
-            'model'   => new User,
-            'message' => 'Email already exist'
-        ]));
+        if (Version::get() <= '2.0.10' ) {
+            $this->add('email', new Uniqueness([
+                'model'   => User::class,
+                'message' => 'Email already exist'
+            ]));
+        } else {
+            $this->add('email', new Uniqueness([
+                'model'   => new User,
+                'message' => 'Email already exist'
+            ]));
+        }
 
         $this->add('password', new PresenceOf([
             'message' => 'Password is required',
