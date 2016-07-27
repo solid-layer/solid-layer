@@ -20,7 +20,7 @@ class RegistrationValidator extends Validation
             'message' => 'Email is not valid',
         ]));
 
-        if (Version::get() <= '2.0.10' ) {
+        if ( (float) Version::get() <= (float) '2.0.10' ) {
             $this->add('email', new Uniqueness([
                 'model'   => User::class,
                 'message' => 'Email already exist'
