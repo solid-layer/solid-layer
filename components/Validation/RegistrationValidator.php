@@ -20,7 +20,7 @@ class RegistrationValidator extends Validation
         ]));
 
         $this->add('email', new Uniqueness([
-            'model'   => User::class,
+            'model'   => new User,
             'message' => 'Email already exist'
         ]));
 
