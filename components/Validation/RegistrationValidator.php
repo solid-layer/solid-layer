@@ -21,7 +21,7 @@ class RegistrationValidator extends Validation
         ]));
 
         $this->add('email', new Uniqueness([
-            'model'   => Version::get() <= '2.0.10' ? User::class : new User,
+            'model'   => (int) Version::getId() <= 2001341 ? User::class : new User,
             'message' => 'Email already exist'
         ]));
 
