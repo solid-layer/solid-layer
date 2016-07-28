@@ -10,18 +10,15 @@ Slayer - Structured Phalcon Framework
 #####Master Status:
 [![Build Status](https://travis-ci.org/phalconslayer/framework.svg?branch=master)](https://travis-ci.org/phalconslayer/slayer)
 
-#####Dev Status:
-[![Build Status](https://travis-ci.org/phalconslayer/framework.svg?branch=dev)](https://travis-ci.org/phalconslayer/slayer)
-
 Slayer is made to support dependencies while still reaching the speed of Phalcon Framework, it is built with extensive packages such as flysystem, symfony components, swiftmailer, phinx and many more (refer to composer.json)
 
 ## Contributing
 
-Please read the [CONTRIBUTING.md](https://github.com/phalconslayer/slayer/blob/dev/CONTRIBUTING.md)
+Please read the [CONTRIBUTING.md](https://github.com/phalconslayer/framework/blob/master/CONTRIBUTING.md)
 
 You can pull the most updated branch ``dev``, create a pull request of your forked branch updates, issues should be reported using GitHub's Issues and all security concerns should be emailed to ``daison12006013@gmail.com`` promptly.
 
-Thanks to all [contributors](https://github.com/phalconslayer/slayer/graphs/contributors).
+Thanks to all [contributors](https://github.com/phalconslayer/framework/graphs/contributors).
 
 ## License
 
