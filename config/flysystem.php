@@ -5,7 +5,7 @@ return [
     'local' => [
         'class'  => Components\Flysystem\Local::class,
         'config' => [
-            'path' => BASE_PATH,
+            'path' => config('path.root'),
         ],
     ],
 

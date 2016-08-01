@@ -14,7 +14,7 @@ return [
             'frontend' => Phalcon\Cache\Frontend\Data::class,
             'lifetime' => 172800,
             'options'  => [
-                'cacheDir' => BASE_PATH.'/storage/cache/',
+                'cacheDir' => config('path.root').'/storage/cache/',
                 'prefix'   => '_slayer_',
             ],
         ],

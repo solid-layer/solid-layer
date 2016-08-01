@@ -1,21 +1,23 @@
 <?php
 
+$base_path = __DIR__.'/../';
+
 return [
-    'root'          => BASE_PATH.'/',
-    'app'           => BASE_PATH.'/app/',
-    'console'       => BASE_PATH.'/components/Console/',
-    'command'       => BASE_PATH.'/components/Command/',
-    'collections'   => BASE_PATH.'/components/Collection/',
-    'models'        => BASE_PATH.'/components/Model/',
-    'config'        => BASE_PATH.'/config/',
-    'database'      => BASE_PATH.'/database/',
-    'migrations'    => BASE_PATH.'/database/migrations/',
-    'seeders'       => BASE_PATH.'/database/seeders/',
-    'public'        => BASE_PATH.'/public/',
-    'resources'     => BASE_PATH.'/resources/',
-    'views'         => BASE_PATH.'/resources/views/',
-    'lang'          => BASE_PATH.'/resources/lang/',
-    'sandbox'       => BASE_PATH.'/sandbox/',
-    'storage'       => BASE_PATH.'/storage/',
+    'root'          => $base_path.'/',
+    'app'           => $base_path.'/app/',
+    'console'       => $base_path.'/components/Console/',
+    'command'       => $base_path.'/components/Command/',
+    'collections'   => $base_path.'/components/Collection/',
+    'models'        => $base_path.'/components/Model/',
+    'config'        => $base_path.'/config/',
+    'database'      => $base_path.'/database/',
+    'migrations'    => $base_path.'/database/migrations/',
+    'seeders'       => $base_path.'/database/seeders/',
+    'public'        => $base_path.'/public/',
+    'resources'     => $base_path.'/resources/',
+    'views'         => $base_path.'/resources/views/',
+    'lang'          => $base_path.'/resources/lang/',
+    'sandbox'       => $base_path.'/sandbox/',
+    'storage'       => $base_path.'/storage/',
 
 ]; # end of return

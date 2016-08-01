@@ -1,7 +1,5 @@
 <?php
-
 define('SLAYER_START', microtime(true));
-define('BASE_PATH', dirname(__DIR__));
 
 error_reporting(-1);
 
@@ -9,6 +7,8 @@ if (! extension_loaded('phalcon')) {
     echo 'Phalcon extension required.'.PHP_EOL;
     exit;
 }
+
+$base_path = __DIR__.'/../';
 
 /*
 +----------------------------------------------------------------+
@@ -19,7 +19,7 @@ if (! extension_loaded('phalcon')) {
 |
 */
 
-$compiled = BASE_PATH.'/storage/slayer/compiled.php';
+$compiled = $base_path.'/storage/slayer/compiled.php';
 
 if (file_exists($compiled)) {
     require $compiled;
@@ -34,7 +34,7 @@ if (file_exists($compiled)) {
 |
 */
 
-require BASE_PATH.'/vendor/autoload.php';
+require $base_path.'/vendor/autoload.php';
 
 /*
 +----------------------------------------------------------------+
@@ -46,9 +46,9 @@ require BASE_PATH.'/vendor/autoload.php';
 |
 */
 
-if (file_exists(BASE_PATH.'/.env')) {
+if (file_exists($base_path.'/.env')) {
     $dotenv = new Dotenv\Dotenv(
-        dirname(url_trimmer(BASE_PATH.'/.env'))
+        dirname(url_trimmer($base_path.'/.env'))
     );
 
     $dotenv->load();
@@ -67,7 +67,7 @@ if (file_exists(BASE_PATH.'/.env')) {
 $kernel = new Clarity\Kernel\Kernel;
 
 $path = require url_trimmer(__DIR__.'/path.php');
-$modules = require url_trimmer(BASE_PATH.'/app/modules.php');
+$modules = require url_trimmer($base_path.'/app/modules.php');
 
 $kernel
     ->setPath($path)
