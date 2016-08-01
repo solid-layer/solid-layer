@@ -76,6 +76,9 @@ $modules = require url_trimmer(BASE_PATH.'/app/modules.php');
 $kernel
     ->setPath($path)
     ->setModules($modules)
-    ->setEnvironment(env('APP_ENV', 'production'));
+    ->setEnvironment(env('APP_ENV', 'production'))
+    ->loadFactory()
+    ->loadConfig()
+    ->loadTimeZone();
 
 return $kernel;
