@@ -1,4 +1,5 @@
 <?php
+
 namespace Components\Middleware;
 
 class Auth implements \League\Tactician\Middleware
@@ -13,7 +14,7 @@ class Auth implements \League\Tactician\Middleware
                 url(
                     route('showLoginForm'),
                     [
-                        'ref' => url()->current()
+                        'ref' => url()->current(),
                     ]
                 )
             );

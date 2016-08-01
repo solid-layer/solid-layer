@@ -1,4 +1,5 @@
 <?php
+
 namespace Components\Exceptions;
 
 class FatalHandler
@@ -10,6 +11,7 @@ class FatalHandler
         echo di()->get('view')->take('errors.whoops', [
             'e' => $e,
         ]);
+
         return;
     }
 }

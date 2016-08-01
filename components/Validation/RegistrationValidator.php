@@ -1,4 +1,5 @@
 <?php
+
 namespace Components\Validation;
 
 use Phalcon\Version;
@@ -22,7 +23,7 @@ class RegistrationValidator extends Validation
 
         $this->add('email', new Uniqueness([
             'model'   => (int) Version::getId() <= 2001341 ? User::class : new User,
-            'message' => 'Email already exist'
+            'message' => 'Email already exist',
         ]));
 
         $this->add('password', new PresenceOf([

@@ -5,11 +5,10 @@ define('BASE_PATH', dirname(__DIR__));
 
 error_reporting(-1);
 
-if (!extension_loaded('phalcon')) {
+if (! extension_loaded('phalcon')) {
     echo 'Phalcon extension required.'.PHP_EOL;
     exit;
 }
-
 
 /*
 +----------------------------------------------------------------+
@@ -20,12 +19,11 @@ if (!extension_loaded('phalcon')) {
 |
 */
 
-$compiled = BASE_PATH .'/storage/slayer/compiled.php';
+$compiled = BASE_PATH.'/storage/slayer/compiled.php';
 
 if (file_exists($compiled)) {
     require $compiled;
 }
-
 
 /*
 +----------------------------------------------------------------+
@@ -37,7 +35,6 @@ if (file_exists($compiled)) {
 */
 
 require BASE_PATH.'/vendor/autoload.php';
-
 
 /*
 +----------------------------------------------------------------+
@@ -56,7 +53,6 @@ if (file_exists(BASE_PATH.'/.env')) {
 
     $dotenv->load();
 }
-
 
 /*
 +----------------------------------------------------------------+

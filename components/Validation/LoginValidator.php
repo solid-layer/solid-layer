@@ -1,4 +1,5 @@
 <?php
+
 namespace Components\Validation;
 
 use Phalcon\Validation\Validator\Email;

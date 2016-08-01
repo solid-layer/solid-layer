@@ -1,4 +1,5 @@
 <?php
+
 namespace Components\Collection;
 
 class User extends Collection

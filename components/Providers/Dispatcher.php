@@ -1,4 +1,5 @@
 <?php
+
 namespace Components\Providers;
 
 use Phalcon\Events\Manager as EventsManager;

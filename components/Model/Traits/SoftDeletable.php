@@ -1,4 +1,5 @@
 <?php
+
 namespace Components\Model\Traits;
 
 trait SoftDeletable

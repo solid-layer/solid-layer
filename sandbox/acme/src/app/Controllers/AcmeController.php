@@ -1,4 +1,5 @@
 <?php
+
 namespace Acme\Acme\App\Controllers;
 
 use Clarity\Facades\View;

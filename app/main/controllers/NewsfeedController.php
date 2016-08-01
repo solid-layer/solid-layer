@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Main\Controllers;
 
 class NewsfeedController extends Controller
@@ -12,7 +13,7 @@ class NewsfeedController extends Controller
     }
 
     /**
-     * GET | This shows the final landing page, in which it is the newsfeed
+     * GET | This shows the final landing page, in which it is the newsfeed.
      *
      * @return mixed
      */

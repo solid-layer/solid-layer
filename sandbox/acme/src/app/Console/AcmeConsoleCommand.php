@@ -1,4 +1,5 @@
 <?php
+
 namespace Acme\Acme\App\Console;
 
 use Clarity\Console\SlayerCommand;

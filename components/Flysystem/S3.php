@@ -1,4 +1,5 @@
 <?php
+
 namespace Components\Flysystem;
 
 use Aws\S3\S3Client;

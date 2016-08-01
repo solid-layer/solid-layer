@@ -1,4 +1,5 @@
 <?php
+
 namespace Components\Console;
 
 use Clarity\Console\SlayerCommand;

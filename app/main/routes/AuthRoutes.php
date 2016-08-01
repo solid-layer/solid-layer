@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Main\Routes;
 
 class AuthRoutes extends RouteGroup

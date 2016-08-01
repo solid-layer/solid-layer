@@ -1,4 +1,5 @@
 <?php
+
 namespace Components\Exceptions;
 
 use Clarity\Exceptions\Handler as BaseHandler;
@@ -26,15 +27,13 @@ class Handler extends BaseHandler
             return (new PageNotFoundHandler)->handle($e);
         }
 
-
         # you may also want to extract the error for other purpose
         # such as logging it to your slack bot notifier or using
         # bugsnag
 
         // ... notifications | bugsnag | etc...
 
-
-        if (!config()->app->debug) {
+        if (! config()->app->debug) {
             return (new FatalHandler)->handle($e);
         }
 

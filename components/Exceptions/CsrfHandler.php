@@ -1,4 +1,5 @@
 <?php
+
 namespace Components\Exceptions;
 
 class CsrfHandler
@@ -20,6 +21,7 @@ class CsrfHandler
         echo di()->get('view')->take('errors.whoops', [
             'e' => $e,
         ]);
+
         return;
     }
 }

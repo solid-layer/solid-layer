@@ -3,7 +3,7 @@
 return [
 
     'pull' => [
-        'cd ' . BASE_PATH,
+        'cd '.BASE_PATH,
         'git pull origin master',
         'php brood clear:cache',
         'php brood clear:logs',

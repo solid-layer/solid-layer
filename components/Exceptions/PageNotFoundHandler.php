@@ -1,4 +1,5 @@
 <?php
+
 namespace Components\Exceptions;
 
 class PageNotFoundHandler

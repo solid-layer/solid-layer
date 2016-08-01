@@ -1,4 +1,5 @@
 <?php
+
 namespace Components\Flysystem;
 
 use Barracuda\Copy\API;

@@ -9,7 +9,6 @@ return [
         ],
     ],
 
-
     # before using this, install the package first
     # composer require league/flysystem-aws-s3-v3
 
@@ -25,7 +24,6 @@ return [
     //         'bucket'  => 'your bucket',
     //     ],
     // ],
-
 
     # before using this, install the package first
     # composer require league/flysystem-copy

@@ -1,4 +1,5 @@
 <?php
+
 namespace Components\Queue;
 
 use Mail;
@@ -8,12 +9,12 @@ class Email
 {
     public function registeredSender($console, $job, $data)
     {
-        $to       = $data['to'];
-        $url      = $data['url'];
-        $subject  = $data['subject'];
+        $to = $data['to'];
+        $url = $data['url'];
+        $subject = $data['subject'];
         $template = $data['template'];
 
-        $console->info('Job: ' . $job->getId() . ' currently processing...');
+        $console->info('Job: '.$job->getId().' currently processing...');
         $console->info('   Email: '.$to);
         $console->info('   URL: '.$url);
         $console->info('   Subject: '.$subject);

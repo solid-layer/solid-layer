@@ -4,7 +4,7 @@ class ExampleTest extends PHPUnit_Framework_TestCase
 {
     /**
      * Calling the global variable 'kernel'
-     * to run the module 'main'
+     * to run the module 'main'.
      */
     public function setUp()
     {

@@ -33,7 +33,7 @@ return [
             'port'       => 6379,
             'persistent' => false,
             'lifetime'   => 3600,
-            'prefix'     => 'slayer_'
+            'prefix'     => 'slayer_',
         ],
     ],
 ];

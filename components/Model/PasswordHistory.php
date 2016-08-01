@@ -1,4 +1,5 @@
 <?php
+
 namespace Components\Model;
 
 use Components\Model\Traits\Timestampable;
@@ -11,7 +12,7 @@ class PasswordHistory extends Model
 
     /**
      * By every request, phalcon will always pull this function
-     * as basis to know what is the table's name
+     * as basis to know what is the table's name.
      *
      * @return string
      */

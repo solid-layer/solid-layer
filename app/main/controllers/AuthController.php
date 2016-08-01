@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Main\Controllers;
 
 use Exception;
@@ -22,7 +23,7 @@ class AuthController extends Controller
     }
 
     /**
-     * GET | This shows the form to register
+     * GET | This shows the form to register.
      *
      * @return mixed
      */
@@ -43,7 +44,7 @@ class AuthController extends Controller
     }
 
     /**
-     * POST | This handles the registration with validation
+     * POST | This handles the registration with validation.
      *
      * @return mixed
      */
@@ -92,7 +93,7 @@ class AuthController extends Controller
                     'template' => 'emails.registered-inlined',
                     'to'       => $inputs['email'],
                     'url'      => route('activateUser', ['token' => $token]),
-                    'subject'  => 'You are now registered, activation is required.'
+                    'subject'  => 'You are now registered, activation is required.',
                 ],
             ]);
 
@@ -115,7 +116,7 @@ class AuthController extends Controller
     }
 
     /**
-     * GET | This shows the login form
+     * GET | This shows the login form.
      *
      * @return mixed
      */
@@ -125,7 +126,7 @@ class AuthController extends Controller
     }
 
     /**
-     * POST | This handles the loging
+     * POST | This handles the loging.
      *
      * @return mixed
      */
@@ -162,7 +163,7 @@ class AuthController extends Controller
     }
 
     /**
-     * GET, POST | This logouts the current session logged-in
+     * GET, POST | This logouts the current session logged-in.
      *
      * @return mixed
      */
@@ -174,7 +175,7 @@ class AuthController extends Controller
     }
 
     /**
-     * GET | This activates a user record to be able to login
+     * GET | This activates a user record to be able to login.
      *
      * @return mixed
      */
@@ -190,7 +191,7 @@ class AuthController extends Controller
 
         if (! $user) {
             flash_bag()->warning(
-                'We cant find your request, please ' .
+                'We cant find your request, please '.
                 'try again, or contact us.'
             );
 
@@ -205,7 +206,7 @@ class AuthController extends Controller
             }
         } else {
             flash_bag()->success(
-                'You have successfully activated your account, ' .
+                'You have successfully activated your account, '.
                 'you are now allowed to login.'
             );
         }

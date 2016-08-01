@@ -1,4 +1,5 @@
 <?php
+
 namespace Components\Model;
 
 use Components\Model\Traits\Timestampable;
@@ -17,7 +18,7 @@ class User extends Model
 
     /**
      * By every request, phalcon will always pull this function
-     * as basis to know what is the table's name
+     * as basis to know what is the table's name.
      *
      * @return string
      */
@@ -27,7 +28,7 @@ class User extends Model
     }
 
     /**
-     * Set the name field
+     * Set the name field.
      *
      * @param string $name setting the name of the user
      * @return mixed
@@ -40,7 +41,7 @@ class User extends Model
     }
 
     /**
-     * Get the user's name
+     * Get the user's name.
      *
      * @return string
      */
@@ -50,7 +51,7 @@ class User extends Model
     }
 
     /**
-     * Set the email
+     * Set the email.
      *
      * @param string $email
      */
@@ -62,7 +63,7 @@ class User extends Model
     }
 
     /**
-     * Get the user's email
+     * Get the user's email.
      *
      * @return string
      */
@@ -72,9 +73,9 @@ class User extends Model
     }
 
     /**
-     * Set the column activated in the table as boolean
+     * Set the column activated in the table as boolean.
      *
-     * @param boolean $bool a boolean value to be based if activated or not
+     * @param bool $bool a boolean value to be based if activated or not
      * @return mixed
      */
     public function setActivated($bool)
@@ -85,7 +86,7 @@ class User extends Model
     }
 
     /**
-     * To know if the account is activated
+     * To know if the account is activated.
      *
      * @return bool
      */

@@ -1,4 +1,5 @@
 <?php
+
 namespace Components\Middleware;
 
 use Clarity\Exceptions\AccessNotAllowedException;

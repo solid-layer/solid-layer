@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Main\Controllers;
 
 use Components\Model\User;
@@ -6,7 +7,7 @@ use Components\Model\User;
 class WelcomeController extends Controller
 {
     /**
-     * GET | This shows the slayer's introduction
+     * GET | This shows the slayer's introduction.
      *
      * @return mixed
      */
@@ -17,7 +18,7 @@ class WelcomeController extends Controller
 
     /**
      * GET | Redirect the user if the 'users' table is empty or not
-     * then redirect it to either login or registration
+     * then redirect it to either login or registration.
      *
      * @return mixed
      */
