@@ -268,7 +268,6 @@ return [
         Clarity\Providers\Auth::class,
         Clarity\Providers\Cache::class,
         Clarity\Providers\CollectionManager::class,
-        Clarity\Providers\Console::class,
         Clarity\Providers\Crypt::class,
         Clarity\Providers\DB::class,
         Components\Providers\Dispatcher::class,

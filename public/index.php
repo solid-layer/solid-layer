@@ -1,6 +1,6 @@
 <?php
 
-require dirname(__DIR__) . '/bootstrap/autoload.php';
+require dirname(__DIR__) . '/bootstrap/start.php';
 
 $kernel
     ->modules()

@@ -1,6 +1,14 @@
 #!/usr/bin/env php
 <?php
 
-require_once __DIR__ . '/bootstrap/autoload.php';
+$kernel = require_once __DIR__.'/bootstrap/autoload.php';
+
+$kernel
+    ->loadFactory()
+    ->loadConfig()
+    ->loadTimeZone()
+    ->loadServices($after_module = false, [
+        Clarity\Providers\Console::class,
+    ]);
 
 di()->get('console')->run();
