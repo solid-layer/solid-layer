@@ -55,7 +55,6 @@ class AuthController extends Controller
         $validation = $validator->validate($inputs);
 
         if (count($validation)) {
-
             session()->set('input', $inputs);
 
             # alternative when using flash_bag().output()
@@ -98,17 +97,12 @@ class AuthController extends Controller
             ]);
 
             db()->commit();
-
         } catch (TransactionFailed $e) {
-
             db()->rollback();
             throw $e;
-
         } catch (Exception $e) {
-
             db()->rollback();
             throw $e;
-
         }
 
         # alternative is to store it using flash bag
@@ -156,7 +150,6 @@ class AuthController extends Controller
         ];
 
         if (auth()->attempt($credentials)) {
-
             if ($redirect = auth()->redirectIntended()) {
                 return $redirect;
             }

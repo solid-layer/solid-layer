@@ -9,7 +9,14 @@
 {% block content %}
     <div class="marginTop"></div>
 
-    <div class="col-md-4 col-md-offset-4 col-sm-10 col-sm-offset-1">
+    <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+
+        {# Info Message #}
+        {% if di().get('flash').has('info')  %}
+            <div class="alert alert-info">
+                {{ di().get('flash').get('info') }}
+            </div>
+        {% endif %}
 
         {# Success Message #}
         {% if di().get('flash').has('success')  %}

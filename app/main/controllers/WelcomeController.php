@@ -23,21 +23,22 @@ class WelcomeController extends Controller
      */
     public function trySampleForms()
     {
-        if ( User::count() ) {
-
-            flash_bag()->notice(
-                lang()->get(
-                    'responses/login.pre_flash_message'
+        if (User::count()) {
+            return redirect()
+                ->to(
+                    route('showLoginForm')
                 )
-            );
-
-            return redirect()->to(route('showLoginForm'));
+                ->withInfo(
+                    lang()->get('responses/login.pre_flash_message')
+                );
         }
 
-        flash_bag()->warning(
-            lang()->get('responses/register.pre_flash_message')
-        );
-
-        return redirect()->to(route('showRegistrationForm'));
+        return redirect()
+            ->to(
+                route('showRegistrationForm')
+            )
+            ->withInfo(
+                lang()->get('responses/register.pre_flash_message')
+            );
     }
 }

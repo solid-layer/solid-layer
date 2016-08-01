@@ -23,6 +23,13 @@
 
     <div class="col-md-6">
 
+        {# Info Message #}
+        {% if di().get('flash').has('info')  %}
+            <div class="alert alert-info">
+                {{ di().get('flash').get('info') }}
+            </div>
+        {% endif %}
+
         {# Success Message #}
         {% if di().get('flash').has('success')  %}
             <div class="alert alert-success">
