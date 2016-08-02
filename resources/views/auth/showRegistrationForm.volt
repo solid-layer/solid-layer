@@ -84,6 +84,5 @@
 {% endblock %}
 
 {% block footer %}
-<script src="/css/main.css"></script>
 <link rel="stylesheet" href="/css/main.css">
 {% endblock %}

@@ -20,7 +20,6 @@
         </div>
         <script type="text/javascript" src="/js/bootstrap.min.js" async></script>
 
-        <script src="/css/bootstrap.min.css"></script>
         <link rel="stylesheet" href="/css/bootstrap.min.css">
         {% block footer %}{% endblock %}
     </body>
