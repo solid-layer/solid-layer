@@ -19,8 +19,8 @@
             {% block content %}{% endblock %}
         </div>
         <script type="text/javascript" src="/js/bootstrap.min.js" async></script>
-        {% block footer %}{% endblock %}
 
         <link rel="stylesheet" href="/css/bootstrap.min.css">
+        {% block footer %}{% endblock %}
     </body>
 </html>
