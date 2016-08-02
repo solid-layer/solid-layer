@@ -7,7 +7,8 @@
         <title>Solid Layer - Structured Phalcon Framework</title>
         <!-- <link href='http://fonts.googleapis.com/css?family=Josefin+Sans:100,400' rel='stylesheet' type='text/css'> -->
         <!-- <link href='https://fonts.googleapis.com/css?family=Dancing+Script' rel='stylesheet' type='text/css'> -->
-        <style type="text/css">
+        <link rel="stylesheet" href="css/bootstrap.min.css" media="bogus">
+        <style>
             /* latin-ext */
             @font-face {
               font-family: 'Josefin Sans';
@@ -48,9 +49,7 @@
               src: local('Dancing Script'), local('DancingScript'), url(https://fonts.gstatic.com/s/dancingscript/v7/DK0eTGXiZjN6yA8zAEyM2Ud0sm1ffa_JvZxsF_BEwQk.woff2) format('woff2');
               unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
             }
-        </style>
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-        <style type="text/css">
+
             body {
                 font-family: 'Josefin Sans', sans-serif;
                 background-color: #F7F7F7;
@@ -108,5 +107,7 @@
                 <h3 title="Current Version">v1.4.0</h3>
             </div>
         </div>
+
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     </body>
 </html>
