@@ -7,7 +7,7 @@
         <title>Solid Layer - Structured Phalcon Framework</title>
         <!-- <link href='http://fonts.googleapis.com/css?family=Josefin+Sans:100,400' rel='stylesheet' type='text/css'> -->
         <!-- <link href='https://fonts.googleapis.com/css?family=Dancing+Script' rel='stylesheet' type='text/css'> -->
-        <link rel="stylesheet" href="css/bootstrap.min.css" media="bogus">
+        <link rel="stylesheet" href="/css/bootstrap.min.css" media="bogus">
         <style>
             /* latin-ext */
             @font-face {
@@ -116,6 +116,6 @@
             </div>
         </div>
 
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
     </body>
 </html>

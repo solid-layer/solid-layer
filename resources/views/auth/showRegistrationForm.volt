@@ -3,7 +3,7 @@
 {% block title %}Slayer - Sample Registration Form{% endblock %}
 
 {% block header %}
-<link rel="stylesheet" type="text/css" href="{{ url('css/main.css') }}">
+<link rel="stylesheet" href="/css/main.css" media="bogus">
 {% endblock %}
 
 {% block content %}
@@ -39,7 +39,7 @@
 
     <div class="row">
         <div class="col-md-4 col-md-offset-1">
-            <div class="well">
+            <div class="well well-white">
                 <h4>Registration Form</h4>
                 <hr>
                 <div class="alert alert-info">
@@ -57,7 +57,7 @@
         </div>
 
         <div class="col-md-6">
-            <div class="well">
+            <div class="well well-white">
                 <form class="form-vertical" method="POST" action="{{ route('storeRegistrationForm') }}" autocomplete="off">
                     <input type="hidden" name="{{ security.getTokenKey() }}" value="{{ security.getToken() }}"/>
                     <div class="form-group">
@@ -81,9 +81,9 @@
             </div>
         </div>
     </div>
-
 {% endblock %}
 
 {% block footer %}
 <script type="text/javascript"></script>
+<link rel="stylesheet" href="/css/main.css">
 {% endblock %}

@@ -5,25 +5,22 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
-
         <title>{% block title %}{% endblock %}</title>
-
-        <link rel="stylesheet" type="text/css" href="{{ base_uri('css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="/css/bootstrap.min.css" media="bogus">
         <style type="text/css">
             body {
               background-color: #f7f7f7 !important;
             }
         </style>
-
-        {% block header %}
-        {% endblock %}
+        {% block header %}{% endblock %}
     </head>
     <body>
         <div class="container-fluid">
             {% block content %}{% endblock %}
         </div>
-
-        <script type="text/javascript" src="{{ base_uri('js/bootstrap.min.js') }}"></script>
+        <script type="text/javascript" src="/js/bootstrap.min.js"></script>
         {% block footer %}{% endblock %}
+
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
     </body>
 </html>
