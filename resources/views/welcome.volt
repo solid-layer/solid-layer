@@ -49,10 +49,9 @@
               src: local('Dancing Script'), local('DancingScript'), url(https://fonts.gstatic.com/s/dancingscript/v7/DK0eTGXiZjN6yA8zAEyM2Ud0sm1ffa_JvZxsF_BEwQk.woff2) format('woff2');
               unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
             }
-
             body {
-                font-family: 'Josefin Sans', sans-serif;
-                background-color: #F7F7F7;
+                font-family: 'Josefin Sans', sans-serif !important;
+                background-color: #F7F7F7 !important;
             }
             #frameworkTitle {
                 font-family: 'Dancing Script', monospace;
