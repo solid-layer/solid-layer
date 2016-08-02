@@ -55,7 +55,7 @@
             </h1>
 
             <p>Solid Layer / Structured Phalcon Framework</p>
-            <a class="btn btn-primary btn-xs" href="http://phalconslayer.readme.io/docs/setup-installation" target="_blank">Let's get Started!</a>
+            <a class="btn btn-primary btn-xs" href="http://docs.phalconslayer.com" target="_blank">Let's get Started!</a>
 
             <a class="btn btn-warning btn-xs" href="{{ route('trySampleForms') }}"><span class="glyphicon glyphicon-bookmark"></span> Try sample forms</a>
 
