@@ -78,7 +78,15 @@
                     margin-top: 9em;
                 }
             }
-            @media only screen and (max-width: 1050px) and (min-width: 400px) {
+            @media only screen and (max-width: 449px) and (min-width: 401px) {
+                #frameworkTitle {
+                    font-size: 6em;
+                }
+                .welcome {
+                    margin-top: 0.1em;
+                }
+            }
+            @media only screen and (max-width: 1050px) and (min-width: 500px) {
                 #frameworkTitle {
                     font-size: 8em;
                 }
