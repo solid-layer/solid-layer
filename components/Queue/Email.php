@@ -5,7 +5,7 @@ namespace Components\Queue;
 use Mail;
 use Clarity\Contracts\Mail\MailInterface;
 
-class Email extends
+class Email
 {
     public function listener($console, $job, $data)
     {
