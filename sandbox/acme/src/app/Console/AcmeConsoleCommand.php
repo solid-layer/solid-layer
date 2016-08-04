@@ -2,9 +2,9 @@
 
 namespace Acme\Acme\App\Console;
 
-use Clarity\Console\SlayerCommand;
+use Clarity\Console\Brood;
 
-class AcmeConsoleCommand extends SlayerCommand
+class AcmeConsoleCommand extends Brood
 {
     protected $name = 'acme:test';
 

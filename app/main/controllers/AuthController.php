@@ -87,15 +87,17 @@ class AuthController extends Controller
                 );
             }
 
-            queue()->put([
-                'class' => 'Components\Queue\Email@registeredSender',
-                'data'  => [
+            queue(
+                // 'Components\Queue\Email@registeredSender',
+                \Components\Queue\Email::class,
+                [
+                    'function' => 'registeredSender',
                     'template' => 'emails.registered-inlined',
                     'to'       => $inputs['email'],
                     'url'      => route('activateUser', ['token' => $token]),
                     'subject'  => 'You are now registered, activation is required.',
-                ],
-            ]);
+                ]
+            );
 
             db()->commit();
         } catch (TransactionFailed $e) {

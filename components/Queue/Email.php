@@ -5,8 +5,15 @@ namespace Components\Queue;
 use Mail;
 use Clarity\Contracts\Mail\MailInterface;
 
-class Email
+class Email extends
 {
+    public function listener($console, $job, $data)
+    {
+        if (isset($data['function'])) {
+            $this->{$data['function']}($console, $job, $data);
+        }
+    }
+
     public function registeredSender($console, $job, $data)
     {
         $to = $data['to'];

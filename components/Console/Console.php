@@ -2,9 +2,9 @@
 
 namespace Components\Console;
 
-use Clarity\Console\SlayerCommand;
+use Clarity\Console\Brood;
 
-class Console extends SlayerCommand
+class Console extends Brood
 {
     public function slash()
     {
