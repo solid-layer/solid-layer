@@ -3,7 +3,7 @@
 return [
 
     'beanstalk' => [
-        'class' => Phalcon\Queue\Beanstalk::class,
+        'class' => Clarity\Support\Queue\Beanstalkd\Beanstalkd::class,
         'config' => [
             'host' => 'localhost',
             'port' => '11300',

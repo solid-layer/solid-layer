@@ -33,7 +33,7 @@ class Handler extends BaseHandler
 
         // ... notifications | bugsnag | etc...
 
-        if (! config()->app->debug) {
+        if (! config()->app->debug && is_cli() === false) {
             return (new FatalHandler)->handle($e);
         }
 
