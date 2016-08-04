@@ -12,7 +12,7 @@ return [
     |
     */
 
-    Components\Console\QueueWorker::class,
+    Clarity\Console\Queue\Listen::class,
     Clarity\Console\App\ControllerCommand::class,
     Clarity\Console\App\ModuleCommand::class,
     Clarity\Console\App\RouteCommand::class,
