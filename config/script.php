@@ -1,5 +1,7 @@
 <?php
 
+use Clarity\Console\CLI;
+
 return [
 
     'pull' => [
@@ -13,5 +15,14 @@ return [
         'composer update',
         'composer dumpautoload',
     ],
+    'deploy' => [
+        CLI::ssh('root@domain.com', function() {
+            return [
+                'cd /var/www',
+                'ls'
+            ];
+        }),
+    ],
+
 
 ]; # end of return
