@@ -3,7 +3,14 @@
 use Clarity\Console\CLI;
 
 return [
-
+    'deploy' => [
+        // CLI::ssh('root@domain.com', function() {
+        //     return [
+        //         'cd /var/www',
+        //         'ls'
+        //     ];
+        // }),
+    ],
     'pull' => [
         'cd '.config('path.root'),
         'git pull origin master',
@@ -15,14 +22,7 @@ return [
         'composer update',
         'composer dumpautoload',
     ],
-    'deploy' => [
-        CLI::ssh('root@domain.com', function() {
-            return [
-                'cd /var/www',
-                'ls'
-            ];
-        }),
-    ],
+
 
 
 ]; # end of return
