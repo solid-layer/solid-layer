@@ -290,6 +290,7 @@ return [
     'aliases'  => [
         'Auth'        => Clarity\Facades\Auth::class,
         'Cache'       => Clarity\Facades\Cache::class,
+        'CLI'         => Clarity\Console\CLI::class,
         'Config'      => Clarity\Facades\Config::class,
         'DB'          => Clarity\Facades\DB::class,
         'File'        => Clarity\Facades\Flysystem::class,
