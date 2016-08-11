@@ -16,13 +16,12 @@ return [
         'composer dumpautoload',
     ],
     'deploy' => [
-        CLI::ssh('root@domain.com', function() {
+        CLI::ssh('root@domain.com', function () {
             return [
                 'cd /var/www',
-                'ls'
+                'ls',
             ];
         }),
     ],
-
 
 ]; # end of return
