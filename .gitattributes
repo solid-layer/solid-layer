@@ -10,3 +10,4 @@
 *.js linguist-vendored
 *.less linguist-vendored
 *.volt linguist-vendored
+pull-from-main.sh export-ignore
