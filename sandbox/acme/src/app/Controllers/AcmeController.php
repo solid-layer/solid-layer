@@ -7,7 +7,7 @@ use Clarity\Support\Phalcon\Mvc\Controller as BaseController;
 
 class AcmeController extends BaseController
 {
-    public function test()
+    public function testAction()
     {
         return View::make('test');
     }
