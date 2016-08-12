@@ -250,6 +250,7 @@ return [
         Clarity\Providers\Auth::class,
         Clarity\Providers\Cache::class,
         Clarity\Providers\CollectionManager::class,
+        Clarity\Providers\Console::class,
         Clarity\Providers\Crypt::class,
         Clarity\Providers\DB::class,
         Components\Providers\Dispatcher::class,
@@ -290,6 +291,7 @@ return [
     'aliases'  => [
         'Auth'        => Clarity\Facades\Auth::class,
         'Cache'       => Clarity\Facades\Cache::class,
+        'CLI'         => Clarity\Console\CLI::class,
         'Config'      => Clarity\Facades\Config::class,
         'DB'          => Clarity\Facades\DB::class,
         'File'        => Clarity\Facades\Flysystem::class,

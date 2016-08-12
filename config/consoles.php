@@ -31,6 +31,8 @@ return [
     Clarity\Console\Server\OptimizeCommand::class,
     Clarity\Console\Server\ServeCommand::class,
     Clarity\Console\Server\EnvCommand::class,
+    Clarity\Console\Server\ClutchCommand::class,
+    Clarity\Console\Server\RoutesCommand::class,
     Clarity\Console\Vendor\NewCommand::class,
     Clarity\Console\Vendor\PublishCommand::class,
     Clarity\Support\Phinx\Console\Command\Create::class,

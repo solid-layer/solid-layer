@@ -1,4 +1,5 @@
 <?php
+
 define('SLAYER_START', microtime(true));
 
 error_reporting(-1);
