@@ -18,4 +18,11 @@ class Dispatcher extends BaseDispatcher
 
         $dispatcher->setEventsManager($event_manager);
     }
+    
+    /**
+     * Override action suffix default phalcon from `action` to ``
+     */
+    public function getActionSuffix(){
+        return '';
+    }
 }
