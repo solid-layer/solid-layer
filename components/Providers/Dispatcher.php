@@ -22,7 +22,8 @@ class Dispatcher extends BaseDispatcher
     /**
      * Override action suffix default phalcon from `action` to ``
      */
-    public function getActionSuffix(){
+    public function getActionSuffix()
+    {
         return '';
     }
 }
