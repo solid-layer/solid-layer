@@ -12,7 +12,7 @@ class NewsfeedRoutes extends RouteGroup
 
         $this->setPrefix('/newsfeed');
 
-        $this->add('', [
+        $this->addGet('', [
             'action' => 'index',
         ]);
     }

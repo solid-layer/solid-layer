@@ -12,28 +12,28 @@ class AuthRoutes extends RouteGroup
 
         $this->setPrefix('/auth');
 
-        $this->add('/login/:params', [
+        $this->addGet('/login/:params', [
             'action' => 'showLoginForm',
             'params' => 1,
         ])->setName('showLoginForm');
 
-        $this->add('/attempt', [
+        $this->addPost('/attempt', [
             'action' => 'attemptToLogin',
         ])->setName('attemptToLogin');
 
-        $this->add('/logout', [
+        $this->addGet('/logout', [
             'action' => 'logout',
         ])->setName('logout');
 
-        $this->add('/register', [
+        $this->addGet('/register', [
             'action' => 'showRegistrationForm',
         ])->setName('showRegistrationForm');
 
-        $this->add('/register/store', [
+        $this->addPost('/register/store', [
             'action' => 'storeRegistrationForm',
         ])->setName('storeRegistrationForm');
 
-        $this->add('/activation/{token}', [
+        $this->addGet('/activation/{token}', [
             'action' => 'activateUser',
         ])->setName('activateUser');
     }
