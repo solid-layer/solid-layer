@@ -222,11 +222,12 @@ return [
 
     'encryption' => [
         'key'    => env('APP_KEY'),
-        'cipher' => 'rijndael-256',
+        'cipher' => 'aes-256-cbc',
 
         # you don't need to change this when you're
-        # under 2.1.x Phalcon which uses openssl
+        # under 3.0.x Phalcon which uses openssl
         # this only applies under 2.0.x Phalcon
+        // 'cipher' => 'rijndael-256',
         'mode'   => 'cbc',
     ],
 
