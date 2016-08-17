@@ -34,6 +34,9 @@
     "scripts": {
         "post-root-package-install": [
             "php -r \"copy('.env.example', '.env');\""
+        ],
+        "post-update-cmd": [
+            "rm -f storage/slayer/compiled.php"
         ]
     },
     "config": {
