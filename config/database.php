@@ -37,13 +37,6 @@ return [
             'class'    => Phalcon\Db\Adapter\Pdo\Postgresql::class,
         ],
 
-        'oracle' => [
-            'username' => env('DB_USERNAME'),
-            'password' => env('DB_PASSWORD'),
-            'dbname'   => env('DB_DATABASE', '//localhost/slayer'),
-            'charset'  => env('DB_CHARSET', 'utf8'),
-            'class'    => Phalcon\Db\Adapter\Pdo\Oracle::class,
-        ],
     ],
 
     /*
