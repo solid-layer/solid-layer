@@ -25,7 +25,7 @@ return [
         ],
 
         'sqlite' => [
-            'dbname'   => base_path(env('DB_DATABASE', 'database/slayer.sqlite')),
+            'dbname'   => base_path('database/slayer.sqlite'),
             'class'    => Phalcon\Db\Adapter\Pdo\Sqlite::class,
         ],
 
