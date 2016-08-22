@@ -24,10 +24,8 @@
         "fzaninotto/faker": "^1.4"
     },
     "autoload": {
-        "classmap": [
-            "app/"
-        ],
         "psr-4": {
+            "App\\": "app/",
             "Components\\": "components/"
         }
     },

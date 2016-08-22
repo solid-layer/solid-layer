@@ -19,6 +19,6 @@ class RouterServiceProvider extends ServiceProvider
 
     public function register()
     {
-        require_once realpath(__DIR__.'/../').'/routes.php';
+        require_once realpath(__DIR__.'/../').'/Routes.php';
     }
 }
