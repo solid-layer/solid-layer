@@ -276,6 +276,9 @@ return [
         Clarity\View\ViewServiceProvider::class,
 
         # register your provider below.
+        App\Main\Providers\RouterServiceProvider::class,
+
+        # register your sandbox providers below.
         // Acme\Acme\AcmeServiceProvider::class,
     ],
 
