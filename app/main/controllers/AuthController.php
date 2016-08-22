@@ -75,9 +75,9 @@ class AuthController extends Controller
             $user = new User;
 
             $success = $user->create([
-                'email'    => $inputs['email'],
+                'email' => $inputs['email'],
                 'password' => security()->hash($inputs['password']),
-                'token'    => $token,
+                'token' => $token,
             ]);
 
             if ($success === false) {
@@ -93,9 +93,9 @@ class AuthController extends Controller
                 [
                     'function' => 'registeredSender',
                     'template' => 'emails.registered-inlined',
-                    'to'       => $inputs['email'],
-                    'url'      => route('activateUser', ['token' => $token]),
-                    'subject'  => 'You are now registered, activation is required.',
+                    'to' => $inputs['email'],
+                    'url' => route('activateUser', ['token' => $token]),
+                    'subject' => 'You are now registered, activation is required.',
                 ]
             );
 
@@ -147,8 +147,8 @@ class AuthController extends Controller
         }
 
         $credentials = [
-            'email'     => $inputs['email'],
-            'password'  => $inputs['password'],
+            'email' => $inputs['email'],
+            'password' => $inputs['password'],
             'activated' => true,
         ];
 
@@ -186,7 +186,7 @@ class AuthController extends Controller
         $user = User::find([
             'token = :token: AND activated = :activated:',
             'bind' => [
-                'token'     => $token,
+                'token' => $token,
                 'activated' => false,
             ],
         ])->getFirst();

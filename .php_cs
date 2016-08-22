@@ -75,8 +75,6 @@ return Config::create()
         __DIR__.'/app',
         __DIR__.'/bootstrap',
         __DIR__.'/components',
-        __DIR__.'/config',
-        __DIR__.'/sandbox',
         __DIR__.'/tests',
     ]))
     ->fixers($fixers)

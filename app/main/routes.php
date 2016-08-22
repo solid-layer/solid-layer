@@ -12,12 +12,12 @@
 
 Route::addGet('/', [
     'controller' => 'Welcome',
-    'action'     => 'showSignature',
+    'action' => 'showSignature',
 ]);
 
 Route::addGet('/try-sample-forms', [
     'controller' => 'Welcome',
-    'action'     => 'trySampleForms',
+    'action' => 'trySampleForms',
 ])->setName('trySampleForms');
 
 /*

@@ -22,7 +22,7 @@ class RegistrationValidator extends Validation
         ]));
 
         $this->add('email', new Uniqueness([
-            'model'   => (int) Version::getId() <= 2001341 ? User::class : new User,
+            'model' => (int) Version::getId() <= 2001341 ? User::class : new User,
             'message' => 'Email already exist',
         ]));
 
@@ -31,7 +31,7 @@ class RegistrationValidator extends Validation
         ]));
 
         $this->add('password', new Confirmation([
-            'with'    => 'repassword',
+            'with' => 'repassword',
             'message' => 'Password and Repeat Password must match',
         ]));
 
