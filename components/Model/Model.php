@@ -18,6 +18,10 @@ class Model extends BaseModel
 
         # set all not null fields to their default value.
         foreach ($attributes as $field) {
+            if (! property_exists($this, $field)) {
+                continue;
+            }
+
             if (
                 isset($this->{$field}) ||       # if value already set, continue
                 ! is_null($this->{$field}) ||   # if not null, continue
