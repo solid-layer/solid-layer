@@ -275,7 +275,7 @@ return [
         Clarity\Providers\URL::class,
         Clarity\View\ViewServiceProvider::class,
 
-        # register your provider below.
+        # register your providers below.
         App\Main\Providers\RouterServiceProvider::class,
 
         # register your sandbox providers below.
