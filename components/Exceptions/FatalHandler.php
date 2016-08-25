@@ -4,14 +4,18 @@ namespace Components\Exceptions;
 
 class FatalHandler
 {
+    const STATUS_CODE = 500;
+
     public function handle($e)
     {
-        # the code below will be your custom error view
-
-        echo di()->get('view')->take('errors.whoops', [
+        $content = di()->get('view')->take('errors.whoops', [
             'e' => $e,
         ]);
 
-        return;
+        $response = di('response');
+        $response->setContent($content);
+        $response->setStatusCode(self::STATUS_CODE);
+
+        return $response->send();
     }
 }

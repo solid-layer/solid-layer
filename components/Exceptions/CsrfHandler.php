@@ -4,6 +4,8 @@ namespace Components\Exceptions;
 
 class CsrfHandler
 {
+    const STATUS_CODE = 401;
+
     public function handle($e)
     {
         # errors coming from ACL or anything that throws from
@@ -16,12 +18,14 @@ class CsrfHandler
         # you can point it to your views folder or log the message
         # internally.
 
-        // echo $e->getMessage();
-
-        echo di()->get('view')->take('errors.whoops', [
+        $content = di()->get('view')->take('errors.whoops', [
             'e' => $e,
         ]);
 
-        return;
+        $response = di('response');
+        $response->setContent($content);
+        $response->setStatusCode(self::STATUS_CODE);
+
+        return $response->send();
     }
 }
