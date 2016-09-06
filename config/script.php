@@ -21,7 +21,7 @@ return [
                 'cd /var/www',
                 'ls',
             ];
-        }),
+        }, $execute = false),
     ],
 
 ]; # end of return
