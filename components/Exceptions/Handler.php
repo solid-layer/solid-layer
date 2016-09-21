@@ -15,11 +15,11 @@ class Handler extends BaseHandler
 
     public function render($e, $status_code = null)
     {
-        if ($e instanceof AccessNotAllowedException) {
+        if ($e instanceof AccessNotAllowedException && !headers_sent()) {
             return (new CsrfHandler)->handle($e);
         }
 
-        if ($e instanceof ControllerNotFoundException) {
+        if ($e instanceof ControllerNotFoundException && !headers_sent()) {
             if (config()->app->debug) {
                 return parent::render($e, PageNotFoundHandler::STATUS_CODE);
             }
@@ -33,10 +33,12 @@ class Handler extends BaseHandler
 
         // ... notifications | bugsnag | etc...
 
-        if (! config()->app->debug && is_cli() === false) {
+        if (! config()->app->debug && is_cli() === false && !headers_sent()) {
             return (new FatalHandler)->handle($e);
         }
 
-        return parent::render($e);
+        if (!headers_sent()) {
+            return parent::render($e);
+        }
     }
 }
