@@ -15,7 +15,7 @@ class Handler extends BaseHandler
 
     public function render($e, $status_code = null)
     {
-        if (header_sent()) {
+        if (headers_sent()) {
             return;
         }
 
