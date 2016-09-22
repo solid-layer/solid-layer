@@ -15,7 +15,11 @@ class Handler extends BaseHandler
 
     public function render($e, $status_code = null)
     {
-        if ($e instanceof AccessNotAllowedException && !headers_sent()) {
+        if (headers_sent()) {
+            return;
+        }
+
+        if ($e instanceof AccessNotAllowedException) {
             return (new CsrfHandler)->handle($e);
         }
 

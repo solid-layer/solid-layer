@@ -12,28 +12,25 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             {# Info Message #}
-            {% if flash().has('info')  %}
+            {% if flash_bag().has('info')  %}
                 <div class="alert alert-info">
-                    {{ flash().get('info') }}
+                    {{ flash_bag().output() }}
                 </div>
             {% endif %}
 
             {# Success Message #}
-            {% if flash().has('success')  %}
+            {% if flash_bag().has('success')  %}
                 <div class="alert alert-success">
-                    {{ flash().get('success') }}
+                    {{ flash_bag().output() }}
                 </div>
             {% endif %}
 
             {# Error Messages #}
-            {% if flash().has('error')  %}
+            {% if flash_bag().has('error')  %}
                 <div class="alert alert-danger">
-                    {{ flash().get('error') }}
+                    {{ flash_bag().output() }}
                 </div>
             {% endif %}
-
-            {# Any when using FlashBag #}
-            {{ flash_bag.output() }}
         </div>
     </div>
 

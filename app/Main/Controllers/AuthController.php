@@ -58,7 +58,7 @@ class AuthController extends Controller
         if (count($validation)) {
             session()->set('input', $inputs);
 
-            # alternative when using flash_bag().output()
+            # using flash_bag() directly or using redirect()->with()
             // flash_bag()->error(
             //     RegistrationValidator::toHtml($validation)
             // );
@@ -108,7 +108,7 @@ class AuthController extends Controller
             throw $e;
         }
 
-        # alternative is to store it using flash bag
+        # using flash_bag() directly or using redirect()->with()
         // flash_bag()->success(
         //     lang()->get('responses/register.creation_success')
         // );
