@@ -1646,16 +1646,16 @@
         },
         {
             "name": "phalconslayer/framework",
-            "version": "1.4.5",
+            "version": "1.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phalconslayer/framework.git",
-                "reference": "184120a9419dfce14203d49ebf1a5594666e2403"
+                "reference": "4255d7509414c7773f5174d89d76c3ee8556af87"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phalconslayer/framework/zipball/184120a9419dfce14203d49ebf1a5594666e2403",
-                "reference": "184120a9419dfce14203d49ebf1a5594666e2403",
+                "url": "https://api.github.com/repos/phalconslayer/framework/zipball/4255d7509414c7773f5174d89d76c3ee8556af87",
+                "reference": "4255d7509414c7773f5174d89d76c3ee8556af87",
                 "shasum": ""
             },
             "require": {
@@ -1737,7 +1737,7 @@
                 "phalcon",
                 "slayer"
             ],
-            "time": "2016-09-22 08:57:38"
+            "time": "2016-09-22 10:12:51"
         },
         {
             "name": "psr/http-message",
