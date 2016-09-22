@@ -64,8 +64,10 @@ class AuthController extends Controller
 
         $token = bin2hex(random_bytes(100));
 
+        $connection = db()->connection();
+
         try {
-            db()->begin();
+            $connection->begin();
 
             $user = new User;
 
@@ -94,12 +96,13 @@ class AuthController extends Controller
                 ]
             );
 
-            db()->commit();
+            $connection->commit();
+
         } catch (TransactionFailed $e) {
-            db()->rollback();
+            $connection->rollback();
             throw $e;
         } catch (Exception $e) {
-            db()->rollback();
+            $connection->rollback();
             throw $e;
         }
 
