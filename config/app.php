@@ -301,7 +301,6 @@ return [
         'FileManager' => Clarity\Facades\FlysystemManager::class,
         'Filter'      => Clarity\Facades\Filter::class,
         'Flash'       => Clarity\Facades\Flash::class,
-        'FlashBag'    => Clarity\Facades\FlashBag::class,
         'Lang'        => Clarity\Lang\LangFacade::class,
         'Log'         => Clarity\Facades\Log::class,
         'Mail'        => Clarity\Mail\MailFacade::class,
