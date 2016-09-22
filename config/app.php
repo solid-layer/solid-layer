@@ -258,7 +258,6 @@ return [
         Clarity\Providers\ErrorHandler::class,
         Clarity\Providers\Filter::class,
         Clarity\Providers\Flash::class,
-        Clarity\Providers\FlashBag::class,
         Clarity\Providers\Flysystem::class,
         Clarity\Lang\LangServiceProvider::class,
         Clarity\Mail\MailServiceProvider::class,
