@@ -7,7 +7,7 @@ class Auth implements \League\Tactician\Middleware
     public function execute($request, callable $next)
     {
         if (auth()->check() === false) {
-            flash_bag()->error('Please login to access this page.');
+            flash()->session()->error('Please login to access this page.');
 
             redirect(
 

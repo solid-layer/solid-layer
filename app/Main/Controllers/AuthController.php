@@ -58,19 +58,16 @@ class AuthController extends Controller
         if (count($validation)) {
             session()->set('input', $inputs);
 
-            # using flash_bag() directly or using redirect()->with()
-            // flash_bag()->error(
-            //     RegistrationValidator::toHtml($validation)
-            // );
-
             return redirect()->to(url()->previous())
                 ->withError(RegistrationValidator::toHtml($validation));
         }
 
         $token = bin2hex(random_bytes(100));
 
+        $connection = db()->connection();
+
         try {
-            db()->begin();
+            $connection->begin();
 
             $user = new User;
 
@@ -99,19 +96,15 @@ class AuthController extends Controller
                 ]
             );
 
-            db()->commit();
+            $connection->commit();
+
         } catch (TransactionFailed $e) {
-            db()->rollback();
+            $connection->rollback();
             throw $e;
         } catch (Exception $e) {
-            db()->rollback();
+            $connection->rollback();
             throw $e;
         }
-
-        # using flash_bag() directly or using redirect()->with()
-        // flash_bag()->success(
-        //     lang()->get('responses/register.creation_success')
-        // );
 
         return redirect()->to(route('showLoginForm'))
             ->withSuccess(lang()->get('responses/register.creation_success'));
@@ -192,7 +185,7 @@ class AuthController extends Controller
         ])->getFirst();
 
         if (! $user) {
-            flash_bag()->warning(
+            flash()->session()->warning(
                 'We cant find your request, please '.
                 'try again, or contact us.'
             );
@@ -204,10 +197,10 @@ class AuthController extends Controller
 
         if ($user->save() === false) {
             foreach ($user->getMessages() as $message) {
-                flash_bag()->error($message);
+                flash()->session()->error($message);
             }
         } else {
-            flash_bag()->success(
+            flash()->session()->success(
                 'You have successfully activated your account, '.
                 'you are now allowed to login.'
             );

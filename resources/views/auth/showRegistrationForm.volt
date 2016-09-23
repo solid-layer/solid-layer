@@ -12,23 +12,23 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             {# Info Message #}
-            {% if flash_bag().has('info')  %}
+            {% if flash().session().has('info')  %}
                 <div class="alert alert-info">
-                    {{ flash_bag().output() }}
+                    {{ flash().session().output() }}
                 </div>
             {% endif %}
 
             {# Success Message #}
-            {% if flash_bag().has('success')  %}
+            {% if flash().session().has('success')  %}
                 <div class="alert alert-success">
-                    {{ flash_bag().output() }}
+                    {{ flash().session().output() }}
                 </div>
             {% endif %}
 
             {# Error Messages #}
-            {% if flash_bag().has('error')  %}
+            {% if flash().session().has('error')  %}
                 <div class="alert alert-danger">
-                    {{ flash_bag().output() }}
+                    {{ flash().session().output() }}
                 </div>
             {% endif %}
         </div>

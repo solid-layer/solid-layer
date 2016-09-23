@@ -111,7 +111,7 @@
                 <hr class="hr">
                 <p title="From the boot time until render process time">Processing Time: <?php echo processing_time(SLAYER_START) ?></p>
                 <hr class="hr">
-                <h3 title="Current Version">v1.4.0</h3>
+                <h3 title="Current Version"><?= Clarity\Providers\Console::VERSION ?></h3>
             </div>
         </div>
 
