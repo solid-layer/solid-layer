@@ -15,26 +15,35 @@ return [
     'adapters' => [
 
         'mysql' => [
-            'host'     => env('DB_HOST', 'localhost'),
-            'port'     => env('DB_PORT', 3306),
-            'username' => env('DB_USERNAME'),
-            'password' => env('DB_PASSWORD'),
-            'dbname'   => env('DB_DATABASE', 'slayer'),
-            'charset'  => env('DB_CHARSET', 'utf8'),
-            'class'    => Phalcon\Db\Adapter\Pdo\Mysql::class,
+            'active' => true,
+            'class'  => Phalcon\Db\Adapter\Pdo\Mysql::class,
+            'options' => [
+                'host'     => env('DB_HOST', 'localhost'),
+                'port'     => env('DB_PORT', 3306),
+                'username' => env('DB_USERNAME'),
+                'password' => env('DB_PASSWORD'),
+                'dbname'   => env('DB_DATABASE', 'slayer'),
+                'charset'  => env('DB_CHARSET', 'utf8'),
+            ],
         ],
 
         'sqlite' => [
-            'dbname'   => base_path('database/slayer.sqlite'),
-            'class'    => Phalcon\Db\Adapter\Pdo\Sqlite::class,
+            'active' => false,
+            'class'  => Phalcon\Db\Adapter\Pdo\Sqlite::class,
+            'options' => [
+                'dbname' => base_path('database/slayer.sqlite'),
+            ],
         ],
 
         'pgsql' => [
-            'host'     => env('DB_HOST', 'localhost'),
-            'username' => env('DB_USERNAME'),
-            'password' => env('DB_PASSWORD'),
-            'dbname'   => env('DB_DATABASE', 'slayer'),
-            'class'    => Phalcon\Db\Adapter\Pdo\Postgresql::class,
+            'active' => false,
+            'class'  => Phalcon\Db\Adapter\Pdo\Postgresql::class,
+            'options' => [
+                'host'     => env('DB_HOST', 'localhost'),
+                'username' => env('DB_USERNAME'),
+                'password' => env('DB_PASSWORD'),
+                'dbname'   => env('DB_DATABASE', 'slayer'),
+            ],
         ],
 
     ],

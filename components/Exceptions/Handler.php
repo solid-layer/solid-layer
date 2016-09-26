@@ -23,7 +23,7 @@ class Handler extends BaseHandler
             return (new CsrfHandler)->handle($e);
         }
 
-        if ($e instanceof ControllerNotFoundException && !headers_sent()) {
+        if ($e instanceof ControllerNotFoundException) {
             if (config()->app->debug) {
                 return parent::render($e, PageNotFoundHandler::STATUS_CODE);
             }
@@ -37,12 +37,10 @@ class Handler extends BaseHandler
 
         // ... notifications | bugsnag | etc...
 
-        if (! config()->app->debug && is_cli() === false && !headers_sent()) {
+        if (! config()->app->debug && is_cli() === false) {
             return (new FatalHandler)->handle($e);
         }
 
-        if (!headers_sent()) {
-            return parent::render($e);
-        }
+        return parent::render($e);
     }
 }
