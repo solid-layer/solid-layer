@@ -2,7 +2,30 @@
 
 $kernel = require_once __DIR__.'/autoload.php';
 
+/*
++----------------------------------------------------------------+
+|\ Load Services                                                /|
++----------------------------------------------------------------+
+|
+| Load all the services registered at config()->app->handler
+|
+*/
+
 $kernel->loadServices();
+
+
+/*
++----------------------------------------------------------------+
+|\ Error Handler                                                /|
++----------------------------------------------------------------+
+|
+| After loading all the services, let's call the error handler
+|
+*/
+
+$handler = config()->app->error_handler;
+(new $handler)->report();
+
 
 /*
 +----------------------------------------------------------------+

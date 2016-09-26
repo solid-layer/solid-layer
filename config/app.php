@@ -242,26 +242,23 @@ return [
     */
 
     'services' => [
-        # This must be on top to log things to
-        # all supporting providers
-        Clarity\Providers\Log::class,
-
+        Clarity\Lang\LangServiceProvider::class,
+        Clarity\Mail\MailServiceProvider::class,
         Clarity\Providers\Aliaser::class,
-        Components\Providers\Application::class,
         Clarity\Providers\Auth::class,
         Clarity\Providers\Cache::class,
         Clarity\Providers\CollectionManager::class,
         Clarity\Providers\Console::class,
+        Clarity\Providers\Cookies::class,
         Clarity\Providers\Crypt::class,
         Clarity\Providers\DB::class,
-        Components\Providers\Dispatcher::class,
-        Clarity\Providers\ErrorHandler::class,
+        Clarity\Providers\Escaper::class,
         Clarity\Providers\Filter::class,
         Clarity\Providers\Flash::class,
         Clarity\Providers\Flysystem::class,
-        Clarity\Lang\LangServiceProvider::class,
-        Clarity\Mail\MailServiceProvider::class,
-        Clarity\Providers\MetadataAdapter::class,
+        Clarity\Providers\Log::class,
+        Clarity\Providers\ModelManager::class,
+        Clarity\Providers\ModelMetadata::class,
         Clarity\Providers\Module::class,
         Clarity\Providers\Mongo::class,
         Clarity\Providers\Queue::class,
@@ -270,9 +267,14 @@ return [
         Clarity\Providers\Response::class,
         Clarity\Providers\Router::class,
         Clarity\Providers\RouterAnnotations::class,
+        Clarity\Providers\Security::class,
         Clarity\Providers\Session::class,
+        Clarity\Providers\Tag::class,
+        Clarity\Providers\TransactionManager::class,
         Clarity\Providers\URL::class,
         Clarity\View\ViewServiceProvider::class,
+        Components\Providers\Application::class,
+        Components\Providers\Dispatcher::class,
 
         # register your providers below.
         App\Main\Providers\RouterServiceProvider::class,

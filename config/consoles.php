@@ -12,7 +12,6 @@ return [
     |
     */
 
-    Clarity\Console\Queue\Listen::class,
     Clarity\Console\App\ControllerCommand::class,
     Clarity\Console\App\ModuleCommand::class,
     Clarity\Console\App\RouteCommand::class,
@@ -33,12 +32,14 @@ return [
     Clarity\Console\Make\CollectionCommand::class,
     Clarity\Console\Make\ConsoleCommand::class,
     Clarity\Console\Make\ModelCommand::class,
+    Clarity\Console\Queue\Listen::class,
     Clarity\Console\Script\RunCommand::class,
-    Clarity\Console\Server\OptimizeCommand::class,
-    Clarity\Console\Server\ServeCommand::class,
-    Clarity\Console\Server\EnvCommand::class,
     Clarity\Console\Server\ClutchCommand::class,
+    Clarity\Console\Server\EnvCommand::class,
+    Clarity\Console\Server\OptimizeCommand::class,
     Clarity\Console\Server\RoutesCommand::class,
+    Clarity\Console\Server\ServicesCommand::class,
+    Clarity\Console\Server\ServeCommand::class,
     Clarity\Console\Vendor\NewCommand::class,
     Clarity\Console\Vendor\PublishCommand::class,
 

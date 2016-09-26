@@ -2,7 +2,7 @@
 
 namespace App\Main\Providers;
 
-use Phalcon\Di\FactoryDefault;
+use Phalcon\Di;
 use Clarity\Providers\ServiceProvider;
 use Clarity\Contracts\Providers\ModuleInterface;
 
@@ -22,7 +22,7 @@ class RouterServiceProvider extends ServiceProvider implements ModuleInterface
     /**
      * {@inherit}
      */
-    public function module(FactoryDefault $di)
+    public function module(Di $di)
     {
         $di
             ->get('dispatcher')
