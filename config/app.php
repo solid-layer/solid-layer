@@ -254,7 +254,7 @@ return [
         Clarity\Providers\Crypt::class,
         Clarity\Providers\DB::class,
         Clarity\Providers\Escaper::class,
-        Clarity\Providers\EventsManagerx::class,
+        Clarity\Providers\EventsManager::class,
         Clarity\Providers\Filter::class,
         Clarity\Providers\Flash::class,
         Clarity\Providers\Flysystem::class,
