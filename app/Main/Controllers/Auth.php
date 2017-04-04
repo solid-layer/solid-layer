@@ -8,7 +8,7 @@ use Components\Validation\LoginValidator;
 use Components\Validation\RegistrationValidator;
 use Phalcon\Mvc\Model\Transaction\Failed as TransactionFailed;
 
-class AuthController extends Controller
+class Auth extends Controller
 {
     /**
      * {@inheritdoc}

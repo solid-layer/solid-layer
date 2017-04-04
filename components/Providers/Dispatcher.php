@@ -20,6 +20,16 @@ class Dispatcher extends BaseDispatcher
     }
 
     /**
+     * Override the default controller suffix from 'Controller' to ``.
+     *
+     * @return string
+     */
+    public function getControllerSuffix()
+    {
+        return '';
+    }
+
+    /**
      * Override the default action suffix from 'Action' to ``.
      *
      * @return string

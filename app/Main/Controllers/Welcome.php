@@ -4,7 +4,7 @@ namespace App\Main\Controllers;
 
 use Components\Model\User;
 
-class WelcomeController extends Controller
+class Welcome extends Controller
 {
     /**
      * GET | This shows the slayer's introduction.

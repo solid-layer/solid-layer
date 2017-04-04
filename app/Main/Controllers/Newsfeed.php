@@ -2,7 +2,7 @@
 
 namespace App\Main\Controllers;
 
-class NewsfeedController extends Controller
+class Newsfeed extends Controller
 {
     /**
      * {@inheritdoc}
