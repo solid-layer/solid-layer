@@ -13,7 +13,7 @@ class AuthController extends Controller
     /**
      * {@inheritdoc}
      */
-    public function initialize()
+    public function initMiddleware()
     {
         $this->middleware('csrf', [
             'only' => [

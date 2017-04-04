@@ -7,7 +7,7 @@ class NewsfeedController extends Controller
     /**
      * {@inheritdoc}
      */
-    public function initialize()
+    public function initMiddleware()
     {
         $this->middleware('auth');
     }
