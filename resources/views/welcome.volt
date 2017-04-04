@@ -105,7 +105,7 @@
             <p>Solid Layer / Structured Phalcon Framework</p>
             <a class="btn btn-primary btn-xs" href="http://phalconslayer.com/docs" target="_blank">Let's get Started!</a>
 
-            <a class="btn btn-warning btn-xs" href="{{ route('trySampleForms') }}"><span class="glyphicon glyphicon-bookmark"></span> Try sample forms</a>
+            <a class="btn btn-warning btn-xs" href="{{ route('try-sample-forms') }}"><span class="glyphicon glyphicon-bookmark"></span> Try sample forms</a>
 
             <div class="footer">
                 <hr class="hr">

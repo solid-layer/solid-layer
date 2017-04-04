@@ -53,7 +53,7 @@
         </div>
         <div class="col-md-6">
             <div class="well well-white">
-                <form class="form-vertical" method="POST" action="{{ route('attemptToLogin') }}" autocomplete="off">
+                <form class="form-vertical" method="POST" action="{{ route('attempt-to-login') }}" autocomplete="off">
                     {{ csrf_field() }}
 
                     <input type="hidden" name="ref" value="{{ request().get('ref') }}">
@@ -72,7 +72,7 @@
                         <div class="text-center">
                             <button id="login-btn" class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> {{ lang.get('auth.button.login_button') }}</button>
 
-                            <a href="{{ route('showRegistrationForm') }}" class="btn btn-info">{{ lang.get('auth.button.register_button') }}</a>
+                            <a href="{{ route('show-registration-form') }}" class="btn btn-info">{{ lang.get('auth.button.register_button') }}</a>
 
                             <a href="" class="disabled btn btn-danger">{{ lang.get('auth.button.forgot_button') }}</a>
                         </div>

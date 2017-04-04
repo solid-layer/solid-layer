@@ -91,7 +91,7 @@ class AuthController extends Controller
                     'function' => 'registeredSender',
                     'template' => 'emails.registered-inlined',
                     'to' => $inputs['email'],
-                    'url' => route('activateUser', ['token' => $token]),
+                    'url' => route('activate-user', ['token' => $token]),
                     'subject' => 'You are now registered, activation is required.',
                 ]
             );
@@ -106,7 +106,7 @@ class AuthController extends Controller
             throw $e;
         }
 
-        return redirect()->to(route('showLoginForm'))
+        return redirect()->to(route('show-login-form'))
             ->withSuccess(lang()->get('responses/register.creation_success'));
     }
 
@@ -166,7 +166,7 @@ class AuthController extends Controller
     {
         auth()->destroy();
 
-        return redirect()->to(route('showLoginForm'));
+        return redirect()->to(route('show-login-form'));
     }
 
     /**
@@ -206,6 +206,6 @@ class AuthController extends Controller
             );
         }
 
-        return redirect()->to(route('showLoginForm'));
+        return redirect()->to(route('show-login-form'));
     }
 }

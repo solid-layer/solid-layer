@@ -27,7 +27,7 @@ class WelcomeController extends Controller
         if (User::count()) {
             return redirect()
                 ->to(
-                    route('showLoginForm')
+                    route('show-login-form')
                 )
                 ->withInfo(
                     lang()->get('responses/login.pre_flash_message')
@@ -36,7 +36,7 @@ class WelcomeController extends Controller
 
         return redirect()
             ->to(
-                route('showRegistrationForm')
+                route('show-registration-form')
             )
             ->withInfo(
                 lang()->get('responses/register.pre_flash_message')

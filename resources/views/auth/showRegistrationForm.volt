@@ -40,7 +40,7 @@
                 <h4>Registration Form</h4>
                 <hr>
                 <div class="alert alert-info">
-                    <span class="glyphicon glyphicon-info-sign"></span> At first, you must run <code>php&nbsp;brood&nbsp;queue:worker</code> in your console. Check your mailer configuration if you can't send an email request.
+                    <span class="glyphicon glyphicon-info-sign"></span> At first, you must run <code>php&nbsp;brood&nbsp;queue:listen</code> in your console. Check your mailer configuration if you can't send an email request.
                 </div>
                 <hr>
                 <h5>Registration Procedure:</h5>
@@ -55,7 +55,7 @@
 
         <div class="col-md-6">
             <div class="well well-white">
-                <form class="form-vertical" method="POST" action="{{ route('storeRegistrationForm') }}" autocomplete="off">
+                <form class="form-vertical" method="POST" action="{{ route('store-registration-form') }}" autocomplete="off">
                     <input type="hidden" name="{{ security.getTokenKey() }}" value="{{ security.getToken() }}"/>
                     <div class="form-group">
                         <label>{{ lang.get('auth.login.email_label') }}</label>

@@ -18,7 +18,7 @@ Route::addGet('/', [
 Route::addGet('/try-sample-forms', [
     'controller' => 'Welcome',
     'action' => 'trySampleForms',
-])->setName('trySampleForms');
+])->setName('try-sample-forms');
 
 /*
 +----------------------------------------------------------------+

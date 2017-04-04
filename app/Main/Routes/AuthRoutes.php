@@ -6,20 +6,20 @@ class AuthRoutes extends RouteGroup
 {
     public function initialize()
     {
+        $this->setPrefix('/auth');
+
         $this->setPaths([
             'controller' => 'Auth',
         ]);
 
-        $this->setPrefix('/auth');
-
         $this->addGet('/login/:params', [
             'action' => 'showLoginForm',
             'params' => 1,
-        ])->setName('showLoginForm');
+        ])->setName('show-login-form');
 
         $this->addPost('/attempt', [
             'action' => 'attemptToLogin',
-        ])->setName('attemptToLogin');
+        ])->setName('attempt-to-login');
 
         $this->addGet('/logout', [
             'action' => 'logout',
@@ -27,14 +27,14 @@ class AuthRoutes extends RouteGroup
 
         $this->addGet('/register', [
             'action' => 'showRegistrationForm',
-        ])->setName('showRegistrationForm');
+        ])->setName('show-registration-form');
 
         $this->addPost('/register/store', [
             'action' => 'storeRegistrationForm',
-        ])->setName('storeRegistrationForm');
+        ])->setName('store-registration-form');
 
         $this->addGet('/activation/{token}', [
             'action' => 'activateUser',
-        ])->setName('activateUser');
+        ])->setName('activate-user');
     }
 }
