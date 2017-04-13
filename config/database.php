@@ -15,7 +15,7 @@ return [
     'adapters' => [
 
         'mysql' => [
-            'active' => true,
+            'active' => env('DB_ACTIVE', true),
             'class'  => Phalcon\Db\Adapter\Pdo\Mysql::class,
             'options' => [
                 'host'     => env('DB_HOST', 'localhost'),
