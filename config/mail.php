@@ -16,7 +16,7 @@ return [
     ],
 
     'mailgun' => [
-        'active'  => false,
+        'active'  => env('MAILER_ACTIVE', true),
         'class'   => Clarity\Mail\Mailgun\Mailgun::class,
         'options' => [
             'from' => env('MAILER_MAIL_FROM'),
