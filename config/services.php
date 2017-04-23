@@ -7,4 +7,6 @@ return [
         'secret' => env('MAILER_MAILGUN_SECRET', ''),
     ],
 
+    'sendmail' => '/usr/sbin/sendmail -bs',
+
 ]; # end of return

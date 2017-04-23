@@ -180,7 +180,7 @@ return [
     |
     */
 
-    'mail_adapter' => env('MAIL_ADAPTER', 'swift'),
+    'mail_adapter' => env('MAIL_ADAPTER', 'smtp'),
 
     /*
     +----------------------------------------------------------------+
