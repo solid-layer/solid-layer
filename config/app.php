@@ -274,6 +274,7 @@ return [
         Clarity\Providers\Tag::class,
         Clarity\Providers\TransactionManager::class,
         Clarity\Providers\URL::class,
+        Clarity\Providers\Validator::class,
         Clarity\View\ViewServiceProvider::class,
         Components\Providers\Application::class,
         Components\Providers\Dispatcher::class,
@@ -317,6 +318,7 @@ return [
         'Session'     => Clarity\Facades\Session::class,
         'Tag'         => Clarity\Facades\Tag::class,
         'URL'         => Clarity\Facades\URL::class,
+        'Validator'   => Clarity\Facades\Validator::class,
         'View'        => Clarity\Facades\View::class,
     ],
 
