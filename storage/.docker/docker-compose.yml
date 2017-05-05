@@ -7,7 +7,7 @@ services:
       - "${SERVE_PORT}:80"
     volumes:
       - ./:/src
-      - ./.docker/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./storage/.docker/nginx.conf:/etc/nginx/conf.d/default.conf
   php:
     build:
       context: ./.docker/
@@ -17,7 +17,7 @@ services:
       PHP_IDE_CONFIG: serverName=Docker
     volumes:
       - ./:/var/www/html
-      - ./.docker/overwrite.ini:/usr/local/etc/php/conf.d/overwrite.ini
+      - ./storage/.docker/overwrite.ini:/usr/local/etc/php/conf.d/overwrite.ini
   mysql:
       image: mysql:latest
       ports:
