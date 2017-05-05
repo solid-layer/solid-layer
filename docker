@@ -1,0 +1,81 @@
+#!/usr/bin/env bash
+
+DOCKER_COMPOSE_CMD="docker-compose -f ./storage/.docker/docker-compose.yml"
+DOCKER_EXEC_CMD="docker exec -it phalcon-php"
+
+if [ ! -z "$IN_DOCKER" ];then
+  DOCKER_EXEC_CMD="";
+fi
+
+dockerOnly(){
+    if [ ! -z "$IN_DOCKER" ];then
+      echo "This command is not available inside docker";
+      exit 1;
+    fi
+}
+
+# start containers by making sure we're not inside docker container already
+up(){
+    dockerOnly
+    ${DOCKER_COMPOSE_CMD} $*;
+}
+
+# stop and remove containers by making sure we're not inside docker container already
+down(){
+    dockerOnly
+    ${DOCKER_COMPOSE_CMD} $*;
+}
+
+# stop containers by making sure we're not inside docker container already
+stop(){
+    dockerOnly
+    ${DOCKER_COMPOSE_CMD} $*
+}
+
+# install dependencies, anything except composer if required, will go here.
+install(){
+    ${DOCKER_EXEC_CMD} sh -c "composer $*;"
+}
+
+# update dependencies
+update(){
+    ${DOCKER_EXEC_CMD} sh -c "composer $*;"
+}
+
+# optimize the app for production use
+optimize(){
+    ${DOCKER_EXEC_CMD} sh -c "composer dump-autoload -o $*;"
+}
+
+# use composer
+composer() {
+    ${DOCKER_EXEC_CMD} sh -c "$*"
+}
+
+# use bash from host if some tinkering needed
+bash() {
+    dockerOnly
+    ${DOCKER_EXEC_CMD} $*
+}
+
+# check if some task is to be performed or forward the whole command to cli.php which can run various tasks.
+case $1 in
+up)
+  up $*;;
+down)
+  down $*;;
+install)
+    install $*;;
+update)
+    update $*;;
+optimize)
+    optimize $*;;
+composer)
+    composer $*;;
+stop)
+    stop $*;;
+bash)
+    bash $*;;
+*)
+    ${DOCKER_EXEC_CMD} sh -c "php brood $*"
+esac
