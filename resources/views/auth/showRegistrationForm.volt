@@ -56,17 +56,17 @@
         <div class="col-md-6">
             <div class="well well-white">
                 <form class="form-vertical" method="POST" action="{{ route('store-registration-form') }}" autocomplete="off">
-                    <input type="hidden" name="{{ security.getTokenKey() }}" value="{{ security.getToken() }}"/>
+                    <input type="hidden" name="{{ security().getTokenKey() }}" value="{{ security().getToken() }}"/>
                     <div class="form-group">
-                        <label>{{ lang.get('auth.login.email_label') }}</label>
+                        <label>{{ lang().get('auth.login.email_label') }}</label>
                         {{ text_field('email', 'class': 'form-control') }}
                     </div>
                     <div class="form-group">
-                        <label>{{ lang.get('auth.login.password_label') }}</label>
+                        <label>{{ lang().get('auth.login.password_label') }}</label>
                         {{ password_field('password', 'class': 'form-control') }}
                     </div>
                     <div class="form-group">
-                        <label>{{ lang.get('auth.login.re_password_label') }}</label>
+                        <label>{{ lang().get('auth.login.re_password_label') }}</label>
                         {{ password_field('repassword', 'class': 'form-control') }}
                     </div>
                     <div class="pull-right">
