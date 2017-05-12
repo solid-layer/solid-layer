@@ -11,7 +11,4 @@ $kernel->loadServices($after_module = false, $services);
 # load the modules
 $kernel->modules();
 
-# lazy load the services
-$kernel->loadServices($after_module = true, $services);
-
 di()->get('console')->run();
