@@ -59,22 +59,22 @@
                     <input type="hidden" name="ref" value="{{ request().get('ref') }}">
 
                     <div class="form-group">
-                        <label>{{ lang.get('auth.login.email_label') }}</label>
+                        <label>{{ lang().get('auth.login.email_label') }}</label>
                         {{ text_field('email', 'class': 'form-control') }}
                     </div>
 
                     <div class="form-group">
-                        <label>{{ lang.get('auth.login.password_label') }}</label>
+                        <label>{{ lang().get('auth.login.password_label') }}</label>
                         {{ password_field('password', 'class': 'form-control') }}
                     </div>
 
                     <div class="form-group">
                         <div class="text-center">
-                            <button id="login-btn" class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> {{ lang.get('auth.button.login_button') }}</button>
+                            <button id="login-btn" class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> {{ lang().get('auth.button.login_button') }}</button>
 
-                            <a href="{{ route('show-registration-form') }}" class="btn btn-info">{{ lang.get('auth.button.register_button') }}</a>
+                            <a href="{{ route('show-registration-form') }}" class="btn btn-info">{{ lang().get('auth.button.register_button') }}</a>
 
-                            <a href="" class="disabled btn btn-danger">{{ lang.get('auth.button.forgot_button') }}</a>
+                            <a href="" class="disabled btn btn-danger">{{ lang().get('auth.button.forgot_button') }}</a>
                         </div>
                     </div>
 

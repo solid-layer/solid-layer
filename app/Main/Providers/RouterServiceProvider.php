@@ -8,25 +8,19 @@ use Clarity\Contracts\Providers\ModuleInterface;
 
 class RouterServiceProvider extends ServiceProvider implements ModuleInterface
 {
-    protected $alias = 'main';
-    protected $shared = false;
+    public function boot()
+    {
+        resolve('module')->setModule('main', function () {
+            resolve('dispatcher')->setDefaultNamespace('App\Main\Controllers');
+        });
+    }
 
     /**
      * {@inherit}
      */
     public function register()
     {
-        return $this;
-    }
-
-    /**
-     * {@inherit}
-     */
-    public function module(Di $di)
-    {
-        $di
-            ->get('dispatcher')
-            ->setDefaultNamespace('App\Main\Controllers');
+        $this->app->instance('main', $this);
     }
 
     /**
