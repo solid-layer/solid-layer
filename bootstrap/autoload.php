@@ -68,9 +68,9 @@ if (file_exists($base_path.'/.env')) {
 $kernel = new Clarity\Kernel\Kernel;
 
 $kernel
+    ->loadFactory()
     ->setPaths(require_once url_trimmer(__DIR__.'/path.php'))
     ->setEnvironment(env('APP_ENV', 'production'))
-    ->loadFactory()
     ->loadConfig()
     ->loadTimeZone();
 

@@ -36,6 +36,7 @@ return [
     Clarity\Console\Make\ModelCommand::class,
     Clarity\Console\Queue\Listen::class,
     Clarity\Console\Script\RunCommand::class,
+    Clarity\Console\Server\BenchmarkCommand::class,
     Clarity\Console\Server\ClutchCommand::class,
     Clarity\Console\Server\EnvCommand::class,
     Clarity\Console\Server\OptimizeCommand::class,
