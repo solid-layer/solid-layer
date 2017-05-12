@@ -1375,16 +1375,16 @@
         },
         {
             "name": "mailgun/mailgun-php",
-            "version": "v2.3.0",
+            "version": "v2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mailgun/mailgun-php.git",
-                "reference": "5df14eb6aab16367ae75b0d1f19868e3c5bddf53"
+                "reference": "089f32d74634fe84e39a4e31b658939a5d17032e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mailgun/mailgun-php/zipball/5df14eb6aab16367ae75b0d1f19868e3c5bddf53",
-                "reference": "5df14eb6aab16367ae75b0d1f19868e3c5bddf53",
+                "url": "https://api.github.com/repos/mailgun/mailgun-php/zipball/089f32d74634fe84e39a4e31b658939a5d17032e",
+                "reference": "089f32d74634fe84e39a4e31b658939a5d17032e",
                 "shasum": ""
             },
             "require": {
@@ -1418,7 +1418,7 @@
                 }
             ],
             "description": "The Mailgun SDK provides methods for all API functions.",
-            "time": "2017-04-14T09:15:08+00:00"
+            "time": "2017-05-11T15:52:04+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -1619,12 +1619,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phalconslayer/framework.git",
-                "reference": "f3bc23af5acfdd839c0cce9ea514ecaf7cc7b344"
+                "reference": "4337a6e3cb9fee81d9f790ad97bfb40106e33121"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phalconslayer/framework/zipball/f3bc23af5acfdd839c0cce9ea514ecaf7cc7b344",
-                "reference": "f3bc23af5acfdd839c0cce9ea514ecaf7cc7b344",
+                "url": "https://api.github.com/repos/phalconslayer/framework/zipball/4337a6e3cb9fee81d9f790ad97bfb40106e33121",
+                "reference": "4337a6e3cb9fee81d9f790ad97bfb40106e33121",
                 "shasum": ""
             },
             "require": {
@@ -1708,7 +1708,7 @@
                 "phalcon",
                 "slayer"
             ],
-            "time": "2017-04-25 11:40:44"
+            "time": "2017-05-12 01:59:18"
         },
         {
             "name": "php-http/client-common",
@@ -2613,16 +2613,16 @@
         },
         {
             "name": "swiftmailer/swiftmailer",
-            "version": "v5.4.7",
+            "version": "v5.4.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "56db4ed32a6d5c9824c3ecc1d2e538f663f47eb4"
+                "reference": "9a06dc570a0367850280eefd3f1dc2da45aef517"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/56db4ed32a6d5c9824c3ecc1d2e538f663f47eb4",
-                "reference": "56db4ed32a6d5c9824c3ecc1d2e538f663f47eb4",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/9a06dc570a0367850280eefd3f1dc2da45aef517",
+                "reference": "9a06dc570a0367850280eefd3f1dc2da45aef517",
                 "shasum": ""
             },
             "require": {
@@ -2663,7 +2663,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2017-04-20T17:32:18+00:00"
+            "time": "2017-05-01T15:54:03+00:00"
         },
         {
             "name": "symfony/config",
