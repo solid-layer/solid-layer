@@ -1619,12 +1619,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phalconslayer/framework.git",
-                "reference": "4337a6e3cb9fee81d9f790ad97bfb40106e33121"
+                "reference": "9fd710c987b2e3dccb1375f32f3644a011685835"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phalconslayer/framework/zipball/4337a6e3cb9fee81d9f790ad97bfb40106e33121",
-                "reference": "4337a6e3cb9fee81d9f790ad97bfb40106e33121",
+                "url": "https://api.github.com/repos/phalconslayer/framework/zipball/9fd710c987b2e3dccb1375f32f3644a011685835",
+                "reference": "9fd710c987b2e3dccb1375f32f3644a011685835",
                 "shasum": ""
             },
             "require": {
@@ -1708,7 +1708,7 @@
                 "phalcon",
                 "slayer"
             ],
-            "time": "2017-05-12 01:59:18"
+            "time": "2017-05-12 07:34:31"
         },
         {
             "name": "php-http/client-common",
