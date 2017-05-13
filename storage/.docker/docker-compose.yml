@@ -1,0 +1,29 @@
+version: "3"
+services:
+  web:
+    image: nginx:alpine
+    container_name: nginx-slayer
+    ports:
+      - "${SERVE_PORT}:80"
+    volumes:
+      - ../../:/src
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+  php:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: phalcon-php
+    environment:
+      PHP_IDE_CONFIG: serverName=Docker
+    volumes:
+      - ../../:/var/www/html
+      - ./overwrite.ini:/usr/local/etc/php/conf.d/overwrite.ini
+  mysql:
+      image: mysql:latest
+      ports:
+        - "3306:${DB_PORT}"
+      environment:
+        - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+        - MYSQL_DATABASE=${DB_DATABASE}
+        - MYSQL_USER=${DB_USERNAME}
+        - MYSQL_PASSWORD=${DB_PASSWORD}
