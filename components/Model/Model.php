@@ -8,6 +8,17 @@ use Phalcon\Mvc\Model as BaseModel;
 class Model extends BaseModel
 {
     /**
+     * Initialize the model.
+     *
+     * @return void
+     */
+    public function initialize()
+    {
+        # let's resolve the 'db' service provider when using models
+        resolve('db');
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function beforeValidationOnCreate()

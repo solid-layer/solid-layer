@@ -15,7 +15,6 @@ return [
     'adapters' => [
 
         'mysql' => [
-            'active' => env('DB_ACTIVE', true),
             'class'  => Phalcon\Db\Adapter\Pdo\Mysql::class,
             'options' => [
                 'host'     => env('DB_HOST', 'localhost'),
@@ -28,7 +27,6 @@ return [
         ],
 
         'sqlite' => [
-            'active' => false,
             'class'  => Phalcon\Db\Adapter\Pdo\Sqlite::class,
             'options' => [
                 'dbname' => base_path('database/slayer.sqlite'),
@@ -36,7 +34,6 @@ return [
         ],
 
         'pgsql' => [
-            'active' => false,
             'class'  => Phalcon\Db\Adapter\Pdo\Postgresql::class,
             'options' => [
                 'host'     => env('DB_HOST', 'localhost'),
@@ -53,7 +50,7 @@ return [
     |\ NO SQL                                                       /|
     +----------------------------------------------------------------+
     |
-    | Your Document Storage
+    | Your document storage.
     |
     */
 
