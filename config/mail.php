@@ -3,7 +3,6 @@
 return [
 
     'smtp' => [
-        'active'  => env('MAILER_ACTIVE', true),
         'class'   => Clarity\Mail\SwiftMailer\SmtpMailer::class,
         'options' => [
             'host'       => env('MAILER_HOST'),
@@ -16,7 +15,6 @@ return [
     ],
 
     'sendmail' => [
-        'active'  => env('MAILER_ACTIVE', true),
         'class'   => Clarity\Mail\SwiftMailer\SendmailMailer::class,
         'options' => [
             'from' => env('MAILER_MAIL_FROM'),
@@ -24,7 +22,6 @@ return [
     ],
 
     'mail' => [
-        'active'  => env('MAILER_ACTIVE', true),
         'class'   => Clarity\Mail\SwiftMailer\MailMailer::class,
         'options' => [
             'from' => env('MAILER_MAIL_FROM'),
@@ -32,7 +29,6 @@ return [
     ],
 
     'mailgun' => [
-        'active'  => env('MAILER_ACTIVE', true),
         'class'   => Clarity\Mail\Mailgun\Mailgun::class,
         'options' => [
             'from' => env('MAILER_MAIL_FROM'),
