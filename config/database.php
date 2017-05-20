@@ -19,7 +19,7 @@ return [
             'options' => [
                 'host'     => env('DB_HOST', 'localhost'),
                 'port'     => env('DB_PORT', 3306),
-                'username' => env('DB_USERNAME'),
+                'username' => env('DB_USERNAME', 'root'),
                 'password' => env('DB_PASSWORD'),
                 'dbname'   => env('DB_DATABASE', 'slayer'),
                 'charset'  => env('DB_CHARSET', 'utf8'),
@@ -37,7 +37,8 @@ return [
             'class'  => Phalcon\Db\Adapter\Pdo\Postgresql::class,
             'options' => [
                 'host'     => env('DB_HOST', 'localhost'),
-                'username' => env('DB_USERNAME'),
+                'port'     => env('DB_PORT', 5432),
+                'username' => env('DB_USERNAME', 'postgres'),
                 'password' => env('DB_PASSWORD'),
                 'dbname'   => env('DB_DATABASE', 'slayer'),
             ],
