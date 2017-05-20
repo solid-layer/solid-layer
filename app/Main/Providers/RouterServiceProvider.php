@@ -2,12 +2,19 @@
 
 namespace App\Main\Providers;
 
-use Phalcon\Di;
 use Clarity\Providers\ServiceProvider;
 use Clarity\Contracts\Providers\ModuleInterface;
 
+/**
+ * A route service for 'main' module.
+ *
+ * To make this module work, register this inside [config/app.php], under 'services' key.
+ */
 class RouterServiceProvider extends ServiceProvider implements ModuleInterface
 {
+    /**
+     * {@inheritdoc}
+     */
     public function boot()
     {
         resolve('module')->setModule('main', function () {
