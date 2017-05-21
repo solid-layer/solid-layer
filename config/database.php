@@ -36,11 +36,11 @@ return [
         'pgsql' => [
             'class'  => Phalcon\Db\Adapter\Pdo\Postgresql::class,
             'options' => [
-                'host'     => env('DB_HOST', 'localhost'),
-                'port'     => env('DB_PORT', 5432),
-                'username' => env('DB_USERNAME', 'postgres'),
-                'password' => env('DB_PASSWORD'),
-                'dbname'   => env('DB_DATABASE', 'slayer'),
+                'host'     => env('PGSQL_DB_HOST', 'localhost'),
+                'port'     => env('PGSQL_DB_PORT', 5432),
+                'username' => env('PGSQL_DB_USERNAME', 'postgres'),
+                'password' => env('PGSQL_DB_PASSWORD'),
+                'dbname'   => env('PGSQL_DB_DATABASE', 'slayer'),
             ],
         ],
 
